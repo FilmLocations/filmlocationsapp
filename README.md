@@ -8,4 +8,4 @@ Discover film locations nearby you in San Francisco. Visit the locations and sha
 
 ### Wireframes
 
-[Wireframes](blob/master/wireframes/README.md)
+[Wireframes](https://github.com/FilmLocations/filmlocationsapp/blob/master/wireframes/README.md)
