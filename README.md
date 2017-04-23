@@ -8,4 +8,4 @@ Discover film locations nearby you in San Francisco. Visit the locations and sha
 
 ### Wireframes
 
-[Wireframes](wireframes/readme.md)
+[Wireframes](blob/master/wireframes/README.md)
