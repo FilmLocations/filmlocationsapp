@@ -8,7 +8,6 @@ target 'Film Locations' do
   # Pods for Film Locations
   pod 'Firebase/Core'
   pod 'Firebase/Database'
-  pod 'GoogleMaps', '= 2.1.0'
-  pod 'GooglePlaces'
+  pod 'AFNetworking'
 
 end
