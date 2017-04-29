@@ -20,6 +20,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRApp.configure()
         
+        // This code is needed to test the toggle button, but should be changed when the map and list screen will be integrated
+        
+        let vc1 = UIViewController()
+        let vc2 = UIViewController()
+        
+        vc1.view.backgroundColor = UIColor.red
+        vc2.view.backgroundColor = UIColor.orange
+        
+        let menu = MenuViewController(nibName: "MenuViewController", bundle: nil)
+        menu.firstViewController = vc1
+        menu.secondViewController = vc2
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = menu
+        window?.makeKeyAndVisible()
+        
+        // test code ends here
+        
         return true
     }
 
