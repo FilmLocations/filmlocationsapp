@@ -19,6 +19,9 @@
 		3A75FD0E1EB41792008F5400 /* FilmDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD0D1EB41792008F5400 /* FilmDetails.storyboard */; };
 		3A75FD101EB41800008F5400 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD0F1EB41800008F5400 /* Post.storyboard */; };
 		8A559882E961A19DE2C6ECF3 /* Pods_Film_Locations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA186C724D76407B1FE1434 /* Pods_Film_Locations.framework */; };
+		D31F4FEA1EB4552F003CC557 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31F4FE81EB4552F003CC557 /* MenuViewController.swift */; };
+		D31F4FEB1EB4552F003CC557 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31F4FE91EB4552F003CC557 /* MenuViewController.xib */; };
+		D31F4FED1EB45633003CC557 /* InternalConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31F4FEC1EB45633003CC557 /* InternalConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		7CA186C724D76407B1FE1434 /* Pods_Film_Locations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Film_Locations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95F5320A160EB9BDD66EB8A0 /* Pods-Film Locations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Film Locations.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations.debug.xcconfig"; sourceTree = "<group>"; };
 		D251F5A791118332ED48C6CD /* Pods-Film Locations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Film Locations.release.xcconfig"; path = "Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations.release.xcconfig"; sourceTree = "<group>"; };
+		D31F4FE81EB4552F003CC557 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		D31F4FE91EB4552F003CC557 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		D31F4FEC1EB45633003CC557 /* InternalConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalConfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,7 @@
 				3A75FD031EB40E27008F5400 /* View Controllers */,
 				3A75FD061EB40E7F008F5400 /* Storyboards */,
 				3A224F9C1EAD611700091BB3 /* AppDelegate.swift */,
+				D31F4FEC1EB45633003CC557 /* InternalConfiguration.swift */,
 				3A224FA01EAD611700091BB3 /* Main.storyboard */,
 				3A224FA31EAD611700091BB3 /* Assets.xcassets */,
 				3A224FA51EAD611700091BB3 /* LaunchScreen.storyboard */,
@@ -99,6 +106,8 @@
 		3A75FD031EB40E27008F5400 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D31F4FE81EB4552F003CC557 /* MenuViewController.swift */,
+				D31F4FE91EB4552F003CC557 /* MenuViewController.xib */,
 				3A224F9E1EAD611700091BB3 /* ViewController.swift */,
 			);
 			name = "View Controllers";
@@ -208,6 +217,7 @@
 				3A75FD101EB41800008F5400 /* Post.storyboard in Resources */,
 				3A75FD081EB416A1008F5400 /* Map.storyboard in Resources */,
 				3A224FA41EAD611700091BB3 /* Assets.xcassets in Resources */,
+				D31F4FEB1EB4552F003CC557 /* MenuViewController.xib in Resources */,
 				3A75FD0A1EB416CF008F5400 /* List.storyboard in Resources */,
 				3A224FA21EAD611700091BB3 /* Main.storyboard in Resources */,
 			);
@@ -269,7 +279,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A224F9F1EAD611700091BB3 /* ViewController.swift in Sources */,
+				D31F4FEA1EB4552F003CC557 /* MenuViewController.swift in Sources */,
 				3A224F9D1EAD611700091BB3 /* AppDelegate.swift in Sources */,
+				D31F4FED1EB45633003CC557 /* InternalConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
