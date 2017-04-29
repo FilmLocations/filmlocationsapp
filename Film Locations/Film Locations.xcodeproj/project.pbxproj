@@ -13,6 +13,8 @@
 		3A224FA41EAD611700091BB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A224FA31EAD611700091BB3 /* Assets.xcassets */; };
 		3A224FA71EAD611700091BB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A224FA51EAD611700091BB3 /* LaunchScreen.storyboard */; };
 		3A75FD001EB2892C008F5400 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FCFF1EB2892C008F5400 /* GoogleService-Info.plist */; };
+		3A2365D81EB47E4F00D60443 /* FilmDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2365D71EB47E4F00D60443 /* FilmDetailsViewController.swift */; };
+		3A2365DC1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2365DB1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift */; };
 		3A75FD081EB416A1008F5400 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD071EB416A1008F5400 /* Map.storyboard */; };
 		3A75FD0A1EB416CF008F5400 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD091EB416CF008F5400 /* List.storyboard */; };
 		3A75FD0C1EB416E5008F5400 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD0B1EB416E5008F5400 /* Login.storyboard */; };
@@ -33,6 +35,8 @@
 		3A224FA61EAD611700091BB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A224FA81EAD611700091BB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A75FCFF1EB2892C008F5400 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A2365D71EB47E4F00D60443 /* FilmDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmDetailsViewController.swift; sourceTree = "<group>"; };
+		3A2365DB1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A75FD071EB416A1008F5400 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		3A75FD091EB416CF008F5400 /* List.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
 		3A75FD0B1EB416E5008F5400 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -108,6 +112,10 @@
 			isa = PBXGroup;
 			children = (
 				3A224F9E1EAD611700091BB3 /* MainViewController.swift */,
+				D31F4FE81EB4552F003CC557 /* MenuViewController.swift */,
+				D31F4FE91EB4552F003CC557 /* MenuViewController.xib */,
+				3A2365D71EB47E4F00D60443 /* FilmDetailsViewController.swift */,
+				3A2365DB1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -149,8 +157,6 @@
 		88E1F1B41EB50049004CC616 /* CustomNavigation */ = {
 			isa = PBXGroup;
 			children = (
-				D31F4FE81EB4552F003CC557 /* MenuViewController.swift */,
-				D31F4FE91EB4552F003CC557 /* MenuViewController.xib */,
 			);
 			name = CustomNavigation;
 			sourceTree = "<group>";
@@ -287,6 +293,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A224F9F1EAD611700091BB3 /* MainViewController.swift in Sources */,
+				3A2365DC1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift in Sources */,
+				3A2365D81EB47E4F00D60443 /* FilmDetailsViewController.swift in Sources */,
 				D31F4FEA1EB4552F003CC557 /* MenuViewController.swift in Sources */,
 				3A224F9D1EAD611700091BB3 /* AppDelegate.swift in Sources */,
 				D31F4FED1EB45633003CC557 /* InternalConfiguration.swift in Sources */,
