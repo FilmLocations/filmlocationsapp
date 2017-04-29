@@ -21,6 +21,28 @@ Copyright 2017 Google
 
 Copyright 2017 Google
 
+## GoogleMaps
+
+If you use the Google Maps SDK for iOS in your application, you must
+include the attribution text as part of a legal notices section in your
+application. Including legal notices as an independent menu item, or as
+part of an "About" menu item, is recommended.
+
+You can get the attribution text by making a call to
+GMSServices.openSourceLicenseInfo().
+
+
+## GooglePlaces
+
+If you use the Google Places API for iOS in your application, you must
+include the attribution text as part of a legal notices section in your
+application. Including legal notices as an independent menu item, or as
+part of an "About" menu item, is recommended.
+
+You can get the attribution text by making a call to
+GMSPlacesClient.openSourceLicenseInfo().
+
+
 ## GoogleToolboxForMac
 
 
