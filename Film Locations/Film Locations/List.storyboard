@@ -34,7 +34,7 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6b1-qY-ZS3">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5m-VF-cc4">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5m-VF-cc4">
                                                     <rect key="frame" x="13" y="18" width="36" height="21"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
@@ -46,7 +46,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(year)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bw-7a-cyB">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="(year)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bw-7a-cyB">
                                                     <rect key="frame" x="57" y="18" width="45" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -68,7 +68,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="0kH-mm-dy2" secondAttribute="bottom" constant="8" id="ORJ-IP-Nbf"/>
                                                 <constraint firstAttribute="bottom" secondItem="6b1-qY-ZS3" secondAttribute="bottom" id="Pq0-iN-dHV"/>
                                                 <constraint firstAttribute="bottom" secondItem="oOZ-dO-GHV" secondAttribute="bottom" constant="8" id="Q0x-8c-SzR"/>
-                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="0Bw-7a-cyB" secondAttribute="trailing" constant="273" id="TKF-2k-vbn"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Bw-7a-cyB" secondAttribute="trailing" constant="8" id="TKF-2k-vbn"/>
                                                 <constraint firstItem="oOZ-dO-GHV" firstAttribute="top" secondItem="q5m-VF-cc4" secondAttribute="bottom" constant="64" id="UUa-wA-YpE"/>
                                                 <constraint firstItem="6b1-qY-ZS3" firstAttribute="top" secondItem="zrI-gr-2zm" secondAttribute="top" id="YSF-g6-CBy"/>
                                                 <constraint firstItem="oOZ-dO-GHV" firstAttribute="leading" secondItem="zrI-gr-2zm" secondAttribute="leading" constant="13" id="d05-Ad-GsR"/>
