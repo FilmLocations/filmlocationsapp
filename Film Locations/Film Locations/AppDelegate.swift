@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+
         FIRApp.configure()
         let memoryCapacity = 0
         let diskCapacity = 500 * 1024 * 1024
@@ -28,26 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GMSServices.provideAPIKey("AIzaSyDkh00P83RkVTjmA98hUI2iACj368aTeGI")
         GMSPlacesClient.provideAPIKey("AIzaSyDkh00P83RkVTjmA98hUI2iACj368aTeGI")
-        
-        /*
-        // This code is needed to test the toggle button, but should be changed when the map and list screen will be integrated
-        
-        let vc1 = UIViewController()
-        let vc2 = UIViewController()
-        
-        vc1.view.backgroundColor = UIColor.red
-        vc2.view.backgroundColor = UIColor.orange
-        
-        let menu = MenuViewController(nibName: "MenuViewController", bundle: nil)
-        menu.firstViewController = vc1
-        menu.secondViewController = vc2
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = menu
-        window?.makeKeyAndVisible()
-        */
-        // test code ends here
-        
+
         return true
     }
 
