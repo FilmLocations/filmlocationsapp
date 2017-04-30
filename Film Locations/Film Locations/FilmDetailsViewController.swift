@@ -9,7 +9,7 @@
 import UIKit
 import AFNetworking
 
-class FilmDetailsViewController: UIViewController {
+class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     ///** Sample testing data, pass film object later
     let filmTitle = "Blue Jasmine (2013)"
@@ -41,6 +41,8 @@ class FilmDetailsViewController: UIViewController {
         titleLabel.text = filmTitle
         addressLabel.text = address
         
+        // TODO check if user has visited/liked and set button image accordingly
+        
         photosCollectionView.dataSource = self
     }
 
@@ -51,14 +53,47 @@ class FilmDetailsViewController: UIViewController {
     
     @IBAction func addPhoto(_ sender: UIButton) {
         print("Add photo")
+        
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            print("Camera is available 📸")
+            vc.sourceType = .camera
+        } else {
+            print("Camera 🚫 available so we will use photo library instead")
+            vc.sourceType = .photoLibrary
+        }
+        
+        self.present(vc, animated: true, completion: nil)
+        
     }
 
     @IBAction func visitLocation(_ sender: UIButton) {
         print("Visit location")
+        Database.visitLocation(userId: "testUser", locationId: "testLocation")
     }
 
     @IBAction func LikeLocation(_ sender: UIButton) {
         print("Like location")
+        Database.likeLocation(userId: "testUser", locationId: "testLocation")
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : Any]) {
+        // Get the image captured by the UIImagePickerController
+        //let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        
+        // Do something with the images (based on your use case)
+        Database.addPhoto(userId: "testUser", locationId: "testLocation", image: editedImage)
+        
+        // Dismiss UIImagePickerController to go back to your original view controller
+        
+        // TODO go to post view controller 
+        
+        dismiss(animated: true, completion: nil)
     }
     
     /*
@@ -74,6 +109,8 @@ class FilmDetailsViewController: UIViewController {
 }
 
 extension FilmDetailsViewController: UICollectionViewDataSource {
+    
+    // TODO - Getting the photos, prioritize by user uploads and then google images?
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
