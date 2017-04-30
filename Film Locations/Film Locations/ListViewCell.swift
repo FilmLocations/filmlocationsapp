@@ -26,22 +26,30 @@ class ListViewCell: UITableViewCell {
 
     func updateUI() {
 
+        // reset any existing movie information
+        titleLabel.text = nil
+        yearLabel.text = nil
+        numberOfLocationsLabel.text = nil
+        locationLabel.text = nil
+        posterImageView.image = nil
+        
         if let movie = movie {
             
-            titleLabel.text = movie.title
-            yearLabel.text = movie.releaseYear
+            titleLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: movie.title)
+            yearLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: movie.releaseYear)
                         
             let numberOfLocation = movie.locations.count
             if numberOfLocation == 1 {
-                locationLabel.text = "Location"
+                locationLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "Location")
             }
             else {
-                locationLabel.text = "Locations"
+                locationLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "Locations")
             }
-            numberOfLocationsLabel.text = "\(numberOfLocation)"
+            numberOfLocationsLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "\(numberOfLocation)")
             
-            posterImageView.setImageWith(movie.posterImageURL)
-            
+            if let posterImageURL = movie.posterImageURL {
+                posterImageView.setImageWith(posterImageURL)
+            }
         }
     }
 }
