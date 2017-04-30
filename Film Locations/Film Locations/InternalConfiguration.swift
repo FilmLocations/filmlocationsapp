@@ -6,15 +6,37 @@
 //  Copyright © 2017 Codepath Spring17. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import SwiftyJSON
 
 struct InternalConfiguration {
     static let mapToggleIcon = "mapToggleIcon"
     static let listToggleIcon = "listToggleIcon"
     
-    static let moviesArray = [
-        FirebaseMovie(title: "180", releaseYear: "2011", posterImageURL: URL(string: "http://image.tmdb.org/t/p/w500//2ztXNTrtoe7Q9LcLVbcgSkHizUK.jpg")!, locationImageURL: URL(string: "http://image.tmdb.org/t/p/w500//rQS1bIsXTiZwiwTJ6vI5PHinvK2.jpg")!, address: "Epic Roasthouse (399 Embarcadero)", distance: 0.3),
-        FirebaseMovie(title: "180", releaseYear: "2011", posterImageURL: URL(string: "http://image.tmdb.org/t/p/w500//2ztXNTrtoe7Q9LcLVbcgSkHizUK.jpg")!, locationImageURL: URL(string: "http://image.tmdb.org/t/p/w500//qey0tdcOp9kCDdEZuJ87yE3crSe.jpg")!, address: "Mason & California Streets (Nob Hill)", distance: 0.7),
+    static func customizeTextAppearance(text: String) -> NSAttributedString {
+        let shadow = NSShadow()
+        shadow.shadowColor = UIColor.darkGray
+        shadow.shadowOffset = CGSize(width: 2, height: 2)
+        shadow.shadowBlurRadius = 4
+        let attributeColor = UIColor.white
         
-        FirebaseMovie(title: "Age of Adaline", releaseYear: "2015", posterImageURL: URL(string: "http://image.tmdb.org/t/p/w500//gEDGROZ4NQDlRjUPPSSyIf0hKvD.jpg")!, locationImageURL: URL(string: "http://image.tmdb.org/t/p/w500//iAsnIAyoauaGYmQwh2JOd1ibhke.jpg")!, address: "Pier 50- end of the pier", distance: 0.5)]
+        return NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName: attributeColor,NSShadowAttributeName: shadow])
+    }
+    
+    static func loadData() -> [FirebaseMovie] {
+        var moviesArray: [FirebaseMovie] = []
+        
+        /* Find the path of the file */
+        if let filePath = Bundle.main.path(forResource: "InputMoviesData", ofType: "json") {
+            /* Load it's content in a var */
+            if let fileContent = try? String(contentsOfFile: filePath) {
+                let jsonArray = JSON(parseJSON: fileContent)
+                for json in jsonArray.arrayValue {
+                    moviesArray.append(FirebaseMovie(json: json))
+                }
+            }
+        }
+        
+        return moviesArray
+    }
 }
