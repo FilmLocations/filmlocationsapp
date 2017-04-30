@@ -32,38 +32,30 @@ class ListViewController: UIViewController {
     }
     
     private func mapFirebaseMoviesToMovies() -> [Movie] {
-        var mappedObjects: [Movie] = []
+        var mappedObjects: [String: Movie] = [:]
         var locations: [Location] = []
+        var allMovies: [Movie] = []
         
         if !firebaseMovies.isEmpty {
-            // add first location to the first movie's location list
-            locations.append(Location(address: firebaseMovies[0].address))
+
+            for (_, movie) in firebaseMovies.enumerated() {
+
+                if mappedObjects[movie.title] == nil {
             
-            for (index, movie) in firebaseMovies.enumerated() {
-
-                // if the last element wasn't reached
-                if index != firebaseMovies.count - 1 {
-                    
-                    if movie.title == firebaseMovies[index+1].title {
-                        locations.append(Location(address: firebaseMovies[index+1].address))
-                    }
-                    else {
-                        // add first movie to the movie's list
-                        mappedObjects.append(Movie(title: firebaseMovies[index].title, releaseYear: firebaseMovies[index].releaseYear, posterImageURL: firebaseMovies[index].posterImageURL, locations: locations, isExpanded: false))
-
-                        locations.removeAll()
-                        
-                        locations.append(Location(address: firebaseMovies[index+1].address))
-                    }
+                    locations.append(Location(address: movie.address))
+                    mappedObjects[movie.title] = Movie(title: movie.title, releaseYear: movie.releaseYear, posterImageURL: movie.posterImageURL, locations: locations, isExpanded: false)
                 }
-            }
-            let lastMovieIndex = firebaseMovies.count - 1
-            
-            // add last element
-            mappedObjects.append(Movie(title: firebaseMovies[lastMovieIndex].title, releaseYear: firebaseMovies[lastMovieIndex].releaseYear, posterImageURL: firebaseMovies[lastMovieIndex].posterImageURL, locations: locations, isExpanded: false))
+                else {
+                    mappedObjects[movie.title]?.locations.append(Location(address: movie.address))
+                }
+             }
+         }
+        
+        for (_, movie) in mappedObjects.enumerated() {
+            allMovies.append(movie.value)
         }
         
-        return mappedObjects
+        return allMovies
     }
     
 }
