@@ -42,7 +42,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         addressLabel.text = address
         
         // TODO check if user has visited/liked and set button image accordingly
-        
+
         photosCollectionView.dataSource = self
     }
 
@@ -53,7 +53,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func addPhoto(_ sender: UIButton) {
         print("Add photo")
-        
+      
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
@@ -67,7 +67,6 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         self.present(vc, animated: true, completion: nil)
-        
     }
 
     @IBAction func visitLocation(_ sender: UIButton) {
@@ -109,9 +108,8 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 }
 
 extension FilmDetailsViewController: UICollectionViewDataSource {
-    
     // TODO - Getting the photos, prioritize by user uploads and then google images?
-    
+  
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
