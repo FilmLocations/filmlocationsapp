@@ -18,15 +18,15 @@ class MainViewController: UIViewController {
         
         // TODO: If user was last on Map View, display map view otherwise display listview
         
-//        let mapStoryBoard = UIStoryboard(name: "Map", bundle: nil)
-//        self.navController?.setViewControllers([mapStoryBoard.instantiateInitialViewController()!], animated: false)
+        let mapStoryBoard = UIStoryboard(name: "Map", bundle: nil)
+        self.navController?.setViewControllers([mapStoryBoard.instantiateInitialViewController()!], animated: false)
         
-//        let listStoryBoard = UIStoryboard(name: "List", bundle: nil)
-//        let viewController = listStoryBoard.instantiateViewController(withIdentifier: "List") as? ListViewController
-//        self.navController?.setViewControllers([viewController!], animated: false)
+        let listStoryBoard = UIStoryboard(name: "List", bundle: nil)
+        let viewController = listStoryBoard.instantiateViewController(withIdentifier: "List") as? ListViewController
+        self.navController?.setViewControllers([viewController!], animated: false)
         
-        //let filmDetailsStoryBoard = UIStoryboard(name: "FilmDetails", bundle: nil)
-        //self.navController?.setViewControllers([filmDetailsStoryBoard.instantiateInitialViewController()!], animated: false)
+        let filmDetailsStoryBoard = UIStoryboard(name: "FilmDetails", bundle: nil)
+        self.navController?.setViewControllers([filmDetailsStoryBoard.instantiateInitialViewController()!], animated: false)
         
     }
     
