@@ -24,20 +24,20 @@ class ListViewController: UIViewController {
         tableView.delegate = self
 
         // set cell's dimentions
-        tableView.rowHeight = 1
-        tableView.estimatedRowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 200
         
-        firebaseMovies = InternalConfiguration.moviesArray
+        firebaseMovies = InternalConfiguration.loadData()
         movies = mapFirebaseMoviesToMovies()
     }
     
     private func mapFirebaseMoviesToMovies() -> [Movie] {
-        var mapObjects: [Movie] = []
+        var mappedObjects: [Movie] = []
         var locations: [Location] = []
         
         if !firebaseMovies.isEmpty {
             // add first location to the first movie's location list
-            locations.append(Location(address: firebaseMovies[0].address, locationImageURL: firebaseMovies[0].locationImageURL))
+            locations.append(Location(address: firebaseMovies[0].address))
             
             for (index, movie) in firebaseMovies.enumerated() {
 
@@ -45,25 +45,25 @@ class ListViewController: UIViewController {
                 if index != firebaseMovies.count - 1 {
                     
                     if movie.title == firebaseMovies[index+1].title {
-                        locations.append(Location(address: firebaseMovies[index+1].address, locationImageURL: firebaseMovies[index+1].locationImageURL))
+                        locations.append(Location(address: firebaseMovies[index+1].address))
                     }
                     else {
                         // add first movie to the movie's list
-                        mapObjects.append(Movie(title: firebaseMovies[index].title, releaseYear: firebaseMovies[index].releaseYear, posterImageURL: firebaseMovies[index].posterImageURL, locations: locations, isExpanded: false))
+                        mappedObjects.append(Movie(title: firebaseMovies[index].title, releaseYear: firebaseMovies[index].releaseYear, posterImageURL: firebaseMovies[index].posterImageURL, locations: locations, isExpanded: false))
 
                         locations.removeAll()
                         
-                        locations.append(Location(address: firebaseMovies[index+1].address, locationImageURL: firebaseMovies[index+1].locationImageURL))
+                        locations.append(Location(address: firebaseMovies[index+1].address))
                     }
                 }
             }
             let lastMovieIndex = firebaseMovies.count - 1
             
             // add last element
-            mapObjects.append(Movie(title: firebaseMovies[lastMovieIndex].title, releaseYear: firebaseMovies[lastMovieIndex].releaseYear, posterImageURL: firebaseMovies[lastMovieIndex].posterImageURL, locations: locations, isExpanded: false))
+            mappedObjects.append(Movie(title: firebaseMovies[lastMovieIndex].title, releaseYear: firebaseMovies[lastMovieIndex].releaseYear, posterImageURL: firebaseMovies[lastMovieIndex].posterImageURL, locations: locations, isExpanded: false))
         }
         
-        return mapObjects
+        return mappedObjects
     }
     
 }
@@ -89,20 +89,23 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         }
         else {
             // display movie poster
-            cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as? ListViewCell
-            cell.textLabel?.text = movies[indexPath.section].locations[indexPath.row].address
+            cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) 
+            cell.textLabel?.text = movies[indexPath.section].locations[indexPath.row - 1].address
         }
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        let selectedRow = tableView.cellForRow(at: indexPath) as? ListViewCell
-        
-        if (selectedRow?.movie?.isExpandable)! {
-            selectedRow?.movie?.isExpanded = (selectedRow?.movie?.isExpanded)! ? false : true
+        if let selectedMovieCell = tableView.cellForRow(at: indexPath) as? ListViewCell {
+            // whatever
+            selectedMovieCell.movie?.isExpanded = !((selectedMovieCell.movie?.isExpanded)!)
             
             tableView.reloadData()
+        }
+        else {
+            // show new locations details screen
+            // let selectedLocationCell = tableView.cellForRow(at: indexPath)
         }
     }
 }
