@@ -10,10 +10,8 @@ import Foundation
 
 class Location {
     var address: String
-    var locationImageURL: URL
     
-    init(address: String, locationImageURL: URL) {
+    init(address: String) {
         self.address = address
-        self.locationImageURL = locationImageURL
     }
 }
