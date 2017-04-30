@@ -43,5 +43,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Film Locations allows you to choose images from your library.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Film Locations uses the camera to upload photos.</string>
 </dict>
 </plist>
