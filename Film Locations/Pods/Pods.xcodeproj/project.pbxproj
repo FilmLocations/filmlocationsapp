@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		00C05031BBA5BA48A00FE41348F41BDA /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 99A8DE2F56722F765E4763C5FC50D218 /* UIRefreshControl+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07340F15BACBA601736DBB2ABF1ABC35 /* GTMSessionFetcherLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = C29CFDD7F9B309EB6EDAF6559FEEB2D5 /* GTMSessionFetcherLogging.m */; };
 		08201CF47846AA8E1B2DA2022BF32D01 /* Pods-Film Locations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A22E0898C6292B017BD8D98A8F9385B9 /* Pods-Film Locations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -72,18 +73,88 @@
 
 /* Begin PBXContainerItemProxy section */
 		07F769F3752EBACAE3234FB7B5AE3660 /* PBXContainerItemProxy */ = {
+=======
+		11DE5D12FCA8811F3BC2E9866182BDC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350C35CE98CADF9A34D2C30568D2C89C /* Foundation.framework */; };
+		1480F4923DBBF217F60572EEECB4027C /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 91FFAEDD631209A8CC1CDC694E4BB6AF /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		174202BD6AE0E4A41F5CE66E975EAE52 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3766079F094338798DFB104966A133 /* UIRefreshControl+AFNetworking.m */; };
+		1DE2244649F9F68D35EBC68FE38F1880 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350C35CE98CADF9A34D2C30568D2C89C /* Foundation.framework */; };
+		1E5B8F12ED7CC40ECDB9B1F755F387E5 /* UIActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = CA892A532DA969BD4E628EC7D85AB0FF /* UIActivityIndicatorView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		20607BE2B1E5F31765026E5AC64DB27D /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C827531F3820FA6E2D85E3AAA571D70 /* AFSecurityPolicy.m */; };
+		20EE8030FCF2402DAC7F1C9B9DDAEF79 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = B547C981E0C290906C93998A5622D315 /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2377E523395CB5EC94D91283344580A1 /* GoogleToolboxForMac-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F45BA9E4ABCF7DB78EC11FD394E2EE71 /* GoogleToolboxForMac-dummy.m */; };
+		2E8A32ED46194EDBE22146271F6D26DE /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = E39A523659FB57C3731121EEF4F8EC6B /* UIImageView+AFNetworking.m */; };
+		328379EB810865556FCFB96332FA2E6A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 268F47AC608D1CB011B9CAEAEA7B8824 /* MobileCoreServices.framework */; };
+		3D2789FC760A97301909F0B1201626CD /* AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 737D756F1E9A2611F7CBA7E948D32FDE /* AFNetworking-dummy.m */; };
+		3F1BC9BAFFEEABB1ABC7614DF0FC97D5 /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E961BE609BEFEF53019E3B176A0DCE54 /* AFAutoPurgingImageCache.m */; };
+		51B62EEEAA04D683A5E4701C25FED606 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 92E01C239AEB8DFE658CE25B4F7A3792 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		560698A4D707DCBCC1C8F98BC9B89B23 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C63819DC2FAFD89DA71C6FB1AF6E2F38 /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5808B477EFF509D810B5CDCFDC944F80 /* AFImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = E54D6ACAFB7D0144071ED606C54767BA /* AFImageDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FF6453E55785669885F626B853FD2AA /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC670D8457EE60042C330C802CA428 /* UIProgressView+AFNetworking.m */; };
+		60E3009342BEE96D32C546BE2DB60052 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 80347E0368DC8B368ADEF974DD320668 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		659960F7E28E993E08CCC1E8A383E710 /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C8701D4F7835A43AC6C1DB75307C881 /* UIKit+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68152D921ABF6A423C192C04FDF94F0F /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B5F196913F71FF5191579A9F62534E28 /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68A38977EBAE334DC3C22386D00D2622 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD47893628B9F4A9138CAF94A89053F4 /* AFNetworkReachabilityManager.m */; };
+		6ED4ABEE8A5F51F5ECB59FA1781D29C6 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F60786E53B66895036C45B7CA7D914 /* UIActivityIndicatorView+AFNetworking.m */; };
+		6EEA26C6041314C28BEB1DDA2A5D6B9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350C35CE98CADF9A34D2C30568D2C89C /* Foundation.framework */; };
+		707B1A7541C8DBDDE8C27896A61370BE /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F1D1C325BE18D040C819FC19719534 /* AFURLSessionManager.m */; };
+		7332F15718920917F544F35CE2C038AA /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F7489F52017BA9024FEAC2A688365E5 /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F596351B558DBCAF1C3A494F16A137E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CB4FD24578B35484925C4D9A27FC62 /* CoreGraphics.framework */; };
+		8035EB4FC108BEDF54323B560C022661 /* Pods-Film Locations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2B531489D72F9B541DE5A8626F0D6F /* Pods-Film Locations-dummy.m */; };
+		81B617F8D26BB10C5726D75E85D21EB7 /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 69C40D9CDFFDCFCCA98E5167AF8B3744 /* UIButton+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		85D91D118596A90137526B962382C3F5 /* Pods-Film Locations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A22E0898C6292B017BD8D98A8F9385B9 /* Pods-Film Locations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B465D54C800F29955B1EAA69CEF1CAD /* GTMNSData+zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D7FA3517D01A59EB45A812DB3DCD7A8 /* GTMNSData+zlib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		958C4081928DBE9F1806523E06AC2824 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 656D9A3FE071CFE90ECA8C42D57C2FA4 /* SwiftyJSON-dummy.m */; };
+		9C602C7BEF5548774EE4648554C9C986 /* GoogleToolboxForMac-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C9C04A6E2749907E70D5F1DFE12467A1 /* GoogleToolboxForMac-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E1E90DED74B73ECE53C9AD76DE53E2D /* UIImage+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = A921DC3BB6A4BE5FBA1578C0DE799A1A /* UIImage+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A462945883F7729B185B64B679A6BFBE /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D63ED32DA91952D04D2A0A28BA061FF0 /* UIWebView+AFNetworking.m */; };
+		A6C6019D45BE62C61210A9CC619368EF /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0287364202FCDE376BD1E000FBB35F16 /* AFNetworkActivityIndicatorManager.m */; };
+		A76E9C6510EC3CBA92D72C206673FF46 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 60E738BD8C7D29520F60470C0EE5A90A /* GTMDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB39AC9746E7575D7449700475E41B0B /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B9C7748D32B06CF29777A239134D75E /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AE2A07407FB50BA249984DC0620E84C0 /* UIWebView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 12C9689EDC590BFBA6468247F338B82E /* UIWebView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AF03C11A1FAC8132AD3749D8F541701A /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B3ED49C31FC1C04900475FDC46DD7C /* UIButton+AFNetworking.m */; };
+		AF5A33CAE747988723CB39520111DC1D /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3EEA6D1D5D0F300E119C4C0C2E6AC1 /* GTMNSData+zlib.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B0B62C13749C6DFEC97299891C66681D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350C35CE98CADF9A34D2C30568D2C89C /* Foundation.framework */; };
+		B5852322ADE88AAD56EE042B80BA81E4 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCED6AF72028FEE5635309577710F43 /* AFURLResponseSerialization.m */; };
+		C2DD28375E1F0B1D0D1D2E4E607C499F /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 84937399EE68B215E06D87D35D6F6969 /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C6354FEC7728A4C86DAD8092509BA7D4 /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B9FAD522B5E11260A396E4C9F5107FC1 /* UIRefreshControl+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C706214D1EB91C849EB5090C1BFB9C93 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3076143126055C32B4622C7091B768 /* Security.framework */; };
+		CAC483EF637FB4A2C2E2FC75BA631B87 /* AFAutoPurgingImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = EA8AD939D57039728742FCC79B83F968 /* AFAutoPurgingImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CFA8D6B529A0EBFF0316F2629AB2556E /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6EE86C396228126E766B12DFF0B548 /* AFImageDownloader.m */; };
+		D9F4E833E37B611B432F6B5D7072DDA2 /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = F4E450A45B34239E016D2B23FDDBD4F2 /* UIProgressView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFFA215EEAA8DDBD540076927535275C /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 620A63A84DD7CA1E2736E32C0FF7385B /* AFURLRequestSerialization.m */; };
+		E0D4045AC4C1B41917FCA23A042D18B2 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D1C03D52645A847EAD4854132EC661 /* AFHTTPSessionManager.m */; };
+		E62C13CFE50FFF87456200A4E3F20012 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126DE307F8ECE8484057DDF3B56AB40 /* SwiftyJSON.swift */; };
+		E7988678C81F7CCB95D239375FC6986D /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F576411CF94F1B9AC2F0007DAAFF52F /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EC7CADE416A78A1CD6936018A6695126 /* AFNetworking-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B42D43FA6B9E2BDAF21AEBF088323C27 /* AFNetworking-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EF9FB77C649E538865477E62085F1449 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0CDEAF9A7B094320750DE7B89E4EC5B /* SystemConfiguration.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		27776B39A3C54836B16A2344D3CBFB4D /* PBXContainerItemProxy */ = {
+>>>>>>> The SwiftyJSON pod was added.
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CF671F7E57B92905F1CC91D036D6B4A7;
-			remoteInfo = AFNetworking;
-		};
-		D1F7B63DF6896306D04E4DCDD94F84BB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 00103D6C821BE85971C563025527BA5D;
+			remoteGlobalIDString = 92BB131FA876445E027D20AE23EA7B5F;
 			remoteInfo = GoogleToolboxForMac;
+		};
+<<<<<<< HEAD
+		D1F7B63DF6896306D04E4DCDD94F84BB /* PBXContainerItemProxy */ = {
+=======
+		2DBED952981E406A0C48A1914865C07E /* PBXContainerItemProxy */ = {
+>>>>>>> The SwiftyJSON pod was added.
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 53D7051CC08B67B317C48C952274F868;
+			remoteInfo = SwiftyJSON;
+		};
+		DD2F83611B5D434097699F3BCA3825DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1C3436CEA5C3D39764C5F54374794ECB;
+			remoteInfo = AFNetworking;
 		};
 		D7A459EA4F9382D3E81AAC79AEA78D26 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -97,6 +168,7 @@
 /* Begin PBXFileReference section */
 		0037F6C52AFC393A591B1E1F7E883289 /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
 		01D25B6CCA266F88D3E82ECB3099D50A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		022CA3A9575A02779D97B664DF2D5C4A /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Subspecs/Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
 		04033BCD57348B7F9BC23656C1499E4A /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		05B432403D346882EFE5CE6F7D0ECB62 /* Pods-Film Locations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Film Locations.modulemap"; sourceTree = "<group>"; };
@@ -188,22 +260,117 @@
 		F243B020A13D80FB662AB57A49BF337B /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		F2D89C8E866CC7C19BDFBA3A35D45DEF /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
 		FA70CC0A32A64086C9BE04368F2C68B4 /* GTMSessionUploadFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionUploadFetcher.m; path = Source/GTMSessionUploadFetcher.m; sourceTree = "<group>"; };
+=======
+		0287364202FCDE376BD1E000FBB35F16 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
+		047CA6FECC24BC3AD146C712064A7320 /* GoogleToolboxForMac-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-prefix.pch"; sourceTree = "<group>"; };
+		05B432403D346882EFE5CE6F7D0ECB62 /* Pods-Film Locations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Film Locations.modulemap"; sourceTree = "<group>"; };
+		0B55E32D34E91E55BCC6952C3F086AF7 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C8701D4F7835A43AC6C1DB75307C881 /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIKit+AFNetworking.h"; path = "UIKit+AFNetworking/UIKit+AFNetworking.h"; sourceTree = "<group>"; };
+		0F083C742E9D1BE6DAC87A19BEFE7A1B /* Pods-Film Locations-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Film Locations-acknowledgements.plist"; sourceTree = "<group>"; };
+		0FAC548CE5544D9861F4BB8305AA50AD /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Subspecs/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		12C9689EDC590BFBA6468247F338B82E /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWebView+AFNetworking.h"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
+		1704AE181D6A7E70DAC886902E7AD209 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		19F98F10CE4D1C2917282147505B4B44 /* Pods_Film_Locations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Film_Locations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		20CB4FD24578B35484925C4D9A27FC62 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		24F1D1C325BE18D040C819FC19719534 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
+		268F47AC608D1CB011B9CAEAEA7B8824 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		3126DE307F8ECE8484057DDF3B56AB40 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		350C35CE98CADF9A34D2C30568D2C89C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		365E723DC5604B0E1528271F14EA7A18 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Frameworks/FirebaseCore.framework; sourceTree = "<group>"; };
+		4085AAF28A3199376369591F7C8A070B /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		4C827531F3820FA6E2D85E3AAA571D70 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
+		53F60786E53B66895036C45B7CA7D914 /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
+		5C3076143126055C32B4622C7091B768 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		5CA6DF38C53B8F5B03590F23DDD58687 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		5D3EEA6D1D5D0F300E119C4C0C2E6AC1 /* GTMNSData+zlib.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GTMNSData+zlib.m"; path = "Foundation/GTMNSData+zlib.m"; sourceTree = "<group>"; };
+		5F03BE6FDE5C4D7F61181C1226E740DD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60E738BD8C7D29520F60470C0EE5A90A /* GTMDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		620A63A84DD7CA1E2736E32C0FF7385B /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		656D9A3FE071CFE90ECA8C42D57C2FA4 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		69C40D9CDFFDCFCCA98E5167AF8B3744 /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
+		6B129F32341FEFB1298ACC60BA99FE9D /* Pods-Film Locations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Film Locations.release.xcconfig"; sourceTree = "<group>"; };
+		6F7489F52017BA9024FEAC2A688365E5 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		6FFC7D14E5AD7AA6241EF623158A15E3 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Core/Sources/Firebase.h; sourceTree = "<group>"; };
+		72D1C03D52645A847EAD4854132EC661 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		737D756F1E9A2611F7CBA7E948D32FDE /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
+		7EC5175A618FEAFA60FEA101A2EAA4DC /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		80347E0368DC8B368ADEF974DD320668 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		84937399EE68B215E06D87D35D6F6969 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
+		85B3ED49C31FC1C04900475FDC46DD7C /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
+		8CAC7FB02823CCB19C3581917066E6AF /* AFNetworking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = AFNetworking.modulemap; sourceTree = "<group>"; };
+		8EEEFCABCFC593D7872EB66899D479C4 /* Pods-Film Locations-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Film Locations-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8F3766079F094338798DFB104966A133 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
+		8F576411CF94F1B9AC2F0007DAAFF52F /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
+		91FFAEDD631209A8CC1CDC694E4BB6AF /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h"; sourceTree = "<group>"; };
+		92E01C239AEB8DFE658CE25B4F7A3792 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
+		9385B9DDFC7BB962B88D606BDF75C598 /* AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-prefix.pch"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9B7B6C36EE5A3198ECC60E6786746103 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B9C7748D32B06CF29777A239134D75E /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = AFNetworking/AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		9D7FA3517D01A59EB45A812DB3DCD7A8 /* GTMNSData+zlib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMNSData+zlib.h"; path = "Foundation/GTMNSData+zlib.h"; sourceTree = "<group>"; };
+		A22E0898C6292B017BD8D98A8F9385B9 /* Pods-Film Locations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Film Locations-umbrella.h"; sourceTree = "<group>"; };
+		A2822180A3BA78EA33CC6A622AFBA0E8 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		A85706236E12A5AA9D527BCE931FD074 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
+		A921DC3BB6A4BE5FBA1578C0DE799A1A /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+AFNetworking.h"; path = "UIKit+AFNetworking/UIImage+AFNetworking.h"; sourceTree = "<group>"; };
+		A9708CA742E719EEFB202256B74F6145 /* Pods-Film Locations-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Film Locations-resources.sh"; sourceTree = "<group>"; };
+		AB9DDE185E76FA267BFC4B3F5BE24974 /* Pods-Film Locations-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Film Locations-frameworks.sh"; sourceTree = "<group>"; };
+		AD2D88E1C1E8825F3D1640A21D80F49A /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEF783F54CF9CA0B66A2E0D661D5173E /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		B0CBC5DBC29320AAC1ED784F8ED9FEA9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B42D43FA6B9E2BDAF21AEBF088323C27 /* AFNetworking-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-umbrella.h"; sourceTree = "<group>"; };
+		B547C981E0C290906C93998A5622D315 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		B5F196913F71FF5191579A9F62534E28 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		B9AF988548A835AD2EAADE6154566E8A /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
+		B9FAD522B5E11260A396E4C9F5107FC1 /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
+		BB58F8F6D121C1650FD267496F9E3120 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE4917FCEEDAE7578A0AC803C282180A /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Subspecs/Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		C06A59C74A55319B54FB49C0D36301B5 /* AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.xcconfig; sourceTree = "<group>"; };
+		C240F6E01E729935B819886F8A51161F /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
+		C63819DC2FAFD89DA71C6FB1AF6E2F38 /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
+		C9C04A6E2749907E70D5F1DFE12467A1 /* GoogleToolboxForMac-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-umbrella.h"; sourceTree = "<group>"; };
+		CA892A532DA969BD4E628EC7D85AB0FF /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
+		CBCED6AF72028FEE5635309577710F43 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = AFNetworking/AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		D0CDEAF9A7B094320750DE7B89E4EC5B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		D63ED32DA91952D04D2A0A28BA061FF0 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		DD47893628B9F4A9138CAF94A89053F4 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		DECC670D8457EE60042C330C802CA428 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
+		DF6EE86C396228126E766B12DFF0B548 /* AFImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageDownloader.m; path = "UIKit+AFNetworking/AFImageDownloader.m"; sourceTree = "<group>"; };
+		E39A523659FB57C3731121EEF4F8EC6B /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		E54D6ACAFB7D0144071ED606C54767BA /* AFImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFImageDownloader.h; path = "UIKit+AFNetworking/AFImageDownloader.h"; sourceTree = "<group>"; };
+		E64365CFB528A530FE6E6D2D10F15D12 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Subspecs/Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
+		E7894313E854C091E54D4447BC807770 /* GoogleToolboxForMac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleToolboxForMac.xcconfig; sourceTree = "<group>"; };
+		E961BE609BEFEF53019E3B176A0DCE54 /* AFAutoPurgingImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFAutoPurgingImageCache.m; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.m"; sourceTree = "<group>"; };
+		EA8AD939D57039728742FCC79B83F968 /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFAutoPurgingImageCache.h; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.h"; sourceTree = "<group>"; };
+		EE04DC5FE8387DB3162048F7D616835B /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Subspecs/Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
+		EE2B531489D72F9B541DE5A8626F0D6F /* Pods-Film Locations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Film Locations-dummy.m"; sourceTree = "<group>"; };
+		F45BA9E4ABCF7DB78EC11FD394E2EE71 /* GoogleToolboxForMac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleToolboxForMac-dummy.m"; sourceTree = "<group>"; };
+		F4E450A45B34239E016D2B23FDDBD4F2 /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
+>>>>>>> The SwiftyJSON pod was added.
 		FD3527F823E442C3E2C2F60DD435ECAD /* Pods-Film Locations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Film Locations.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+<<<<<<< HEAD
 		57F44911563C03EE01D7E49B4C1F0D0A /* Frameworks */ = {
+=======
+		790E5FC279BA7C0AEFDAA7969F7BE525 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA2D29D9265012FAC7A88D9A8CCD9989 /* CoreGraphics.framework in Frameworks */,
-				BC22E83FBE012D2A1B6B72B886832AF4 /* Foundation.framework in Frameworks */,
-				72BE65E696A388D4CC0D75BE461FEF1B /* MobileCoreServices.framework in Frameworks */,
-				23EFB184AD12FB1014FFC765CE0D710A /* Security.framework in Frameworks */,
-				CE2EB8CE3176F8A1FAA78CC8786292CC /* SystemConfiguration.framework in Frameworks */,
+				B0B62C13749C6DFEC97299891C66681D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		85DE3AC3F9BE321BA5C98B0B762E0988 /* Frameworks */ = {
+>>>>>>> The SwiftyJSON pod was added.
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EEA26C6041314C28BEB1DDA2A5D6B9A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+<<<<<<< HEAD
 		6AE88E96161DE195EAAF0A3B6375EA50 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,16 +389,32 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F9BC43EEAF05BCB201B3D28C244AA7E1 /* Frameworks */ = {
+=======
+		9451274463DC116EB14AC5E329418901 /* Frameworks */ = {
+>>>>>>> The SwiftyJSON pod was added.
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3159D7CAFD56B809F40CA3330DA10889 /* Foundation.framework in Frameworks */,
+				1DE2244649F9F68D35EBC68FE38F1880 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C151364F15F39F7CC60CBF9A3AB49B44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F596351B558DBCAF1C3A494F16A137E /* CoreGraphics.framework in Frameworks */,
+				11DE5D12FCA8811F3BC2E9866182BDC6 /* Foundation.framework in Frameworks */,
+				328379EB810865556FCFB96332FA2E6A /* MobileCoreServices.framework in Frameworks */,
+				C706214D1EB91C849EB5090C1BFB9C93 /* Security.framework in Frameworks */,
+				EF9FB77C649E538865477E62085F1449 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+<<<<<<< HEAD
 		017604EA81FCC086DB00AD341DA0654B /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +430,28 @@
 				16FE63B59670E92B219C154F990C52DB /* GooglePlaces.bundle */,
 			);
 			name = Resources;
+=======
+		023AD9196C1E218BCC60ABFEB5243A1B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				365E723DC5604B0E1528271F14EA7A18 /* FirebaseCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		051B1A8270F5D954750841816A8DC4DC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8CAC7FB02823CCB19C3581917066E6AF /* AFNetworking.modulemap */,
+				C06A59C74A55319B54FB49C0D36301B5 /* AFNetworking.xcconfig */,
+				737D756F1E9A2611F7CBA7E948D32FDE /* AFNetworking-dummy.m */,
+				9385B9DDFC7BB962B88D606BDF75C598 /* AFNetworking-prefix.pch */,
+				B42D43FA6B9E2BDAF21AEBF088323C27 /* AFNetworking-umbrella.h */,
+				9B7B6C36EE5A3198ECC60E6786746103 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/AFNetworking";
+>>>>>>> The SwiftyJSON pod was added.
 			sourceTree = "<group>";
 		};
 		05B55DFFACCD9F333E86E2EF446DD015 /* iOS */ = {
@@ -261,6 +466,7 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		09C462EB13FFE482C0293F6B07DECB4E /* GooglePlaces */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,21 +499,54 @@
 			isa = PBXGroup;
 			children = (
 				28B229233E43A78AD2EEEFBFB89CFB37 /* FirebaseCore.framework */,
+=======
+		0C5348E732328604AC57F69100556199 /* GooglePlaces */ = {
+			isa = PBXGroup;
+			children = (
+				E412DA156FE52E707467B0BC2B5B1AA2 /* Frameworks */,
+				4E6091B81A47AF0C2026F12B18B8EA49 /* Resources */,
 			);
-			name = Frameworks;
+			path = GooglePlaces;
 			sourceTree = "<group>";
 		};
+		0D0FBBF144CA2AC993119FD53863E848 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				84937399EE68B215E06D87D35D6F6969 /* AFSecurityPolicy.h */,
+				4C827531F3820FA6E2D85E3AAA571D70 /* AFSecurityPolicy.m */,
+			);
+			name = Security;
+			sourceTree = "<group>";
+		};
+		1A3EC4F5157785DDD86FA12B878E3513 /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				EF5FF7B560D193CC99D6223848F7CDEF /* Base */,
+				B2F840A6AB715B50B7574A81BCA4B7BE /* Maps */,
+>>>>>>> The SwiftyJSON pod was added.
+			);
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+<<<<<<< HEAD
 		305409C7A6F170586BB8F1951C3DEAE3 /* GoogleToolboxForMac */ = {
 			isa = PBXGroup;
 			children = (
 				F94F4CEEDD81A9D1DC6ACA2604138A88 /* Defines */,
 				90894ECD6956F3318ADA80D7B1DBD783 /* NSData+zlib */,
 				EA1DCCAF60EEBCA97C977CA429E43AD1 /* Support Files */,
+=======
+		1CCA2C588FC9E74E8AB39A6788CA7AD9 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				B5F196913F71FF5191579A9F62534E28 /* AFNetworkReachabilityManager.h */,
+				DD47893628B9F4A9138CAF94A89053F4 /* AFNetworkReachabilityManager.m */,
+>>>>>>> The SwiftyJSON pod was added.
 			);
-			name = GoogleToolboxForMac;
-			path = GoogleToolboxForMac;
+			name = Reachability;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		3BEB61361C500953F71C348823595B2B /* Serialization */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +605,89 @@
 				570AB35672F97AD64F3E5D2EF2F87C9E /* AFSecurityPolicy.m */,
 			);
 			name = Security;
+=======
+		20B56609144CE204DFA8221F742B2D76 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05B55DFFACCD9F333E86E2EF446DD015 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2459BFB9C2210437D71E631D02DF1951 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5C8C7CE001A346C564D4A28419A5E01C /* AFNetworking */,
+				E9A8D7AAA4627D2ECCDA524D45779A1C /* Firebase */,
+				D67F6F6AE4497201371BF8519AF427C3 /* FirebaseAnalytics */,
+				73270FCB7D14A8CB350EA2E1B1F277F5 /* FirebaseCore */,
+				BE6B9BB07BDD5EBC703EF4CCCFF09553 /* FirebaseDatabase */,
+				5EB44774CE20DC02406D8797B16CDD82 /* FirebaseInstanceID */,
+				1A3EC4F5157785DDD86FA12B878E3513 /* GoogleMaps */,
+				0C5348E732328604AC57F69100556199 /* GooglePlaces */,
+				7BAA600BD519C29E8DE9BACAC7386E1F /* GoogleToolboxForMac */,
+				C0B8C8861C0166341779D2A3E59BF113 /* SwiftyJSON */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3046D4E630C83A55095B37475E80D63C /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				EA8AD939D57039728742FCC79B83F968 /* AFAutoPurgingImageCache.h */,
+				E961BE609BEFEF53019E3B176A0DCE54 /* AFAutoPurgingImageCache.m */,
+				E54D6ACAFB7D0144071ED606C54767BA /* AFImageDownloader.h */,
+				DF6EE86C396228126E766B12DFF0B548 /* AFImageDownloader.m */,
+				91FFAEDD631209A8CC1CDC694E4BB6AF /* AFNetworkActivityIndicatorManager.h */,
+				0287364202FCDE376BD1E000FBB35F16 /* AFNetworkActivityIndicatorManager.m */,
+				CA892A532DA969BD4E628EC7D85AB0FF /* UIActivityIndicatorView+AFNetworking.h */,
+				53F60786E53B66895036C45B7CA7D914 /* UIActivityIndicatorView+AFNetworking.m */,
+				69C40D9CDFFDCFCCA98E5167AF8B3744 /* UIButton+AFNetworking.h */,
+				85B3ED49C31FC1C04900475FDC46DD7C /* UIButton+AFNetworking.m */,
+				A921DC3BB6A4BE5FBA1578C0DE799A1A /* UIImage+AFNetworking.h */,
+				80347E0368DC8B368ADEF974DD320668 /* UIImageView+AFNetworking.h */,
+				E39A523659FB57C3731121EEF4F8EC6B /* UIImageView+AFNetworking.m */,
+				0C8701D4F7835A43AC6C1DB75307C881 /* UIKit+AFNetworking.h */,
+				F4E450A45B34239E016D2B23FDDBD4F2 /* UIProgressView+AFNetworking.h */,
+				DECC670D8457EE60042C330C802CA428 /* UIProgressView+AFNetworking.m */,
+				B9FAD522B5E11260A396E4C9F5107FC1 /* UIRefreshControl+AFNetworking.h */,
+				8F3766079F094338798DFB104966A133 /* UIRefreshControl+AFNetworking.m */,
+				12C9689EDC590BFBA6468247F338B82E /* UIWebView+AFNetworking.h */,
+				D63ED32DA91952D04D2A0A28BA061FF0 /* UIWebView+AFNetworking.m */,
+			);
+			name = UIKit;
+			sourceTree = "<group>";
+		};
+		497261C2F41820D14360FABC387A5ADF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE4917FCEEDAE7578A0AC803C282180A /* GoogleMaps.framework */,
+				EE04DC5FE8387DB3162048F7D616835B /* GoogleMapsCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4E6091B81A47AF0C2026F12B18B8EA49 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AEF783F54CF9CA0B66A2E0D661D5173E /* GooglePlaces.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		5C8C7CE001A346C564D4A28419A5E01C /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				8F576411CF94F1B9AC2F0007DAAFF52F /* AFNetworking.h */,
+				89240438E8D632386992BBCB4ED53BAD /* NSURLSession */,
+				1CCA2C588FC9E74E8AB39A6788CA7AD9 /* Reachability */,
+				0D0FBBF144CA2AC993119FD53863E848 /* Security */,
+				8141AF3E17F678CE0FF2442BBAACFAF0 /* Serialization */,
+				051B1A8270F5D954750841816A8DC4DC /* Support Files */,
+				3046D4E630C83A55095B37475E80D63C /* UIKit */,
+			);
+			path = AFNetworking;
+>>>>>>> The SwiftyJSON pod was added.
 			sourceTree = "<group>";
 		};
 		5C8F93E19C23BF15E1C2B089DE7867A3 /* Pods-Film Locations */ = {
@@ -386,6 +708,7 @@
 			path = "Target Support Files/Pods-Film Locations";
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		623794966E74B2D0AD565A6B6E0D3EFC /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,6 +755,41 @@
 				3BA653E2E721B05CC8C6EAB1FAA4B689 /* FirebaseDatabase.framework */,
 			);
 			name = Frameworks;
+=======
+		5CE0DEFEB479908C84C6F9B550C74F07 /* NSData+zlib */ = {
+			isa = PBXGroup;
+			children = (
+				9D7FA3517D01A59EB45A812DB3DCD7A8 /* GTMNSData+zlib.h */,
+				5D3EEA6D1D5D0F300E119C4C0C2E6AC1 /* GTMNSData+zlib.m */,
+			);
+			name = "NSData+zlib";
+			sourceTree = "<group>";
+		};
+		5EB44774CE20DC02406D8797B16CDD82 /* FirebaseInstanceID */ = {
+			isa = PBXGroup;
+			children = (
+				7FD54CE3B7666F90971FE6E9716C191C /* Frameworks */,
+			);
+			path = FirebaseInstanceID;
+			sourceTree = "<group>";
+		};
+		73270FCB7D14A8CB350EA2E1B1F277F5 /* FirebaseCore */ = {
+			isa = PBXGroup;
+			children = (
+				023AD9196C1E218BCC60ABFEB5243A1B /* Frameworks */,
+			);
+			path = FirebaseCore;
+			sourceTree = "<group>";
+		};
+		7BAA600BD519C29E8DE9BACAC7386E1F /* GoogleToolboxForMac */ = {
+			isa = PBXGroup;
+			children = (
+				FB3C45C1A58263F89759A07A0BB8C50B /* Defines */,
+				5CE0DEFEB479908C84C6F9B550C74F07 /* NSData+zlib */,
+				D1A291F77663E0D500FE528FC62A1E1F /* Support Files */,
+			);
+			path = GoogleToolboxForMac;
+>>>>>>> The SwiftyJSON pod was added.
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -439,12 +797,18 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				20B56609144CE204DFA8221F742B2D76 /* Frameworks */,
+<<<<<<< HEAD
 				B0E1A96C2B316710887E17A00B6B57E6 /* Pods */,
 				8961EA32869F40731B5493D8EF9ED420 /* Products */,
+=======
+				2459BFB9C2210437D71E631D02DF1951 /* Pods */,
+				E55BAD43FBD03C8EADCC9BBA61635F73 /* Products */,
+>>>>>>> The SwiftyJSON pod was added.
 				8B12B604A1BE8019B45F7A9621075E0F /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		81A147960114C73CC17CB32D58AC4A38 /* FirebaseDatabase */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,6 +837,36 @@
 				2235B59D6C3B49F47374AF119BEDB41A /* Pods_Film_Locations.framework */,
 			);
 			name = Products;
+=======
+		7FD54CE3B7666F90971FE6E9716C191C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1704AE181D6A7E70DAC886902E7AD209 /* FirebaseInstanceID.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8141AF3E17F678CE0FF2442BBAACFAF0 /* Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				B547C981E0C290906C93998A5622D315 /* AFURLRequestSerialization.h */,
+				620A63A84DD7CA1E2736E32C0FF7385B /* AFURLRequestSerialization.m */,
+				6F7489F52017BA9024FEAC2A688365E5 /* AFURLResponseSerialization.h */,
+				CBCED6AF72028FEE5635309577710F43 /* AFURLResponseSerialization.m */,
+			);
+			name = Serialization;
+			sourceTree = "<group>";
+		};
+		89240438E8D632386992BBCB4ED53BAD /* NSURLSession */ = {
+			isa = PBXGroup;
+			children = (
+				9B9C7748D32B06CF29777A239134D75E /* AFHTTPSessionManager.h */,
+				72D1C03D52645A847EAD4854132EC661 /* AFHTTPSessionManager.m */,
+				C63819DC2FAFD89DA71C6FB1AF6E2F38 /* AFURLSessionManager.h */,
+				24F1D1C325BE18D040C819FC19719534 /* AFURLSessionManager.m */,
+			);
+			name = NSURLSession;
+>>>>>>> The SwiftyJSON pod was added.
 			sourceTree = "<group>";
 		};
 		8B12B604A1BE8019B45F7A9621075E0F /* Targets Support Files */ = {
@@ -483,6 +877,7 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		90894ECD6956F3318ADA80D7B1DBD783 /* NSData+zlib */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,10 +900,58 @@
 			isa = PBXGroup;
 			children = (
 				312BC9632441D5F98FD37809A8B8AD7D /* FirebaseAnalytics.framework */,
+=======
+		8D0F5034FD255B73336680E3C5DF9536 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C240F6E01E729935B819886F8A51161F /* FirebaseDatabase.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A55DCA47894DD398A7AA8906F3F0BD8E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A2822180A3BA78EA33CC6A622AFBA0E8 /* FirebaseAnalytics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A6777DE870ADD7132EB38C4BA07C406A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0FAC548CE5544D9861F4BB8305AA50AD /* GoogleMaps.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B2F840A6AB715B50B7574A81BCA4B7BE /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				497261C2F41820D14360FABC387A5ADF /* Frameworks */,
+				A6777DE870ADD7132EB38C4BA07C406A /* Resources */,
+			);
+			name = Maps;
+			sourceTree = "<group>";
+		};
+		BE6B9BB07BDD5EBC703EF4CCCFF09553 /* FirebaseDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				8D0F5034FD255B73336680E3C5DF9536 /* Frameworks */,
+			);
+			path = FirebaseDatabase;
+			sourceTree = "<group>";
+		};
+		BF12F0DDEE0934D23858A0DE70E90BAC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E64365CFB528A530FE6E6D2D10F15D12 /* GoogleMapsBase.framework */,
+>>>>>>> The SwiftyJSON pod was added.
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+<<<<<<< HEAD
 		A0D3D08ABF7E492B86E39F5D42377DEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,11 +997,32 @@
 				3BEB61361C500953F71C348823595B2B /* Serialization */,
 				7253034B4027A56A61553081B75BFF4A /* Support Files */,
 				E56E2641EF1C2038CE19D8550BF79276 /* UIKit */,
+=======
+		C0B8C8861C0166341779D2A3E59BF113 /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				3126DE307F8ECE8484057DDF3B56AB40 /* SwiftyJSON.swift */,
+				D4527F80F9AE9256BD767338571E68F7 /* Support Files */,
 			);
-			name = AFNetworking;
-			path = AFNetworking;
+			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
+		D1A291F77663E0D500FE528FC62A1E1F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B9AF988548A835AD2EAADE6154566E8A /* GoogleToolboxForMac.modulemap */,
+				E7894313E854C091E54D4447BC807770 /* GoogleToolboxForMac.xcconfig */,
+				F45BA9E4ABCF7DB78EC11FD394E2EE71 /* GoogleToolboxForMac-dummy.m */,
+				047CA6FECC24BC3AD146C712064A7320 /* GoogleToolboxForMac-prefix.pch */,
+				C9C04A6E2749907E70D5F1DFE12467A1 /* GoogleToolboxForMac-umbrella.h */,
+				5F03BE6FDE5C4D7F61181C1226E740DD /* Info.plist */,
+>>>>>>> The SwiftyJSON pod was added.
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GoogleToolboxForMac";
+			sourceTree = "<group>";
+		};
+<<<<<<< HEAD
 		B8F9BA033C9FDD12F4FC22A2B40B572C /* FirebaseStorage */ = {
 			isa = PBXGroup;
 			children = (
@@ -572,10 +1036,31 @@
 			isa = PBXGroup;
 			children = (
 				17DCB5EEEB5FD514B7AFD163EA4A2A5A /* GoogleMaps.bundle */,
+=======
+		D4527F80F9AE9256BD767338571E68F7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B0CBC5DBC29320AAC1ED784F8ED9FEA9 /* Info.plist */,
+				5CA6DF38C53B8F5B03590F23DDD58687 /* SwiftyJSON.modulemap */,
+				7EC5175A618FEAFA60FEA101A2EAA4DC /* SwiftyJSON.xcconfig */,
+				656D9A3FE071CFE90ECA8C42D57C2FA4 /* SwiftyJSON-dummy.m */,
+				4085AAF28A3199376369591F7C8A070B /* SwiftyJSON-prefix.pch */,
+				92E01C239AEB8DFE658CE25B4F7A3792 /* SwiftyJSON-umbrella.h */,
 			);
-			name = Resources;
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyJSON";
 			sourceTree = "<group>";
 		};
+		D67F6F6AE4497201371BF8519AF427C3 /* FirebaseAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				A55DCA47894DD398A7AA8906F3F0BD8E /* Frameworks */,
+>>>>>>> The SwiftyJSON pod was added.
+			);
+			path = FirebaseAnalytics;
+			sourceTree = "<group>";
+		};
+<<<<<<< HEAD
 		C5F033214090343AA5370DF2CC3CB52B /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -588,11 +1073,26 @@
 			isa = PBXGroup;
 			children = (
 				6F898E6702E3BFFBC0AAAE44FB41BAEA /* Frameworks */,
+=======
+		DCAB3C60D3BF1E41D5432E38EA532F30 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC7D14E5AD7AA6241EF623158A15E3 /* Firebase.h */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		E412DA156FE52E707467B0BC2B5B1AA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A85706236E12A5AA9D527BCE931FD074 /* GooglePlaces.framework */,
+>>>>>>> The SwiftyJSON pod was added.
 			);
 			name = FirebaseInstanceID;
 			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		D2A8EEA53DC9AD71AEDB9283287F455F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -652,10 +1152,36 @@
 			isa = PBXGroup;
 			children = (
 				3EC3A16C2A8BF9389A6747C980A743E4 /* FirebaseStorage.framework */,
+=======
+		E55BAD43FBD03C8EADCC9BBA61635F73 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0B55E32D34E91E55BCC6952C3F086AF7 /* AFNetworking.framework */,
+				BB58F8F6D121C1650FD267496F9E3120 /* GoogleToolboxForMac.framework */,
+				19F98F10CE4D1C2917282147505B4B44 /* Pods_Film_Locations.framework */,
+				AD2D88E1C1E8825F3D1640A21D80F49A /* SwiftyJSON.framework */,
 			);
-			name = Frameworks;
+			name = Products;
 			sourceTree = "<group>";
 		};
+		E9A8D7AAA4627D2ECCDA524D45779A1C /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				DCAB3C60D3BF1E41D5432E38EA532F30 /* Core */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		EF5FF7B560D193CC99D6223848F7CDEF /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				BF12F0DDEE0934D23858A0DE70E90BAC /* Frameworks */,
+>>>>>>> The SwiftyJSON pod was added.
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+<<<<<<< HEAD
 		F57EFC2D80A86C3A97F5381AECF919E6 /* NSURLSession */ = {
 			isa = PBXGroup;
 			children = (
@@ -672,12 +1198,20 @@
 			children = (
 				9702B74260867C3E0FCFD2F165E991B2 /* GTMDefines.h */,
 			);
+=======
+		FB3C45C1A58263F89759A07A0BB8C50B /* Defines */ = {
+			isa = PBXGroup;
+			children = (
+				60E738BD8C7D29520F60470C0EE5A90A /* GTMDefines.h */,
+			);
+>>>>>>> The SwiftyJSON pod was added.
 			name = Defines;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+<<<<<<< HEAD
 		639F0DF11B6B14434596967C1FF986EA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -695,60 +1229,76 @@
 				1ED67707C258751E7888DAC2AB3D8501 /* GTMSessionFetcherLogging.h in Headers */,
 				DF9559C3822E3C6119BE43E4EDFD7EEE /* GTMSessionFetcherService.h in Headers */,
 				F09EDD53B94234F5F8DAC4DCD5CD969E /* GTMSessionUploadFetcher.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF51EB9C179540355326BC18C9FAF5E5 /* Headers */ = {
+=======
+		55028106DBAA80BC66F26F80AAA4610A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47F04CBDF6C54B220F6AEECEF15264D5 /* AFAutoPurgingImageCache.h in Headers */,
-				4442D8453D210EFC13CFE2CAF862ED1D /* AFHTTPSessionManager.h in Headers */,
-				FEF6EACE962EAE70E2EAC5F3C83EF7C8 /* AFImageDownloader.h in Headers */,
-				7A112C0F21A62CB6F1AA8D917A6EEA6C /* AFNetworkActivityIndicatorManager.h in Headers */,
-				1E2A6D057E20BE8F5ED3E594F7B8C286 /* AFNetworking-umbrella.h in Headers */,
-				35CBB7B255FD8D412AFCECBC4311A847 /* AFNetworking.h in Headers */,
-				93DFC0CC12E763AE770017349EE009D1 /* AFNetworkReachabilityManager.h in Headers */,
-				6573AF9ABA59AC8D1F52B07088197F71 /* AFSecurityPolicy.h in Headers */,
-				F1CAA2EBDDFF558DEF98684F2479A7AF /* AFURLRequestSerialization.h in Headers */,
-				948458DC0A9308A2D8C018C37FB7BBDD /* AFURLResponseSerialization.h in Headers */,
-				AE976B0E8E3DD81E4F49DBEF19D3C0AD /* AFURLSessionManager.h in Headers */,
-				45F802D04B3BE0CAEC586C2F3016027B /* UIActivityIndicatorView+AFNetworking.h in Headers */,
-				2B0705CC26A4CBEE32A5A60284AED35B /* UIButton+AFNetworking.h in Headers */,
-				9264BD69AFA8EE74F0D7F0EBD74F762F /* UIImage+AFNetworking.h in Headers */,
-				0D1FFD30267C0776FD3E88EFF51E312F /* UIImageView+AFNetworking.h in Headers */,
-				E23B9A6F533461CB33C0FA6FB59E3AB2 /* UIKit+AFNetworking.h in Headers */,
-				F84DD74BB7F612DE372F8C051420DF72 /* UIProgressView+AFNetworking.h in Headers */,
-				00C05031BBA5BA48A00FE41348F41BDA /* UIRefreshControl+AFNetworking.h in Headers */,
-				51047C1945103943F70BEADE83725630 /* UIWebView+AFNetworking.h in Headers */,
+				85D91D118596A90137526B962382C3F5 /* Pods-Film Locations-umbrella.h in Headers */,
+>>>>>>> The SwiftyJSON pod was added.
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FDA600FDC48ED17BA03DA2D85D4EDA97 /* Headers */ = {
+		7C6A0D99A9CC32A19A92A62F8A941139 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81E4B6988FF26F9249B79C6C8CC667B4 /* GoogleToolboxForMac-umbrella.h in Headers */,
-				541C5362289CC44D4F067D097F231250 /* GTMDefines.h in Headers */,
-				DBFECCB0BBE3F11CC41A3C1A8C4879D3 /* GTMNSData+zlib.h in Headers */,
+				CAC483EF637FB4A2C2E2FC75BA631B87 /* AFAutoPurgingImageCache.h in Headers */,
+				AB39AC9746E7575D7449700475E41B0B /* AFHTTPSessionManager.h in Headers */,
+				5808B477EFF509D810B5CDCFDC944F80 /* AFImageDownloader.h in Headers */,
+				1480F4923DBBF217F60572EEECB4027C /* AFNetworkActivityIndicatorManager.h in Headers */,
+				EC7CADE416A78A1CD6936018A6695126 /* AFNetworking-umbrella.h in Headers */,
+				E7988678C81F7CCB95D239375FC6986D /* AFNetworking.h in Headers */,
+				68152D921ABF6A423C192C04FDF94F0F /* AFNetworkReachabilityManager.h in Headers */,
+				C2DD28375E1F0B1D0D1D2E4E607C499F /* AFSecurityPolicy.h in Headers */,
+				20EE8030FCF2402DAC7F1C9B9DDAEF79 /* AFURLRequestSerialization.h in Headers */,
+				7332F15718920917F544F35CE2C038AA /* AFURLResponseSerialization.h in Headers */,
+				560698A4D707DCBCC1C8F98BC9B89B23 /* AFURLSessionManager.h in Headers */,
+				1E5B8F12ED7CC40ECDB9B1F755F387E5 /* UIActivityIndicatorView+AFNetworking.h in Headers */,
+				81B617F8D26BB10C5726D75E85D21EB7 /* UIButton+AFNetworking.h in Headers */,
+				9E1E90DED74B73ECE53C9AD76DE53E2D /* UIImage+AFNetworking.h in Headers */,
+				60E3009342BEE96D32C546BE2DB60052 /* UIImageView+AFNetworking.h in Headers */,
+				659960F7E28E993E08CCC1E8A383E710 /* UIKit+AFNetworking.h in Headers */,
+				D9F4E833E37B611B432F6B5D7072DDA2 /* UIProgressView+AFNetworking.h in Headers */,
+				C6354FEC7728A4C86DAD8092509BA7D4 /* UIRefreshControl+AFNetworking.h in Headers */,
+				AE2A07407FB50BA249984DC0620E84C0 /* UIWebView+AFNetworking.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C7DF7BA6D3248730861A2FB6E19B4BC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C602C7BEF5548774EE4648554C9C986 /* GoogleToolboxForMac-umbrella.h in Headers */,
+				A76E9C6510EC3CBA92D72C206673FF46 /* GTMDefines.h in Headers */,
+				8B465D54C800F29955B1EAA69CEF1CAD /* GTMNSData+zlib.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FEBCD82803639D6E216EDCB2AF76DE05 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51B62EEEAA04D683A5E4701C25FED606 /* SwiftyJSON-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		00103D6C821BE85971C563025527BA5D /* GoogleToolboxForMac */ = {
+		1C3436CEA5C3D39764C5F54374794ECB /* AFNetworking */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C43D9CA5106C6CCEF973B7EDF833947B /* Build configuration list for PBXNativeTarget "GoogleToolboxForMac" */;
+			buildConfigurationList = 57800A0D1724774333EF09E83030AA81 /* Build configuration list for PBXNativeTarget "AFNetworking" */;
 			buildPhases = (
-				63D7DA997053F6B5D01DE8CB5817CB51 /* Sources */,
-				F9BC43EEAF05BCB201B3D28C244AA7E1 /* Frameworks */,
-				FDA600FDC48ED17BA03DA2D85D4EDA97 /* Headers */,
+				1F17F426378DF5EC8DFB10304B8C4BA4 /* Sources */,
+				C151364F15F39F7CC60CBF9A3AB49B44 /* Frameworks */,
+				7C6A0D99A9CC32A19A92A62F8A941139 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+<<<<<<< HEAD
 			name = GoogleToolboxForMac;
 			productName = GoogleToolboxForMac;
 			productReference = 255ECD63D687649FA0D5BE42ED16113F /* GoogleToolboxForMac.framework */;
@@ -761,10 +1311,25 @@
 				20E5F0E55A7918EB0F5AB3135A6A4D7B /* Sources */,
 				CC6CB47F1D0A33C40455A651A6B5A958 /* Frameworks */,
 				639F0DF11B6B14434596967C1FF986EA /* Headers */,
+=======
+			name = AFNetworking;
+			productName = AFNetworking;
+			productReference = 0B55E32D34E91E55BCC6952C3F086AF7 /* AFNetworking.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		22BA1C13713072A4FD28928FF0A771AE /* Pods-Film Locations */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 863A8D9E115822F27C3BA433FA411A0B /* Build configuration list for PBXNativeTarget "Pods-Film Locations" */;
+			buildPhases = (
+				855936AC09FE4840F8D75958D2933696 /* Sources */,
+				85DE3AC3F9BE321BA5C98B0B762E0988 /* Frameworks */,
+				55028106DBAA80BC66F26F80AAA4610A /* Headers */,
+>>>>>>> The SwiftyJSON pod was added.
 			);
 			buildRules = (
 			);
 			dependencies = (
+<<<<<<< HEAD
 				BF36587F183265AF98BAB8ABB1C91A16 /* PBXTargetDependency */,
 				BB640CA2AC8FB291D8BCD32A794C8F76 /* PBXTargetDependency */,
 				24A85A20F73A8808B84336BACCA0209B /* PBXTargetDependency */,
@@ -789,23 +1354,55 @@
 			name = GTMSessionFetcher;
 			productName = GTMSessionFetcher;
 			productReference = 699443A63DA7598BE24422726160AA75 /* GTMSessionFetcher.framework */;
+=======
+				370DCFC16BEA7215D5C99DFF7B777442 /* PBXTargetDependency */,
+				0F9F90150003F9F073F48F7DCC9196EF /* PBXTargetDependency */,
+				68AD5386C9DD19DB52CD698DC0F69B37 /* PBXTargetDependency */,
+			);
+			name = "Pods-Film Locations";
+			productName = "Pods-Film Locations";
+			productReference = 19F98F10CE4D1C2917282147505B4B44 /* Pods_Film_Locations.framework */;
+>>>>>>> The SwiftyJSON pod was added.
 			productType = "com.apple.product-type.framework";
 		};
-		CF671F7E57B92905F1CC91D036D6B4A7 /* AFNetworking */ = {
+		53D7051CC08B67B317C48C952274F868 /* SwiftyJSON */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 31E01BC98C827BD8A78F94173CDCC418 /* Build configuration list for PBXNativeTarget "AFNetworking" */;
+			buildConfigurationList = C2F634552496D171B2C387DA142E43EC /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
 			buildPhases = (
-				6A10001116C48A3F5FDB7E1BC749EECD /* Sources */,
-				57F44911563C03EE01D7E49B4C1F0D0A /* Frameworks */,
-				BF51EB9C179540355326BC18C9FAF5E5 /* Headers */,
+				119EB6CFB57C583EFAF7DE8006D617CF /* Sources */,
+				9451274463DC116EB14AC5E329418901 /* Frameworks */,
+				FEBCD82803639D6E216EDCB2AF76DE05 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+<<<<<<< HEAD
 			name = AFNetworking;
 			productName = AFNetworking;
 			productReference = D58BAA3A9C3A99DE67D150CBF2A19220 /* AFNetworking.framework */;
+=======
+			name = SwiftyJSON;
+			productName = SwiftyJSON;
+			productReference = AD2D88E1C1E8825F3D1640A21D80F49A /* SwiftyJSON.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		92BB131FA876445E027D20AE23EA7B5F /* GoogleToolboxForMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA52F66354E9F71BC37B9128BC55EABF /* Build configuration list for PBXNativeTarget "GoogleToolboxForMac" */;
+			buildPhases = (
+				1B13920EEE24EB507A2EF0EDCE9770C7 /* Sources */,
+				790E5FC279BA7C0AEFDAA7969F7BE525 /* Frameworks */,
+				9C7DF7BA6D3248730861A2FB6E19B4BC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GoogleToolboxForMac;
+			productName = GoogleToolboxForMac;
+			productReference = BB58F8F6D121C1650FD267496F9E3120 /* GoogleToolboxForMac.framework */;
+>>>>>>> The SwiftyJSON pod was added.
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -825,6 +1422,7 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+<<<<<<< HEAD
 			productRefGroup = 8961EA32869F40731B5493D8EF9ED420 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -833,11 +1431,22 @@
 				00103D6C821BE85971C563025527BA5D /* GoogleToolboxForMac */,
 				C052BEBFBD0AB5218CC64BA3450F6547 /* GTMSessionFetcher */,
 				6EF7D551EFC6EBD9A76A4F9E6E4C274A /* Pods-Film Locations */,
+=======
+			productRefGroup = E55BAD43FBD03C8EADCC9BBA61635F73 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1C3436CEA5C3D39764C5F54374794ECB /* AFNetworking */,
+				92BB131FA876445E027D20AE23EA7B5F /* GoogleToolboxForMac */,
+				22BA1C13713072A4FD28928FF0A771AE /* Pods-Film Locations */,
+				53D7051CC08B67B317C48C952274F868 /* SwiftyJSON */,
+>>>>>>> The SwiftyJSON pod was added.
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+<<<<<<< HEAD
 		20E5F0E55A7918EB0F5AB3135A6A4D7B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -847,37 +1456,50 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		63D7DA997053F6B5D01DE8CB5817CB51 /* Sources */ = {
+=======
+		119EB6CFB57C583EFAF7DE8006D617CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAC3F3CAABA60EF76069431C5BB5032A /* GoogleToolboxForMac-dummy.m in Sources */,
-				F7D889906DECB078EAAECB9D4A320E9C /* GTMNSData+zlib.m in Sources */,
+				958C4081928DBE9F1806523E06AC2824 /* SwiftyJSON-dummy.m in Sources */,
+				E62C13CFE50FFF87456200A4E3F20012 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6A10001116C48A3F5FDB7E1BC749EECD /* Sources */ = {
+		1B13920EEE24EB507A2EF0EDCE9770C7 /* Sources */ = {
+>>>>>>> The SwiftyJSON pod was added.
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3591DEDA776B48C026E7F9144981E58 /* AFAutoPurgingImageCache.m in Sources */,
-				EAF16633DB3C992CF975BE4A2932D41C /* AFHTTPSessionManager.m in Sources */,
-				A398D63C8DED664D99A864D79881A13C /* AFImageDownloader.m in Sources */,
-				649E78B5EA450FABDF5201E31F265FAB /* AFNetworkActivityIndicatorManager.m in Sources */,
-				CF287829627F26B2EB4382B897D06A0E /* AFNetworking-dummy.m in Sources */,
-				DD887A93A200A87A51B3D00BD1B80D20 /* AFNetworkReachabilityManager.m in Sources */,
-				CEB2F0E229EF841D92C780C3FFDF1BEA /* AFSecurityPolicy.m in Sources */,
-				29476636EA86BEFC4CB833D3BB7A52D7 /* AFURLRequestSerialization.m in Sources */,
-				5A1D34D104D42B1EE399E23BCD7935A0 /* AFURLResponseSerialization.m in Sources */,
-				D4E80BD7EAAB83200183110578A80591 /* AFURLSessionManager.m in Sources */,
-				140F458AB7312414FC423FEED70A3733 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				32076D3DD644045CF79DFFEBB6BFF3F2 /* UIButton+AFNetworking.m in Sources */,
-				F2D899C7AA0D7FC20160091BB9D31CF3 /* UIImageView+AFNetworking.m in Sources */,
-				34C88657FE7ABE9F833623F94952D253 /* UIProgressView+AFNetworking.m in Sources */,
-				B16A078FC7FBC172A266A336AEF7F673 /* UIRefreshControl+AFNetworking.m in Sources */,
-				7CE16B1BF75DF396768A0A3CFD968DB1 /* UIWebView+AFNetworking.m in Sources */,
+				2377E523395CB5EC94D91283344580A1 /* GoogleToolboxForMac-dummy.m in Sources */,
+				AF5A33CAE747988723CB39520111DC1D /* GTMNSData+zlib.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1F17F426378DF5EC8DFB10304B8C4BA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F1BC9BAFFEEABB1ABC7614DF0FC97D5 /* AFAutoPurgingImageCache.m in Sources */,
+				E0D4045AC4C1B41917FCA23A042D18B2 /* AFHTTPSessionManager.m in Sources */,
+				CFA8D6B529A0EBFF0316F2629AB2556E /* AFImageDownloader.m in Sources */,
+				A6C6019D45BE62C61210A9CC619368EF /* AFNetworkActivityIndicatorManager.m in Sources */,
+				3D2789FC760A97301909F0B1201626CD /* AFNetworking-dummy.m in Sources */,
+				68A38977EBAE334DC3C22386D00D2622 /* AFNetworkReachabilityManager.m in Sources */,
+				20607BE2B1E5F31765026E5AC64DB27D /* AFSecurityPolicy.m in Sources */,
+				DFFA215EEAA8DDBD540076927535275C /* AFURLRequestSerialization.m in Sources */,
+				B5852322ADE88AAD56EE042B80BA81E4 /* AFURLResponseSerialization.m in Sources */,
+				707B1A7541C8DBDDE8C27896A61370BE /* AFURLSessionManager.m in Sources */,
+				6ED4ABEE8A5F51F5ECB59FA1781D29C6 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				AF03C11A1FAC8132AD3749D8F541701A /* UIButton+AFNetworking.m in Sources */,
+				2E8A32ED46194EDBE22146271F6D26DE /* UIImageView+AFNetworking.m in Sources */,
+				5FF6453E55785669885F626B853FD2AA /* UIProgressView+AFNetworking.m in Sources */,
+				174202BD6AE0E4A41F5CE66E975EAE52 /* UIRefreshControl+AFNetworking.m in Sources */,
+				A462945883F7729B185B64B679A6BFBE /* UIWebView+AFNetworking.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+<<<<<<< HEAD
 		C5A309EC5A80A27DBD420C5176E2122A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -887,12 +1509,20 @@
 				07340F15BACBA601736DBB2ABF1ABC35 /* GTMSessionFetcherLogging.m in Sources */,
 				95C69447F517DB81437EDE0003486963 /* GTMSessionFetcherService.m in Sources */,
 				F4E294C07EE32FFCDCF7FF4D71D850BD /* GTMSessionUploadFetcher.m in Sources */,
+=======
+		855936AC09FE4840F8D75958D2933696 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8035EB4FC108BEDF54323B560C022661 /* Pods-Film Locations-dummy.m in Sources */,
+>>>>>>> The SwiftyJSON pod was added.
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+<<<<<<< HEAD
 		24A85A20F73A8808B84336BACCA0209B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = GoogleToolboxForMac;
@@ -910,13 +1540,72 @@
 			name = AFNetworking;
 			target = CF671F7E57B92905F1CC91D036D6B4A7 /* AFNetworking */;
 			targetProxy = 07F769F3752EBACAE3234FB7B5AE3660 /* PBXContainerItemProxy */;
+=======
+		0F9F90150003F9F073F48F7DCC9196EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleToolboxForMac;
+			target = 92BB131FA876445E027D20AE23EA7B5F /* GoogleToolboxForMac */;
+			targetProxy = 27776B39A3C54836B16A2344D3CBFB4D /* PBXContainerItemProxy */;
+		};
+		370DCFC16BEA7215D5C99DFF7B777442 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AFNetworking;
+			target = 1C3436CEA5C3D39764C5F54374794ECB /* AFNetworking */;
+			targetProxy = DD2F83611B5D434097699F3BCA3825DC /* PBXContainerItemProxy */;
+		};
+		68AD5386C9DD19DB52CD698DC0F69B37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyJSON;
+			target = 53D7051CC08B67B317C48C952274F868 /* SwiftyJSON */;
+			targetProxy = 2DBED952981E406A0C48A1914865C07E /* PBXContainerItemProxy */;
+>>>>>>> The SwiftyJSON pod was added.
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		05E04CFBA4D993878803362CB34062EC /* Release */ = {
+		0E2D4AF96BF6488833C67602A436E8EA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD3527F823E442C3E2C2F60DD435ECAD /* Pods-Film Locations.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Film Locations/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Film Locations/Pods-Film Locations.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Film_Locations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		29FAF4FA472BB28399FD0CC66F6E1EE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+<<<<<<< HEAD
 			baseConfigurationReference = E39159BE311B031D0531D0172AC56885 /* AFNetworking.xcconfig */;
+=======
+			baseConfigurationReference = C06A59C74A55319B54FB49C0D36301B5 /* AFNetworking.xcconfig */;
+>>>>>>> The SwiftyJSON pod was added.
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -945,6 +1634,38 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		31683BF9913991E4E66CFB269DA07335 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C06A59C74A55319B54FB49C0D36301B5 /* AFNetworking.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AFNetworking/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AFNetworking/AFNetworking.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = AFNetworking;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -990,9 +1711,15 @@
 			};
 			name = Debug;
 		};
+<<<<<<< HEAD
 		B40ACBD64F96C4945F20DDC5A579D312 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6B129F32341FEFB1298ACC60BA99FE9D /* Pods-Film Locations.release.xcconfig */;
+=======
+		6589856376C4D3D4F587D1F6FCD00810 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7894313E854C091E54D4447BC807770 /* GoogleToolboxForMac.xcconfig */;
+>>>>>>> The SwiftyJSON pod was added.
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1005,10 +1732,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Film Locations/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+<<<<<<< HEAD
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Film Locations/Pods-Film Locations.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -1017,13 +1746,54 @@
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_Film_Locations;
+=======
+				MODULEMAP_FILE = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = GoogleToolboxForMac;
+>>>>>>> The SwiftyJSON pod was added.
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+<<<<<<< HEAD
+=======
+		};
+		84673F5A120E130FFDCF18465116AACF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EC5175A618FEAFA60FEA101A2EAA4DC /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+>>>>>>> The SwiftyJSON pod was added.
 		};
 		B7324857C38B065FEB1EEE3105C2367A /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1065,6 +1835,7 @@
 			};
 			name = Release;
 		};
+<<<<<<< HEAD
 		B9C7324D0ADEABED7BC7B2D9C608C5E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B71DF75FB3F6780C63906ED6EE23C515 /* GTMSessionFetcher.xcconfig */;
@@ -1100,6 +1871,11 @@
 		D60CD877A708870E2BE96B83BA32F883 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ED955C6554B63072A317D6CD9C8B1DE6 /* GoogleToolboxForMac.xcconfig */;
+=======
+		B991A22C1A6AE85FE9381FF1BD9165D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7894313E854C091E54D4447BC807770 /* GoogleToolboxForMac.xcconfig */;
+>>>>>>> The SwiftyJSON pod was added.
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1129,6 +1905,7 @@
 			};
 			name = Debug;
 		};
+<<<<<<< HEAD
 		D6E7BC391C25805E49D44BD7D9F5655D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FD3527F823E442C3E2C2F60DD435ECAD /* Pods-Film Locations.debug.xcconfig */;
@@ -1167,6 +1944,11 @@
 		E0695E55897F09C6C94B443561B22DA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E39159BE311B031D0531D0172AC56885 /* AFNetworking.xcconfig */;
+=======
+		E2DB9A4FB26D3FE1E920D9CAAE7C18C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EC5175A618FEAFA60FEA101A2EAA4DC /* SwiftyJSON.xcconfig */;
+>>>>>>> The SwiftyJSON pod was added.
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1179,16 +1961,17 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AFNetworking/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AFNetworking/AFNetworking.modulemap";
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = AFNetworking;
+				PRODUCT_NAME = SwiftyJSON;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1196,6 +1979,7 @@
 			};
 			name = Debug;
 		};
+<<<<<<< HEAD
 		ED969C86CBBA712335D5E741625E75B6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B71DF75FB3F6780C63906ED6EE23C515 /* GTMSessionFetcher.xcconfig */;
@@ -1231,6 +2015,11 @@
 		F066921CBDBDB5F45795E50FBC5AC972 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ED955C6554B63072A317D6CD9C8B1DE6 /* GoogleToolboxForMac.xcconfig */;
+=======
+		E36FC140B295096BE04F3D55CF457704 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B129F32341FEFB1298ACC60BA99FE9D /* Pods-Film Locations.release.xcconfig */;
+>>>>>>> The SwiftyJSON pod was added.
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1243,17 +2032,20 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Film Locations/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Film Locations/Pods-Film Locations.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = GoogleToolboxForMac;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Film_Locations;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1272,29 +2064,46 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		31E01BC98C827BD8A78F94173CDCC418 /* Build configuration list for PBXNativeTarget "AFNetworking" */ = {
+		57800A0D1724774333EF09E83030AA81 /* Build configuration list for PBXNativeTarget "AFNetworking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E0695E55897F09C6C94B443561B22DA9 /* Debug */,
-				05E04CFBA4D993878803362CB34062EC /* Release */,
+				31683BF9913991E4E66CFB269DA07335 /* Debug */,
+				29FAF4FA472BB28399FD0CC66F6E1EE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		863A8D9E115822F27C3BA433FA411A0B /* Build configuration list for PBXNativeTarget "Pods-Film Locations" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E2D4AF96BF6488833C67602A436E8EA /* Debug */,
+				E36FC140B295096BE04F3D55CF457704 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+<<<<<<< HEAD
 		744A4346C930D843CC2247E0D27AC3C9 /* Build configuration list for PBXNativeTarget "Pods-Film Locations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6E7BC391C25805E49D44BD7D9F5655D /* Debug */,
 				B40ACBD64F96C4945F20DDC5A579D312 /* Release */,
+=======
+		C2F634552496D171B2C387DA142E43EC /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2DB9A4FB26D3FE1E920D9CAAE7C18C4 /* Debug */,
+				84673F5A120E130FFDCF18465116AACF /* Release */,
+>>>>>>> The SwiftyJSON pod was added.
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C43D9CA5106C6CCEF973B7EDF833947B /* Build configuration list for PBXNativeTarget "GoogleToolboxForMac" */ = {
+		EA52F66354E9F71BC37B9128BC55EABF /* Build configuration list for PBXNativeTarget "GoogleToolboxForMac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D60CD877A708870E2BE96B83BA32F883 /* Debug */,
-				F066921CBDBDB5F45795E50FBC5AC972 /* Release */,
+				B991A22C1A6AE85FE9381FF1BD9165D8 /* Debug */,
+				6589856376C4D3D4F587D1F6FCD00810 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
