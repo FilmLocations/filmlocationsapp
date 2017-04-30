@@ -11,13 +11,13 @@ import Foundation
 class Movie {
     var title: String
     var releaseYear: String
-    var posterImageURL: URL
+    var posterImageURL: URL?
     var locations: [Location]
     var isExpandable: Bool { return locations.count > 1 }
     var isExpanded: Bool
     var numberOfRows: Int { return locations.count }
     
-    init(title: String, releaseYear: String, posterImageURL: URL, locations: [Location], isExpanded: Bool) {
+    init(title: String, releaseYear: String, posterImageURL: URL?, locations: [Location], isExpanded: Bool) {
         self.title = title
         self.releaseYear = releaseYear
         self.posterImageURL = posterImageURL
