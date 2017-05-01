@@ -42,11 +42,11 @@ class ListViewController: UIViewController {
 
                 if mappedObjects[movie.title] == nil {
             
-                    locations.append(Location(address: movie.address))
-                    mappedObjects[movie.title] = Movie(title: movie.title, releaseYear: movie.releaseYear, posterImageURL: movie.posterImageURL, locations: locations, isExpanded: false)
+                    locations.append(Location(placeId: "placeHolder", address: movie.address, lat: 0, long: 0))
+                    mappedObjects[movie.title] = Movie(id: Int(movie.id)!, title: movie.title, releaseYear: movie.releaseYear, posterImageURL: movie.posterImageURL, locations: locations, isExpanded: false)
                 }
                 else {
-                    mappedObjects[movie.title]?.locations.append(Location(address: movie.address))
+                    mappedObjects[movie.title]?.locations.append(Location(placeId: "placeHolder", address: movie.address, lat: 0, long: 0))
                 }
              }
          }
