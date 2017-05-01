@@ -20,16 +20,10 @@ class MainViewController: UIViewController {
         
         let mapStoryBoard = UIStoryboard(name: "Map", bundle: nil)
         let mapViewController = mapStoryBoard.instantiateViewController(withIdentifier: "MapsView") as? MapViewController
-//        self.navController?.setViewControllers([mapViewController!], animated: false)
         
         let listStoryBoard = UIStoryboard(name: "List", bundle: nil)
         let listViewController = listStoryBoard.instantiateViewController(withIdentifier: "List") as? ListViewController
-//        self.navController?.setViewControllers([listViewController!], animated: false)
-        
-        let filmDetailsStoryBoard = UIStoryboard(name: "FilmDetails", bundle: nil)
-        let detailsViewController = filmDetailsStoryBoard.instantiateViewController(withIdentifier: "FilmDetailsViewController") as? FilmDetailsViewController
-//        self.navController?.setViewControllers([detailsViewController!], animated: false)
-        
+                
         let menu = MenuViewController(nibName: "MenuViewController", bundle: nil)
         self.navController?.setViewControllers([menu], animated: false)
         menu.firstViewController = mapViewController
