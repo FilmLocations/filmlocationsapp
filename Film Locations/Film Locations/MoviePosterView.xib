@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoviewPosterView" customModule="Film_Locations" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="Og9-tT-xWw"/>
+                <outlet property="distanceLabel" destination="YsL-o5-LcI" id="Ogs-uu-fhB"/>
+                <outlet property="posterImageView" destination="jP4-Mu-NUt" id="2KY-OV-8Qq"/>
+                <outlet property="titleLabel" destination="4X1-SC-yHL" id="hTt-hl-4DO"/>
+                <outlet property="yearLabel" destination="4JX-4y-9No" id="sMQ-Xd-s0f"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="372" height="270"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jP4-Mu-NUt">
+                    <rect key="frame" x="0.0" y="0.0" width="372" height="270"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4X1-SC-yHL">
+                    <rect key="frame" x="16" y="16" width="35.5" height="20.5"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsL-o5-LcI">
+                    <rect key="frame" x="16" y="233" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JX-4y-9No">
+                    <rect key="frame" x="59.5" y="16" width="36" height="21"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="4JX-4y-9No" firstAttribute="leading" secondItem="4X1-SC-yHL" secondAttribute="trailing" constant="8" id="AOY-yf-m5J"/>
+                <constraint firstItem="4JX-4y-9No" firstAttribute="centerY" secondItem="4X1-SC-yHL" secondAttribute="centerY" id="Drj-cF-fLL"/>
+                <constraint firstAttribute="trailing" secondItem="jP4-Mu-NUt" secondAttribute="trailing" id="F94-zg-fNN"/>
+                <constraint firstAttribute="bottom" secondItem="YsL-o5-LcI" secondAttribute="bottom" constant="16" id="FFH-r6-4us"/>
+                <constraint firstItem="jP4-Mu-NUt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GMU-Ha-KIH"/>
+                <constraint firstItem="4X1-SC-yHL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="NFm-kh-jVR"/>
+                <constraint firstItem="YsL-o5-LcI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Xsz-y2-OpT"/>
+                <constraint firstItem="jP4-Mu-NUt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="c2B-sp-c3r"/>
+                <constraint firstAttribute="bottom" secondItem="jP4-Mu-NUt" secondAttribute="bottom" id="jZF-k7-eCA"/>
+                <constraint firstItem="4X1-SC-yHL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="wsJ-Nm-BHI"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-175" y="-100"/>
+        </view>
+    </objects>
+</document>
