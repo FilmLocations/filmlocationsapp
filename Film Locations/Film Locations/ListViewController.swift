@@ -102,9 +102,10 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
             let detailsViewController = filmDetailsStoryBoard.instantiateViewController(withIdentifier: "FilmDetailsViewController") as? FilmDetailsViewController
 
             if let detailsViewController = detailsViewController {
+            
+                detailsViewController.movie = movies[indexPath.section]
                 
-                // The whole movie details should be passed here !!!!!!!!!!!!!!!!!!!!!!!!!
-                // detailsViewController.filmTitle = movies[indexPath.section].title
+                // the number of location cell that was pressed, should be sent too - indexPath.row
                 
                 let navigationController = UINavigationController(rootViewController: detailsViewController)
                 navigationController.setViewControllers([detailsViewController], animated: false)
