@@ -12,6 +12,7 @@ import GooglePlaces
 
 class MapViewController: UIViewController {
     
+    let maxNearByMovies = 20
     let currentUsersLocationKey =  "kUserCurrentPreferncesKey"
     
     var scrollingImages:[UIImage]! = []
@@ -160,7 +161,7 @@ class MapViewController: UIViewController {
             return differnce1 < differnce2
         }
         
-        self.sortedMovies = Array(sortedMovies[0..<20])
+        self.sortedMovies = Array(sortedMovies[0..<maxNearByMovies])
         
     }
 }
@@ -174,6 +175,7 @@ extension MapViewController: CLLocationManagerDelegate {
             let locValue:CLLocationCoordinate2D = manager.location!.coordinate
             print("locations = \(locValue.latitude) \(locValue.longitude)")
             self.userCurrentLocation = locValue
+            
             //remove this line
             self.userCurrentLocation = CLLocationCoordinate2D (latitude: 37.7881968, longitude: -122.3960219)
             self.currentLocationUpdated()
