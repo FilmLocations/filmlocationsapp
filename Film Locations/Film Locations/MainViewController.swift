@@ -19,14 +19,26 @@ class MainViewController: UIViewController {
         // TODO: If user was last on Map View, display map view otherwise display listview
         
         let mapStoryBoard = UIStoryboard(name: "Map", bundle: nil)
-        self.navController?.setViewControllers([mapStoryBoard.instantiateInitialViewController()!], animated: false)
+        let mapViewController = mapStoryBoard.instantiateViewController(withIdentifier: "MapsView") as? MapViewController
+//        self.navController?.setViewControllers([mapViewController!], animated: false)
         
         let listStoryBoard = UIStoryboard(name: "List", bundle: nil)
-        let viewController = listStoryBoard.instantiateViewController(withIdentifier: "List") as? ListViewController
-        self.navController?.setViewControllers([viewController!], animated: false)
+        let listViewController = listStoryBoard.instantiateViewController(withIdentifier: "List") as? ListViewController
+//        self.navController?.setViewControllers([listViewController!], animated: false)
         
         let filmDetailsStoryBoard = UIStoryboard(name: "FilmDetails", bundle: nil)
-        self.navController?.setViewControllers([filmDetailsStoryBoard.instantiateInitialViewController()!], animated: false)
+        let detailsViewController = filmDetailsStoryBoard.instantiateViewController(withIdentifier: "FilmDetailsViewController") as? FilmDetailsViewController
+//        self.navController?.setViewControllers([detailsViewController!], animated: false)
+        
+        let menu = MenuViewController(nibName: "MenuViewController", bundle: nil)
+        self.navController?.setViewControllers([menu], animated: false)
+        menu.firstViewController = mapViewController
+        menu.secondViewController = listViewController
+        
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        
+        window.rootViewController = menu
+        window.makeKeyAndVisible()
         
     }
     
