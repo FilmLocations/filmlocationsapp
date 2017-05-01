@@ -40,4 +40,6 @@ Discover film locations nearby you in San Francisco. Visit the locations and sha
 
 [Wireframes](https://github.com/FilmLocations/filmlocationsapp/blob/master/wireframes/README.md)
 
-[GIF](http://i.imgur.com/8570Ll1.gif)
+[GIF]
+<img src='http://i.imgur.com/8570Ll1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
