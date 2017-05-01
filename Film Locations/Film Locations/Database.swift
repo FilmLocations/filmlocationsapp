@@ -71,9 +71,10 @@ class Database {
         let location = value["location"] as? [String: Any] ?? [:]
         let locationAddress = location["address"] as? String ?? ""
         let gps = location["gps"] as? [String: Any] ?? [:]
+        let gpsLocation = gps["location"] as? [String: Any] ?? [:]
         let placeId = gps["place_id"] as? String ?? ""
-        let lat = Double(gps["lat"] as? String ?? "0")!
-        let long = Double(gps["long"] as? String ?? "0")!
+        let lat = gpsLocation["lat"] as? Double ?? 0
+        let long = gpsLocation["lng"] as? Double ?? 0
         
         let locationObject = Location(placeId: placeId, address: locationAddress, lat: lat, long: long)
 
