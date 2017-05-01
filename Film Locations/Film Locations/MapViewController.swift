@@ -29,6 +29,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // Do any additional setup after loading the view.
         
         // Ask for Authorisation from the User.
@@ -85,10 +86,10 @@ class MapViewController: UIViewController {
         for movie in self.sortedMovies {
             
             if let posteImageView = movie.posterImageURL {
-                let uiImageView = UIImageView()
-                uiImageView.frame = CGRect(x: xOffset, y: 8.0 , width: self.scrollView.frame.height, height: self.scrollView.frame.height)
-                uiImageView.setImageWith(posteImageView)
-                self.scrollView.addSubview(uiImageView)
+                
+                let moviePosterView = MoviewPosterView(frame: CGRect(x: xOffset, y: 8.0 , width: self.scrollView.frame.height, height: self.scrollView.frame.height))
+                moviePosterView.movie = movie
+                self.scrollView.addSubview(moviePosterView)
                 xOffset = xOffset + self.scrollView.frame.height + 8
             }
         }
