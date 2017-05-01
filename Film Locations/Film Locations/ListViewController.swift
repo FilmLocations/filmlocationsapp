@@ -97,7 +97,20 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         }
         else {
             // show new locations details screen
-            // let selectedLocationCell = tableView.cellForRow(at: indexPath)
+            
+            let filmDetailsStoryBoard = UIStoryboard(name: "FilmDetails", bundle: nil)
+            let detailsViewController = filmDetailsStoryBoard.instantiateViewController(withIdentifier: "FilmDetailsViewController") as? FilmDetailsViewController
+
+            if let detailsViewController = detailsViewController {
+                
+                // The whole movie details should be passed here !!!!!!!!!!!!!!!!!!!!!!!!!
+                // detailsViewController.filmTitle = movies[indexPath.section].title
+                
+                let navigationController = UINavigationController(rootViewController: detailsViewController)
+                navigationController.setViewControllers([detailsViewController], animated: false)
+                
+                self.present(navigationController, animated: true, completion: nil)
+            }
         }
     }
 }
