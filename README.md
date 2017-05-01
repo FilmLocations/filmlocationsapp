@@ -5,7 +5,8 @@
 Discover film locations nearby you in San Francisco. Visit the locations and share a picture with the community. Search for your favorite films and explore all of the filming locations.  
 
 ### User Stories
-* Optional: User can sign in using OAuth login flow
+Optional: User can sign in using OAuth login flow
+
 - [X] User can view a map displaying nearby movies based on his current location
 - [X] on the bottom of the screen, a details list containing the movies that are pined on the map is displayed
 - [X] each item in that list contains: movie’s poster, title, release year, address for that location as long as the distance from the current position to that point
@@ -41,5 +42,5 @@ Discover film locations nearby you in San Francisco. Visit the locations and sha
 [Wireframes](https://github.com/FilmLocations/filmlocationsapp/blob/master/wireframes/README.md)
 
 [GIF]
-<img src='http://i.imgur.com/8570Ll1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/FilmLocations/filmlocationsapp/blob/master/FilmLocations_04_30.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
