@@ -74,7 +74,6 @@ class MapViewController: UIViewController {
         var xOffset:CGFloat = 0
         
         for movie in self.sortedMovies {
-            
             if movie.posterImageURL != nil {
                 
                 let moviePosterView = MoviewPosterView(frame: CGRect(x: xOffset, y: 8.0 , width: self.scrollView.frame.height, height: self.scrollView.frame.height))
