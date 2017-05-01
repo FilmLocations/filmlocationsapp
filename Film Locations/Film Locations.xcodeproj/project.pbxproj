@@ -13,8 +13,10 @@
 		3A224FA41EAD611700091BB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A224FA31EAD611700091BB3 /* Assets.xcassets */; };
 		3A224FA71EAD611700091BB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A224FA51EAD611700091BB3 /* LaunchScreen.storyboard */; };
 		3A2365D81EB47E4F00D60443 /* FilmDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2365D71EB47E4F00D60443 /* FilmDetailsViewController.swift */; };
+		3A2365DA1EB543D700D60443 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A2365D91EB543D700D60443 /* GoogleService-Info.plist */; };
 		3A2365DC1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2365DB1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift */; };
-		3A75FD001EB2892C008F5400 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FCFF1EB2892C008F5400 /* GoogleService-Info.plist */; };
+		3A752CEC1EB65ABC003A36FB /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A752CEB1EB65ABC003A36FB /* Movie.swift */; };
+		3A752CEE1EB65AFD003A36FB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A752CED1EB65AFD003A36FB /* Location.swift */; };
 		3A75FD081EB416A1008F5400 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD071EB416A1008F5400 /* Map.storyboard */; };
 		3A75FD0A1EB416CF008F5400 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD091EB416CF008F5400 /* List.storyboard */; };
 		3A75FD0C1EB416E5008F5400 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD0B1EB416E5008F5400 /* Login.storyboard */; };
@@ -44,8 +46,10 @@
 		3A224FA61EAD611700091BB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A224FA81EAD611700091BB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A2365D71EB47E4F00D60443 /* FilmDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmDetailsViewController.swift; sourceTree = "<group>"; };
+		3A2365D91EB543D700D60443 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A2365DB1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
-		3A75FCFF1EB2892C008F5400 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A752CEB1EB65ABC003A36FB /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		3A752CED1EB65AFD003A36FB /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		3A75FD071EB416A1008F5400 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		3A75FD091EB416CF008F5400 /* List.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
 		3A75FD0B1EB416E5008F5400 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -123,7 +127,7 @@
 				3A224FA31EAD611700091BB3 /* Assets.xcassets */,
 				3A224FA51EAD611700091BB3 /* LaunchScreen.storyboard */,
 				3A224FA81EAD611700091BB3 /* Info.plist */,
-				3A75FCFF1EB2892C008F5400 /* GoogleService-Info.plist */,
+				3A2365D91EB543D700D60443 /* GoogleService-Info.plist */,
 			);
 			path = "Film Locations";
 			sourceTree = "<group>";
@@ -266,6 +270,7 @@
 				3A75FD0E1EB41792008F5400 /* FilmDetails.storyboard in Resources */,
 				3A75FD101EB41800008F5400 /* Post.storyboard in Resources */,
 				3A75FD081EB416A1008F5400 /* Map.storyboard in Resources */,
+				3A2365DA1EB543D700D60443 /* GoogleService-Info.plist in Resources */,
 				3A224FA41EAD611700091BB3 /* Assets.xcassets in Resources */,
 				D35BE49A1EB698AC003E0C8F /* all_movies (1).json in Resources */,
 				D31F4FEB1EB4552F003CC557 /* MenuViewController.xib in Resources */,
