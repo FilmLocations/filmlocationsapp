@@ -6,9 +6,9 @@ Discover film locations nearby you in San Francisco. Visit the locations and sha
 
 ### User Stories
 * Optional: User can sign in using OAuth login flow
-[X] User can view a map displaying nearby movies based on his current location
-[X] on the bottom of the screen, a details list containing the movies that are pined on the map is displayed
-[X] each item in that list contains: movie’s poster, title, release year, address for that location as long as the distance from the current position to that point
+- [X] User can view a map displaying nearby movies based on his current location
+- [X] on the bottom of the screen, a details list containing the movies that are pined on the map is displayed
+- [X] each item in that list contains: movie’s poster, title, release year, address for that location as long as the distance from the current position to that point
     * optional: display time information and transportation
     * optional: show a button to request a ride (integration with Uber or Lift) 
     * as the user is navigating trough the bottom list by swiping left/right, the corresponding location for the selected movie is highlighted on the map
