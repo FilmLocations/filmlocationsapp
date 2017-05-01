@@ -11,64 +11,110 @@ import FirebaseStorage
 
 class Database {
     
-    // TODO return array of Film objects
-    static func getAllFilms() {
+    static func getAllFilms(completion: @escaping ([Movie]) -> ()) {
         
         let ref = FIRDatabase.database().reference()
-        
         let films = ref.child("films")
         
+        var movies = [Movie]()
+
         films.observe(.value, with: { (snapshot) in
-            let films = snapshot.value as? [String: Any] ?? [:]
             
-            for film in films {
-                // TODO build using Film model object
-                print("Film is ", film)
+            for child in snapshot.children {
+                let data = child as! FIRDataSnapshot
+
+                let movie = self.buildMovieObject(data: data)
+                movies.append(movie)
             }
+
+            completion(movies)
         })
     }
     
-    // TODO return Film object
-    static func getFilm(filmId: String) {
-        
+    static func getFilm(filmId: Int, completion: @escaping (Movie) -> ()) {
         let ref = FIRDatabase.database().reference()
 
-        let films = ref.child("films/\(filmId)")
+        ref.child("films")
+            .queryOrdered(byChild: "id")
+            .queryEqual(toValue: filmId)
+            .queryLimited(toFirst: 1)
+            .observeSingleEvent(of: .value, with: {(snapshot) in
+                for child in snapshot.children {
+                    let data = child as! FIRDataSnapshot
 
-        films.observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            let film = snapshot.value as? [String: Any] ?? [:]
-            
-            print("Selected film is", film)
+                    let movie = self.buildMovieObject(data: data)
+
+                    completion(movie)
+                }
         })
     }
     
+    class func buildMovieObject(data: FIRDataSnapshot) -> Movie {
+        let value = data.value! as! [String: Any]
+
+        //print(value)
+
+        // TODO If some of these values are not set, we don't have a valid movie
+        let id = value["id"] as? Int ?? 0
+        let movieId = Int(id)
+
+        let title = value["title"] as? String ?? ""
+
+        let release = value["release"] as? [String: Any] ?? [:]
+        let year = release["year"] as? String ?? ""
+
+        let images = value["images"] as? [String: Any] ?? [:]
+        let posterImageName = images["poster"] as? String ?? ""
+        let posterImageFullURL = "http://image.tmdb.org/t/p/w185/\(posterImageName)"
+        let posterImageURL = URL(string: posterImageFullURL)
+        
+        let location = value["location"] as? [String: Any] ?? [:]
+        let locationAddress = location["address"] as? String ?? ""
+        let gps = location["gps"] as? [String: Any] ?? [:]
+        let placeId = gps["place_id"] as? String ?? ""
+        let lat = Double(gps["lat"] as? String ?? "0")!
+        let long = Double(gps["long"] as? String ?? "0")!
+        
+        let locationObject = Location(placeId: placeId, address: locationAddress, lat: lat, long: long)
+
+        let movie = Movie(id: movieId, title: title, releaseYear: year, posterImageURL: posterImageURL, locations: [locationObject], isExpanded: false)
+
+        return movie
+    }
+
     static func addPhoto(userId: String, locationId: String, image: UIImage) {
-        
-        print("Adding photo for \(userId) to \(locationId) of \(image.description)")
-        
+        print("Adding photo for \(userId) to \(locationId)")
+
         // Get a reference to the storage service using the default Firebase App
         let storage = FIRStorage.storage()
         // Create a storage reference from our storage service
         let storageRef = storage.reference()
         
         if let data = UIImagePNGRepresentation(image) as Data? {
+
+            let filename = Date().timeIntervalSince1970
+
             // Create a reference to the file you want to upload
-            let imageRef = storageRef.child("images/test.jpg")
+            let imageRef = storageRef.child("photos/\(locationId)/\(filename).jpg")
+
+            let metadata = FIRStorageMetadata()
+            metadata.contentType = "image/jpg"
             
-            // Upload the file to the path "images/rivers.jpg"
-            let uploadTask = imageRef.put(data, metadata: nil) { (metadata, error) in
+            // Upload the file to the path
+            imageRef.put(data, metadata: metadata) { (metadata, error) in
                 guard let metadata = metadata else {
                     // Uh-oh, an error occurred!
                     print("Error uploading photo \(error.debugDescription)")
                     return
                 }
                 // Metadata contains file metadata such as size, content-type, and download URL.
-                let downloadURL = metadata.downloadURL
-                print("download url \(downloadURL)")
+                if let downloadURL = metadata.downloadURL() {
+                    print("download url \(downloadURL.absoluteString)")
+
+                    //TODO add to film object for retrieval
+                }
             }
         }
-        
     }
     
     static func visitLocation(userId: String, locationId: String) {
@@ -78,26 +124,39 @@ class Database {
         visits.child("\(userId)--\(locationId)").setValue(["timestamp": FIRServerValue.timestamp()])
     }
     
+    static func removeVisitLocation(userId: String, locationId: String) {
+        let ref = FIRDatabase.database().reference()
+        let visits = ref.child("visits")
+
+        visits.child("\(userId)--\(locationId)").removeValue()
+    }
+
     static func likeLocation(userId: String, locationId: String) {
         let ref = FIRDatabase.database().reference()
         let likes = ref.child("likes")
         
         likes.child("\(userId)--\(locationId)").setValue(["timestamp": FIRServerValue.timestamp()])
-
     }
     
+    static func removeLikeLocation(userId: String, locationId: String) {
+        let ref = FIRDatabase.database().reference()
+        let likes = ref.child("likes")
+
+        likes.child("\(userId)--\(locationId)").removeValue()
+    }
+
     static func hasVisitedLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
         let ref = FIRDatabase.database().reference()
 
         let visit = ref.child("visits/\(userId)--\(locationId)")
         
         visit.observeSingleEvent(of: .value, with: { (snapshot) in
-            if (snapshot.value != nil) {
+            if (snapshot.exists()) {
                 completion(true)
+            } else {
+                completion(false)
             }
         })
-        
-        completion(false)
     }
     
     static func hasLikedLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
@@ -106,11 +165,11 @@ class Database {
         let like = ref.child("like/\(userId)--\(locationId)")
         
         like.observeSingleEvent(of: .value, with: { (snapshot) in
-            if (snapshot.value != nil) {
+            if (snapshot.exists()) {
                 completion(true)
+            } else {
+                completion(false)
             }
         })
-        
-        completion(false)
     }
 }
