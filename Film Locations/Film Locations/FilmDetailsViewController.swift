@@ -67,8 +67,18 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
                 print("user has liked \(hasVisited)")
             }
         }
+        
+        addBackButton()
     }
 
+    private func addBackButton() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(onBackButtonPress(_:)))
+    }
+    
+    func onBackButtonPress(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
