@@ -12,9 +12,10 @@ import AFNetworking
 class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     ///** Sample testing data, pass film object later
-    let filmTitle = "Blue Jasmine (2013)"
     let address = "Jones and Pacific"
-    let posterImageViewURL = "http://image.tmdb.org/t/p/w185//tXzOAeub5ZaxGv9vkJLtU0aNenl.jpg"
+    // test reading from firebase, not working yet
+    let backgroundURL = "https://firebasestorage.googleapis.com/v0/b/filmlocations-78a31.appspot.com/o/photos%2FtestLocation%2F1493538405.55338.jpg"
+
     
     /////
     
@@ -27,23 +28,45 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var visitLocationButton: UIButton!
     
-    
+    var movie: Movie!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
         posterImageView.clipsToBounds = true
-        if let posterImageURL = URL(string: posterImageViewURL) {
-            posterImageView.setImageWith(posterImageURL)
+
+        if let backgroundImageURL = URL(string: backgroundURL) {
+            topBackgroundImageView.setImageWith(backgroundImageURL)
         }
         
-        titleLabel.text = filmTitle
         addressLabel.text = address
         
-        // TODO check if user has visited/liked and set button image accordingly
-
         photosCollectionView.dataSource = self
+
+        // TODO Set movie during the segue to this view and get the id from there
+        Database.getFilm(filmId: 65050) { (movie) in
+            self.movie = movie
+
+            print("got a movie")
+            print(movie.title)
+            print(movie.locations)
+            print(movie.releaseYear)
+            print(movie.posterImageURL?.absoluteString ?? "")
+            if let posterImageURL = movie.posterImageURL {
+                self.posterImageView.setImageWith(posterImageURL)
+            }
+            self.titleLabel.text = "\(movie.title) (\(movie.releaseYear))"
+
+            //TODO Send real user data, reflect status in the icons
+            Database.hasVisitedLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId) { (hasVisited) in
+                print("user has visited \(hasVisited)")
+            }
+            Database.hasLikedLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId) { (hasVisited) in
+                print("user has liked \(hasVisited)")
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,12 +94,12 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
     @IBAction func visitLocation(_ sender: UIButton) {
         print("Visit location")
-        Database.visitLocation(userId: "testUser", locationId: "testLocation")
+        Database.visitLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId)
     }
 
     @IBAction func LikeLocation(_ sender: UIButton) {
         print("Like location")
-        Database.likeLocation(userId: "testUser", locationId: "testLocation")
+        Database.likeLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId)
     }
     
     func imagePickerController(_ picker: UIImagePickerController,

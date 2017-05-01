@@ -5,10 +5,10 @@
 //  Created by Laura on 4/29/17.
 //  Copyright © 2017 Codepath Spring17. All rights reserved.
 //
-
 import Foundation
 
 class Movie {
+    var id: Int
     var title: String
     var releaseYear: String
     var posterImageURL: URL?
@@ -16,8 +16,9 @@ class Movie {
     var isExpandable: Bool { return locations.count > 1 }
     var isExpanded: Bool
     var numberOfRows: Int { return locations.count }
-    
-    init(title: String, releaseYear: String, posterImageURL: URL?, locations: [Location], isExpanded: Bool) {
+
+    init(id: Int, title: String, releaseYear: String, posterImageURL: URL?, locations: [Location], isExpanded: Bool) {
+        self.id = id
         self.title = title
         self.releaseYear = releaseYear
         self.posterImageURL = posterImageURL
