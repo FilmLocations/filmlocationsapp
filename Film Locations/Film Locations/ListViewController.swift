@@ -103,9 +103,8 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
 
             if let detailsViewController = detailsViewController {
             
+                detailsViewController.locationIndex = indexPath.row - 1
                 detailsViewController.movie = movies[indexPath.section]
-                
-                // the number of location cell that was pressed, should be sent too - indexPath.row
                 
                 let navigationController = UINavigationController(rootViewController: detailsViewController)
                 navigationController.setViewControllers([detailsViewController], animated: false)
