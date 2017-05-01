@@ -45,16 +45,6 @@ class MapViewController: UIViewController {
             locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
             locationManager.startUpdatingLocation()
         }
-        
-        
-        
-//        let image = UIImage(named: "images-4")
-//        
-//        for index in 1...5 {
-//            self.scrollingImages.append(image!)
-//        }
-        
-        //updateScrollView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -84,8 +74,7 @@ class MapViewController: UIViewController {
         var xOffset:CGFloat = 0
         
         for movie in self.sortedMovies {
-            
-            if let posteImageView = movie.posterImageURL {
+            if movie.posterImageURL != nil {
                 
                 let moviePosterView = MoviewPosterView(frame: CGRect(x: xOffset, y: 8.0 , width: self.scrollView.frame.height, height: self.scrollView.frame.height))
                 moviePosterView.movie = movie
@@ -94,8 +83,6 @@ class MapViewController: UIViewController {
             }
         }
         self.scrollView.contentSize =  CGSize(width: xOffset, height: self.scrollView.frame.height)
-        //
-        //        scrollVie.contentSize = CGSizeMake(scrollWidth+xOffset,110);
     }
     
     
@@ -119,6 +106,7 @@ class MapViewController: UIViewController {
         let camera = GMSCameraPosition.camera(withLatitude: userLat, longitude: userLong, zoom: 15.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.frame = CGRect(x:0, y:0, width:self.mapView.frame.width, height:self.mapView.frame.height)
+        mapView.delegate = self
         //self.mapView = mapView
         self.mapView.addSubview(mapView)
         
@@ -132,7 +120,10 @@ class MapViewController: UIViewController {
                 let marker = GMSMarker()
                 marker.position = CLLocationCoordinate2D(latitude: (movie.locations.first?.lat)!, longitude: (movie.locations.first?.long)!)
                 marker.title = movie.title
+                marker.isFlat = true
+                marker.userData = movie
                 marker.map = mapView
+                
                 
             }
             
@@ -164,6 +155,23 @@ class MapViewController: UIViewController {
         
         self.sortedMovies = Array(sortedMovies[0..<maxNearByMovies])
         
+    }
+}
+
+extension MapViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        
+        if let markerMovie = marker.userData as? Movie {
+            
+            if let index = self.sortedMovies.index(where: {$0.locations.first?.placeId ==  markerMovie.locations.first?.placeId }){
+                let xoffset = CGFloat(index) * CGFloat((self.scrollView.frame.height))
+                
+                let frame = CGRect(x:xoffset, y:0, width:self.mapView.frame.width, height:self.mapView.frame.height)
+                self.scrollView.scrollRectToVisible(frame, animated: true)
+            }
+        }
+        
+        return true
     }
 }
 
