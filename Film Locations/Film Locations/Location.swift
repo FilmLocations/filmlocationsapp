@@ -12,7 +12,7 @@ class Location {
     var placeId: String
     var lat: Double
     var long: Double
-
+    
     init(placeId: String, address: String, lat: Double, long: Double) {
         self.placeId = placeId
         self.address = address

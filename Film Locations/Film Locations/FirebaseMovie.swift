@@ -29,6 +29,10 @@ class FirebaseMovie {
         return json["location"]["address"].stringValue
     }
     
+    var id: String {
+        return json["id"].stringValue
+    }
+    
 //    init(title: String, releaseYear: String, posterImageURL: URL, locationImageURL: URL, address: String, distance: Float)
 //    {
 //        self.title = title
