@@ -28,12 +28,20 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var visitLocationButton: UIButton!
     
-    var movie: Movie!
+    var movie: Movie? {
+        didSet {
+            updateUI()
+        }
+    }
+    
+    var locationIndex: Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        updateUI()
         
         posterImageView.clipsToBounds = true
 
@@ -41,31 +49,31 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             topBackgroundImageView.setImageWith(backgroundImageURL)
         }
         
-        addressLabel.text = address
+//        addressLabel.text = address
         
         photosCollectionView.dataSource = self
 
         // TODO Set movie during the segue to this view and get the id from there
         Database.getFilm(filmId: 65050) { (movie) in
-            self.movie = movie
+//            self.movie = movie
 
             print("got a movie")
             print(movie.title)
             print(movie.locations)
             print(movie.releaseYear)
             print(movie.posterImageURL?.absoluteString ?? "")
-            if let posterImageURL = movie.posterImageURL {
-                self.posterImageView.setImageWith(posterImageURL)
-            }
-            self.titleLabel.text = "\(movie.title) (\(movie.releaseYear))"
+//            if let posterImageURL = movie.posterImageURL {
+//                self.posterImageView.setImageWith(posterImageURL)
+//            }
+//            self.titleLabel.text = "\(movie.title) (\(movie.releaseYear))"
 
             //TODO Send real user data, reflect status in the icons
-            Database.hasVisitedLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId) { (hasVisited) in
-                print("user has visited \(hasVisited)")
-            }
-            Database.hasLikedLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId) { (hasVisited) in
-                print("user has liked \(hasVisited)")
-            }
+//            Database.hasVisitedLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId) { (hasVisited) in
+//                print("user has visited \(hasVisited)")
+//            }
+//            Database.hasLikedLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId) { (hasVisited) in
+//                print("user has liked \(hasVisited)")
+//            }
         }
         
         addBackButton()
@@ -77,6 +85,21 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     
     func onBackButtonPress(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func updateUI() {
+    
+        if viewIfLoaded == nil {
+            return
+        }
+
+        if let movie = movie {
+            if let posterImageURL = movie.posterImageURL {
+                posterImageView.setImageWith(posterImageURL)
+            }
+            addressLabel.text = movie.locations[locationIndex].address
+            titleLabel.text = movie.title
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -104,12 +127,12 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
     @IBAction func visitLocation(_ sender: UIButton) {
         print("Visit location")
-        Database.visitLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId)
+//        Database.visitLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId)
     }
 
     @IBAction func LikeLocation(_ sender: UIButton) {
         print("Like location")
-        Database.likeLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId)
+//        Database.likeLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId)
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
