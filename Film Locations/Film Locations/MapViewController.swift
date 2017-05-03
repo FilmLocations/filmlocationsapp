@@ -122,8 +122,8 @@ class MapViewController: UIViewController {
     func currentLocationUpdated() {
         // Update map view
         print("Uesr locations = \(userCurrentLocation.latitude) \(userCurrentLocation.longitude)")
-        
-        Database.getAllFilms { (movies:[Movie]) in
+
+        Database.sharedInstance.getAllFilms { (movies:[Movie]) in
             self.movies = movies
             self.sortMoviesFromUserLocation()
             

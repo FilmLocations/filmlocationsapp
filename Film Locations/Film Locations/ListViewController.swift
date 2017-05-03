@@ -12,8 +12,6 @@ class ListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var firebaseMovies: [FirebaseMovie] = []
-    
     var movies: [Movie] = []
     
     override func viewDidLoad() {
@@ -27,37 +25,11 @@ class ListViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         
-        firebaseMovies = InternalConfiguration.loadData()
-        movies = mapFirebaseMoviesToMovies()
-    }
-    
-    private func mapFirebaseMoviesToMovies() -> [Movie] {
-        var mappedObjects: [String: Movie] = [:]
-        var locations: [Location] = []
-        var allMovies: [Movie] = []
-        
-        if !firebaseMovies.isEmpty {
-
-            for (_, movie) in firebaseMovies.enumerated() {
-
-                if mappedObjects[movie.title] == nil {
-            
-                    locations.append(Location(placeId: "placeHolder", address: movie.address, lat: 0, long: 0))
-                    mappedObjects[movie.title] = Movie(id: Int(movie.id)!, title: movie.title, releaseYear: movie.releaseYear, posterImageURL: movie.posterImageURL, locations: locations, isExpanded: false)
-                }
-                else {
-                    mappedObjects[movie.title]?.locations.append(Location(placeId: "placeHolder", address: movie.address, lat: 0, long: 0))
-                }
-             }
-         }
-        
-        for (_, movie) in mappedObjects.enumerated() {
-            allMovies.append(movie.value)
+        Database.sharedInstance.getAllFilms { (movies: [Movie]) in
+            self.movies = movies
+            self.tableView.reloadData()
         }
-        
-        return allMovies
-    }
-    
+    }    
 }
 
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {
