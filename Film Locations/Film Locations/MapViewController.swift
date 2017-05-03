@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import GoogleMaps
-import GooglePlaces
+import CoreLocation
 
 class MapViewController: UIViewController {
     
@@ -20,8 +19,8 @@ class MapViewController: UIViewController {
     var lastUpdatedTimestamp:TimeInterval = 0
     var userCurrentLocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     let locationManager = CLLocationManager()
-    @IBOutlet weak var mapView: UIView!
-    var googleMapView: GMSMapView!
+    @IBOutlet weak var mapView: MapView!
+    
     
     var movies: [Movie]!
     var sortedMovies:[Movie]!
@@ -48,7 +47,9 @@ class MapViewController: UIViewController {
             locationManager.startUpdatingLocation()
         }
         
-        loadInitialMap()
+        mapView.loadInitialMap(delegate: self)
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,15 +71,7 @@ class MapViewController: UIViewController {
         return nil
     }
     
-    func loadInitialMap() {
-        let camera = GMSCameraPosition.camera(withLatitude: 0.0, longitude: 0.0, zoom: 15.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.frame = CGRect(x:0, y:0, width:self.mapView.frame.width, height:self.mapView.frame.height)
-        mapView.delegate = self
-        self.googleMapView = mapView
-        self.googleMapView.isMyLocationEnabled = true
-        self.mapView.addSubview(self.googleMapView)
-    }
+    
     
     func updateScrollView()  {
         //self.scrollView.delegate = self
@@ -112,23 +105,7 @@ class MapViewController: UIViewController {
      }
      */
     
-    func updateMapsMarkers() {
-        var bounds = GMSCoordinateBounds()
-        
-        for movie in self.sortedMovies {
-            // Creates a marker in the center of the map.
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: (movie.locations.first?.lat)!, longitude: (movie.locations.first?.long)!)
-            marker.title = movie.title
-            marker.isFlat = true
-            marker.userData = movie
-            bounds = bounds.includingCoordinate(marker.position)
-            marker.map = self.googleMapView
-        }
-        
-        let update = GMSCameraUpdate.fit(bounds, withPadding: 100)
-        self.googleMapView.animate(with: update)
-    }
+ 
     
     func currentLocationUpdated() {
         // Update map view
@@ -137,15 +114,14 @@ class MapViewController: UIViewController {
         Database.getAllFilms { (movies:[Movie]) in
             self.movies = movies
             self.sortMoviesFromUserLocation()
-            
-            
-            
+           
             //TODO: consider calling map marker and scroll view in a single for loop
-            self.updateMapsMarkers()
+            self.mapView.updateMapsMarkers(sortedMovies: self.sortedMovies)
             self.updateScrollView()
         }
     }
     
+    // TODO: Move this method to API class as utility method
     func sortMoviesFromUserLocation() {
         
         let filteredMovies = self.movies.filter { (movie: Movie) -> Bool in
@@ -173,21 +149,15 @@ class MapViewController: UIViewController {
     }
 }
 
-extension MapViewController: GMSMapViewDelegate {
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+extension MapViewController: MapViewDelegate{
+    
+    func didTap(markerIndex: Int) {
+        let xoffset = CGFloat(markerIndex) * CGFloat((self.scrollView.frame.height))
         
-        if let markerMovie = marker.userData as? Movie {
-            
-            if let index = self.sortedMovies.index(where: {$0.locations.first?.placeId ==  markerMovie.locations.first?.placeId }){
-                let xoffset = CGFloat(index) * CGFloat((self.scrollView.frame.height))
-                
-                let frame = CGRect(x:xoffset, y:0, width:self.mapView.frame.width, height:self.mapView.frame.height)
-                self.scrollView.scrollRectToVisible(frame, animated: true)
-            }
-        }
-        
-        return true
+        let frame = CGRect(x:xoffset, y:0, width:self.mapView.frame.width, height:self.mapView.frame.height)
+        self.scrollView.scrollRectToVisible(frame, animated: true)
     }
+    
 }
 
 extension MapViewController: CLLocationManagerDelegate {
