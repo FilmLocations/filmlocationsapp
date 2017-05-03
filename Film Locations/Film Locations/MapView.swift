@@ -27,10 +27,18 @@ class MapView: UIView {
         // Drawing code
     }
     */
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.loadInitialMap()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.loadInitialMap()
+    }
 
-    func loadInitialMap(delegate: MapViewDelegate?) {
-        self.delegate = delegate
-        
+    private func loadInitialMap() {
         let camera = GMSCameraPosition.camera(withLatitude: 0.0, longitude: 0.0, zoom: 15.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.frame = CGRect(x:0, y:0, width:self.frame.width, height:self.frame.height)

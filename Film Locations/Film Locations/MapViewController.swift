@@ -47,9 +47,7 @@ class MapViewController: UIViewController {
             locationManager.startUpdatingLocation()
         }
         
-        mapView.loadInitialMap(delegate: self)
-        
-        
+        self.mapView.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
