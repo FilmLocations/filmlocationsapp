@@ -54,6 +54,8 @@ class MapView: UIView {
         
         self.displayData = sortedMovies
         
+        self.googleMapView.clear()
+        
         var bounds = GMSCoordinateBounds()
         
         for movie in sortedMovies {

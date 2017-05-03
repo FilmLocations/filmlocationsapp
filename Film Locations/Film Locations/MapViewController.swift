@@ -22,6 +22,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MapView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var isSearchResultsDisplayed = false
+    
     
     var movies: [Movie]!
     var sortedMovies:[Movie]!
@@ -50,6 +52,9 @@ class MapViewController: UIViewController {
         
         self.mapView.delegate = self
         self.mapView.bringSubview(toFront: self.searchBar)
+        
+        self.searchBar.showsCancelButton = true
+        self.searchBar.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -71,7 +76,13 @@ class MapViewController: UIViewController {
         return nil
     }
     
-    
+    func removeScrollViewSubViews() {
+        
+        let subViews = self.scrollView.subviews
+        for subview in subViews{
+            subview.removeFromSuperview()
+        }
+    }
     
     func updateScrollView()  {
         //self.scrollView.delegate = self
@@ -79,6 +90,8 @@ class MapViewController: UIViewController {
         self.scrollView.isScrollEnabled = true;
         
         var xOffset:CGFloat = 0
+        
+        self.removeScrollViewSubViews()
         
         for movie in self.sortedMovies {
             if movie.posterImageURL != nil {
@@ -105,7 +118,6 @@ class MapViewController: UIViewController {
      }
      */
     
- 
     
     func currentLocationUpdated() {
         // Update map view
@@ -114,11 +126,15 @@ class MapViewController: UIViewController {
         Database.getAllFilms { (movies:[Movie]) in
             self.movies = movies
             self.sortMoviesFromUserLocation()
-           
-            //TODO: consider calling map marker and scroll view in a single for loop
-            self.mapView.updateMapsMarkers(sortedMovies: self.sortedMovies)
-            self.updateScrollView()
+            
+            self.updateViewWithNewData()
         }
+    }
+    
+    func updateViewWithNewData() {
+        //TODO: consider calling map marker and scroll view in a single for loop
+        self.mapView.updateMapsMarkers(sortedMovies: self.sortedMovies)
+        self.updateScrollView()
     }
     
     // TODO: Move this method to API class as utility method
@@ -165,7 +181,7 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let currentTime = NSDate().timeIntervalSince1970
-        if ((currentTime - lastUpdatedTimestamp) > 1 * 30) && ((userCurrentLocation.latitude != manager.location!.coordinate.latitude) || (userCurrentLocation.longitude != manager.location!.coordinate.longitude)) {
+        if ((currentTime - lastUpdatedTimestamp) > 1 * 5) && !isSearchResultsDisplayed && ((userCurrentLocation.latitude != manager.location!.coordinate.latitude) || (userCurrentLocation.longitude != manager.location!.coordinate.longitude)) {
             let locValue:CLLocationCoordinate2D = manager.location!.coordinate
             print("locations = \(locValue.latitude) \(locValue.longitude)")
             self.userCurrentLocation = locValue
@@ -175,6 +191,36 @@ extension MapViewController: CLLocationManagerDelegate {
             self.currentLocationUpdated()
             lastUpdatedTimestamp = currentTime
         }
+    }
+}
+
+extension MapViewController: UISearchBarDelegate{
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        self.isSearchResultsDisplayed = false
+        self.currentLocationUpdated()
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        if let query = searchBar.text {
+            
+            if query.characters.count > 0 {
+                self.sortedMovies = self.movies.filter { (movie:Movie) -> Bool in
+                    if (movie.title.contains(query) || movie.releaseYear.contains(query)){
+                        return true
+                    }
+                    return false
+                }
+                self.updateViewWithNewData()
+                self.isSearchResultsDisplayed = true
+            }
+        } else {
+            self.isSearchResultsDisplayed = false
+        }
+        
     }
     
 }
