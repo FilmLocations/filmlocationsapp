@@ -36,8 +36,8 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setupToggleButton()
         activeViewController = firstViewController
+        setupToggleButton()
     }
     
     private func removeInactiveViewController(inactiveViewController: UIViewController?) {
@@ -62,17 +62,34 @@ class MenuViewController: UIViewController {
             
             // call before adding child view contoller's view as subview
             activeVC.didMove(toParentViewController: self)
-            activeViewController?.view.addSubview(toggleButton)
+            //activeViewController?.view.addSubview(toggleButton)
+            
+            setupToggleButton()
         }
     }
     
     private func setupToggleButton() {
-        toggleButton.frame = CGRect(x: 13, y: 18, width: 30, height: 30)
+        toggleButton.frame =  CGRect.zero
         updateToggleButtonIcon(with: InternalConfiguration.listToggleIcon)
         toggleButton.addTarget(self, action: #selector(toggleActiveView(_:)), for: UIControlEvents.touchUpInside)
         
         // add the toggle to the view controller
         activeViewController?.view.addSubview(toggleButton)
+        
+        if let activeView = activeViewController?.view {
+        
+            toggleButton.translatesAutoresizingMaskIntoConstraints = false
+            let topConstraint = toggleButton.topAnchor.constraint(equalTo: activeView.topAnchor, constant: 22.0)
+            let leadingConstraint = toggleButton.leadingAnchor.constraint(equalTo: activeView.leadingAnchor, constant: 16.0)
+            
+            let widthConstraint = toggleButton.widthAnchor.constraint(equalToConstant: 30.0)
+            let heightConstraint = toggleButton.heightAnchor.constraint(equalToConstant: 30.0)
+            
+            NSLayoutConstraint.activate([topConstraint, leadingConstraint, widthConstraint, heightConstraint])
+            
+        }
+
+        
     }
     
     private func updateToggleButtonIcon(with image: String) {

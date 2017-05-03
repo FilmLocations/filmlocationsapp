@@ -20,6 +20,7 @@ class MapViewController: UIViewController {
     var userCurrentLocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     let locationManager = CLLocationManager()
     @IBOutlet weak var mapView: MapView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     var movies: [Movie]!
@@ -48,6 +49,7 @@ class MapViewController: UIViewController {
         }
         
         self.mapView.delegate = self
+        self.mapView.bringSubview(toFront: self.searchBar)
     }
     
     override func didReceiveMemoryWarning() {
