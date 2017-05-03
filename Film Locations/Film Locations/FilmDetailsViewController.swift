@@ -54,14 +54,14 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         photosCollectionView.dataSource = self
 
         // TODO Set movie during the segue to this view and get the id from there
-        Database.getFilm(filmId: 65050) { (movie) in
+//        Database.sharedInstance.getFilm(filmId: 65050) { (movie) in
 //            self.movie = movie
 
-            print("got a movie")
-            print(movie.title)
-            print(movie.locations)
-            print(movie.releaseYear)
-            print(movie.posterImageURL?.absoluteString ?? "")
+//            print("got a movie")
+//            print(movie.title)
+//            print(movie.locations)
+//            print(movie.releaseYear)
+//            print(movie.posterImageURL?.absoluteString ?? "")
 //            if let posterImageURL = movie.posterImageURL {
 //                self.posterImageView.setImageWith(posterImageURL)
 //            }
@@ -74,7 +74,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 //            Database.hasLikedLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId) { (hasVisited) in
 //                print("user has liked \(hasVisited)")
 //            }
-        }
+//        }
         
         addBackButton()
     }
@@ -142,7 +142,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
         
         // Do something with the images (based on your use case)
-        Database.addPhoto(userId: "testUser", locationId: "testLocation", image: editedImage)
+        Database.sharedInstance.addPhoto(userId: "testUser", locationId: "testLocation", image: editedImage)
         
         // Dismiss UIImagePickerController to go back to your original view controller
         
