@@ -74,34 +74,6 @@ class Database {
         
         return allMovies
     }
-    
-    func getFilm(filmId: Int, completion: @escaping (Movie) -> ()) {
-        let ref = FIRDatabase.database().reference()
-
-        ref.child("films")
-            .queryOrdered(byChild: "id")
-            .queryEqual(toValue: filmId)
-            .queryLimited(toFirst: 1)
-            .observeSingleEvent(of: .value, with: {(snapshot) in
-                for child in snapshot.children {
-                    let data = child as! FIRDataSnapshot
-
-                    let movie = self.buildMovieObject(data: data)
-
-                    completion(movie)
-                }
-        })
-    }
-    
-    private func buildMovieObject(data: FIRDataSnapshot) -> Movie {
-        
-        let firebaseMovie = FirebaseMovie(snapshot: data)
-        let locationObject = Location(placeId: firebaseMovie.placeId, address: firebaseMovie.address, lat: firebaseMovie.lat, long: firebaseMovie.long)
-        
-        let movie = Movie(firebaseMovie: firebaseMovie, locations: [locationObject], isExpanded: false)
-
-        return movie
-    }
 
     func addPhoto(userId: String, locationId: String, image: UIImage) {
         print("Adding photo for \(userId) to \(locationId)")
