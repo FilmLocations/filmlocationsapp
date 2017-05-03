@@ -181,7 +181,7 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let currentTime = NSDate().timeIntervalSince1970
-        if ((currentTime - lastUpdatedTimestamp) > 1 * 5) && !isSearchResultsDisplayed && ((userCurrentLocation.latitude != manager.location!.coordinate.latitude) || (userCurrentLocation.longitude != manager.location!.coordinate.longitude)) {
+        if ((currentTime - lastUpdatedTimestamp) > 1 * 30) && !isSearchResultsDisplayed && ((userCurrentLocation.latitude != manager.location!.coordinate.latitude) || (userCurrentLocation.longitude != manager.location!.coordinate.longitude)) {
             let locValue:CLLocationCoordinate2D = manager.location!.coordinate
             print("locations = \(locValue.latitude) \(locValue.longitude)")
             self.userCurrentLocation = locValue
