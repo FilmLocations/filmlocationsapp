@@ -23,20 +23,4 @@ struct InternalConfiguration {
         return NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName: attributeColor,NSShadowAttributeName: shadow])
     }
     
-    static func loadData() -> [FirebaseMovie] {
-        var moviesArray: [FirebaseMovie] = []
-        
-        /* Find the path of the file */
-        if let filePath = Bundle.main.path(forResource: "InputMoviesData", ofType: "json") {
-            /* Load it's content in a var */
-            if let fileContent = try? String(contentsOfFile: filePath) {
-                let jsonArray = JSON(parseJSON: fileContent)
-                for json in jsonArray.arrayValue {
-                    moviesArray.append(FirebaseMovie(json: json))
-                }
-            }
-        }
-        
-        return moviesArray
-    }
 }
