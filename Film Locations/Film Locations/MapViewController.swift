@@ -110,7 +110,7 @@ class MapViewController: UIViewController {
         //self.mapView = mapView
         self.mapView.addSubview(mapView)
         
-        Database.getAllFilms { (movies:[Movie]) in
+        Database.sharedInstance.getAllFilms { (movies:[Movie]) in
             self.movies = movies
             self.sortMoviesFromUserLocation()
             
