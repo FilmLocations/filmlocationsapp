@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyDkh00P83RkVTjmA98hUI2iACj368aTeGI")
         GMSPlacesClient.provideAPIKey("AIzaSyDkh00P83RkVTjmA98hUI2iACj368aTeGI")
 
-        Database.getAllFilms { (movies) in
+        Database.sharedInstance.getAllFilms { (movies) in
             print("We have \(movies.count) locations")
         }
         
