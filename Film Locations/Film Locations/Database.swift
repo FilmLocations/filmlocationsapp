@@ -5,33 +5,77 @@
 //  Created by Jessica Thrasher on 4/28/17.
 //  Copyright © 2017 Codepath Spring17. All rights reserved.
 //
+
 import UIKit
 import FirebaseDatabase
 import FirebaseStorage
 
 class Database {
     
-    static func getAllFilms(completion: @escaping ([Movie]) -> ()) {
+    static let sharedInstance = Database()
+    
+    func getAllFilms(completion: @escaping ([Movie]) -> ()) {
         
         let ref = FIRDatabase.database().reference()
         let films = ref.child("films")
         
-        var movies = [Movie]()
-
+        var firebaseMovies = [FirebaseMovie]()
+        
         films.observe(.value, with: { (snapshot) in
             
             for child in snapshot.children {
                 let data = child as! FIRDataSnapshot
-
-                let movie = self.buildMovieObject(data: data)
-                movies.append(movie)
+                
+                let firebaseMovie = FirebaseMovie(snapshot: data)
+                firebaseMovies.append(firebaseMovie)
             }
-
+            
+            let movies = self.mapFirebaseMoviesToMovies(firebaseMovies: firebaseMovies)
             completion(movies)
         })
     }
     
-    static func getFilm(filmId: Int, completion: @escaping (Movie) -> ()) {
+    private func mapFirebaseMoviesToMovies(firebaseMovies: [FirebaseMovie]) -> [Movie] {
+        var mappedObjects: [String: Movie] = [:]
+        var locations: [Location] = []
+        var allMovies: [Movie] = []
+        
+        if !firebaseMovies.isEmpty {
+            
+            for (_, movie) in firebaseMovies.enumerated() {
+                
+                // The Movie object is created only in case the data fetched from Firebase is valid
+                
+                if let _ = movie.id,
+                   let title = movie.title,
+                   let _ = movie.releaseYear,
+                   let _ = movie.posterImageURL,
+                   let _ = movie.description,
+                   let placeId = movie.placeId,
+                   let address = movie.address,
+                   let lat = movie.lat,
+                   let long = movie.long {
+
+                    if mappedObjects[title] == nil {
+                        
+                        locations.append(Location(placeId: placeId, address: address, lat: lat, long: long))
+                        mappedObjects[title] = Movie(firebaseMovie: movie, locations: locations, isExpanded: false)
+                    }
+                    else {
+                        mappedObjects[title]?.locations.append(Location(placeId: placeId, address: address, lat: lat, long: long))
+                    }
+                }
+            }
+        }
+        
+        for (_, movie) in mappedObjects.enumerated() {
+            allMovies.append(movie.value)
+        }
+        
+        return allMovies
+    }
+    
+    func getFilm(filmId: Int, completion: @escaping (Movie) -> ()) {
         let ref = FIRDatabase.database().reference()
 
         ref.child("films")
@@ -49,41 +93,17 @@ class Database {
         })
     }
     
-    class func buildMovieObject(data: FIRDataSnapshot) -> Movie {
-        let value = data.value! as! [String: Any]
-
-        //print(value)
-
-        // TODO If some of these values are not set, we don't have a valid movie
-        let id = value["id"] as? Int ?? 0
-        let movieId = Int(id)
-
-        let title = value["title"] as? String ?? ""
-
-        let release = value["release"] as? [String: Any] ?? [:]
-        let year = release["year"] as? String ?? ""
-
-        let images = value["images"] as? [String: Any] ?? [:]
-        let posterImageName = images["poster"] as? String ?? ""
-        let posterImageFullURL = "http://image.tmdb.org/t/p/w185/\(posterImageName)"
-        let posterImageURL = URL(string: posterImageFullURL)
+    private func buildMovieObject(data: FIRDataSnapshot) -> Movie {
         
-        let location = value["location"] as? [String: Any] ?? [:]
-        let locationAddress = location["address"] as? String ?? ""
-        let gps = location["gps"] as? [String: Any] ?? [:]
-        let gpsLocation = gps["location"] as? [String: Any] ?? [:]
-        let placeId = gps["place_id"] as? String ?? ""
-        let lat = gpsLocation["lat"] as? Double ?? 0
-        let long = gpsLocation["lng"] as? Double ?? 0
+        let firebaseMovie = FirebaseMovie(snapshot: data)
+        let locationObject = Location(placeId: firebaseMovie.placeId, address: firebaseMovie.address, lat: firebaseMovie.lat, long: firebaseMovie.long)
         
-        let locationObject = Location(placeId: placeId, address: locationAddress, lat: lat, long: long)
-
-        let movie = Movie(id: movieId, title: title, releaseYear: year, posterImageURL: posterImageURL, locations: [locationObject], isExpanded: false)
+        let movie = Movie(firebaseMovie: firebaseMovie, locations: [locationObject], isExpanded: false)
 
         return movie
     }
 
-    static func addPhoto(userId: String, locationId: String, image: UIImage) {
+    func addPhoto(userId: String, locationId: String, image: UIImage) {
         print("Adding photo for \(userId) to \(locationId)")
 
         // Get a reference to the storage service using the default Firebase App
@@ -118,35 +138,35 @@ class Database {
         }
     }
     
-    static func visitLocation(userId: String, locationId: String) {
+    func visitLocation(userId: String, locationId: String) {
         let ref = FIRDatabase.database().reference()
         let visits = ref.child("visits")
         
         visits.child("\(userId)--\(locationId)").setValue(["timestamp": FIRServerValue.timestamp()])
     }
     
-    static func removeVisitLocation(userId: String, locationId: String) {
+    func removeVisitLocation(userId: String, locationId: String) {
         let ref = FIRDatabase.database().reference()
         let visits = ref.child("visits")
 
         visits.child("\(userId)--\(locationId)").removeValue()
     }
 
-    static func likeLocation(userId: String, locationId: String) {
+    func likeLocation(userId: String, locationId: String) {
         let ref = FIRDatabase.database().reference()
         let likes = ref.child("likes")
         
         likes.child("\(userId)--\(locationId)").setValue(["timestamp": FIRServerValue.timestamp()])
     }
     
-    static func removeLikeLocation(userId: String, locationId: String) {
+    func removeLikeLocation(userId: String, locationId: String) {
         let ref = FIRDatabase.database().reference()
         let likes = ref.child("likes")
 
         likes.child("\(userId)--\(locationId)").removeValue()
     }
 
-    static func hasVisitedLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
+    func hasVisitedLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
         let ref = FIRDatabase.database().reference()
 
         let visit = ref.child("visits/\(userId)--\(locationId)")
@@ -160,7 +180,7 @@ class Database {
         })
     }
     
-    static func hasLikedLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
+    func hasLikedLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
         let ref = FIRDatabase.database().reference()
         
         let like = ref.child("like/\(userId)--\(locationId)")
