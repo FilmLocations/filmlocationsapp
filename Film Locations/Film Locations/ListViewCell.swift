@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+import FXBlurView
 
 class ListViewCell: UITableViewCell {
 
@@ -49,6 +50,14 @@ class ListViewCell: UITableViewCell {
             
             if let posterImageURL = movie.posterImageURL {
                 posterImageView.setImageWith(posterImageURL)
+                posterImageView.image = posterImageView.image?.blurredImage(withRadius: 2, iterations: 5, tintColor: nil)
+                
+                let background = UIImageView()
+                background.frame = posterImageView.frame
+                background.backgroundColor = UIColor.black //.withAlphaComponent(0.1)
+                background.layer.opacity = 0.1
+                
+                posterImageView.addSubview(background)
             }
         }
     }
