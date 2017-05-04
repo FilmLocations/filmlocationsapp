@@ -28,7 +28,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="133"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nIF-se-PMs" id="zrI-gr-2zm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="132.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6b1-qY-ZS3">
@@ -60,21 +60,25 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="0kH-mm-dy2" firstAttribute="leading" secondItem="oOZ-dO-GHV" secondAttribute="trailing" constant="8" id="0tm-8e-DGn"/>
-                                                <constraint firstItem="0Bw-7a-cyB" firstAttribute="leading" secondItem="q5m-VF-cc4" secondAttribute="trailing" constant="8" id="3w7-iw-dct"/>
-                                                <constraint firstItem="6b1-qY-ZS3" firstAttribute="leading" secondItem="zrI-gr-2zm" secondAttribute="leading" id="7WC-u7-uE4"/>
-                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="0kH-mm-dy2" secondAttribute="trailing" constant="272" id="HnD-k5-HyR"/>
-                                                <constraint firstItem="q5m-VF-cc4" firstAttribute="leading" secondItem="zrI-gr-2zm" secondAttribute="leading" constant="13" id="MJz-if-Dnk"/>
-                                                <constraint firstAttribute="bottom" secondItem="0kH-mm-dy2" secondAttribute="bottom" constant="8" id="ORJ-IP-Nbf"/>
-                                                <constraint firstAttribute="bottom" secondItem="6b1-qY-ZS3" secondAttribute="bottom" id="Pq0-iN-dHV"/>
-                                                <constraint firstAttribute="bottom" secondItem="oOZ-dO-GHV" secondAttribute="bottom" constant="8" id="Q0x-8c-SzR"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Bw-7a-cyB" secondAttribute="trailing" constant="8" id="TKF-2k-vbn"/>
-                                                <constraint firstItem="oOZ-dO-GHV" firstAttribute="top" secondItem="q5m-VF-cc4" secondAttribute="bottom" constant="64" id="UUa-wA-YpE"/>
-                                                <constraint firstItem="6b1-qY-ZS3" firstAttribute="top" secondItem="zrI-gr-2zm" secondAttribute="top" id="YSF-g6-CBy"/>
-                                                <constraint firstItem="oOZ-dO-GHV" firstAttribute="leading" secondItem="zrI-gr-2zm" secondAttribute="leading" constant="13" id="d05-Ad-GsR"/>
-                                                <constraint firstAttribute="trailing" secondItem="6b1-qY-ZS3" secondAttribute="trailing" id="hNi-5O-DdI"/>
-                                                <constraint firstItem="0Bw-7a-cyB" firstAttribute="top" secondItem="zrI-gr-2zm" secondAttribute="top" constant="18" id="kk5-3f-hMT"/>
-                                                <constraint firstItem="q5m-VF-cc4" firstAttribute="top" secondItem="zrI-gr-2zm" secondAttribute="top" constant="18" id="mK6-t8-yQJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="6b1-qY-ZS3" secondAttribute="trailing" id="38Z-2m-YVq"/>
+                                                <constraint firstAttribute="bottom" secondItem="oOZ-dO-GHV" secondAttribute="bottom" constant="8.5" id="3eS-cy-Ctx"/>
+                                                <constraint firstItem="0kH-mm-dy2" firstAttribute="bottom" secondItem="oOZ-dO-GHV" secondAttribute="bottom" id="5uL-4d-XMa"/>
+                                                <constraint firstAttribute="bottom" secondItem="0kH-mm-dy2" secondAttribute="bottom" constant="8.5" id="7zu-gG-axl"/>
+                                                <constraint firstAttribute="bottom" secondItem="6b1-qY-ZS3" secondAttribute="bottom" id="G6C-fe-cHM"/>
+                                                <constraint firstItem="q5m-VF-cc4" firstAttribute="leading" secondItem="zrI-gr-2zm" secondAttribute="leading" constant="13" id="HOm-mi-wXL"/>
+                                                <constraint firstItem="0kH-mm-dy2" firstAttribute="top" secondItem="0Bw-7a-cyB" secondAttribute="bottom" constant="64" id="IQM-cX-qgc"/>
+                                                <constraint firstItem="q5m-VF-cc4" firstAttribute="top" secondItem="zrI-gr-2zm" secondAttribute="top" constant="18" id="LPk-gT-xOR"/>
+                                                <constraint firstItem="6b1-qY-ZS3" firstAttribute="top" secondItem="zrI-gr-2zm" secondAttribute="top" id="PbA-eU-Fdd"/>
+                                                <constraint firstItem="0kH-mm-dy2" firstAttribute="leading" secondItem="oOZ-dO-GHV" secondAttribute="trailing" constant="8" id="S6g-Mg-yVG"/>
+                                                <constraint firstItem="6b1-qY-ZS3" firstAttribute="leading" secondItem="zrI-gr-2zm" secondAttribute="leading" id="WZ1-yl-XxD"/>
+                                                <constraint firstItem="0kH-mm-dy2" firstAttribute="top" relation="lessThanOrEqual" secondItem="q5m-VF-cc4" secondAttribute="bottom" constant="64" id="ZyQ-I1-vtd"/>
+                                                <constraint firstItem="0Bw-7a-cyB" firstAttribute="top" secondItem="q5m-VF-cc4" secondAttribute="top" id="eIE-Yg-imD"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Bw-7a-cyB" secondAttribute="trailing" constant="8" id="iVq-H3-2Ot"/>
+                                                <constraint firstItem="oOZ-dO-GHV" firstAttribute="leading" secondItem="q5m-VF-cc4" secondAttribute="leading" id="jAB-Es-yQx"/>
+                                                <constraint firstItem="0Bw-7a-cyB" firstAttribute="top" secondItem="zrI-gr-2zm" secondAttribute="top" constant="18" id="l5K-Wl-68d"/>
+                                                <constraint firstItem="0Bw-7a-cyB" firstAttribute="leading" secondItem="q5m-VF-cc4" secondAttribute="trailing" constant="8" id="ld3-Sh-aKj"/>
+                                                <constraint firstItem="oOZ-dO-GHV" firstAttribute="leading" secondItem="zrI-gr-2zm" secondAttribute="leading" constant="13" id="pOC-D9-wKL"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0kH-mm-dy2" secondAttribute="trailing" constant="8" id="pa7-0Y-e8P"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -89,7 +93,7 @@
                                         <rect key="frame" x="0.0" y="161" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UCE-16-cpm" id="TB2-OQ-iIq">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
