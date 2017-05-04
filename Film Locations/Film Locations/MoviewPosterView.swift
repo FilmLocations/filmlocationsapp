@@ -15,7 +15,7 @@ class MoviewPosterView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var yearLabel: UILabel!
     
-    var movie: Movie! {
+    var movie: MapMovie! {
         didSet {
             self.yearLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "(\(movie.releaseYear))")
             self.titleLabel.attributedText  = InternalConfiguration.customizeTextAppearance(text: movie.title)

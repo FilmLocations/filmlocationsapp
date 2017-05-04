@@ -16,7 +16,7 @@ protocol MapViewDelegate: class {
 
 class MapView: UIView {
 
-    var displayData:[Movie]!
+    var displayData:[MapMovie]!
     var googleMapView: GMSMapView!
     weak var delegate:MapViewDelegate?
     
@@ -50,7 +50,7 @@ class MapView: UIView {
         self.addSubview(self.googleMapView)
     }
     
-    func updateMapsMarkers(sortedMovies:[Movie]) {
+    func updateMapsMarkers(sortedMovies:[MapMovie]) {
         
         self.displayData = sortedMovies
         
@@ -61,8 +61,9 @@ class MapView: UIView {
         for movie in sortedMovies {
             // Creates a marker in the center of the map.
             let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: (movie.locations.first?.lat)!, longitude: (movie.locations.first?.long)!)
+            marker.position = CLLocationCoordinate2D(latitude: movie.location.lat, longitude: movie.location.long)
             marker.title = movie.title
+            print(movie.title, movie.location.lat, movie.location.long, movie.location.address)
             marker.isFlat = true
             marker.userData = movie
             bounds = bounds.includingCoordinate(marker.position)
@@ -77,9 +78,9 @@ class MapView: UIView {
 extension MapView: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
-        if let markerMovie = marker.userData as? Movie {
+        if let markerMovie = marker.userData as? MapMovie {
             
-            if let index = self.displayData.index(where: {$0.locations.first?.placeId ==  markerMovie.locations.first?.placeId }){
+            if let index = self.displayData.index(where: {$0.location.placeId ==  markerMovie.location.placeId }){
                 delegate?.didTap(markerIndex: index)
             }
         }

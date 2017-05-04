@@ -9,9 +9,41 @@
 import UIKit
 import CoreLocation
 
+struct MapMovie {
+    
+    var id: Int
+    var posterImageURL: URL?
+    var releaseYear: String
+    var title: String
+    var location: Location
+    
+    init(movie: Movie, location: Location) {
+        self.id = movie.id
+        self.location = location
+        self.posterImageURL = movie.posterImageURL
+        self.releaseYear = movie.releaseYear
+        self.title = movie.title
+    }
+    
+    static func toMapMovies(movies : [Movie]) -> [MapMovie]{
+        
+        var mapMovies = [MapMovie]()
+        
+        for movie in movies {
+            
+            for location in movie.locations {
+                mapMovies.append(MapMovie(movie: movie, location: location))
+                print(location.address)
+            }
+        }
+        return mapMovies
+    }
+    
+}
+
 class MapViewController: UIViewController {
     
-    let maxNearByMovies = 40
+    let maxNearByMovies = 20
     let currentUsersLocationKey =  "kUserCurrentPreferncesKey"
     
     var scrollingImages:[UIImage]! = []
@@ -24,9 +56,9 @@ class MapViewController: UIViewController {
     
     var isSearchResultsDisplayed = false
     
-    
+    var flatMovies: [MapMovie]!
     var movies: [Movie]!
-    var sortedMovies:[Movie]!
+    var sortedMovies:[MapMovie]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,27 +66,33 @@ class MapViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        // Ask for Authorisation from the User.
-        self.locationManager.requestAlwaysAuthorization()
-        
-        // For use in foreground
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        if let currentLocation =  retrieveCurrentLocation(){
-            self.userCurrentLocation = currentLocation
+        Database.sharedInstance.getAllFilms { (movies: [Movie]) in
+            self.flatMovies = MapMovie.toMapMovies(movies: movies)
+            
+            // Ask for Authorisation from the User.
+            self.locationManager.requestAlwaysAuthorization()
+            
+            // For use in foreground
+            self.locationManager.requestWhenInUseAuthorization()
+            
+            if let currentLocation =  self.retrieveCurrentLocation(){
+                self.userCurrentLocation = currentLocation
+            }
+            
+            if CLLocationManager.locationServicesEnabled() {
+                self.locationManager.delegate = self
+                self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+                self.locationManager.startUpdatingLocation()
+            }
+            
+            self.mapView.delegate = self
+            self.mapView.bringSubview(toFront: self.searchBar)
+            
+            self.searchBar.showsCancelButton = true
+            self.searchBar.delegate = self
+            
         }
         
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-            locationManager.startUpdatingLocation()
-        }
-        
-        self.mapView.delegate = self
-        self.mapView.bringSubview(toFront: self.searchBar)
-        
-        self.searchBar.showsCancelButton = true
-        self.searchBar.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -122,13 +160,9 @@ class MapViewController: UIViewController {
     func currentLocationUpdated() {
         // Update map view
         print("Uesr locations = \(userCurrentLocation.latitude) \(userCurrentLocation.longitude)")
-
-        Database.sharedInstance.getAllFilms { (movies:[Movie]) in
-            self.movies = movies
-            self.sortMoviesFromUserLocation()
-            
-            self.updateViewWithNewData()
-        }
+        
+        self.sortMoviesFromUserLocation()
+        self.updateViewWithNewData()
     }
     
     func updateViewWithNewData() {
@@ -140,19 +174,16 @@ class MapViewController: UIViewController {
     // TODO: Move this method to API class as utility method
     func sortMoviesFromUserLocation() {
         
-        let filteredMovies = self.movies.filter { (movie: Movie) -> Bool in
-            if movie.locations.first?.lat != nil, movie.locations.first?.long != nil{
-                return true
-            }
-            return false
+        if self.flatMovies == nil {
+            return
         }
         
-        let sortedMovies = filteredMovies.sorted { (movie1:Movie, movie2:Movie) -> Bool in
+        let sortedMovies = self.flatMovies.sorted { (movie1:MapMovie, movie2:MapMovie) -> Bool in
             
             let currentLocation = CLLocation(latitude: userCurrentLocation.latitude, longitude: userCurrentLocation.longitude)
             
-            let location1 = CLLocation(latitude: (movie1.locations.first?.lat)!, longitude: (movie1.locations.first?.long)!)
-            let location2 = CLLocation(latitude: (movie2.locations.first?.lat)!, longitude: (movie2.locations.first?.long)!)
+            let location1 = CLLocation(latitude: movie1.location.lat, longitude: movie1.location.long)
+            let location2 = CLLocation(latitude: movie2.location.lat, longitude: movie2.location.long)
             
             let differnce1 =  currentLocation.distance(from: location1)
             let differnce2 = currentLocation.distance(from: location2)
@@ -208,7 +239,7 @@ extension MapViewController: UISearchBarDelegate{
         if let query = searchBar.text {
             
             if query.characters.count > 0 {
-                self.sortedMovies = self.movies.filter { (movie:Movie) -> Bool in
+                self.sortedMovies = self.flatMovies.filter { (movie:MapMovie) -> Bool in
                     if (movie.title.contains(query) || movie.releaseYear.contains(query)){
                         return true
                     }
