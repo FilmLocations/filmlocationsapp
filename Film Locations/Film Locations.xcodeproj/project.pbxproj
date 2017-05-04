@@ -237,7 +237,8 @@
 				TargetAttributes = {
 					3A224F981EAD611700091BB3 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 57478PSBBB;
+						DevelopmentTeam = WSE9V4ZK6U;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -421,6 +422,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -463,6 +465,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -473,12 +476,15 @@
 			baseConfigurationReference = 95F5320A160EB9BDD66EB8A0 /* Pods-Film Locations.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 57478PSBBB;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = WSE9V4ZK6U;
 				INFOPLIST_FILE = "Film Locations/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.spring17.FilmLocations.Film-Locations";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -488,12 +494,14 @@
 			baseConfigurationReference = D251F5A791118332ED48C6CD /* Pods-Film Locations.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 57478PSBBB;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = WSE9V4ZK6U;
 				INFOPLIST_FILE = "Film Locations/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.spring17.FilmLocations.Film-Locations";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
