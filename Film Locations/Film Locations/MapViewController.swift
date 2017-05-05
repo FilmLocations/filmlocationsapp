@@ -196,7 +196,6 @@ class MapViewController: UIViewController {
         }
         
         self.sortedMovies = Array(sortedMovies[0..<maxNearByMovies])
-        
     }
 }
 
