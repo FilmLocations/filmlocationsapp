@@ -11,7 +11,7 @@
         <!--Hamburger View Controller-->
         <scene sceneID="Uxv-kd-R2t">
             <objects>
-                <viewController id="Zhn-cV-Tgr" customClass="HamburgerViewController" customModule="Film_Locations" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HamburgerView" id="Zhn-cV-Tgr" customClass="HamburgerViewController" customModule="Film_Locations" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nli-jZ-61i"/>
                         <viewControllerLayoutGuide type="bottom" id="va8-CX-KCL"/>

@@ -11,7 +11,7 @@
         <!--List View Controller-->
         <scene sceneID="FVf-1g-8vl">
             <objects>
-                <viewController storyboardIdentifier="List" id="hvz-AP-wAM" customClass="ListViewController" customModule="Film_Locations" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListView" id="hvz-AP-wAM" customClass="ListViewController" customModule="Film_Locations" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hIr-9D-2ia"/>
                         <viewControllerLayoutGuide type="bottom" id="fMf-Ua-e6H"/>
@@ -28,11 +28,14 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="133"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nIF-se-PMs" id="zrI-gr-2zm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="132.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6b1-qY-ZS3">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="132" id="tNJ-1P-ekY"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5m-VF-cc4">
                                                     <rect key="frame" x="13" y="18" width="36" height="21"/>
@@ -93,7 +96,7 @@
                                         <rect key="frame" x="0.0" y="161" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UCE-16-cpm" id="TB2-OQ-iIq">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -108,11 +111,32 @@
                             <constraint firstItem="fMf-Ua-e6H" firstAttribute="top" secondItem="guf-Ad-ehK" secondAttribute="bottom" id="dBf-fg-5xK"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Nph-kd-gAP">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="spd-9M-HYw"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="guf-Ad-ehK" id="3D3-Sl-sNT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSr-Gn-yOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1020" y="2.2488755622188905"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DZN-d4-L5i">
+            <objects>
+                <navigationController storyboardIdentifier="ListNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Vbg-8S-Wxl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="if1-4j-Yb7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hvz-AP-wAM" kind="relationship" relationship="rootViewController" id="jZd-H1-kfn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5pW-uz-mcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="80.799999999999997" y="2.2488755622188905"/>
         </scene>
