@@ -22,14 +22,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lb5-Lr-KyW">
-                                <rect key="frame" x="0.0" y="20" width="375" height="443"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="443" id="VRo-tM-ATU"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brK-39-k4p">
-                                <rect key="frame" x="16" y="471" width="343" height="196"/>
+                                <rect key="frame" x="16" y="515" width="343" height="152"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,12 +43,33 @@
                             <constraint firstItem="brK-39-k4p" firstAttribute="top" secondItem="Lb5-Lr-KyW" secondAttribute="bottom" constant="8" id="uYI-J5-hxO"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Z1T-cO-wdz">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="DZp-X5-isi"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="Lb5-Lr-KyW" id="4Wb-Fe-wis"/>
                         <outlet property="scrollView" destination="brK-39-k4p" id="p5r-pr-ACo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EcG-mx-UWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="940" y="6.746626686656672"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1fs-PS-pkI">
+            <objects>
+                <navigationController storyboardIdentifier="MapNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="yPW-GI-eNs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Chi-Iz-6Fs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ne4-ir-tMd" kind="relationship" relationship="rootViewController" id="22i-bW-875"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0rs-zz-7Ne" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.80000000000000004" y="6.746626686656672"/>
         </scene>
