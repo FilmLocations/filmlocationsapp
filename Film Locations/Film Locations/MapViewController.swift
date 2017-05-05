@@ -122,7 +122,7 @@ class MapViewController: UIViewController {
         }
     }
     
-    func updateScrollView()  {
+    func updateScrollView(isSearchedData:Bool)  {
         //self.scrollView.delegate = self
         
         self.scrollView.isScrollEnabled = true;
@@ -134,7 +134,8 @@ class MapViewController: UIViewController {
         for movie in self.sortedMovies {
             if movie.posterImageURL != nil {
                 
-                let moviePosterView = MoviewPosterView(frame: CGRect(x: xOffset, y: 8.0 , width: self.scrollView.frame.height, height: self.scrollView.frame.height))
+                let moviePosterView = MoviePosterView(frame: CGRect(x: xOffset, y: 8.0 , width: self.scrollView.frame.height, height: self.scrollView.frame.height))
+                moviePosterView.displaySearchData = isSearchedData
                 moviePosterView.movie = movie
                 self.scrollView.addSubview(moviePosterView)
                 xOffset = xOffset + self.scrollView.frame.height + 8
@@ -142,9 +143,6 @@ class MapViewController: UIViewController {
         }
         self.scrollView.contentSize =  CGSize(width: xOffset, height: self.scrollView.frame.height)
     }
-    
-    
-    
     
     /*
      // MARK: - Navigation
@@ -168,7 +166,13 @@ class MapViewController: UIViewController {
     func updateViewWithNewData() {
         //TODO: consider calling map marker and scroll view in a single for loop
         self.mapView.updateMapsMarkers(sortedMovies: self.sortedMovies)
-        self.updateScrollView()
+        self.updateScrollView(isSearchedData: false)
+    }
+    
+    func updateViewWithSearchData() {
+        //TODO: consider calling map marker and scroll view in a single for loop
+        self.mapView.updateMapsMarkers(sortedMovies: self.sortedMovies)
+        self.updateScrollView(isSearchedData: true)
     }
     
     // TODO: Move this method to API class as utility method
@@ -245,7 +249,7 @@ extension MapViewController: UISearchBarDelegate{
                     }
                     return false
                 }
-                self.updateViewWithNewData()
+                self.updateViewWithSearchData()
                 self.isSearchResultsDisplayed = true
             }
         } else {
