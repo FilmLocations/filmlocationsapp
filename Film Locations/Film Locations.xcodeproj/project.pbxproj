@@ -22,6 +22,7 @@
 		3A75FD101EB41800008F5400 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD0F1EB41800008F5400 /* Post.storyboard */; };
 		88790C081EB6F9BE0025C5EE /* MoviePosterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */; };
 		88790C0C1EB6FA3D0025C5EE /* MoviewPosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88790C0B1EB6FA3D0025C5EE /* MoviewPosterView.swift */; };
+		8894F1151EB945C500FFDAA1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8894F1141EB945C500FFDAA1 /* MapView.swift */; };
 		8A559882E961A19DE2C6ECF3 /* Pods_Film_Locations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA186C724D76407B1FE1434 /* Pods_Film_Locations.framework */; };
 		D3009ABE1EB5848500E075ED /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009ABB1EB5848500E075ED /* Movie.swift */; };
 		D3009ABF1EB5848500E075ED /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009ABC1EB5848500E075ED /* Location.swift */; };
@@ -56,6 +57,7 @@
 		7CA186C724D76407B1FE1434 /* Pods_Film_Locations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Film_Locations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviePosterView.xib; sourceTree = "<group>"; };
 		88790C0B1EB6FA3D0025C5EE /* MoviewPosterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviewPosterView.swift; sourceTree = "<group>"; };
+		8894F1141EB945C500FFDAA1 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		95F5320A160EB9BDD66EB8A0 /* Pods-Film Locations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Film Locations.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations.debug.xcconfig"; sourceTree = "<group>"; };
 		D251F5A791118332ED48C6CD /* Pods-Film Locations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Film Locations.release.xcconfig"; path = "Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations.release.xcconfig"; sourceTree = "<group>"; };
 		D3009ABB1EB5848500E075ED /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				3A2365DB1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift */,
 				88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */,
 				88790C0B1EB6FA3D0025C5EE /* MoviewPosterView.swift */,
+				8894F1141EB945C500FFDAA1 /* MapView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				D3009AC01EB5848500E075ED /* FirebaseMovie.swift in Sources */,
 				D3009AC51EB584CD00E075ED /* ListViewController.swift in Sources */,
 				D35BE4981EB69384003E0C8F /* MapViewController.swift in Sources */,
+				8894F1151EB945C500FFDAA1 /* MapView.swift in Sources */,
 				D35BE4961EB692F1003E0C8F /* Database.swift in Sources */,
 				3A2365DC1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift in Sources */,
 				3A2365D81EB47E4F00D60443 /* FilmDetailsViewController.swift in Sources */,

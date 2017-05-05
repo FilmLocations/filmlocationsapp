@@ -7,8 +7,39 @@
 //
 
 import UIKit
-import GoogleMaps
-import GooglePlaces
+import CoreLocation
+
+struct MapMovie {
+    
+    var id: Int
+    var posterImageURL: URL?
+    var releaseYear: String
+    var title: String
+    var location: Location
+    
+    init(movie: Movie, location: Location) {
+        self.id = movie.id
+        self.location = location
+        self.posterImageURL = movie.posterImageURL
+        self.releaseYear = movie.releaseYear
+        self.title = movie.title
+    }
+    
+    static func toMapMovies(movies : [Movie]) -> [MapMovie]{
+        
+        var mapMovies = [MapMovie]()
+        
+        for movie in movies {
+            
+            for location in movie.locations {
+                mapMovies.append(MapMovie(movie: movie, location: location))
+                print(location.address)
+            }
+        }
+        return mapMovies
+    }
+    
+}
 
 class MapViewController: UIViewController {
     
@@ -18,13 +49,16 @@ class MapViewController: UIViewController {
     var scrollingImages:[UIImage]! = []
     @IBOutlet weak var scrollView: UIScrollView!
     var lastUpdatedTimestamp:TimeInterval = 0
-    var userCurrentLocation : CLLocationCoordinate2D!
+    var userCurrentLocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     let locationManager = CLLocationManager()
-    @IBOutlet weak var mapView: UIView!
-    var googleMapView: GMSMapView!
+    @IBOutlet weak var mapView: MapView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
+    var isSearchResultsDisplayed = false
+    
+    var flatMovies: [MapMovie]!
     var movies: [Movie]!
-    var sortedMovies:[Movie]!
+    var sortedMovies:[MapMovie]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,19 +66,33 @@ class MapViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        // Ask for Authorisation from the User.
-        self.locationManager.requestAlwaysAuthorization()
-        
-        // For use in foreground
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        self.userCurrentLocation = retrieveCurrentLocation()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-            locationManager.startUpdatingLocation()
+        Database.sharedInstance.getAllFilms { (movies: [Movie]) in
+            self.flatMovies = MapMovie.toMapMovies(movies: movies)
+            
+            // Ask for Authorisation from the User.
+            self.locationManager.requestAlwaysAuthorization()
+            
+            // For use in foreground
+            self.locationManager.requestWhenInUseAuthorization()
+            
+            if let currentLocation =  self.retrieveCurrentLocation(){
+                self.userCurrentLocation = currentLocation
+            }
+            
+            if CLLocationManager.locationServicesEnabled() {
+                self.locationManager.delegate = self
+                self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+                self.locationManager.startUpdatingLocation()
+            }
+            
+            self.mapView.delegate = self
+            self.mapView.bringSubview(toFront: self.searchBar)
+            
+            self.searchBar.showsCancelButton = true
+            self.searchBar.delegate = self
+            
         }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,12 +114,22 @@ class MapViewController: UIViewController {
         return nil
     }
     
+    func removeScrollViewSubViews() {
+        
+        let subViews = self.scrollView.subviews
+        for subview in subViews{
+            subview.removeFromSuperview()
+        }
+    }
+    
     func updateScrollView()  {
         //self.scrollView.delegate = self
         
         self.scrollView.isScrollEnabled = true;
         
         var xOffset:CGFloat = 0
+        
+        self.removeScrollViewSubViews()
         
         for movie in self.sortedMovies {
             if movie.posterImageURL != nil {
@@ -86,6 +144,8 @@ class MapViewController: UIViewController {
     }
     
     
+    
+    
     /*
      // MARK: - Navigation
      
@@ -96,56 +156,34 @@ class MapViewController: UIViewController {
      }
      */
     
+    
     func currentLocationUpdated() {
         // Update map view
         print("Uesr locations = \(userCurrentLocation.latitude) \(userCurrentLocation.longitude)")
         
-        let userLat = userCurrentLocation.latitude
-        let userLong = userCurrentLocation.longitude
-        
-        let camera = GMSCameraPosition.camera(withLatitude: userLat, longitude: userLong, zoom: 15.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.frame = CGRect(x:0, y:0, width:self.mapView.frame.width, height:self.mapView.frame.height)
-        mapView.delegate = self
-        //self.mapView = mapView
-        self.mapView.addSubview(mapView)
-        
-        Database.sharedInstance.getAllFilms { (movies:[Movie]) in
-            self.movies = movies
-            self.sortMoviesFromUserLocation()
-            
-            for movie in self.sortedMovies {
-                
-                // Creates a marker in the center of the map.
-                let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2D(latitude: (movie.locations.first?.lat)!, longitude: (movie.locations.first?.long)!)
-                marker.title = movie.title
-                marker.isFlat = true
-                marker.userData = movie
-                marker.map = mapView
-                
-                
-            }
-            
-            self.updateScrollView()
-        }
+        self.sortMoviesFromUserLocation()
+        self.updateViewWithNewData()
     }
     
+    func updateViewWithNewData() {
+        //TODO: consider calling map marker and scroll view in a single for loop
+        self.mapView.updateMapsMarkers(sortedMovies: self.sortedMovies)
+        self.updateScrollView()
+    }
+    
+    // TODO: Move this method to API class as utility method
     func sortMoviesFromUserLocation() {
         
-        let filteredMovies = self.movies.filter { (movie: Movie) -> Bool in
-            if movie.locations.first?.lat != nil, movie.locations.first?.long != nil{
-                return true
-            }
-            return false
+        if self.flatMovies == nil {
+            return
         }
         
-        let sortedMovies = filteredMovies.sorted { (movie1:Movie, movie2:Movie) -> Bool in
+        let sortedMovies = self.flatMovies.sorted { (movie1:MapMovie, movie2:MapMovie) -> Bool in
             
             let currentLocation = CLLocation(latitude: userCurrentLocation.latitude, longitude: userCurrentLocation.longitude)
             
-            let location1 = CLLocation(latitude: (movie1.locations.first?.lat)!, longitude: (movie1.locations.first?.long)!)
-            let location2 = CLLocation(latitude: (movie2.locations.first?.lat)!, longitude: (movie2.locations.first?.long)!)
+            let location1 = CLLocation(latitude: movie1.location.lat, longitude: movie1.location.long)
+            let location2 = CLLocation(latitude: movie2.location.lat, longitude: movie2.location.long)
             
             let differnce1 =  currentLocation.distance(from: location1)
             let differnce2 = currentLocation.distance(from: location2)
@@ -158,21 +196,15 @@ class MapViewController: UIViewController {
     }
 }
 
-extension MapViewController: GMSMapViewDelegate {
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+extension MapViewController: MapViewDelegate{
+    
+    func didTap(markerIndex: Int) {
+        let xoffset = CGFloat(markerIndex) * CGFloat((self.scrollView.frame.height))
         
-        if let markerMovie = marker.userData as? Movie {
-            
-            if let index = self.sortedMovies.index(where: {$0.locations.first?.placeId ==  markerMovie.locations.first?.placeId }){
-                let xoffset = CGFloat(index) * CGFloat((self.scrollView.frame.height))
-                
-                let frame = CGRect(x:xoffset, y:0, width:self.mapView.frame.width, height:self.mapView.frame.height)
-                self.scrollView.scrollRectToVisible(frame, animated: true)
-            }
-        }
-        
-        return true
+        let frame = CGRect(x:xoffset, y:0, width:self.mapView.frame.width, height:self.mapView.frame.height)
+        self.scrollView.scrollRectToVisible(frame, animated: true)
     }
+    
 }
 
 extension MapViewController: CLLocationManagerDelegate {
@@ -180,7 +212,7 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let currentTime = NSDate().timeIntervalSince1970
-        if (currentTime - lastUpdatedTimestamp) > 1 * 30 {
+        if ((currentTime - lastUpdatedTimestamp) > 1 * 30) && !isSearchResultsDisplayed && ((userCurrentLocation.latitude != manager.location!.coordinate.latitude) || (userCurrentLocation.longitude != manager.location!.coordinate.longitude)) {
             let locValue:CLLocationCoordinate2D = manager.location!.coordinate
             print("locations = \(locValue.latitude) \(locValue.longitude)")
             self.userCurrentLocation = locValue
@@ -190,6 +222,36 @@ extension MapViewController: CLLocationManagerDelegate {
             self.currentLocationUpdated()
             lastUpdatedTimestamp = currentTime
         }
+    }
+}
+
+extension MapViewController: UISearchBarDelegate{
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        self.isSearchResultsDisplayed = false
+        self.currentLocationUpdated()
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        if let query = searchBar.text {
+            
+            if query.characters.count > 0 {
+                self.sortedMovies = self.flatMovies.filter { (movie:MapMovie) -> Bool in
+                    if (movie.title.contains(query) || movie.releaseYear.contains(query)){
+                        return true
+                    }
+                    return false
+                }
+                self.updateViewWithNewData()
+                self.isSearchResultsDisplayed = true
+            }
+        } else {
+            self.isSearchResultsDisplayed = false
+        }
+        
     }
     
 }
