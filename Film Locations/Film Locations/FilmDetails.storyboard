@@ -24,14 +24,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jM9-59-IuD">
-                                <rect key="frame" x="16" y="147" width="105" height="110"/>
-                                <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="110" id="HGn-go-ufs"/>
-                                    <constraint firstAttribute="width" constant="105" id="eq4-dL-xYR"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgE-sj-eFI">
                                 <rect key="frame" x="129" y="204.5" width="230" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -111,20 +103,30 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyW-gs-QJj">
-                                <rect key="frame" x="8" y="526" width="75.5" height="21.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyW-gs-QJj">
+                                <rect key="frame" x="8" y="526" width="359" height="121"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jM9-59-IuD">
+                                <rect key="frame" x="16" y="103" width="105" height="154"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="154" id="HGn-go-ufs"/>
+                                    <constraint firstAttribute="width" constant="105" id="eq4-dL-xYR"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gHf-0n-9To" firstAttribute="leading" secondItem="ihS-5S-lXg" secondAttribute="leading" id="08P-Z7-8LY"/>
                             <constraint firstItem="GgE-sj-eFI" firstAttribute="bottom" secondItem="jVB-Jz-qyv" secondAttribute="bottom" id="9kW-IL-UlX"/>
+                            <constraint firstItem="9fF-t1-iOA" firstAttribute="top" secondItem="wyW-gs-QJj" secondAttribute="bottom" constant="20" id="ACH-lY-shC"/>
+                            <constraint firstAttribute="trailing" secondItem="wyW-gs-QJj" secondAttribute="trailing" constant="8" id="CKf-Vy-1eV"/>
                             <constraint firstAttribute="trailing" secondItem="GgE-sj-eFI" secondAttribute="trailing" constant="16" id="Cbx-3z-Wr8"/>
                             <constraint firstItem="GgE-sj-eFI" firstAttribute="leading" secondItem="jM9-59-IuD" secondAttribute="trailing" constant="8" id="Fj5-gZ-Qb4"/>
-                            <constraint firstItem="jM9-59-IuD" firstAttribute="top" secondItem="po7-YG-pW1" secondAttribute="bottom" constant="127" id="FwK-jS-8Vl"/>
+                            <constraint firstItem="jM9-59-IuD" firstAttribute="top" secondItem="po7-YG-pW1" secondAttribute="bottom" constant="83" id="FwK-jS-8Vl"/>
                             <constraint firstItem="ZnS-v6-8us" firstAttribute="top" secondItem="uvw-qF-faI" secondAttribute="bottom" constant="22" id="VYX-Mj-F3F"/>
                             <constraint firstAttribute="trailing" secondItem="gHf-0n-9To" secondAttribute="trailing" id="XqZ-W2-dZ4"/>
                             <constraint firstItem="uvw-qF-faI" firstAttribute="top" secondItem="jVB-Jz-qyv" secondAttribute="bottom" constant="8" id="YR5-cY-tMo"/>
@@ -146,6 +148,7 @@
                         <outlet property="addPhotoButton" destination="gqX-0Q-yu9" id="dSs-zb-d3y"/>
                         <outlet property="addressLabel" destination="GgE-sj-eFI" id="qGf-T4-pJc"/>
                         <outlet property="likeButton" destination="gpb-QV-4x8" id="Oef-NH-hxF"/>
+                        <outlet property="overviewLabel" destination="wyW-gs-QJj" id="Ccy-eg-i1f"/>
                         <outlet property="photosCollectionView" destination="gHf-0n-9To" id="XoO-Ap-j6V"/>
                         <outlet property="posterImageView" destination="jM9-59-IuD" id="ob4-iq-WzB"/>
                         <outlet property="titleLabel" destination="uvw-qF-faI" id="bs2-7U-SNE"/>

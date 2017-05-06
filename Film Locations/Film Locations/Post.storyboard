@@ -8,32 +8,67 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="I8X-dP-QqE">
+        <!--Post View Controller-->
+        <scene sceneID="5QA-rn-zmZ">
             <objects>
-                <viewController id="5Xu-tf-3DY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Post" id="2NX-et-Fof" customClass="PostViewController" customModule="Film_Locations" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QwB-Qh-1Za"/>
-                        <viewControllerLayoutGuide type="bottom" id="ITA-cj-83c"/>
+                        <viewControllerLayoutGuide type="top" id="w02-KJ-YRW"/>
+                        <viewControllerLayoutGuide type="bottom" id="OCW-OP-jPL"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="RfO-rx-3vR">
+                    <view key="view" contentMode="scaleToFill" id="1So-Zd-FUM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Post / Fullscreen Post can belong here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqD-dj-dAT">
-                                <rect key="frame" x="16" y="116" width="343" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pTz-AK-Tua">
+                                <rect key="frame" x="0.0" y="28" width="375" height="380"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="380" id="RCY-Zp-hMk"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D40-Y4-kJJ">
+                                <rect key="frame" x="0.0" y="416" width="375" height="30"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6f-0U-e9T">
+                                <rect key="frame" x="0.0" y="454" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="onCancelButton:" destination="2NX-et-Fof" eventType="touchUpInside" id="DEa-dW-ViU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ol-5R-syD">
+                                <rect key="frame" x="344" y="454" width="31" height="30"/>
+                                <state key="normal" title="Post"/>
+                                <connections>
+                                    <action selector="onPostButton:" destination="2NX-et-Fof" eventType="touchUpInside" id="PaI-E4-YpE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pTz-AK-Tua" firstAttribute="leading" secondItem="1So-Zd-FUM" secondAttribute="leading" id="9CX-mq-IFK"/>
+                            <constraint firstItem="k6f-0U-e9T" firstAttribute="top" secondItem="D40-Y4-kJJ" secondAttribute="bottom" constant="8" id="NOs-mO-za8"/>
+                            <constraint firstAttribute="trailing" secondItem="D40-Y4-kJJ" secondAttribute="trailing" id="XEj-hu-GOM"/>
+                            <constraint firstItem="k6f-0U-e9T" firstAttribute="leading" secondItem="1So-Zd-FUM" secondAttribute="leading" id="aoV-W3-3wI"/>
+                            <constraint firstItem="1ol-5R-syD" firstAttribute="top" secondItem="D40-Y4-kJJ" secondAttribute="bottom" constant="8" id="cuU-on-V7Y"/>
+                            <constraint firstAttribute="trailing" secondItem="pTz-AK-Tua" secondAttribute="trailing" id="hvu-4h-kff"/>
+                            <constraint firstItem="D40-Y4-kJJ" firstAttribute="top" secondItem="pTz-AK-Tua" secondAttribute="bottom" constant="8" id="s9c-HG-IKj"/>
+                            <constraint firstItem="D40-Y4-kJJ" firstAttribute="leading" secondItem="1So-Zd-FUM" secondAttribute="leading" id="uBd-3S-XCQ"/>
+                            <constraint firstAttribute="trailing" secondItem="1ol-5R-syD" secondAttribute="trailing" id="vWW-L9-PTM"/>
+                            <constraint firstItem="pTz-AK-Tua" firstAttribute="top" secondItem="w02-KJ-YRW" secondAttribute="bottom" constant="8" id="wn2-w7-wzA"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="D40-Y4-kJJ" id="OeK-UD-IIf"/>
+                        <outlet property="postImageView" destination="pTz-AK-Tua" id="oTT-rZ-t6F"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dJi-LR-uSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hwR-9B-PaB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="176.80000000000001" y="151.57421289355324"/>
+            <point key="canvasLocation" x="-590" y="82"/>
         </scene>
     </scenes>
 </document>

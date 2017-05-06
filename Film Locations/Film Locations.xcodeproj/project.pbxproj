@@ -15,11 +15,13 @@
 		3A2365D81EB47E4F00D60443 /* FilmDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2365D71EB47E4F00D60443 /* FilmDetailsViewController.swift */; };
 		3A2365DA1EB543D700D60443 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A2365D91EB543D700D60443 /* GoogleService-Info.plist */; };
 		3A2365DC1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2365DB1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift */; };
+		3A2D58641EBDCC2200BB7DBF /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2D58631EBDCC2200BB7DBF /* PostViewController.swift */; };
+		3A2D58661EBE30BC00BB7DBF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2D58651EBE30BC00BB7DBF /* User.swift */; };
+		3A2D58681EBE333B00BB7DBF /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A2D58671EBE333B00BB7DBF /* Post.storyboard */; };
 		3A75FD081EB416A1008F5400 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD071EB416A1008F5400 /* Map.storyboard */; };
 		3A75FD0A1EB416CF008F5400 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD091EB416CF008F5400 /* List.storyboard */; };
 		3A75FD0C1EB416E5008F5400 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD0B1EB416E5008F5400 /* Login.storyboard */; };
 		3A75FD0E1EB41792008F5400 /* FilmDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD0D1EB41792008F5400 /* FilmDetails.storyboard */; };
-		3A75FD101EB41800008F5400 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD0F1EB41800008F5400 /* Post.storyboard */; };
 		88790C081EB6F9BE0025C5EE /* MoviePosterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */; };
 		88790C0C1EB6FA3D0025C5EE /* MoviePosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88790C0B1EB6FA3D0025C5EE /* MoviePosterView.swift */; };
 		8894F1151EB945C500FFDAA1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8894F1141EB945C500FFDAA1 /* MapView.swift */; };
@@ -49,11 +51,13 @@
 		3A2365D71EB47E4F00D60443 /* FilmDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmDetailsViewController.swift; sourceTree = "<group>"; };
 		3A2365D91EB543D700D60443 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A2365DB1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		3A2D58631EBDCC2200BB7DBF /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		3A2D58651EBE30BC00BB7DBF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3A2D58671EBE333B00BB7DBF /* Post.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		3A75FD071EB416A1008F5400 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		3A75FD091EB416CF008F5400 /* List.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
 		3A75FD0B1EB416E5008F5400 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		3A75FD0D1EB41792008F5400 /* FilmDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FilmDetails.storyboard; sourceTree = "<group>"; };
-		3A75FD0F1EB41800008F5400 /* Post.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		7CA186C724D76407B1FE1434 /* Pods_Film_Locations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Film_Locations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviePosterView.xib; sourceTree = "<group>"; };
 		88790C0B1EB6FA3D0025C5EE /* MoviePosterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviePosterView.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 				D35BE4971EB69384003E0C8F /* MapViewController.swift */,
 				D3009AC41EB584CD00E075ED /* ListViewController.swift */,
 				3A2365D71EB47E4F00D60443 /* FilmDetailsViewController.swift */,
+				3A2D58631EBDCC2200BB7DBF /* PostViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 				D3009ABB1EB5848500E075ED /* Movie.swift */,
 				D3009ABC1EB5848500E075ED /* Location.swift */,
 				D3009ABD1EB5848500E075ED /* FirebaseMovie.swift */,
+				3A2D58651EBE30BC00BB7DBF /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -173,7 +179,7 @@
 				3A75FD0B1EB416E5008F5400 /* Login.storyboard */,
 				3A224FA01EAD611700091BB3 /* Main.storyboard */,
 				3A75FD0D1EB41792008F5400 /* FilmDetails.storyboard */,
-				3A75FD0F1EB41800008F5400 /* Post.storyboard */,
+				3A2D58671EBE333B00BB7DBF /* Post.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -272,11 +278,11 @@
 				D3926D071EB5A25B00762144 /* InputMoviesData.json in Resources */,
 				3A75FD0C1EB416E5008F5400 /* Login.storyboard in Resources */,
 				3A75FD0E1EB41792008F5400 /* FilmDetails.storyboard in Resources */,
-				3A75FD101EB41800008F5400 /* Post.storyboard in Resources */,
 				3A75FD081EB416A1008F5400 /* Map.storyboard in Resources */,
 				88790C081EB6F9BE0025C5EE /* MoviePosterView.xib in Resources */,
 				3A2365DA1EB543D700D60443 /* GoogleService-Info.plist in Resources */,
 				3A224FA41EAD611700091BB3 /* Assets.xcassets in Resources */,
+				3A2D58681EBE333B00BB7DBF /* Post.storyboard in Resources */,
 				D35BE49A1EB698AC003E0C8F /* all_movies (1).json in Resources */,
 				D31F4FEB1EB4552F003CC557 /* MenuViewController.xib in Resources */,
 				3A75FD0A1EB416CF008F5400 /* List.storyboard in Resources */,
@@ -346,7 +352,9 @@
 				D3009AC01EB5848500E075ED /* FirebaseMovie.swift in Sources */,
 				D3009AC51EB584CD00E075ED /* ListViewController.swift in Sources */,
 				D35BE4981EB69384003E0C8F /* MapViewController.swift in Sources */,
+				3A2D58661EBE30BC00BB7DBF /* User.swift in Sources */,
 				8894F1151EB945C500FFDAA1 /* MapView.swift in Sources */,
+				3A2D58641EBDCC2200BB7DBF /* PostViewController.swift in Sources */,
 				D35BE4961EB692F1003E0C8F /* Database.swift in Sources */,
 				3A2365DC1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift in Sources */,
 				3A2365D81EB47E4F00D60443 /* FilmDetailsViewController.swift in Sources */,

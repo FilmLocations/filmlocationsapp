@@ -75,20 +75,20 @@ class Database {
         return allMovies
     }
 
-    func addPhoto(userId: String, locationId: String, image: UIImage) {
-        print("Adding photo for \(userId) to \(locationId)")
+    func addPhoto(userId: String, placeId: String, image: UIImage, description: String) {
+        print("Adding photo for \(userId) to \(placeId)")
 
         // Get a reference to the storage service using the default Firebase App
         let storage = FIRStorage.storage()
         // Create a storage reference from our storage service
         let storageRef = storage.reference()
         
-        if let data = UIImagePNGRepresentation(image) as Data? {
+        if let data = UIImageJPEGRepresentation(image, 0.5) as Data? {
 
             let filename = Date().timeIntervalSince1970
 
             // Create a reference to the file you want to upload
-            let imageRef = storageRef.child("photos/\(locationId)/\(filename).jpg")
+            let imageRef = storageRef.child("photos/\(placeId)/\(filename).jpg")
 
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpg"
@@ -102,9 +102,18 @@ class Database {
                 }
                 // Metadata contains file metadata such as size, content-type, and download URL.
                 if let downloadURL = metadata.downloadURL() {
-                    print("download url \(downloadURL.absoluteString)")
-
-                    //TODO add to film object for retrieval
+                    
+                    //Add URL to firebase for retrieval
+                    let ref = FIRDatabase.database().reference()
+                    let images = ref.child("locationImages/\(placeId)")
+                    
+                    let newImage = [
+                        "url": downloadURL.absoluteString,
+                        "userId": userId,
+                        "description": description
+                    ]
+                    
+                    images.childByAutoId().setValue(newImage)
                 }
             }
         }
@@ -164,5 +173,35 @@ class Database {
                 completion(false)
             }
         })
+    }
+    
+    func getLocationImageURLs(placeId: String, completion: @escaping ([String]) -> ()) {
+        let ref = FIRDatabase.database().reference()
+        let imageURLs = ref.child("locationImages/\(placeId)")
+        var urls = [String]()
+        urls.removeAll()
+        
+        imageURLs.observeSingleEvent(of: .value, with: { (snapshot) in
+            for child in snapshot.children {
+                let data = child as! FIRDataSnapshot
+                
+                if let url = data.childSnapshot(forPath: "url").value as? String {
+                    urls.append(url)
+                }
+            }
+            
+            completion(urls)
+        })
+    }
+    
+    func getLocationImage(url: String,  completion: @escaping (UIImage) -> ()) {
+        
+        let storage = FIRStorage.storage()
+        let storageRef = storage.reference(forURL: url)
+        
+        storageRef.data(withMaxSize: (10 * 1024 * 1024)) { (data, error) -> Void in
+            let image = UIImage(data: data!)
+            completion(image!)
+        }
     }
 }
