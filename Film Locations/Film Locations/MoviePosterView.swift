@@ -9,6 +9,12 @@
 import UIKit
 import GooglePlaces
 
+struct MoviePosterViewDataSource {
+    var movie: MapMovie
+    var displaySearchData = false
+    var referenceLocation: CLLocation
+}
+
 class MoviePosterView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -16,21 +22,27 @@ class MoviePosterView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var yearLabel: UILabel!
     
-    var displaySearchData = false
-    
-    var movie: MapMovie! {
-        didSet {
-            self.yearLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "(\(movie.releaseYear))")
-            self.titleLabel.attributedText  = InternalConfiguration.customizeTextAppearance(text: movie.title)
-            if !displaySearchData {
-                self.posterImageView.setImageWith(movie.posterImageURL!)
+    var moviePosterDataSource: MoviePosterViewDataSource! {
+        didSet{
+            self.yearLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "(\(moviePosterDataSource.movie.releaseYear))")
+            self.titleLabel.attributedText  = InternalConfiguration.customizeTextAppearance(text: moviePosterDataSource.movie.title)
+            if !moviePosterDataSource.displaySearchData {
+                self.posterImageView.setImageWith(moviePosterDataSource.movie.posterImageURL!)
             } else {
                 self.posterImageView.image = UIImage(named: "Place-Dummy")
-                loadFirstPhotoForPlace(placeID: movie.location.placeId)
+                loadFirstPhotoForPlace(placeID: moviePosterDataSource.movie.location.placeId)
             }
             
-            self.distanceLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "x miles")
+            let movieLocation = CLLocation(latitude: moviePosterDataSource.movie.location.lat, longitude: moviePosterDataSource.movie.location.long)
+            
+            let distance = moviePosterDataSource.referenceLocation.distance(from: movieLocation)
+            
+            self.distanceLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "\(String(format: "%.2f", metersToMiles(distance:distance))) miles")
         }
+    }
+    
+    func metersToMiles(distance: Double) -> Double {
+            return round(distance) * 0.000621371
     }
 
     /*
