@@ -246,7 +246,8 @@ extension MapViewController: UISearchBarDelegate{
             
             if query.characters.count > 0 {
                 self.sortedMovies = self.flatMovies.filter { (movie:MapMovie) -> Bool in
-                    if (movie.title.contains(query) || movie.releaseYear.contains(query)){
+                    
+                    if (movie.title.lowercased().range(of:query.lowercased()) != nil) || (movie.releaseYear.lowercased().range(of: query.lowercased()) != nil) {
                         return true
                     }
                     return false
