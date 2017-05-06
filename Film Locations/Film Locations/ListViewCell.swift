@@ -41,10 +41,10 @@ class ListViewCell: UITableViewCell {
                         
             let numberOfLocation = movie.locations.count
             if numberOfLocation == 1 {
-                locationLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "Location")
+                locationLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "LOCATION")
             }
             else {
-                locationLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "Locations")
+                locationLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "LOCATIONS")
             }
             numberOfLocationsLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "\(numberOfLocation)")
             
