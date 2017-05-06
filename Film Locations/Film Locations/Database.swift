@@ -75,7 +75,7 @@ class Database {
         return allMovies
     }
 
-    func addPhoto(userId: String, placeId: String, image: UIImage, description: String) {
+    func addPhoto(userId: String, placeId: String, image: UIImage, description: String, completion: @escaping (Bool) -> ()) {
         print("Adding photo for \(userId) to \(placeId)")
 
         // Get a reference to the storage service using the default Firebase App
@@ -114,6 +114,7 @@ class Database {
                     ]
                     
                     images.childByAutoId().setValue(newImage)
+                    completion(true)
                 }
             }
         }

@@ -73,6 +73,10 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         
         addBackButton()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        viewDidLoad()
+    }
 
     private func addBackButton() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(onBackButtonPress(_:)))

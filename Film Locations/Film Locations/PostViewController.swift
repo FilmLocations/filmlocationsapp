@@ -31,8 +31,10 @@ class PostViewController: UIViewController {
     @IBAction func onPostButton(_ sender: Any) {
         let screenName = User.currentUser!.screenname!
         let description = descriptionTextField.text ?? ""
-        Database.sharedInstance.addPhoto(userId: screenName, placeId: postPlaceId, image: postImage, description: description)
-        self.dismiss(animated: true, completion: nil)
+        
+        Database.sharedInstance.addPhoto(userId: screenName, placeId: postPlaceId, image: postImage, description: description) { (completed) in
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 
     @IBAction func onCancelButton(_ sender: Any) {
