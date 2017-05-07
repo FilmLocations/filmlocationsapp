@@ -52,7 +52,6 @@ class MapViewController: UIViewController {
     var userCurrentLocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     let locationManager = CLLocationManager()
     @IBOutlet weak var mapView: MapView!
-    @IBOutlet weak var searchBar: UISearchBar!
     
     var isSearchResultsDisplayed = false
     
@@ -87,10 +86,15 @@ class MapViewController: UIViewController {
             }
             
             self.mapView.delegate = self
-            self.mapView.bringSubview(toFront: self.searchBar)
             
-            self.searchBar.showsCancelButton = true
-            self.searchBar.delegate = self
+            // Add searchbar to navigation
+            let searchBar = UISearchBar()
+            searchBar.placeholder = "Search Movies"
+            searchBar.sizeToFit()
+            //self.mapView.bringSubview(toFront: self.searchBar)
+            searchBar.showsCancelButton = true
+            searchBar.delegate = self
+            self.navigationItem.titleView = searchBar
             
         }
         
@@ -164,7 +168,7 @@ class MapViewController: UIViewController {
         // Update map view
         print("Uesr locations = \(userCurrentLocation.latitude) \(userCurrentLocation.longitude)")
         
-        self.sortMoviesFromUserLocation()
+        self.sortedMovies = self.sortMoviesFromUserLocation(moviesToSort: self.flatMovies)
         self.updateViewWithNewData()
     }
     
@@ -181,13 +185,9 @@ class MapViewController: UIViewController {
     }
     
     // TODO: Move this method to API class as utility method
-    func sortMoviesFromUserLocation() {
+    func sortMoviesFromUserLocation(moviesToSort: [MapMovie]) -> [MapMovie] {
         
-        if self.flatMovies == nil {
-            return
-        }
-        
-        let sortedMovies = self.flatMovies.sorted { (movie1:MapMovie, movie2:MapMovie) -> Bool in
+        let sortedMovies = moviesToSort.sorted { (movie1:MapMovie, movie2:MapMovie) -> Bool in
             
             let currentLocation = CLLocation(latitude: userCurrentLocation.latitude, longitude: userCurrentLocation.longitude)
             
@@ -200,7 +200,7 @@ class MapViewController: UIViewController {
             return differnce1 < differnce2
         }
         
-        self.sortedMovies = Array(sortedMovies[0..<maxNearByMovies])
+        return Array(sortedMovies[0..<maxNearByMovies])
     }
 }
 
@@ -239,6 +239,7 @@ extension MapViewController: UISearchBarDelegate{
         searchBar.text = ""
         self.isSearchResultsDisplayed = false
         self.currentLocationUpdated()
+        searchBar.resignFirstResponder()
         
     }
     
@@ -247,13 +248,16 @@ extension MapViewController: UISearchBarDelegate{
         if let query = searchBar.text {
             
             if query.characters.count > 0 {
-                self.sortedMovies = self.flatMovies.filter { (movie:MapMovie) -> Bool in
+                let filteredMovies = self.flatMovies.filter { (movie:MapMovie) -> Bool in
                     
                     if (movie.title.lowercased().range(of:query.lowercased()) != nil) || (movie.releaseYear.lowercased().range(of: query.lowercased()) != nil) {
                         return true
                     }
                     return false
                 }
+                
+                self.sortedMovies = self.sortMoviesFromUserLocation(moviesToSort: filteredMovies)
+                
                 self.updateViewWithSearchData()
                 self.isSearchResultsDisplayed = true
             }
