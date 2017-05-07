@@ -11,13 +11,6 @@ import AFNetworking
 
 class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    ///** Sample testing data, pass film object later
-    let address = "Jones and Pacific"
-    // test reading from firebase, not working yet
-    let backgroundURL = "https://firebasestorage.googleapis.com/v0/b/filmlocations-78a31.appspot.com/o/photos%2FtestLocation%2F1493538405.55338.jpg"
-
-    
-    /////
     
     @IBOutlet weak var photosCollectionView: UICollectionView!
     @IBOutlet weak var topBackgroundImageView: UIImageView!
@@ -27,6 +20,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var visitLocationButton: UIButton!
+    @IBOutlet weak var overviewLabel: UILabel!
     
     var movie: Movie? {
         didSet {
@@ -34,7 +28,10 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
     
+    var user: User!
+    
     var locationIndex: Int!
+    var locationImageURLs: [String]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,41 +39,43 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         // Do any additional setup after loading the view.
         
         updateUI()
+        user = User.currentUser
         
         posterImageView.clipsToBounds = true
-
-        if let backgroundImageURL = URL(string: backgroundURL) {
-            topBackgroundImageView.setImageWith(backgroundImageURL)
-        }
         
-//        addressLabel.text = address
+        let placeId = movie!.locations[locationIndex].placeId
+        
+        Database.sharedInstance.getLocationImageURLs(placeId: placeId) { (urls) in
+            
+            if urls.count > 0 {
+                Database.sharedInstance.getLocationImage(url: urls[0], completion: {(locationImage) in
+                    self.topBackgroundImageView.image = locationImage
+                })
+                
+                if self.locationImageURLs != nil {
+                    self.locationImageURLs = nil
+                }
+                
+                self.locationImageURLs = urls
+                self.photosCollectionView.reloadData()
+            }
+        }
         
         photosCollectionView.dataSource = self
 
-        // TODO Set movie during the segue to this view and get the id from there
-//        Database.sharedInstance.getFilm(filmId: 65050) { (movie) in
-//            self.movie = movie
-
-//            print("got a movie")
-//            print(movie.title)
-//            print(movie.locations)
-//            print(movie.releaseYear)
-//            print(movie.posterImageURL?.absoluteString ?? "")
-//            if let posterImageURL = movie.posterImageURL {
-//                self.posterImageView.setImageWith(posterImageURL)
-//            }
-//            self.titleLabel.text = "\(movie.title) (\(movie.releaseYear))"
-
-            //TODO Send real user data, reflect status in the icons
-//            Database.hasVisitedLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId) { (hasVisited) in
-//                print("user has visited \(hasVisited)")
-//            }
-//            Database.hasLikedLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId) { (hasVisited) in
-//                print("user has liked \(hasVisited)")
-//            }
-//        }
+        //TODO Send real user data, reflect status in the icons
+        Database.sharedInstance.hasVisitedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasVisited) in
+                print("user has visited \(hasVisited)")
+            }
+        Database.sharedInstance.hasLikedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasLiked) in
+                print("user has liked \(hasLiked)")
+            }
         
         addBackButton()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        viewDidLoad()
     }
 
     private func addBackButton() {
@@ -99,6 +98,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             }
             addressLabel.text = movie.locations[locationIndex].address
             titleLabel.text = movie.title
+            overviewLabel.text = movie.description
         }
     }
     
@@ -107,9 +107,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func addPhoto(_ sender: UIButton) {
-        print("Add photo")
-      
+    @IBAction func addPhoto(_ sender: UIButton) {      
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
@@ -127,12 +125,12 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
     @IBAction func visitLocation(_ sender: UIButton) {
         print("Visit location")
-//        Database.visitLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId)
+        Database.sharedInstance.visitLocation(userId: "testUser1", locationId: (movie?.locations[locationIndex].placeId)!)
     }
 
     @IBAction func LikeLocation(_ sender: UIButton) {
         print("Like location")
-//        Database.likeLocation(userId: "testUser1", locationId: self.movie.locations[0].placeId)
+        Database.sharedInstance.likeLocation(userId: "testUser1", locationId: (movie?.locations[locationIndex].placeId)!)
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
@@ -141,14 +139,16 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         //let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
         
-        // Do something with the images (based on your use case)
-        Database.sharedInstance.addPhoto(userId: "testUser", locationId: "testLocation", image: editedImage)
-        
-        // Dismiss UIImagePickerController to go back to your original view controller
-        
-        // TODO go to post view controller 
-        
-        dismiss(animated: true, completion: nil)
+        // Go to post edit view
+        dismiss(animated: true) {
+           let storyboard = UIStoryboard(name: "Post", bundle: nil)
+    
+            let pvc = storyboard.instantiateViewController(withIdentifier: "Post") as! PostViewController
+            pvc.postImage = editedImage
+            pvc.postPlaceId = self.movie?.locations[self.locationIndex].placeId
+
+            self.present(pvc, animated: true, completion: nil)
+        }
     }
     
     /*
@@ -160,20 +160,28 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 extension FilmDetailsViewController: UICollectionViewDataSource {
-    // TODO - Getting the photos, prioritize by user uploads and then google images?
+    
+    // TODO - Load google images when we have no user uploaded ones. Prioritize user uploaded images
   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        if let images = self.locationImageURLs {
+            return images.count
+        } else {
+            return 0
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationPhotoCollectionViewCell", for: indexPath) as! LocationPhotoCollectionViewCell
-
+            
+        Database.sharedInstance.getLocationImage(url: locationImageURLs[indexPath.row], completion: { (image) in
+            cell.locationPhotoImageView.image = image
+        })
+        
         return cell
     }
 }
