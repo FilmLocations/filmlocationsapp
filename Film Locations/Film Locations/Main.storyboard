@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zhn-cV-Tgr">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Hamburger View Controller-->
+        <scene sceneID="Uxv-kd-R2t">
+            <objects>
+                <viewController storyboardIdentifier="HamburgerView" id="Zhn-cV-Tgr" customClass="HamburgerViewController" customModule="Film_Locations" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nli-jZ-61i"/>
+                        <viewControllerLayoutGuide type="bottom" id="va8-CX-KCL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tna-hE-GgB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3J-8Q-3Eo" userLabel="MenuView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1G-rA-ymW" userLabel="ContentView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="LDZ-Vx-I9E" appends="YES" id="T3S-1X-QG5"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a3J-8Q-3Eo" firstAttribute="top" secondItem="tna-hE-GgB" secondAttribute="top" id="6WU-0O-sCA"/>
+                            <constraint firstItem="va8-CX-KCL" firstAttribute="top" secondItem="a3J-8Q-3Eo" secondAttribute="bottom" id="7Dm-cx-Ov9"/>
+                            <constraint firstItem="e1G-rA-ymW" firstAttribute="width" secondItem="tna-hE-GgB" secondAttribute="width" id="Ad4-3I-6Qq"/>
+                            <constraint firstItem="e1G-rA-ymW" firstAttribute="top" secondItem="tna-hE-GgB" secondAttribute="top" id="Gau-nA-iyj"/>
+                            <constraint firstItem="va8-CX-KCL" firstAttribute="top" secondItem="e1G-rA-ymW" secondAttribute="bottom" id="HVy-dD-PKi"/>
+                            <constraint firstItem="a3J-8Q-3Eo" firstAttribute="leading" secondItem="tna-hE-GgB" secondAttribute="leading" id="Xma-Jx-FMv"/>
+                            <constraint firstAttribute="trailing" secondItem="a3J-8Q-3Eo" secondAttribute="trailing" id="a4W-cY-cAX"/>
+                            <constraint firstItem="e1G-rA-ymW" firstAttribute="leading" secondItem="tna-hE-GgB" secondAttribute="leading" id="bdo-17-CfV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="e1G-rA-ymW" id="LfM-iv-E8I"/>
+                        <outlet property="leftMarginConstraint" destination="bdo-17-CfV" id="2O2-ff-grW"/>
+                        <outlet property="menuView" destination="a3J-8Q-3Eo" id="gw3-YI-rux"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cx8-dl-hyi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="LDZ-Vx-I9E">
+                    <connections>
+                        <action selector="onPanGesture:" destination="Zhn-cV-Tgr" id="sT4-0x-KK4"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="141.59999999999999" y="202.84857571214394"/>
+        </scene>
+    </scenes>
+</document>
