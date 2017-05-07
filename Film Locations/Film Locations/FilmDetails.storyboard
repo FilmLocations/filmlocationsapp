@@ -66,29 +66,29 @@
                                     <constraint firstAttribute="height" constant="55" id="hAI-OY-c3G"/>
                                 </constraints>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gHf-0n-9To">
+                            <collectionView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gHf-0n-9To">
                                 <rect key="frame" x="0.0" y="357" width="375" height="161"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xM3-Xz-0wt">
-                                    <size key="itemSize" width="152" height="156"/>
+                                    <size key="itemSize" width="151" height="151"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LocationPhotoCollectionViewCell" id="ePg-nD-oXC" customClass="LocationPhotoCollectionViewCell" customModule="Film_Locations" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="2.5" width="152" height="156"/>
+                                    <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LocationPhotoCollectionViewCell" id="ePg-nD-oXC" customClass="LocationPhotoCollectionViewCell" customModule="Film_Locations" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="5" width="151" height="151"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="152" height="156"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="151" height="151"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l1Q-A0-BT4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="152" height="156"/>
+                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l1Q-A0-BT4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                     <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="152" id="SF3-zO-n8h"/>
-                                                        <constraint firstAttribute="height" constant="156" id="fEg-JO-KEf"/>
+                                                        <constraint firstAttribute="width" constant="150" id="SF3-zO-n8h"/>
+                                                        <constraint firstAttribute="height" constant="150" id="fEg-JO-KEf"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -97,6 +97,7 @@
                                             <constraint firstItem="l1Q-A0-BT4" firstAttribute="leading" secondItem="ePg-nD-oXC" secondAttribute="leading" id="0xs-6a-EIF"/>
                                             <constraint firstItem="l1Q-A0-BT4" firstAttribute="top" secondItem="ePg-nD-oXC" secondAttribute="top" id="xhZ-zU-U5S"/>
                                         </constraints>
+                                        <size key="customSize" width="151" height="151"/>
                                         <connections>
                                             <outlet property="locationPhotoImageView" destination="l1Q-A0-BT4" id="vc8-Qm-tHb"/>
                                         </connections>

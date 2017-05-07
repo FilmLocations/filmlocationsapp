@@ -31,7 +31,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     var user: User!
     
     var locationIndex: Int!
-    var locationImageURLs: [String]!
+    var locationImages: [LocationImage]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,18 +45,18 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         
         let placeId = movie!.locations[locationIndex].placeId
         
-        Database.sharedInstance.getLocationImageURLs(placeId: placeId) { (urls) in
+        Database.sharedInstance.getLocationImageMetadata(placeId: placeId) { (locationImages) in
             
-            if urls.count > 0 {
-                Database.sharedInstance.getLocationImage(url: urls[0], completion: {(locationImage) in
+            if locationImages.count > 0 {
+                Database.sharedInstance.getLocationImage(url: locationImages[0].imageURL, completion: {(locationImage) in
                     self.topBackgroundImageView.image = locationImage
                 })
                 
-                if self.locationImageURLs != nil {
-                    self.locationImageURLs = nil
+                if self.locationImages != nil {
+                    self.locationImages = nil
                 }
                 
-                self.locationImageURLs = urls
+                self.locationImages = locationImages
                 self.photosCollectionView.reloadData()
             }
         }
@@ -141,7 +141,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         
         // Go to post edit view
         dismiss(animated: true) {
-           let storyboard = UIStoryboard(name: "Post", bundle: nil)
+            let storyboard = UIStoryboard(name: "Post", bundle: nil)
     
             let pvc = storyboard.instantiateViewController(withIdentifier: "Post") as! PostViewController
             pvc.postImage = editedImage
@@ -150,6 +150,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             self.present(pvc, animated: true, completion: nil)
         }
     }
+ 
     
     /*
     // MARK: - Navigation
@@ -167,7 +168,7 @@ extension FilmDetailsViewController: UICollectionViewDataSource {
     // TODO - Load google images when we have no user uploaded ones. Prioritize user uploaded images
   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let images = self.locationImageURLs {
+        if let images = self.locationImages {
             return images.count
         } else {
             return 0
@@ -178,10 +179,25 @@ extension FilmDetailsViewController: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationPhotoCollectionViewCell", for: indexPath) as! LocationPhotoCollectionViewCell
             
-        Database.sharedInstance.getLocationImage(url: locationImageURLs[indexPath.row], completion: { (image) in
+        Database.sharedInstance.getLocationImage(url: locationImages[indexPath.row].imageURL, completion: { (image) in
             cell.locationPhotoImageView.image = image
         })
         
         return cell
     }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+
+        let storyboard = UIStoryboard(name: "Fullscreen", bundle: nil)
+
+        let fullscreen = storyboard.instantiateViewController(withIdentifier: "Fullscreen") as! FullscreenViewController
+        
+        fullscreen.locationImageMetadata = locationImages[indexPath.row]
+        
+        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as! LocationPhotoCollectionViewCell
+        fullscreen.locationImage = cell.locationPhotoImageView.image
+            
+        self.present(fullscreen, animated: true, completion: nil)
+    }
+    
 }

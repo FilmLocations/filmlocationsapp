@@ -110,8 +110,9 @@ class Database {
                     let newImage = [
                         "url": downloadURL.absoluteString,
                         "userId": userId,
-                        "description": description
-                    ]
+                        "description": description,
+                        "timestamp": FIRServerValue.timestamp()
+                    ] as [String : Any]
                     
                     images.childByAutoId().setValue(newImage)
                     completion(true)
@@ -176,22 +177,26 @@ class Database {
         })
     }
     
-    func getLocationImageURLs(placeId: String, completion: @escaping ([String]) -> ()) {
+    func getLocationImageMetadata(placeId: String, completion: @escaping ([LocationImage]) -> ()) {
         let ref = FIRDatabase.database().reference()
         let imageURLs = ref.child("locationImages/\(placeId)")
-        var urls = [String]()
-        urls.removeAll()
+        var locationImages = [LocationImage]()
         
         imageURLs.observeSingleEvent(of: .value, with: { (snapshot) in
             for child in snapshot.children {
                 let data = child as! FIRDataSnapshot
                 
-                if let url = data.childSnapshot(forPath: "url").value as? String {
-                    urls.append(url)
-                }
+                let url = data.childSnapshot(forPath: "url").value as! String
+                let description = data.childSnapshot(forPath: "description").value as! String
+                let userId = data.childSnapshot(forPath: "userId").value as! String
+                let timestamp = data.childSnapshot(forPath: "timestamp").value as! NSNumber
+                
+                let location = LocationImage(imageURL: url, description: description, userId: userId, timestamp: timestamp.stringValue)
+  
+                locationImages.append(location)
             }
             
-            completion(urls)
+            completion(locationImages)
         })
     }
     

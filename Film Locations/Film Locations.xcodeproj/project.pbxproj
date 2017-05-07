@@ -21,6 +21,9 @@
 		3A75FD0A1EB416CF008F5400 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD091EB416CF008F5400 /* List.storyboard */; };
 		3A75FD0C1EB416E5008F5400 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD0B1EB416E5008F5400 /* Login.storyboard */; };
 		3A75FD0E1EB41792008F5400 /* FilmDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75FD0D1EB41792008F5400 /* FilmDetails.storyboard */; };
+		3ADABD521EBF9A5C00F5F44C /* Fullscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ADABD511EBF9A5C00F5F44C /* Fullscreen.storyboard */; };
+		3ADABD541EBF9FDF00F5F44C /* FullscreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD531EBF9FDF00F5F44C /* FullscreenViewController.swift */; };
+		3ADABD561EBFA5D100F5F44C /* LocationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD551EBFA5D100F5F44C /* LocationImage.swift */; };
 		88790C081EB6F9BE0025C5EE /* MoviePosterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */; };
 		88790C0C1EB6FA3D0025C5EE /* MoviePosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88790C0B1EB6FA3D0025C5EE /* MoviePosterView.swift */; };
 		8894F1151EB945C500FFDAA1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8894F1141EB945C500FFDAA1 /* MapView.swift */; };
@@ -60,6 +63,9 @@
 		3A75FD091EB416CF008F5400 /* List.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
 		3A75FD0B1EB416E5008F5400 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		3A75FD0D1EB41792008F5400 /* FilmDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FilmDetails.storyboard; sourceTree = "<group>"; };
+		3ADABD511EBF9A5C00F5F44C /* Fullscreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Fullscreen.storyboard; sourceTree = "<group>"; };
+		3ADABD531EBF9FDF00F5F44C /* FullscreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenViewController.swift; sourceTree = "<group>"; };
+		3ADABD551EBFA5D100F5F44C /* LocationImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationImage.swift; sourceTree = "<group>"; };
 		7CA186C724D76407B1FE1434 /* Pods_Film_Locations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Film_Locations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviePosterView.xib; sourceTree = "<group>"; };
 		88790C0B1EB6FA3D0025C5EE /* MoviePosterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviePosterView.swift; sourceTree = "<group>"; };
@@ -154,6 +160,7 @@
 				D3009AC41EB584CD00E075ED /* ListViewController.swift */,
 				3A2365D71EB47E4F00D60443 /* FilmDetailsViewController.swift */,
 				3A2D58631EBDCC2200BB7DBF /* PostViewController.swift */,
+				3ADABD531EBF9FDF00F5F44C /* FullscreenViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -173,6 +180,7 @@
 				D3009ABC1EB5848500E075ED /* Location.swift */,
 				D3009ABD1EB5848500E075ED /* FirebaseMovie.swift */,
 				3A2D58651EBE30BC00BB7DBF /* User.swift */,
+				3ADABD551EBFA5D100F5F44C /* LocationImage.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -189,6 +197,7 @@
 				3A75FD0B1EB416E5008F5400 /* Login.storyboard */,
 				3A75FD0D1EB41792008F5400 /* FilmDetails.storyboard */,
 				3A2D58671EBE333B00BB7DBF /* Post.storyboard */,
+				3ADABD511EBF9A5C00F5F44C /* Fullscreen.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -292,6 +301,7 @@
 				D3283B001EBE6BE8008B2237 /* Main.storyboard in Resources */,
 				3A2365DA1EB543D700D60443 /* GoogleService-Info.plist in Resources */,
 				3A224FA41EAD611700091BB3 /* Assets.xcassets in Resources */,
+				3ADABD521EBF9A5C00F5F44C /* Fullscreen.storyboard in Resources */,
 				3A2D58681EBE333B00BB7DBF /* Post.storyboard in Resources */,
 				D31F4FEB1EB4552F003CC557 /* MenuViewController.xib in Resources */,
 				3A75FD0A1EB416CF008F5400 /* List.storyboard in Resources */,
@@ -366,6 +376,8 @@
 				3A2D58661EBE30BC00BB7DBF /* User.swift in Sources */,
 				8894F1151EB945C500FFDAA1 /* MapView.swift in Sources */,
 				3A2D58641EBDCC2200BB7DBF /* PostViewController.swift in Sources */,
+				3ADABD561EBFA5D100F5F44C /* LocationImage.swift in Sources */,
+				3ADABD541EBF9FDF00F5F44C /* FullscreenViewController.swift in Sources */,
 				D35BE4961EB692F1003E0C8F /* Database.swift in Sources */,
 				3A2365DC1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift in Sources */,
 				3A2365D81EB47E4F00D60443 /* FilmDetailsViewController.swift in Sources */,
