@@ -13,5 +13,6 @@ target 'Film Locations' do
   pod 'GooglePlaces'
   pod 'AFNetworking'
   pod 'SwiftyJSON', '~>3.1.4'
+  pod 'FXBlurView', '~>1.6.4'
 
 end

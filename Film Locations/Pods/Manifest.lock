@@ -36,6 +36,7 @@ PODS:
   - FirebaseStorage (1.1.0):
     - FirebaseAnalytics (~> 3.7)
     - GTMSessionFetcher/Core (~> 1.1)
+  - FXBlurView (1.6.4)
   - GoogleMaps (2.1.0):
     - GoogleMaps/Maps (= 2.1.0)
   - GoogleMaps/Base (2.1.0)
@@ -54,6 +55,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - FXBlurView (~> 1.6.4)
   - GoogleMaps (= 2.1.0)
   - GooglePlaces
   - SwiftyJSON (~> 3.1.4)
@@ -66,12 +68,13 @@ SPEC CHECKSUMS:
   FirebaseDatabase: 05c96d7b43a7368dc91c07791adb49683e1738d1
   FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
   FirebaseStorage: a5c55b23741a49a72af8f30f95b3bb5ddbeda12d
+  FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
   GoogleMaps: 06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c
   GooglePlaces: 16e96266483b8010e9f275399403647978523c86
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 63b9a54b7926470319d524935496d2df8155ef45
+PODFILE CHECKSUM: dc86062788c8f9f240d2d8c6c2c88ca487307bed
 
 COCOAPODS: 1.1.1

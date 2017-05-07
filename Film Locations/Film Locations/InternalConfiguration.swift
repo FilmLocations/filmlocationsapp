@@ -14,13 +14,13 @@ struct InternalConfiguration {
     static let listToggleIcon = "listToggleIcon"
     
     static func customizeTextAppearance(text: String) -> NSAttributedString {
-        let shadow = NSShadow()
-        shadow.shadowColor = UIColor.darkGray
-        shadow.shadowOffset = CGSize(width: 2, height: 2)
-        shadow.shadowBlurRadius = 4
+//        let shadow = NSShadow()
+//        shadow.shadowColor = UIColor.darkGray
+//        shadow.shadowOffset = CGSize(width: 2, height: 2)
+//        shadow.shadowBlurRadius = 4
         let attributeColor = UIColor.white
         
-        return NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName: attributeColor,NSShadowAttributeName: shadow])
+        return NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName: attributeColor/*,NSShadowAttributeName: shadow*/])
     }
     
 }

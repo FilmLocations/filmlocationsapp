@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Hamburger Menu Controller-->
+        <scene sceneID="6EK-P0-oen">
+            <objects>
+                <viewController storyboardIdentifier="HamburgerMenuView" id="e4S-ym-yAx" customClass="HamburgerMenuController" customModule="Film_Locations" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xDy-QN-ePX"/>
+                        <viewControllerLayoutGuide type="bottom" id="z6g-76-OhD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Nye-C8-t1x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="q4w-gt-mmI">
+                                <rect key="frame" x="0.0" y="394" width="375" height="273"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCell" rowHeight="70" id="wv8-v5-NSj">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wv8-v5-NSj" id="NcE-cf-QIv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuImage2" translatesAutoresizingMaskIntoConstraints="NO" id="PwX-A3-JYA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="394"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="394" id="c00-aU-YbJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="q4w-gt-mmI" firstAttribute="leading" secondItem="Nye-C8-t1x" secondAttribute="leading" id="1xf-Jb-Gif"/>
+                            <constraint firstItem="q4w-gt-mmI" firstAttribute="top" secondItem="PwX-A3-JYA" secondAttribute="bottom" id="2a7-TI-zbt"/>
+                            <constraint firstItem="q4w-gt-mmI" firstAttribute="top" secondItem="PwX-A3-JYA" secondAttribute="bottom" id="CUI-rX-4iu"/>
+                            <constraint firstAttribute="trailing" secondItem="PwX-A3-JYA" secondAttribute="trailing" id="IGr-d3-GMN"/>
+                            <constraint firstItem="PwX-A3-JYA" firstAttribute="top" secondItem="Nye-C8-t1x" secondAttribute="top" id="Isg-hu-09z"/>
+                            <constraint firstAttribute="trailing" secondItem="q4w-gt-mmI" secondAttribute="trailing" id="J5I-bK-OQq"/>
+                            <constraint firstItem="z6g-76-OhD" firstAttribute="top" secondItem="q4w-gt-mmI" secondAttribute="bottom" id="OPl-T0-RSj"/>
+                            <constraint firstItem="PwX-A3-JYA" firstAttribute="leading" secondItem="Nye-C8-t1x" secondAttribute="leading" id="x77-A4-fQe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="q4w-gt-mmI" id="XC6-PF-Ril"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DnP-nm-t22" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-458.39999999999998" y="184.85757121439281"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="menuImage2" width="400" height="566"/>
+    </resources>
+</document>
