@@ -67,6 +67,7 @@ class MapViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         Database.sharedInstance.getAllFilms { (movies: [Movie]) in
+            self.movies = movies
             self.flatMovies = MapMovie.toMapMovies(movies: movies)
             
             // Ask for Authorisation from the User.
@@ -140,6 +141,7 @@ class MapViewController: UIViewController {
                 
                 let moviePosterView = MoviePosterView(frame: CGRect(x: xOffset, y: 8.0 , width: self.scrollView.frame.height, height: self.scrollView.frame.height))
                 moviePosterView.moviePosterDataSource = moviePosterViewDataSource
+                moviePosterView.delegate = self
                 self.scrollView.addSubview(moviePosterView)
                 xOffset = xOffset + self.scrollView.frame.height + 8
             }
@@ -260,5 +262,36 @@ extension MapViewController: UISearchBarDelegate{
         }
         
     }
-    
+}
+
+extension MapViewController: MoviePosterViewDelegate {
+    func didTapOnImage(selectedMovie: MapMovie) {
+        let filmDetailsStoryBoard = UIStoryboard(name: "FilmDetails", bundle: nil)
+        let detailsViewController = filmDetailsStoryBoard.instantiateViewController(withIdentifier: "FilmDetailsViewController") as? FilmDetailsViewController
+        
+        if let detailsViewController = detailsViewController {
+            
+            if let movie = self.movies.filter({$0.id == selectedMovie.id}).first {
+                
+                var locationIndex: Int = 0
+                
+                for (index,location) in movie.locations.enumerated() {
+                    if location.placeId == selectedMovie.location.placeId {
+                        locationIndex = index
+                        break
+                    }
+                }
+                
+                detailsViewController.locationIndex = locationIndex
+                detailsViewController.movie = movie
+                
+                let navigationController = UINavigationController(rootViewController: detailsViewController)
+                navigationController.setViewControllers([detailsViewController], animated: false)
+                
+                self.present(navigationController, animated: true, completion: nil)
+            }
+            
+            
+        }
+    }
 }
