@@ -57,7 +57,7 @@ class Database {
                    let long = movie.long {
 
                     if mappedObjects[title] == nil {
-                        
+                        locations.removeAll()
                         locations.append(Location(placeId: placeId, address: address, lat: lat, long: long))
                         mappedObjects[title] = Movie(firebaseMovie: movie, locations: locations, isExpanded: false)
                     }
