@@ -15,18 +15,9 @@ protocol MapViewDelegate: class {
 }
 
 class MapView: UIView {
-    
     var displayData:[MapMovie]!
     var googleMapView: GMSMapView!
     weak var delegate:MapViewDelegate?
-    
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -37,7 +28,7 @@ class MapView: UIView {
         super.init(frame: frame)
         self.loadInitialMap()
     }
-    
+  
     private func loadInitialMap() {
         let camera = GMSCameraPosition.camera(withLatitude: 0.0, longitude: 0.0, zoom: 15.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
