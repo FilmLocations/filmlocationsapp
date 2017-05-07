@@ -32,12 +32,15 @@ class ListViewController: UIViewController {
     
     private var activeFilter: Filters = .NewMovies {
         willSet {
+            if viewIfLoaded == nil {
+                return
+            }
             deactivateAllFilters()
             
             switch newValue {
             case .NewMovies:
                 newMoviesFilterLabel.isHidden = false
-                filteredMovies = filteredMovies.sorted{$0.releaseYear > $1.releaseYear}
+                movies = sortMoviesByReleaseDates()
             case .Popular:
                 popularFilterLabel.isHidden = false
                 filteredMovies = filteredMovies.sorted{$0.title > $1.title}
@@ -70,12 +73,11 @@ class ListViewController: UIViewController {
         Database.sharedInstance.getAllFilms { (movies: [Movie]) in
             self.movies = movies
             self.filteredMovies = movies
+            self.activeFilter = self.getPersistantActiveFilter()
             self.tableView.reloadData()
         }
         
         setupSearchBar()
-        
-        activeFilter = getPersistantActiveFilter()
         
         filtersView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onFilterTapGesture(_:))))
     }
@@ -123,6 +125,28 @@ class ListViewController: UIViewController {
                 break
             }
         }
+    }
+    
+    private func sortMoviesByReleaseDates() -> [Movie] {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, YYYY"
+        
+        filteredMovies.sort { (movie1, movie2) -> Bool in
+            guard let stringDate1 = movie1.date else {
+                return false
+            }
+            
+            guard let stringDate2 = movie2.date else {
+                return false
+            }
+            
+            let date1 = dateFormatter.date(from: stringDate1)
+            let date2 = dateFormatter.date(from: stringDate2)
+        
+            return date1!.compare(date2!) == ComparisonResult.orderedDescending
+        }
+        return filteredMovies
     }
 }
 
