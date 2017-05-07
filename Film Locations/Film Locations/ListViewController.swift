@@ -11,11 +11,50 @@ import UIKit
 class ListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var filtersView: UIView!
+    @IBOutlet weak var newMoviesFilterLabel: UILabel!
+    @IBOutlet weak var popularFilterLabel: UILabel!
+    @IBOutlet weak var mostVisitedFilterLabel: UILabel!
+    @IBOutlet weak var favoritesFilterLabel: UILabel!
     
     var movies: [Movie] = []
     var filteredMovies: [Movie] = []
     var isSearchActive = false
     let search = UISearchBar()
+    
+    private enum Filters: Int {
+    
+        case NewMovies = 0
+        case Popular
+        case MostVisited
+        case Favorites
+    }
+    
+    private var activeFilter: Filters = .NewMovies {
+        willSet {
+            deactivateAllFilters()
+            
+            switch newValue {
+            case .NewMovies:
+                newMoviesFilterLabel.isHidden = false
+                filteredMovies = filteredMovies.sorted{$0.releaseYear > $1.releaseYear}
+            case .Popular:
+                popularFilterLabel.isHidden = false
+                filteredMovies = filteredMovies.sorted{$0.title > $1.title}
+            case .MostVisited:
+                mostVisitedFilterLabel.isHidden = false
+                filteredMovies = filteredMovies.sorted{$0.numberOfRows > $1.numberOfRows}
+            case .Favorites:
+                favoritesFilterLabel.isHidden = false
+                filteredMovies = filteredMovies.sorted{$0.releaseYear > $1.releaseYear}
+            }
+            
+            setPersistantActiveFilter(to: newValue.rawValue)
+            
+            // refresh the display
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +74,10 @@ class ListViewController: UIViewController {
         }
         
         setupSearchBar()
+        
+        activeFilter = getPersistantActiveFilter()
+        
+        filtersView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onFilterTapGesture(_:))))
     }
     
     private func setupSearchBar() {
@@ -43,6 +86,43 @@ class ListViewController: UIViewController {
         search.sizeToFit()
         
         search.delegate = self
+    }
+    
+    private func getPersistantActiveFilter() -> Filters {
+        return UserDefaults.standard.object(forKey: "ActiveFilter") as? Filters ?? .NewMovies
+    }
+    
+    private func setPersistantActiveFilter(to value: Int) {
+        UserDefaults.standard.set(value, forKey: "ActiveFilter")
+        UserDefaults.standard.synchronize()
+    }
+    
+    private func deactivateAllFilters() {
+        newMoviesFilterLabel.isHidden = true
+        popularFilterLabel.isHidden = true
+        mostVisitedFilterLabel.isHidden = true
+        favoritesFilterLabel.isHidden = true
+    }
+    
+    @objc private func onFilterTapGesture(_ sender: UITapGestureRecognizer) {
+        sender.numberOfTapsRequired = 1
+        if sender.state == .ended
+        {
+            let tappedPosition = sender.location(in: filtersView)
+            
+            switch tappedPosition.x {
+            case 8...43:
+                activeFilter = .NewMovies
+            case 76...135:
+                activeFilter = .Popular
+            case 168...263:
+                activeFilter = .MostVisited
+            case 297...367:
+                activeFilter = .Favorites
+            default:
+                break
+            }
+        }
     }
 }
 
@@ -67,7 +147,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         }
         else {
             // display movie poster
-            cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) 
+            cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath)
             cell.textLabel?.text = filteredMovies[indexPath.section].locations[indexPath.row - 1].address
         }
         return cell!
