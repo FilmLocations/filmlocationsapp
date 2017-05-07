@@ -15,12 +15,18 @@ struct MoviePosterViewDataSource {
     var referenceLocation: CLLocation
 }
 
+protocol MoviePosterViewDelegate: class {
+    func didTapOnImage(selectedMovie: MapMovie)
+}
+
 class MoviePosterView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var yearLabel: UILabel!
+    
+    weak var delegate: MoviePosterViewDelegate?
     
     var moviePosterDataSource: MoviePosterViewDataSource! {
         didSet{
@@ -68,6 +74,11 @@ class MoviePosterView: UIView {
         nib.instantiate(withOwner: self, options: nil)
         contentView.frame = bounds
         addSubview(contentView)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnImageView(sender:)))
+        tapGesture.delegate = self
+        self.posterImageView.addGestureRecognizer(tapGesture)
+        
     }
     
     func loadFirstPhotoForPlace(placeID: String) {
@@ -94,6 +105,12 @@ class MoviePosterView: UIView {
             }
         })
     }
+}
 
-
+extension MoviePosterView : UIGestureRecognizerDelegate {
+    
+    func didTapOnImageView(sender: UITapGestureRecognizer){
+        self.delegate?.didTapOnImage(selectedMovie: moviePosterDataSource.movie)
+        
+    }
 }
