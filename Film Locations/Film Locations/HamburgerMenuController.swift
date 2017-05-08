@@ -46,6 +46,9 @@ class HamburgerMenuController: UIViewController {
         
         // setup the screen displayed after launching
         hamburgerViewController.contentViewController = mapNavigationController
+        
+        //tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .top)
+        
     }
 
 }
@@ -65,15 +68,7 @@ extension HamburgerMenuController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
+        tableView.deselectRow(at: indexPath, animated: true)    
         hamburgerViewController.contentViewController = viewControllers[indexPath.row]
-        
-        if let mapVC = viewControllers[indexPath.row] as? MapViewController {
-            mapVC.delegate = self.hamburgerViewController
-        }
-        else if let listVC = viewControllers[indexPath.row] as? ListViewController {
-            listVC.delegate = self.hamburgerViewController
-        }
     }
 }
