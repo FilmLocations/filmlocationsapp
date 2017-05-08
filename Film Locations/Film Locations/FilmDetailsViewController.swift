@@ -62,8 +62,9 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         photosCollectionView.dataSource = self
+        photosCollectionView.delegate = self
 
-        //TODO Send real user data, reflect status in the icons
+        //TODO reflect status in the icons
         Database.sharedInstance.hasVisitedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasVisited) in
                 print("user has visited \(hasVisited)")
             }
@@ -163,7 +164,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     */
 }
 
-extension FilmDetailsViewController: UICollectionViewDataSource {
+extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     // TODO - Load google images when we have no user uploaded ones. Prioritize user uploaded images
   
@@ -186,17 +187,16 @@ extension FilmDetailsViewController: UICollectionViewDataSource {
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Fullscreen", bundle: nil)
-
+        
         let fullscreen = storyboard.instantiateViewController(withIdentifier: "Fullscreen") as! FullscreenViewController
         
         fullscreen.locationImageMetadata = locationImages[indexPath.row]
         
         let cell = collectionView.cellForItem(at: indexPath as IndexPath) as! LocationPhotoCollectionViewCell
         fullscreen.locationImage = cell.locationPhotoImageView.image
-            
+        
         self.present(fullscreen, animated: true, completion: nil)
     }
     
