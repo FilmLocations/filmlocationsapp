@@ -130,7 +130,7 @@ class ListViewController: UIViewController {
     private func sortMoviesByReleaseDates() -> [Movie] {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd, YYYY"
+        dateFormatter.dateFormat = "YYYY-MM-DD"
         
         filteredMovies.sort { (movie1, movie2) -> Bool in
             guard let stringDate1 = movie1.date else {
