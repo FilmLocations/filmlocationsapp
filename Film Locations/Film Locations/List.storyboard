@@ -129,7 +129,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="189"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="esV-dU-asz" id="i9G-om-84M">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="188.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JCS-5u-WNl">
@@ -207,7 +207,7 @@
                                         <rect key="frame" x="0.0" y="217" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Q7-t5-GCN" id="t2E-qA-4e7">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="85"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="85.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -226,7 +226,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NjJ-zV-5Ql">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="2HB-Bc-a49"/>
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="2HB-Bc-a49">
+                            <connections>
+                                <action selector="onMenuPress:" destination="JSh-Oj-8wZ" id="Ec6-9p-iVK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="favoritesFilterLabel" destination="87x-Da-bof" id="cA9-9j-O0f"/>

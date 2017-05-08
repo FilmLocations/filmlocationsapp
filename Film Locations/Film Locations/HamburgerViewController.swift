@@ -86,3 +86,11 @@ class HamburgerViewController: UIViewController {
         }
     }
 }
+
+extension HamburgerViewController: MenuButtonPressDelegate {
+    func onMenuButtonPress() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.leftMarginConstraint.constant = self.view.frame.size.width - 50
+        })
+    }
+}
