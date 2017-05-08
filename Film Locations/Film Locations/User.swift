@@ -13,12 +13,14 @@ class User: NSObject {
     var screenname: String!
     var profileUrl: URL?
     var dictionary: [String: Any]
+    var location: String?
 
     init(dictionary: [String: Any]) {
         self.dictionary = dictionary
         
         name = dictionary["name"] as? String
         screenname = dictionary["screen_name"] as? String
+        location = dictionary["location"] as? String
         
         let profileUrlString = dictionary["profile_image_url_https"] as? String
         if let profileUrlString = profileUrlString {

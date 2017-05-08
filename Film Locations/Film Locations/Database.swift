@@ -166,7 +166,7 @@ class Database {
     func hasLikedLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
         let ref = FIRDatabase.database().reference()
         
-        let like = ref.child("like/\(userId)--\(locationId)")
+        let like = ref.child("likes/\(userId)--\(locationId)")
         
         like.observeSingleEvent(of: .value, with: { (snapshot) in
             if (snapshot.exists()) {
@@ -177,6 +177,54 @@ class Database {
         })
     }
     
+    func userLikesCount(userId: String, completion: @escaping (Int) -> ()) {
+        let ref = FIRDatabase.database().reference()
+
+        let likes = ref.child("likes").queryOrderedByKey().queryStarting(atValue: userId)
+
+        var likesCount = 0
+        likes.observeSingleEvent(of: .value, with: { (snapshot) in
+            if (snapshot.exists()) {
+                for child in snapshot.children {
+                    let data = child as! FIRDataSnapshot
+                    if (data.key.hasPrefix(userId)) {
+                        likesCount = likesCount + 1
+                    } else {
+                        break
+                    }
+                }
+
+                completion(likesCount)
+            } else {
+                completion(0)
+            }
+        })
+    }
+
+    func userVisitsCount(userId: String, completion: @escaping (Int) -> ()) {
+        let ref = FIRDatabase.database().reference()
+
+        let likes = ref.child("visits").queryOrderedByKey().queryStarting(atValue: userId)
+
+        var likesCount = 0
+        likes.observeSingleEvent(of: .value, with: { (snapshot) in
+            if (snapshot.exists()) {
+                for child in snapshot.children {
+                    let data = child as! FIRDataSnapshot
+                    if (data.key.hasPrefix(userId)) {
+                        likesCount = likesCount + 1
+                    } else {
+                        break
+                    }
+                }
+
+                completion(likesCount)
+            } else {
+                completion(0)
+            }
+        })
+    }
+
     func getLocationImageMetadata(placeId: String, completion: @escaping ([LocationImage]) -> ()) {
         let ref = FIRDatabase.database().reference()
         let imageURLs = ref.child("locationImages/\(placeId)")
