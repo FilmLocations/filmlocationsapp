@@ -179,9 +179,9 @@ class Database {
     
     func userLikesCount(userId: String, completion: @escaping (Int) -> ()) {
         let ref = FIRDatabase.database().reference()
-
+        
         let likes = ref.child("likes").queryOrderedByKey().queryStarting(atValue: userId)
-
+        
         var likesCount = 0
         likes.observeSingleEvent(of: .value, with: { (snapshot) in
             if (snapshot.exists()) {
@@ -193,19 +193,19 @@ class Database {
                         break
                     }
                 }
-
+                
                 completion(likesCount)
             } else {
                 completion(0)
             }
         })
     }
-
+    
     func userVisitsCount(userId: String, completion: @escaping (Int) -> ()) {
         let ref = FIRDatabase.database().reference()
-
+        
         let likes = ref.child("visits").queryOrderedByKey().queryStarting(atValue: userId)
-
+        
         var likesCount = 0
         likes.observeSingleEvent(of: .value, with: { (snapshot) in
             if (snapshot.exists()) {
@@ -217,14 +217,14 @@ class Database {
                         break
                     }
                 }
-
+                
                 completion(likesCount)
             } else {
                 completion(0)
             }
         })
     }
-
+    
     func getLocationImageMetadata(placeId: String, completion: @escaping ([LocationImage]) -> ()) {
         let ref = FIRDatabase.database().reference()
         let imageURLs = ref.child("locationImages/\(placeId)")
@@ -235,11 +235,17 @@ class Database {
                 let data = child as! FIRDataSnapshot
                 
                 let url = data.childSnapshot(forPath: "url").value as! String
-                let description = data.childSnapshot(forPath: "description").value as! String
+                let description = data.childSnapshot(forPath: "description").value as? String ?? ""
                 let userId = data.childSnapshot(forPath: "userId").value as! String
-                let timestamp = data.childSnapshot(forPath: "timestamp").value as! NSNumber
+                let timestamp = data.childSnapshot(forPath: "timestamp").value as? TimeInterval
                 
-                let location = LocationImage(imageURL: url, description: description, userId: userId, timestamp: timestamp.stringValue)
+                var formattedTimestamp = ""
+                let date = Date(timeIntervalSince1970: timestamp!/1000)
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MMM dd, YYYY"
+                formattedTimestamp = formatter.string(from: date)
+                
+                let location = LocationImage(imageURL: url, description: description, userId: userId, timestamp: formattedTimestamp)
   
                 locationImages.append(location)
             }

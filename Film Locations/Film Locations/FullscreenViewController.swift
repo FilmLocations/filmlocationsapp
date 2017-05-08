@@ -23,7 +23,7 @@ class FullscreenViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         locationImageView.image = locationImage
-        descriptionLabel.text = locationImageMetadata.description
+        descriptionLabel.text = "\(locationImageMetadata.userId) \(locationImageMetadata.description)"
         timeLabel.text = locationImageMetadata.timestamp
     }
 
@@ -31,8 +31,12 @@ class FullscreenViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
+    @IBAction func onBackButton(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
