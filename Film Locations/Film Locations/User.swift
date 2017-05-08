@@ -14,6 +14,7 @@ class User: NSObject {
     var profileUrl: URL?
     var dictionary: [String: Any]
     var location: String?
+    var isAnonymous = false
 
     init(dictionary: [String: Any]) {
         self.dictionary = dictionary
@@ -37,12 +38,14 @@ class User: NSObject {
                     "name" : "anonymous",
                     "screen_name" : "anonymous" ]
                 let user = User(dictionary: userInfo)
+                user.isAnonymous = true
                 return user
             } else {
                 return _currentUser
             }
         }
         set (user) {
+            user?.isAnonymous = false
             _currentUser = user
         }
     }

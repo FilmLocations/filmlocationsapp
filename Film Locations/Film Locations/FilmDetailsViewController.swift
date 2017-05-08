@@ -21,6 +21,9 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var visitLocationButton: UIButton!
     @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var numberOfVisitsLabel: UILabel!
+    @IBOutlet weak var numberOfLikesLabel: UILabel!
+    @IBOutlet weak var numberOfUploadsLabel: UILabel!
     
     var movie: Movie? {
         didSet {
@@ -37,9 +40,9 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        updateUI()
         user = User.currentUser
+
+        updateUI()
         
         posterImageView.clipsToBounds = true
         
@@ -58,16 +61,42 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
                 
                 self.locationImages = locationImages
                 self.photosCollectionView.reloadData()
+                
+                if (locationImages.count == 1) {
+                    self.numberOfUploadsLabel.text = "\(locationImages.count) upload"
+                } else {
+                    self.numberOfUploadsLabel.text = "\(locationImages.count) uploads"
+                }
             }
         }
         
         photosCollectionView.dataSource = self
         photosCollectionView.delegate = self
 
+        Database.sharedInstance.locationLikesCount(placeId: (movie?.locations[locationIndex].placeId)!) { (count) in
+            if (count > 0) {
+                if (count == 1) {
+                    self.numberOfLikesLabel.text = "\(count) like"
+                } else {
+                    self.numberOfLikesLabel.text = "\(count) likes"
+                }
+            }
+        }
+        Database.sharedInstance.locationVisitsCount(placeId: (movie?.locations[locationIndex].placeId)!) { (count) in
+            if (count > 0) {
+                if (count == 1) {
+                    self.numberOfVisitsLabel.text = "\(count) visit"
+                } else {
+                    self.numberOfVisitsLabel.text = "\(count) visits"
+                }
+            }
+        }
+        
         //TODO reflect status in the icons
         Database.sharedInstance.hasVisitedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasVisited) in
                 print("user has visited \(hasVisited)")
             }
+        
         Database.sharedInstance.hasLikedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasLiked) in
                 print("user has liked \(hasLiked)")
             }
@@ -100,6 +129,12 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             addressLabel.text = movie.locations[locationIndex].address
             titleLabel.text = movie.title
             overviewLabel.text = movie.description
+        }
+        
+        // Anonymous users can't mark as visited or like
+        if (user.isAnonymous) {
+            self.likeButton.isEnabled = false
+            self.visitLocationButton.isEnabled = false
         }
     }
     
