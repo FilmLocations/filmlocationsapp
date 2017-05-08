@@ -200,7 +200,9 @@ class MapViewController: UIViewController {
             return differnce1 < differnce2
         }
         
-        return Array(sortedMovies[0..<maxNearByMovies])
+        let toIndex = sortedMovies.count < maxNearByMovies ? sortedMovies.count : maxNearByMovies
+        
+        return Array(sortedMovies[0..<toIndex])
     }
 }
 
