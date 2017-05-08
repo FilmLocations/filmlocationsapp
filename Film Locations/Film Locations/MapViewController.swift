@@ -41,7 +41,7 @@ struct MapMovie {
     
 }
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
     let maxNearByMovies = 20
     let currentUsersLocationKey =  "kUserCurrentPreferncesKey"

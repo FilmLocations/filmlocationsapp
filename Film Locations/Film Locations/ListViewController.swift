@@ -12,7 +12,7 @@ protocol MenuButtonPressDelegate {
     func onMenuButtonPress()
 }
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, MenuContentViewControllerProtocol {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var filtersView: UIView!

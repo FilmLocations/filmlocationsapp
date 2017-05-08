@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol MenuContentViewControllerProtocol {
+    var delegate: MenuButtonPressDelegate? {get set}
+}
+
 class HamburgerViewController: UIViewController {
 
     @IBOutlet weak var menuView: UIView!
@@ -38,6 +42,9 @@ class HamburgerViewController: UIViewController {
             self.addChildViewController(contentViewController)
             contentViewController.willMove(toParentViewController: self)
             contentView.addSubview(contentViewController.view)
+            var vc = contentViewController.childViewControllers.first as! MenuContentViewControllerProtocol
+            vc.delegate = self
+            
             contentViewController.didMove(toParentViewController: self)
             
             // After the content view is selected, the menu view disappears automatically
@@ -89,6 +96,7 @@ class HamburgerViewController: UIViewController {
 
 extension HamburgerViewController: MenuButtonPressDelegate {
     func onMenuButtonPress() {
+        print("Menu pressed")
         UIView.animate(withDuration: 0.3, animations: {
             self.leftMarginConstraint.constant = self.view.frame.size.width - 50
         })
