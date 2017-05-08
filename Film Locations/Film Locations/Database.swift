@@ -106,15 +106,19 @@ class Database {
                     //Add URL to firebase for retrieval
                     let ref = FIRDatabase.database().reference()
                     let images = ref.child("locationImages/\(placeId)")
+                    let userImages = ref.child("userImages/\(userId)")
                     
                     let newImage = [
                         "url": downloadURL.absoluteString,
                         "userId": userId,
                         "description": description,
-                        "timestamp": FIRServerValue.timestamp()
+                        "placeId": placeId,
+                        "timestamp": FIRServerValue.timestamp(),
                     ] as [String : Any]
                     
                     images.childByAutoId().setValue(newImage)
+                    userImages.childByAutoId().setValue(newImage)
+                    
                     completion(true)
                 }
             }
@@ -225,6 +229,36 @@ class Database {
         })
     }
     
+    func getUserImageMetadata(userId: String, completion: @escaping ([LocationImage]) -> ()) {
+        let ref = FIRDatabase.database().reference()
+        let imageURLs = ref.child("userImages/\(userId)")
+        var locationImages = [LocationImage]()
+        
+        imageURLs.observeSingleEvent(of: .value, with: { (snapshot) in
+            for child in snapshot.children {
+                let data = child as! FIRDataSnapshot
+                
+                let url = data.childSnapshot(forPath: "url").value as! String
+                let description = data.childSnapshot(forPath: "description").value as? String ?? ""
+                let userId = data.childSnapshot(forPath: "userId").value as! String
+                let timestamp = data.childSnapshot(forPath: "timestamp").value as? TimeInterval
+                let placeId = data.childSnapshot(forPath: "placeId").value as! String
+                
+                var formattedTimestamp = ""
+                let date = Date(timeIntervalSince1970: timestamp!/1000)
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MMM dd, YYYY"
+                formattedTimestamp = formatter.string(from: date)
+                
+                let location = LocationImage(imageURL: url, description: description, userId: userId, timestamp: formattedTimestamp, placeId: placeId)
+                
+                locationImages.append(location)
+            }
+            
+            completion(locationImages)
+        })
+    }
+    
     func getLocationImageMetadata(placeId: String, completion: @escaping ([LocationImage]) -> ()) {
         let ref = FIRDatabase.database().reference()
         let imageURLs = ref.child("locationImages/\(placeId)")
@@ -245,7 +279,7 @@ class Database {
                 formatter.dateFormat = "MMM dd, YYYY"
                 formattedTimestamp = formatter.string(from: date)
                 
-                let location = LocationImage(imageURL: url, description: description, userId: userId, timestamp: formattedTimestamp)
+                let location = LocationImage(imageURL: url, description: description, userId: userId, timestamp: formattedTimestamp, placeId: placeId)
   
                 locationImages.append(location)
             }
