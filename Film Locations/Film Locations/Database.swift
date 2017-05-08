@@ -129,7 +129,9 @@ class Database {
         let ref = FIRDatabase.database().reference()
         let visits = ref.child("visits")
         
-        visits.child("\(userId)--\(locationId)").setValue(["timestamp": FIRServerValue.timestamp()])
+        visits.child("\(userId)--\(locationId)").setValue(["timestamp": FIRServerValue.timestamp(),
+                                                           "locationId": locationId,
+                                                           "userId": userId])
     }
     
     func removeVisitLocation(userId: String, locationId: String) {
@@ -143,7 +145,9 @@ class Database {
         let ref = FIRDatabase.database().reference()
         let likes = ref.child("likes")
         
-        likes.child("\(userId)--\(locationId)").setValue(["timestamp": FIRServerValue.timestamp()])
+        likes.child("\(userId)--\(locationId)").setValue(["timestamp": FIRServerValue.timestamp(),
+                                                          "locationId": locationId,
+                                                          "userId": userId])
     }
     
     func removeLikeLocation(userId: String, locationId: String) {
@@ -199,6 +203,34 @@ class Database {
                 }
                 
                 completion(likesCount)
+            } else {
+                completion(0)
+            }
+        })
+    }
+    
+    func locationLikesCount(placeId: String, completion: @escaping (Int) -> ()) {
+        let ref = FIRDatabase.database().reference()
+        
+        let likes = ref.child("likes").queryOrdered(byChild: "locationId").queryEqual(toValue: placeId)
+        
+        likes.observeSingleEvent(of: .value, with: { (snapshot) in
+            if (snapshot.exists()) {
+                completion(Int(snapshot.childrenCount))
+            } else {
+                completion(0)
+            }
+        })
+    }
+    
+    func locationVisitsCount(placeId: String, completion: @escaping (Int) -> ()) {
+        let ref = FIRDatabase.database().reference()
+        
+        let likes = ref.child("visits").queryOrdered(byChild: "locationId").queryEqual(toValue: placeId)
+        
+        likes.observeSingleEvent(of: .value, with: { (snapshot) in
+            if (snapshot.exists()) {
+                completion(Int(snapshot.childrenCount))
             } else {
                 completion(0)
             }
