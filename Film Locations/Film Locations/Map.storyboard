@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,7 +43,13 @@
                             <constraint firstItem="brK-39-k4p" firstAttribute="top" secondItem="Lb5-Lr-KyW" secondAttribute="bottom" constant="8" id="uYI-J5-hxO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="gCm-TO-axw"/>
+                    <navigationItem key="navigationItem" id="gCm-TO-axw">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="u0j-ML-QsH">
+                            <connections>
+                                <action selector="onMenuPress:" destination="Ne4-ir-tMd" id="luU-fR-X4O"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="Lb5-Lr-KyW" id="4Wb-Fe-wis"/>
                         <outlet property="scrollView" destination="brK-39-k4p" id="p5r-pr-ACo"/>
@@ -58,7 +64,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MapNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="xFL-i5-lTK" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="q6k-A5-cZA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q6k-A5-cZA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

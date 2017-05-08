@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol MenuButtonPressDelegate {
+    func onMenuButtonPress()
+}
+
 class ListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -21,6 +25,8 @@ class ListViewController: UIViewController {
     var filteredMovies: [Movie] = []
     var isSearchActive = false
     let search = UISearchBar()
+    
+    var delegate: MenuButtonPressDelegate?
     
     private enum Filters: Int {
     
@@ -80,6 +86,10 @@ class ListViewController: UIViewController {
         setupSearchBar()
         
         filtersView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onFilterTapGesture(_:))))
+    }
+    
+    @IBAction func onMenuPress(_ sender: UIBarButtonItem) {
+        delegate?.onMenuButtonPress()
     }
     
     private func setupSearchBar() {

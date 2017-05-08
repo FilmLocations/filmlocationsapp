@@ -80,5 +80,12 @@ extension HamburgerMenuController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         hamburgerViewController.contentViewController = viewControllers[indexPath.row]
+        
+        if let mapVC = viewControllers[indexPath.row] as? MapViewController {
+            mapVC.delegate = self.hamburgerViewController
+        }
+        else if let listVC = viewControllers[indexPath.row] as? ListViewController {
+            listVC.delegate = self.hamburgerViewController
+        }
     }
 }

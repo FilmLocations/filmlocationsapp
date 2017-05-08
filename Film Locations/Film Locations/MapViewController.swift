@@ -59,6 +59,8 @@ class MapViewController: UIViewController {
     var movies: [Movie]!
     var sortedMovies:[MapMovie]!
     
+    var delegate: MenuButtonPressDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -103,6 +105,10 @@ class MapViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func onMenuPress(_ sender: UIBarButtonItem) {
+        delegate?.onMenuButtonPress()
     }
     
     func saveUsersLastKnownLocation(userCurrentLocation: CLLocationCoordinate2D) {
