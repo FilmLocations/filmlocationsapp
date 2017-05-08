@@ -125,12 +125,12 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
     @IBAction func visitLocation(_ sender: UIButton) {
         print("Visit location")
-        Database.sharedInstance.visitLocation(userId: "testUser1", locationId: (movie?.locations[locationIndex].placeId)!)
+        Database.sharedInstance.visitLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!)
     }
 
     @IBAction func LikeLocation(_ sender: UIButton) {
         print("Like location")
-        Database.sharedInstance.likeLocation(userId: "testUser1", locationId: (movie?.locations[locationIndex].placeId)!)
+        Database.sharedInstance.likeLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!)
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
