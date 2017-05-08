@@ -32,13 +32,15 @@ class MapView: UIView {
     private func loadInitialMap() {
         let camera = GMSCameraPosition.camera(withLatitude: 0.0, longitude: 0.0, zoom: 15.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.frame = CGRect(x:0, y:0, width:self.frame.width, height:self.frame.height)
         mapView.delegate = self
-        
         self.googleMapView = mapView
         self.googleMapView.isMyLocationEnabled = true
         
         self.addSubview(self.googleMapView)
+    }
+    
+    override func layoutSubviews() {
+        googleMapView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
     }
     
     func updateMapsMarkers(sortedMovies:[MapMovie]) {
