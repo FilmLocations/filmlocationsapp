@@ -38,7 +38,7 @@ class Movie {
         self.company = firebaseMovie.company
         self.director = firebaseMovie.director
         self.writer = firebaseMovie.writer
-        self.date = formatConversion(firebaseMovie.date)
+        self.date = firebaseMovie.date
         
         // unwraping the optional value is safe here because a check was done before creating the Movie object
         self.releaseYear = firebaseMovie.releaseYear!
