@@ -21,19 +21,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4g-0R-Njb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4g-0R-Njb">
                                 <rect key="frame" x="16" y="587" width="343" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="eyN-fH-COg"/>
+                                </constraints>
                                 <state key="normal" title="Continue without login"/>
                                 <connections>
                                     <action selector="onContinueWithoutLogin:" destination="5ZA-le-HpF" eventType="touchUpInside" id="3fr-ue-QmC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e15-dq-dyf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e15-dq-dyf">
                                 <rect key="frame" x="16" y="500" width="343" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.31994250419999998" green="0.84137207270000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Roq-Cp-Uga"/>
+                                </constraints>
                                 <state key="normal" title="Login with Twitter"/>
                                 <connections>
                                     <action selector="onTwitterLogin:" destination="5ZA-le-HpF" eventType="touchUpInside" id="bXQ-Ja-JuH"/>
@@ -41,6 +45,14 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="F4g-0R-Njb" secondAttribute="bottom" constant="20" id="32b-F4-rYN"/>
+                            <constraint firstAttribute="trailing" secondItem="e15-dq-dyf" secondAttribute="trailing" constant="16" id="7jO-vk-08X"/>
+                            <constraint firstItem="F4g-0R-Njb" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" constant="16" id="8qF-Hh-F6V"/>
+                            <constraint firstAttribute="trailing" secondItem="F4g-0R-Njb" secondAttribute="trailing" constant="16" id="OOC-lI-FpY"/>
+                            <constraint firstItem="F4g-0R-Njb" firstAttribute="top" secondItem="e15-dq-dyf" secondAttribute="bottom" constant="27" id="Qs9-sH-L0X"/>
+                            <constraint firstItem="e15-dq-dyf" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" constant="16" id="qKA-nu-lbd"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="continueWithoutLoginButton" destination="F4g-0R-Njb" id="Wek-mp-Kbh"/>
