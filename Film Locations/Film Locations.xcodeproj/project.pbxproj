@@ -24,6 +24,8 @@
 		3ADABD521EBF9A5C00F5F44C /* Fullscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ADABD511EBF9A5C00F5F44C /* Fullscreen.storyboard */; };
 		3ADABD541EBF9FDF00F5F44C /* FullscreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD531EBF9FDF00F5F44C /* FullscreenViewController.swift */; };
 		3ADABD561EBFA5D100F5F44C /* LocationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD551EBFA5D100F5F44C /* LocationImage.swift */; };
+		3ADABD581EBFBB5700F5F44C /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD571EBFBB5700F5F44C /* TwitterClient.swift */; };
+		3ADABD5A1EBFBEF600F5F44C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD591EBFBEF600F5F44C /* LoginViewController.swift */; };
 		88790C081EB6F9BE0025C5EE /* MoviePosterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */; };
 		88790C0C1EB6FA3D0025C5EE /* MoviePosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88790C0B1EB6FA3D0025C5EE /* MoviePosterView.swift */; };
 		8894F1151EB945C500FFDAA1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8894F1141EB945C500FFDAA1 /* MapView.swift */; };
@@ -66,6 +68,8 @@
 		3ADABD511EBF9A5C00F5F44C /* Fullscreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Fullscreen.storyboard; sourceTree = "<group>"; };
 		3ADABD531EBF9FDF00F5F44C /* FullscreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenViewController.swift; sourceTree = "<group>"; };
 		3ADABD551EBFA5D100F5F44C /* LocationImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationImage.swift; sourceTree = "<group>"; };
+		3ADABD571EBFBB5700F5F44C /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
+		3ADABD591EBFBEF600F5F44C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7CA186C724D76407B1FE1434 /* Pods_Film_Locations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Film_Locations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviePosterView.xib; sourceTree = "<group>"; };
 		88790C0B1EB6FA3D0025C5EE /* MoviePosterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviePosterView.swift; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 				3A2365D71EB47E4F00D60443 /* FilmDetailsViewController.swift */,
 				3A2D58631EBDCC2200BB7DBF /* PostViewController.swift */,
 				3ADABD531EBF9FDF00F5F44C /* FullscreenViewController.swift */,
+				3ADABD591EBFBEF600F5F44C /* LoginViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				D35BE4951EB692F1003E0C8F /* Database.swift */,
+				3ADABD571EBFBB5700F5F44C /* TwitterClient.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -365,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ADABD5A1EBFBEF600F5F44C /* LoginViewController.swift in Sources */,
 				D3283AF81EBE6B95008B2237 /* HamburgerViewController.swift in Sources */,
 				D3009ABE1EB5848500E075ED /* Movie.swift in Sources */,
 				3A224F9F1EAD611700091BB3 /* MainViewController.swift in Sources */,
@@ -372,6 +379,7 @@
 				D3009ABF1EB5848500E075ED /* Location.swift in Sources */,
 				D3009AC01EB5848500E075ED /* FirebaseMovie.swift in Sources */,
 				D3009AC51EB584CD00E075ED /* ListViewController.swift in Sources */,
+				3ADABD581EBFBB5700F5F44C /* TwitterClient.swift in Sources */,
 				D35BE4981EB69384003E0C8F /* MapViewController.swift in Sources */,
 				3A2D58661EBE30BC00BB7DBF /* User.swift in Sources */,
 				8894F1151EB945C500FFDAA1 /* MapView.swift in Sources */,
@@ -503,7 +511,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 57478PSBBB;
 				INFOPLIST_FILE = "Film Locations/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.spring17.FilmLocations.Film-Locations";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -518,7 +526,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 57478PSBBB;
 				INFOPLIST_FILE = "Film Locations/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.spring17.FilmLocations.Film-Locations";
 				PRODUCT_NAME = "$(TARGET_NAME)";
