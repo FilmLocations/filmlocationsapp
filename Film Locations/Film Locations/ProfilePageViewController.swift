@@ -7,29 +7,45 @@
 //
 
 import UIKit
+import AFNetworking
+import FXBlurView
 
-class ProfilePageViewController: UIViewController {
-
+class ProfilePageViewController: UIViewController, MenuContentViewControllerProtocol {
+    
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userLocationLabel: UILabel!
+    @IBOutlet weak var visitedCounterLabel: UILabel!
+    @IBOutlet weak var favoriteCounterLabel: UILabel!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var delegate: MenuButtonPressDelegate?
+    
+    var user: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        user = User.currentUser
+        
+        updateUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func onMenuPress(_ sender: UIBarButtonItem) {
+        delegate?.onMenuButtonPress()
     }
-    */
 
+    func updateUI() {
+        if let profileImageURL = user?.profileUrl {
+            backgroundImageView.setImageWith(profileImageURL)
+            backgroundImageView.image = backgroundImageView.image?.blurredImage(withRadius: 5, iterations: 5, tintColor: nil)
+            profileImageView.setImageWith(profileImageURL)
+            profileImageView.layer.cornerRadius = profileImageView.bounds.size.width/2
+            profileImageView.layer.masksToBounds = true
+        }
+    }
 }
