@@ -36,11 +36,7 @@ class MoviePosterView: UIView {
                 self.posterImageView.setImageWith(moviePosterDataSource.movie.posterImageURL!)
             } else {
                 self.posterImageView.image = UIImage(named: "Place-Dummy")
-                Utility.loadFirstPhotoForPlace(placeID: moviePosterDataSource.movie.location.placeId, callback: { (image:UIImage?) in
-                    if let image = image {
-                        self.posterImageView.image = image
-                    }
-                })
+                fetchImageForPoster(placeID: moviePosterDataSource.movie.location.placeId)
             }
             
             let movieLocation = CLLocation(latitude: moviePosterDataSource.movie.location.lat, longitude: moviePosterDataSource.movie.location.long)
@@ -49,6 +45,25 @@ class MoviePosterView: UIView {
             
             self.distanceLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "\(String(format: "%.2f", metersToMiles(distance:distance))) miles")
         }
+    }
+    
+    func fetchImageForPoster(placeID: String) {
+        
+        Database.sharedInstance.getLocationImageMetadata(placeId: placeID) { (locationImages) in
+            
+            if locationImages.count > 0 {
+                Database.sharedInstance.getLocationImage(url: locationImages[0].imageURL, completion: {(locationImage) in
+                    self.posterImageView.image = locationImage
+                })
+            } else {
+                Utility.loadFirstPhotoForPlace(placeID: placeID, callback: { (image:UIImage?) in
+                    if let image = image {
+                        self.posterImageView.image = image
+                    }
+                })
+            }
+        }
+        
     }
     
     func metersToMiles(distance: Double) -> Double {
