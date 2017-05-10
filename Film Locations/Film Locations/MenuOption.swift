@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class MenuOption {
+    var symbol: String
+    var text: String
+    
+    init(symbol: String, text: String) {
+        self.symbol = symbol
+        self.text = text
+    }
+}
