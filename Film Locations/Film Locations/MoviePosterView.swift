@@ -36,7 +36,11 @@ class MoviePosterView: UIView {
                 self.posterImageView.setImageWith(moviePosterDataSource.movie.posterImageURL!)
             } else {
                 self.posterImageView.image = UIImage(named: "Place-Dummy")
-                loadFirstPhotoForPlace(placeID: moviePosterDataSource.movie.location.placeId)
+                Utility.loadFirstPhotoForPlace(placeID: moviePosterDataSource.movie.location.placeId, callback: { (image:UIImage?) in
+                    if let image = image {
+                        self.posterImageView.image = image
+                    }
+                })
             }
             
             let movieLocation = CLLocation(latitude: moviePosterDataSource.movie.location.lat, longitude: moviePosterDataSource.movie.location.long)
@@ -48,16 +52,16 @@ class MoviePosterView: UIView {
     }
     
     func metersToMiles(distance: Double) -> Double {
-            return round(distance) * 0.000621371
+        return round(distance) * 0.000621371
     }
-
+    
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -81,30 +85,7 @@ class MoviePosterView: UIView {
         
     }
     
-    func loadFirstPhotoForPlace(placeID: String) {
-        GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
-            if let error = error {
-                // TODO: handle the error.
-                print("Error: \(error.localizedDescription)")
-            } else {
-                if let firstPhoto = photos?.results.first {
-                    self.loadImageForMetadata(photoMetadata: firstPhoto)
-                }
-            }
-        }
-    }
     
-    func loadImageForMetadata(photoMetadata: GMSPlacePhotoMetadata) {
-        GMSPlacesClient.shared().loadPlacePhoto(photoMetadata, callback: {
-            (photo, error) -> Void in
-            if let error = error {
-                // TODO: handle the error.
-                print("Error: \(error.localizedDescription)")
-            } else {
-                self.posterImageView.image = photo
-            }
-        })
-    }
 }
 
 extension MoviePosterView : UIGestureRecognizerDelegate {
