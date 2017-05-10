@@ -102,6 +102,11 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        mapView.viewDidDisappear()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
