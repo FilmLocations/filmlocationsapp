@@ -40,12 +40,19 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
     }
 
     func updateUI() {
-        if let profileImageURL = user?.profileUrl {
-            backgroundImageView.setImageWith(profileImageURL)
-            backgroundImageView.image = backgroundImageView.image?.blurredImage(withRadius: 5, iterations: 5, tintColor: nil)
-            profileImageView.setImageWith(profileImageURL)
-            profileImageView.layer.cornerRadius = profileImageView.bounds.size.width/2
-            profileImageView.layer.masksToBounds = true
+        
+        if user != nil && user?.screenname != "anonymous" {
+            userNameLabel.text = user?.name
+            userLocationLabel.text = user?.location
+            
+            if let profileImageURL = user?.profileUrl {
+                backgroundImageView.setImageWith(profileImageURL)
+                //            backgroundImageView.image = backgroundImageView.image?.blurredImage(withRadius: 5, iterations: 5, tintColor: nil)
+                profileImageView.setImageWith(profileImageURL)
+            }
         }
+        
+        profileImageView.layer.cornerRadius = profileImageView.bounds.size.width/2
+        profileImageView.layer.masksToBounds = true
     }
 }
