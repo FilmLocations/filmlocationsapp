@@ -28,7 +28,9 @@ class MapView: UIView {
         super.init(frame: frame)
         self.loadInitialMap()
     }
-  
+    
+    
+    
     private func loadInitialMap() {
         let camera = GMSCameraPosition.camera(withLatitude: 0.0, longitude: 0.0, zoom: 15.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
@@ -43,33 +45,54 @@ class MapView: UIView {
         googleMapView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
     }
     
+    func viewDidDisappear() {
+        googleMapView.selectedMarker = nil
+    }
+    
     func updateMapsMarkers(sortedMovies:[MapMovie]) {
         
-        self.displayData = sortedMovies
-        
-        self.googleMapView.clear()
-        
-        var bounds = GMSCoordinateBounds()
-        
-        for movie in sortedMovies {
-            // Creates a marker in the center of the map.
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: movie.location.lat, longitude: movie.location.long)
-            marker.title = movie.title
-            print(movie.title, movie.location.lat, movie.location.long, movie.location.address)
-            marker.isFlat = true
-            marker.userData = movie
-            bounds = bounds.includingCoordinate(marker.position)
-            marker.map = self.googleMapView
+        if googleMapView.selectedMarker == nil {
+            
+            self.displayData = sortedMovies
+            
+            self.googleMapView.clear()
+            
+            var bounds = GMSCoordinateBounds()
+            
+            for movie in sortedMovies {
+                // Creates a marker in the center of the map.
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2D(latitude: movie.location.lat, longitude: movie.location.long)
+                marker.title = movie.title
+                print(movie.title, movie.location.lat, movie.location.long, movie.location.address)
+                marker.isFlat = true
+                marker.userData = movie
+                marker.icon = UIImage(named: "UnSelectedMarker")
+                bounds = bounds.includingCoordinate(marker.position)
+                marker.map = self.googleMapView
+            }
+            
+            let update = GMSCameraUpdate.fit(bounds, withPadding: 100)
+            self.googleMapView.animate(with: update)
         }
-        
-        let update = GMSCameraUpdate.fit(bounds, withPadding: 100)
-        self.googleMapView.animate(with: update)
     }
 }
 
 extension MapView: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        
+        
+        if let selectedMarker = mapView.selectedMarker {
+            selectedMarker.icon = UIImage(named: "UnSelectedMarker")
+        }
+        
+        if mapView.selectedMarker == marker {
+            mapView.selectedMarker = nil
+            return true
+        }
+        
+        mapView.selectedMarker = marker
+        marker.icon = UIImage(named: "SelectedMarker-1")
         
         if let markerMovie = marker.userData as? MapMovie {
             

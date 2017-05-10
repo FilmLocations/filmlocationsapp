@@ -42,8 +42,8 @@ class HamburgerViewController: UIViewController {
             self.addChildViewController(contentViewController)
             contentViewController.willMove(toParentViewController: self)
             contentView.addSubview(contentViewController.view)
-            var vc = contentViewController.childViewControllers.first as! MenuContentViewControllerProtocol
-            vc.delegate = self
+            var vc = contentViewController.childViewControllers.first as? MenuContentViewControllerProtocol
+            vc?.delegate = self
             
             contentViewController.didMove(toParentViewController: self)
             

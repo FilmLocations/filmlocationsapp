@@ -59,11 +59,14 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     var movies: [Movie]!
     var sortedMovies:[MapMovie]!
     
+    let activityIndicator = ActivityIndicator()
+    
     var delegate: MenuButtonPressDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        presentIndicator()
         
         // Do any additional setup after loading the view.
         
@@ -98,8 +101,24 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
             searchBar.delegate = self
             self.navigationItem.titleView = searchBar
             
+            self.hideIndicator()
+            
         }
         
+    }
+    
+    func presentIndicator()  {
+        self.activityIndicator.showActivityIndicator(uiView: (self.navigationController?.view)!)
+        //self.activityIndicator.startAnimating()
+    }
+    
+    func hideIndicator()  {
+        self.activityIndicator.hideActivityIndicator(view: (self.navigationController?.view)!)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        mapView.viewDidDisappear()
     }
     
     override func didReceiveMemoryWarning() {
