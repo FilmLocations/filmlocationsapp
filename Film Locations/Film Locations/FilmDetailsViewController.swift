@@ -41,8 +41,6 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
         // Do any additional setup after loading the view.
         user = User.currentUser
-
-        updateUI()
         
         posterImageView.clipsToBounds = true
         
@@ -61,46 +59,15 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
                 
                 self.locationImages = locationImages
                 self.photosCollectionView.reloadData()
-                
-                if (locationImages.count == 1) {
-                    self.numberOfUploadsLabel.text = "\(locationImages.count) upload"
-                } else {
-                    self.numberOfUploadsLabel.text = "\(locationImages.count) uploads"
-                }
+                self.updateCounts()
             }
         }
         
         photosCollectionView.dataSource = self
         photosCollectionView.delegate = self
+        
+        updateUI()
 
-        Database.sharedInstance.locationLikesCount(placeId: (movie?.locations[locationIndex].placeId)!) { (count) in
-            if (count > 0) {
-                if (count == 1) {
-                    self.numberOfLikesLabel.text = "\(count) like"
-                } else {
-                    self.numberOfLikesLabel.text = "\(count) likes"
-                }
-            }
-        }
-        Database.sharedInstance.locationVisitsCount(placeId: (movie?.locations[locationIndex].placeId)!) { (count) in
-            if (count > 0) {
-                if (count == 1) {
-                    self.numberOfVisitsLabel.text = "\(count) visit"
-                } else {
-                    self.numberOfVisitsLabel.text = "\(count) visits"
-                }
-            }
-        }
-        
-        //TODO reflect status in the icons
-        Database.sharedInstance.hasVisitedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasVisited) in
-                print("user has visited \(hasVisited)")
-            }
-        
-        Database.sharedInstance.hasLikedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasLiked) in
-                print("user has liked \(hasLiked)")
-            }
-        
         addBackButton()
     }
     
@@ -136,6 +103,54 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             self.likeButton.isEnabled = false
             self.visitLocationButton.isEnabled = false
         }
+
+        Database.sharedInstance.hasVisitedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasVisited) in
+            if (hasVisited) {
+                self.visitLocationButton.setImage(#imageLiteral(resourceName: "checkmark-green"), for: UIControlState.normal)
+            }
+        }
+
+        Database.sharedInstance.hasLikedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasLiked) in
+            if (hasLiked) {
+                self.likeButton.setImage(#imageLiteral(resourceName: "heart-red"), for: UIControlState.normal)
+            }
+        }
+
+        updateCounts()
+    }
+
+    private func updateCounts() {
+
+        Database.sharedInstance.locationLikesCount(placeId: (movie?.locations[locationIndex].placeId)!) { (count) in
+            if (count > 0) {
+                if (count == 1) {
+                    self.numberOfLikesLabel.text = "\(count) like"
+                } else {
+                    self.numberOfLikesLabel.text = "\(count) likes"
+                }
+            } else {
+                self.numberOfLikesLabel.text = " "
+            }
+        }
+        Database.sharedInstance.locationVisitsCount(placeId: (movie?.locations[locationIndex].placeId)!) { (count) in
+            if (count > 0) {
+                if (count == 1) {
+                    self.numberOfVisitsLabel.text = "\(count) visit"
+                } else {
+                    self.numberOfVisitsLabel.text = "\(count) visits"
+                }
+            } else {
+                self.numberOfVisitsLabel.text = " "
+            }
+        }
+
+        if let locationImages = locationImages {
+            if (locationImages.count == 1) {
+                self.numberOfUploadsLabel.text = "\(locationImages.count) upload"
+            } else {
+                self.numberOfUploadsLabel.text = "\(locationImages.count) uploads"
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -160,13 +175,31 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     @IBAction func visitLocation(_ sender: UIButton) {
-        print("Visit location")
-        Database.sharedInstance.visitLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!)
+        if (visitLocationButton.image(for: .normal) == #imageLiteral(resourceName: "checkmark-green")) {
+            Database.sharedInstance.removeVisitLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
+                self.visitLocationButton.setImage(#imageLiteral(resourceName: "checkmark"), for: .normal)
+                self.updateCounts()
+            })
+        } else {
+            Database.sharedInstance.visitLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
+                self.visitLocationButton.setImage(#imageLiteral(resourceName: "checkmark-green"), for: .normal)
+                self.updateCounts()
+            })
+        }
     }
 
     @IBAction func LikeLocation(_ sender: UIButton) {
-        print("Like location")
-        Database.sharedInstance.likeLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!)
+        if (likeButton.image(for: .normal) == #imageLiteral(resourceName: "heart-red")) {
+            Database.sharedInstance.removeLikeLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
+                self.likeButton.setImage(#imageLiteral(resourceName: "heart"), for: .normal)
+                self.updateCounts()
+            })
+        } else {
+            Database.sharedInstance.likeLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
+                self.likeButton.setImage(#imageLiteral(resourceName: "heart-red"), for: .normal)
+                self.updateCounts()
+            })
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
