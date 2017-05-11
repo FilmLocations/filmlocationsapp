@@ -13,17 +13,13 @@ import FXBlurView
 class ProfilePageViewController: UIViewController, MenuContentViewControllerProtocol {
     
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var userLocationLabel: UILabel!
-    @IBOutlet weak var visitedCounterLabel: UILabel!
-    @IBOutlet weak var favoriteCounterLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     var delegate: MenuButtonPressDelegate?
     
     var user: User?
+    var photos: [LocationImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +27,11 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         // Do any additional setup after loading the view.
         
         user = User.currentUser
+        
+        Database.sharedInstance.getUserImageMetadata(userId: (user?.screenname)!) { (locationImages) in
+            self.photos = locationImages
+        }
+        
         
         updateUI()
     }
@@ -40,19 +41,45 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
     }
 
     func updateUI() {
-        
         if user != nil && user?.screenname != "anonymous" {
-            userNameLabel.text = user?.name
-            userLocationLabel.text = user?.location
-            
             if let profileImageURL = user?.profileUrl {
                 backgroundImageView.setImageWith(profileImageURL)
                 //            backgroundImageView.image = backgroundImageView.image?.blurredImage(withRadius: 5, iterations: 5, tintColor: nil)
-                profileImageView.setImageWith(profileImageURL)
             }
         }
+    }
+}
+
+extension ProfilePageViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
+//        //1
+//        switch kind {
+//        //2
+//        case UICollectionElementKindSectionHeader:
+//            //3
+////            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+////                                                                             withReuseIdentifier: "FlickrPhotoHeaderView",
+////                                                                             for: indexPath) as! FlickrPhotoHeaderView
+//            headerView.label.text = searches[(indexPath as NSIndexPath).section].searchTerm
+//            return headerView
+//        default:
+//            //4
+//            assert(false, "Unexpected element kind")
+//        }
+//    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionCell", for: indexPath) as! ProfilePhotosCollectionViewCell
         
-        profileImageView.layer.cornerRadius = profileImageView.bounds.size.width/2
-        profileImageView.layer.masksToBounds = true
+        return cell
     }
 }

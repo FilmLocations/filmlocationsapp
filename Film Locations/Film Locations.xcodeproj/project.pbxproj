@@ -48,6 +48,8 @@
 		D350F3381EC1830E00162D90 /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D350F3361EC1830E00162D90 /* ProfilePageViewController.swift */; };
 		D350F33A1EC221CA00162D90 /* HamburgerMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D350F3391EC221CA00162D90 /* HamburgerMenuCell.swift */; };
 		D350F33E1EC2290D00162D90 /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D350F33D1EC2290D00162D90 /* MenuOption.swift */; };
+		D350F3431EC42EF700162D90 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D350F3411EC42EF700162D90 /* ProfileHeaderView.swift */; };
+		D350F3441EC42EF700162D90 /* ProfilePhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D350F3421EC42EF700162D90 /* ProfilePhotosCollectionViewCell.swift */; };
 		D35BE4961EB692F1003E0C8F /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35BE4951EB692F1003E0C8F /* Database.swift */; };
 		D35BE4981EB69384003E0C8F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35BE4971EB69384003E0C8F /* MapViewController.swift */; };
 /* End PBXBuildFile section */
@@ -98,6 +100,8 @@
 		D350F3361EC1830E00162D90 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
 		D350F3391EC221CA00162D90 /* HamburgerMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerMenuCell.swift; sourceTree = "<group>"; };
 		D350F33D1EC2290D00162D90 /* MenuOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
+		D350F3411EC42EF700162D90 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		D350F3421EC42EF700162D90 /* ProfilePhotosCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		D35BE4951EB692F1003E0C8F /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		D35BE4971EB69384003E0C8F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -237,6 +241,8 @@
 		D3009AC11EB584B500E075ED /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D350F3411EC42EF700162D90 /* ProfileHeaderView.swift */,
+				D350F3421EC42EF700162D90 /* ProfilePhotosCollectionViewCell.swift */,
 				D350F3391EC221CA00162D90 /* HamburgerMenuCell.swift */,
 				D3009AC21EB584C200E075ED /* ListViewCell.swift */,
 				3A2365DB1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift */,
@@ -394,12 +400,14 @@
 				D3009AC01EB5848500E075ED /* FirebaseMovie.swift in Sources */,
 				D3009AC51EB584CD00E075ED /* ListViewController.swift in Sources */,
 				3ADABD581EBFBB5700F5F44C /* TwitterClient.swift in Sources */,
+				D350F3431EC42EF700162D90 /* ProfileHeaderView.swift in Sources */,
 				D35BE4981EB69384003E0C8F /* MapViewController.swift in Sources */,
 				3A2D58661EBE30BC00BB7DBF /* User.swift in Sources */,
 				D350F33E1EC2290D00162D90 /* MenuOption.swift in Sources */,
 				8894F1151EB945C500FFDAA1 /* MapView.swift in Sources */,
 				3A2D58641EBDCC2200BB7DBF /* PostViewController.swift in Sources */,
 				3ADABD561EBFA5D100F5F44C /* LocationImage.swift in Sources */,
+				D350F3441EC42EF700162D90 /* ProfilePhotosCollectionViewCell.swift in Sources */,
 				D350F3381EC1830E00162D90 /* ProfilePageViewController.swift in Sources */,
 				3ADABD541EBF9FDF00F5F44C /* FullscreenViewController.swift in Sources */,
 				D35BE4961EB692F1003E0C8F /* Database.swift in Sources */,
