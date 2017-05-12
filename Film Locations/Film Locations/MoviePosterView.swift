@@ -25,13 +25,15 @@ class MoviePosterView: UIView {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var topLeftVisualView: UIVisualEffectView!
+    @IBOutlet weak var bottonLeftVisualView: UIVisualEffectView!
     
     weak var delegate: MoviePosterViewDelegate?
     
     var moviePosterDataSource: MoviePosterViewDataSource! {
         didSet{
-            self.yearLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "(\(moviePosterDataSource.movie.releaseYear))")
-            self.titleLabel.attributedText  = InternalConfiguration.customizeTextAppearance(text: moviePosterDataSource.movie.title)
+            self.yearLabel.attributedText = InternalConfiguration.customizeTextAppearance1(text: "(\(moviePosterDataSource.movie.releaseYear))")
+            self.titleLabel.attributedText  = InternalConfiguration.customizeTextAppearance1(text: moviePosterDataSource.movie.title)
             if !moviePosterDataSource.displaySearchData {
                 self.posterImageView.setImageWith(moviePosterDataSource.movie.posterImageURL!)
             } else {
@@ -43,7 +45,7 @@ class MoviePosterView: UIView {
             
             let distance = moviePosterDataSource.referenceLocation.distance(from: movieLocation)
             
-            self.distanceLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "\(String(format: "%.2f", metersToMiles(distance:distance))) miles")
+            self.distanceLabel.attributedText = InternalConfiguration.customizeTextAppearance1(text: "\(String(format: "%.2f", metersToMiles(distance:distance))) miles")
         }
     }
     
@@ -97,6 +99,12 @@ class MoviePosterView: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnImageView(sender:)))
         tapGesture.delegate = self
         self.posterImageView.addGestureRecognizer(tapGesture)
+        
+        bottonLeftVisualView.layer.cornerRadius = 20
+        bottonLeftVisualView.clipsToBounds = true
+        
+        topLeftVisualView.layer.cornerRadius = 20
+        topLeftVisualView.clipsToBounds = true
         
     }
     

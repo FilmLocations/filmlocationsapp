@@ -46,8 +46,10 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     let maxNearByMovies = 20
     let currentUsersLocationKey =  "kUserCurrentPreferncesKey"
     
+    @IBOutlet weak var carousel: iCarousel!
+    
     var scrollingImages:[UIImage]! = []
-    @IBOutlet weak var scrollView: UIScrollView!
+    //@IBOutlet weak var scrollView: UIScrollView!
     var lastUpdatedTimestamp:TimeInterval = 0
     var userCurrentLocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     let locationManager = CLLocationManager()
@@ -65,6 +67,11 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        carousel.type = .coverFlow2
+        carousel.delegate = self
+        carousel.dataSource = self
+        carousel.setNeedsLayout()
         
         presentIndicator()
         
@@ -144,39 +151,39 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         return nil
     }
     
-    func removeScrollViewSubViews() {
-        
-        let subViews = self.scrollView.subviews
-        for subview in subViews{
-            subview.removeFromSuperview()
-        }
-    }
+//    func removeScrollViewSubViews() {
+//        
+//        let subViews = self.scrollView.subviews
+//        for subview in subViews{
+//            subview.removeFromSuperview()
+//        }
+//    }
     
-    func updateScrollView(isSearchedData:Bool)  {
-        //self.scrollView.delegate = self
-        
-        self.scrollView.isScrollEnabled = true;
-        
-        var xOffset:CGFloat = 0
-        
-        self.removeScrollViewSubViews()
-        
-        for movie in self.sortedMovies {
-            if movie.posterImageURL != nil {
-                
-                let userLocation = CLLocation(latitude: self.userCurrentLocation.latitude, longitude: self.userCurrentLocation.longitude)
-                
-                let moviePosterViewDataSource = MoviePosterViewDataSource(movie: movie, displaySearchData: isSearchedData, referenceLocation: userLocation)
-                
-                let moviePosterView = MoviePosterView(frame: CGRect(x: xOffset, y: 8.0 , width: self.scrollView.frame.height, height: self.scrollView.frame.height))
-                moviePosterView.moviePosterDataSource = moviePosterViewDataSource
-                moviePosterView.delegate = self
-                self.scrollView.addSubview(moviePosterView)
-                xOffset = xOffset + self.scrollView.frame.height + 8
-            }
-        }
-        self.scrollView.contentSize =  CGSize(width: xOffset, height: self.scrollView.frame.height)
-    }
+//    func updateScrollView(isSearchedData:Bool)  {
+//        //self.scrollView.delegate = self
+//        
+//        self.scrollView.isScrollEnabled = true;
+//        
+//        var xOffset:CGFloat = 0
+//        
+//        self.removeScrollViewSubViews()
+//        
+//        for movie in self.sortedMovies {
+//            if movie.posterImageURL != nil {
+//                
+//                let userLocation = CLLocation(latitude: self.userCurrentLocation.latitude, longitude: self.userCurrentLocation.longitude)
+//                
+//                let moviePosterViewDataSource = MoviePosterViewDataSource(movie: movie, displaySearchData: isSearchedData, referenceLocation: userLocation)
+//                
+//                let moviePosterView = MoviePosterView(frame: CGRect(x: xOffset, y: 8.0 , width: self.scrollView.frame.height, height: self.scrollView.frame.height))
+//                moviePosterView.moviePosterDataSource = moviePosterViewDataSource
+//                moviePosterView.delegate = self
+//                self.scrollView.addSubview(moviePosterView)
+//                xOffset = xOffset + self.scrollView.frame.height + 8
+//            }
+//        }
+//        self.scrollView.contentSize =  CGSize(width: xOffset, height: self.scrollView.frame.height)
+//    }
     
     /*
      // MARK: - Navigation
@@ -200,13 +207,15 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     func updateViewWithNewData() {
         //TODO: consider calling map marker and scroll view in a single for loop
         self.mapView.updateMapsMarkers(sortedMovies: self.sortedMovies)
-        self.updateScrollView(isSearchedData: false)
+        self.carousel.reloadData()
+        //self.updateScrollView(isSearchedData: false)
     }
     
     func updateViewWithSearchData() {
         //TODO: consider calling map marker and scroll view in a single for loop
         self.mapView.updateMapsMarkers(sortedMovies: self.sortedMovies)
-        self.updateScrollView(isSearchedData: true)
+        self.carousel.reloadData()
+        //self.updateScrollView(isSearchedData: true)
     }
     
     // TODO: Move this method to API class as utility method
@@ -231,13 +240,38 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     }
 }
 
+extension MapViewController: iCarouselDelegate, iCarouselDataSource {
+    func numberOfItems(in carousel: iCarousel) -> Int {
+        if self.sortedMovies != nil {
+            return self.sortedMovies.count
+        } else {
+            return 0
+        }
+        
+    }
+    
+    func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
+        
+        let userLocation = CLLocation(latitude: self.userCurrentLocation.latitude, longitude: self.userCurrentLocation.longitude)
+        
+        let moviePosterViewDataSource = MoviePosterViewDataSource(movie: self.sortedMovies[index], displaySearchData: isSearchResultsDisplayed, referenceLocation: userLocation)
+        
+        let moviePosterView = MoviePosterView(frame: CGRect(x: 8.0, y: 8.0 , width: self.carousel.bounds.height, height: self.carousel.bounds.height))
+        moviePosterView.moviePosterDataSource = moviePosterViewDataSource
+        moviePosterView.delegate = self
+        
+        return moviePosterView
+    }
+}
+
 extension MapViewController: MapViewDelegate{
     
     func didTap(markerIndex: Int) {
-        let xoffset = CGFloat(markerIndex) * CGFloat((self.scrollView.frame.height))
-        
-        let frame = CGRect(x:xoffset, y:0, width:self.mapView.frame.width, height:self.mapView.frame.height)
-        self.scrollView.scrollRectToVisible(frame, animated: true)
+        carousel.scrollToItem(at: markerIndex, animated: true)
+//        let xoffset = CGFloat(markerIndex) * CGFloat((self.scrollView.frame.height))
+//        
+//        let frame = CGRect(x:xoffset, y:0, width:self.mapView.frame.width, height:self.mapView.frame.height)
+//        self.scrollView.scrollRectToVisible(frame, animated: true)
     }
     
 }
