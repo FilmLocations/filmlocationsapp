@@ -26,6 +26,7 @@
 		3ADABD561EBFA5D100F5F44C /* LocationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD551EBFA5D100F5F44C /* LocationImage.swift */; };
 		3ADABD581EBFBB5700F5F44C /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD571EBFBB5700F5F44C /* TwitterClient.swift */; };
 		3ADABD5A1EBFBEF600F5F44C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD591EBFBEF600F5F44C /* LoginViewController.swift */; };
+		881502811EC53AD700342769 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881502801EC53AD700342769 /* iCarousel.m */; };
 		884098741EC2E13800F2B605 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884098731EC2E13800F2B605 /* ActivityIndicator.swift */; };
 		884098761EC2E18500F2B605 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884098751EC2E18500F2B605 /* Utility.swift */; };
 		88790C081EB6F9BE0025C5EE /* MoviePosterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */; };
@@ -73,6 +74,9 @@
 		3ADABD571EBFBB5700F5F44C /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		3ADABD591EBFBEF600F5F44C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7CA186C724D76407B1FE1434 /* Pods_Film_Locations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Film_Locations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8815027E1EC53AD600342769 /* Film Locations-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Film Locations-Bridging-Header.h"; sourceTree = "<group>"; };
+		8815027F1EC53AD700342769 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		881502801EC53AD700342769 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		884098731EC2E13800F2B605 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		884098751EC2E18500F2B605 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviePosterView.xib; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 		3A224F9B1EAD611700091BB3 /* Film Locations */ = {
 			isa = PBXGroup;
 			children = (
+				8815027D1EC539E600342769 /* 3rdParty */,
 				D3009AC11EB584B500E075ED /* Views */,
 				88E1F1B41EB50049004CC616 /* CustomNavigation */,
 				3A75FD041EB40E2E008F5400 /* API */,
@@ -220,6 +225,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8815027D1EC539E600342769 /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+				8815027F1EC53AD700342769 /* iCarousel.h */,
+				881502801EC53AD700342769 /* iCarousel.m */,
+				8815027E1EC53AD600342769 /* Film Locations-Bridging-Header.h */,
+			);
+			name = 3rdParty;
+			sourceTree = "<group>";
+		};
 		88E1F1B41EB50049004CC616 /* CustomNavigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +292,7 @@
 					3A224F981EAD611700091BB3 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 57478PSBBB;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -382,6 +398,7 @@
 				D3009ABE1EB5848500E075ED /* Movie.swift in Sources */,
 				3A224F9F1EAD611700091BB3 /* MainViewController.swift in Sources */,
 				884098741EC2E13800F2B605 /* ActivityIndicator.swift in Sources */,
+				881502811EC53AD700342769 /* iCarousel.m in Sources */,
 				D3009AC31EB584C200E075ED /* ListViewCell.swift in Sources */,
 				D3009ABF1EB5848500E075ED /* Location.swift in Sources */,
 				D3009AC01EB5848500E075ED /* FirebaseMovie.swift in Sources */,
@@ -517,12 +534,15 @@
 			baseConfigurationReference = 95F5320A160EB9BDD66EB8A0 /* Pods-Film Locations.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 57478PSBBB;
 				INFOPLIST_FILE = "Film Locations/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.spring17.FilmLocations.Film-Locations";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Film Locations/Film Locations-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -532,12 +552,14 @@
 			baseConfigurationReference = D251F5A791118332ED48C6CD /* Pods-Film Locations.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 57478PSBBB;
 				INFOPLIST_FILE = "Film Locations/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.spring17.FilmLocations.Film-Locations";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Film Locations/Film Locations-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

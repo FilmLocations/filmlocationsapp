@@ -32,7 +32,7 @@ class MapView: UIView {
     
     
     private func loadInitialMap() {
-        let camera = GMSCameraPosition.camera(withLatitude: 0.0, longitude: 0.0, zoom: 15.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 0.0, longitude: 0.0, zoom: 10.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.delegate = self
         self.googleMapView = mapView
@@ -72,7 +72,7 @@ class MapView: UIView {
                 marker.map = self.googleMapView
             }
             
-            let update = GMSCameraUpdate.fit(bounds, withPadding: 100)
+            let update = GMSCameraUpdate.fit(bounds, withPadding: 20)
             self.googleMapView.animate(with: update)
         }
     }

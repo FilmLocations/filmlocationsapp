@@ -4,8 +4,8 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,25 +22,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lb5-Lr-KyW" customClass="MapView" customModule="Film_Locations" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="443"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="350"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="443" id="VRo-tM-ATU"/>
+                                    <constraint firstAttribute="height" constant="350" id="VRo-tM-ATU"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brK-39-k4p">
-                                <rect key="frame" x="16" y="515" width="343" height="152"/>
-                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWR-Eq-CKy" customClass="iCarousel">
+                                <rect key="frame" x="0.0" y="414" width="375" height="253"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Arl-Bp-9w0">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="253"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Arl-Bp-9w0" secondAttribute="trailing" id="Bpy-Cc-Wab"/>
+                                    <constraint firstItem="Arl-Bp-9w0" firstAttribute="top" secondItem="XWR-Eq-CKy" secondAttribute="top" id="CFU-iC-u17"/>
+                                    <constraint firstAttribute="bottom" secondItem="Arl-Bp-9w0" secondAttribute="bottom" id="Z0a-mB-n8f"/>
+                                    <constraint firstItem="Arl-Bp-9w0" firstAttribute="leading" secondItem="XWR-Eq-CKy" secondAttribute="leading" id="fYY-Xi-nfy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Pxu-XN-Blk" firstAttribute="top" secondItem="brK-39-k4p" secondAttribute="bottom" id="1sx-p4-gFd"/>
+                            <constraint firstItem="XWR-Eq-CKy" firstAttribute="leading" secondItem="e9M-Sm-SnY" secondAttribute="leading" id="I2A-Vg-goz"/>
                             <constraint firstItem="Lb5-Lr-KyW" firstAttribute="top" secondItem="8Vl-AW-vb4" secondAttribute="bottom" id="IfS-CE-zUA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="brK-39-k4p" secondAttribute="trailing" id="Mg0-S1-iaz"/>
+                            <constraint firstAttribute="trailing" secondItem="XWR-Eq-CKy" secondAttribute="trailing" id="Kqh-MZ-6lD"/>
+                            <constraint firstItem="Pxu-XN-Blk" firstAttribute="top" secondItem="XWR-Eq-CKy" secondAttribute="bottom" id="NxD-5c-9Ea"/>
                             <constraint firstItem="Lb5-Lr-KyW" firstAttribute="leading" secondItem="e9M-Sm-SnY" secondAttribute="leading" id="NxE-jR-nLw"/>
-                            <constraint firstItem="brK-39-k4p" firstAttribute="leading" secondItem="e9M-Sm-SnY" secondAttribute="leadingMargin" id="Ubo-ad-G7w"/>
                             <constraint firstAttribute="trailing" secondItem="Lb5-Lr-KyW" secondAttribute="trailing" id="aFk-gv-z2s"/>
-                            <constraint firstItem="brK-39-k4p" firstAttribute="top" secondItem="Lb5-Lr-KyW" secondAttribute="bottom" constant="8" id="uYI-J5-hxO"/>
+                            <constraint firstItem="XWR-Eq-CKy" firstAttribute="top" secondItem="Lb5-Lr-KyW" secondAttribute="bottom" id="l1t-Y7-Mfm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gCm-TO-axw">
@@ -51,8 +63,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="carousel" destination="XWR-Eq-CKy" id="n00-L3-WwZ"/>
                         <outlet property="mapView" destination="Lb5-Lr-KyW" id="4Wb-Fe-wis"/>
-                        <outlet property="scrollView" destination="brK-39-k4p" id="p5r-pr-ACo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EcG-mx-UWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -78,4 +90,7 @@
             <point key="canvasLocation" x="0.80000000000000004" y="6.746626686656672"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="50" height="468"/>
+    </resources>
 </document>
