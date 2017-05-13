@@ -27,29 +27,20 @@
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XWR-Eq-CKy" customClass="iCarousel">
                                 <rect key="frame" x="0.0" y="667" width="375" height="253"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Arl-Bp-9w0">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="253"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Arl-Bp-9w0" secondAttribute="trailing" id="Bpy-Cc-Wab"/>
-                                    <constraint firstItem="Arl-Bp-9w0" firstAttribute="top" secondItem="XWR-Eq-CKy" secondAttribute="top" id="CFU-iC-u17"/>
-                                    <constraint firstAttribute="bottom" secondItem="Arl-Bp-9w0" secondAttribute="bottom" id="Z0a-mB-n8f"/>
-                                    <constraint firstAttribute="height" constant="253" id="ZAb-qE-Rrl"/>
-                                    <constraint firstItem="Arl-Bp-9w0" firstAttribute="leading" secondItem="XWR-Eq-CKy" secondAttribute="leading" id="fYY-Xi-nfy"/>
+                                    <constraint firstAttribute="height" constant="253" id="eIM-gx-RCW"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XWR-Eq-CKy" firstAttribute="leading" secondItem="e9M-Sm-SnY" secondAttribute="leading" id="I2A-Vg-goz"/>
                             <constraint firstItem="Lb5-Lr-KyW" firstAttribute="top" secondItem="8Vl-AW-vb4" secondAttribute="bottom" id="IfS-CE-zUA"/>
-                            <constraint firstAttribute="trailing" secondItem="XWR-Eq-CKy" secondAttribute="trailing" id="Kqh-MZ-6lD"/>
                             <constraint firstItem="Lb5-Lr-KyW" firstAttribute="leading" secondItem="e9M-Sm-SnY" secondAttribute="leading" id="NxE-jR-nLw"/>
+                            <constraint firstItem="Pxu-XN-Blk" firstAttribute="top" secondItem="Lb5-Lr-KyW" secondAttribute="bottom" id="QHX-4Y-grq"/>
+                            <constraint firstAttribute="trailing" secondItem="XWR-Eq-CKy" secondAttribute="trailing" id="RwT-Vz-AIF"/>
                             <constraint firstAttribute="trailing" secondItem="Lb5-Lr-KyW" secondAttribute="trailing" id="aFk-gv-z2s"/>
-                            <constraint firstItem="Pxu-XN-Blk" firstAttribute="top" secondItem="Lb5-Lr-KyW" secondAttribute="bottom" id="opf-Xb-2iG"/>
+                            <constraint firstItem="XWR-Eq-CKy" firstAttribute="leading" secondItem="e9M-Sm-SnY" secondAttribute="leading" id="ztU-g3-Lig"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gCm-TO-axw">
@@ -87,7 +78,4 @@
             <point key="canvasLocation" x="0.80000000000000004" y="6.746626686656672"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="background" width="50" height="468"/>
-    </resources>
 </document>
