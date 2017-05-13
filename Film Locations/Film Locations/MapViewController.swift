@@ -55,7 +55,8 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     let locationManager = CLLocationManager()
     @IBOutlet weak var mapView: MapView!
     
-    var posterImageViewTopConstraint: NSLayoutConstraint!
+    //@IBOutlet weak var posterImageViewBottomConstraint: NSLayoutConstraint!
+    var posterImageViewBottomConstraint: NSLayoutConstraint!
     
     var isSearchResultsDisplayed = false
     
@@ -75,8 +76,8 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         carousel.dataSource = self
         carousel.setNeedsLayout()
         
-        self.posterImageViewTopConstraint = carousel.topAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor, constant: 0.0)
-        self.view.addConstraint(posterImageViewTopConstraint)
+        self.posterImageViewBottomConstraint = carousel.topAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor, constant: 0.0)
+        self.view.addConstraint(posterImageViewBottomConstraint)
         
         presentIndicator()
         
@@ -272,14 +273,14 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
 extension MapViewController: MapViewDelegate{
     
     func didTapOnMap() {
-        if self.posterImageViewTopConstraint.constant != 0 {
+        if self.posterImageViewBottomConstraint.constant != 0 {
             hidePosterImageView()
         }
     }
     
     func didTap(markerIndex: Int) {
         
-        if self.posterImageViewTopConstraint.constant == 0 {
+        if self.posterImageViewBottomConstraint.constant == 0 {
             showPosterImageView(markerIndex: markerIndex)
         } else {
             self.carousel.scrollToItem(at: markerIndex, animated: false)
@@ -288,14 +289,14 @@ extension MapViewController: MapViewDelegate{
     
     func hidePosterImageView() {
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseIn, animations: {
-            self.posterImageViewTopConstraint.constant = 0
+            self.posterImageViewBottomConstraint.constant = 0
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
     
     func showPosterImageView(markerIndex: Int) {
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
-            self.posterImageViewTopConstraint.constant = -253
+            self.posterImageViewBottomConstraint.constant = -253
             self.view.layoutIfNeeded()
         }, completion: {(sucess: Bool) in
             if sucess {
