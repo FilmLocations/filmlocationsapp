@@ -18,7 +18,7 @@ class HamburgerMenuController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var menu = ["Map View", "List View", "Profile", "About", "Logout", "Login"]
-    var symbols = ["map", "list", "profile", "heart", "logout", "login"]
+    var symbols = ["map", "list", "profile", "about", "logout", "login"]
     var menuOptions: [MenuOption] = []
     
     var viewControllers: [UIViewController] = []
