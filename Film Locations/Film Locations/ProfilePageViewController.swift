@@ -25,6 +25,8 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
     
     var user: User?
     
+    var photos: [LocationImage] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +34,18 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         
         user = User.currentUser
         
+        Database.sharedInstance.getUserImageMetadata(userId: (user?.screenname)!) { (locationImages) in
+            self.photos = locationImages
+            self.collectionView.reloadData()
+        }
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateUI()
     }
     
@@ -54,5 +68,22 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         
         profileImageView.layer.cornerRadius = profileImageView.bounds.size.width/2
         profileImageView.layer.masksToBounds = true
+    }
+}
+
+extension ProfilePageViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionCell", for: indexPath) as! ProfilePhotosCollectionViewCell
+        
+        Database.sharedInstance.getLocationImage(url: photos[indexPath.row].imageURL, completion: { (image) in
+            cell.photoImageView.image = image
+        })
+        
+        return cell
     }
 }
