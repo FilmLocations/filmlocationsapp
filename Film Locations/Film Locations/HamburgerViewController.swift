@@ -65,33 +65,6 @@ class HamburgerViewController: UIViewController {
         self.menuViewController = menuViewController
 
     }
-
-    @IBAction func onPanGesture(_ sender: UIPanGestureRecognizer) {
-        
-        let translation = sender.translation(in: view)
-        let velocity = sender.velocity(in: view)
-        
-        if sender.state == .began {
-            originalLeftMargin = leftMarginConstraint.constant
-        }
-        else if sender.state == .changed {
-            // In order to be able hold the contentView while dragging
-            leftMarginConstraint.constant = originalLeftMargin + translation.x
-        }
-        else if sender.state == .ended {
-            UIView.animate(withDuration: 0.3, animations: {
-                if velocity.x > 0 {
-                    // open
-                    self.leftMarginConstraint.constant = self.view.frame.size.width - 50
-                }
-                else {
-                    // close
-                    self.leftMarginConstraint.constant = 0
-                }
-                self.view.layoutIfNeeded()
-            })
-        }
-    }
 }
 
 extension HamburgerViewController: MenuButtonPressDelegate {

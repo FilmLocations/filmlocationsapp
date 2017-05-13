@@ -41,12 +41,17 @@
 		D31F4FEA1EB4552F003CC557 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31F4FE81EB4552F003CC557 /* MenuViewController.swift */; };
 		D31F4FEB1EB4552F003CC557 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31F4FE91EB4552F003CC557 /* MenuViewController.xib */; };
 		D31F4FED1EB45633003CC557 /* InternalConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31F4FEC1EB45633003CC557 /* InternalConfiguration.swift */; };
+		D3240DB71EC77DEC00E744A1 /* ProfilePhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3240DB61EC77DEC00E744A1 /* ProfilePhotosCollectionViewCell.swift */; };
 		D3283AF71EBE6B95008B2237 /* HamburgerMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3283AF51EBE6B95008B2237 /* HamburgerMenuController.swift */; };
 		D3283AF81EBE6B95008B2237 /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3283AF61EBE6B95008B2237 /* HamburgerViewController.swift */; };
 		D3283AFC1EBE6BC2008B2237 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3283AF91EBE6BC2008B2237 /* About.storyboard */; };
 		D3283AFD1EBE6BC2008B2237 /* HamburgerMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3283AFA1EBE6BC2008B2237 /* HamburgerMenu.storyboard */; };
 		D3283AFE1EBE6BC2008B2237 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3283AFB1EBE6BC2008B2237 /* Profile.storyboard */; };
 		D3283B001EBE6BE8008B2237 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3283AFF1EBE6BE8008B2237 /* Main.storyboard */; };
+		D350F3371EC1830E00162D90 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D350F3351EC1830E00162D90 /* AboutViewController.swift */; };
+		D350F3381EC1830E00162D90 /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D350F3361EC1830E00162D90 /* ProfilePageViewController.swift */; };
+		D350F33A1EC221CA00162D90 /* HamburgerMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D350F3391EC221CA00162D90 /* HamburgerMenuCell.swift */; };
+		D350F33E1EC2290D00162D90 /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D350F33D1EC2290D00162D90 /* MenuOption.swift */; };
 		D35BE4961EB692F1003E0C8F /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35BE4951EB692F1003E0C8F /* Database.swift */; };
 		D35BE4981EB69384003E0C8F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35BE4971EB69384003E0C8F /* MapViewController.swift */; };
 /* End PBXBuildFile section */
@@ -92,12 +97,17 @@
 		D31F4FE81EB4552F003CC557 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		D31F4FE91EB4552F003CC557 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		D31F4FEC1EB45633003CC557 /* InternalConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalConfiguration.swift; sourceTree = "<group>"; };
+		D3240DB61EC77DEC00E744A1 /* ProfilePhotosCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3283AF51EBE6B95008B2237 /* HamburgerMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerMenuController.swift; sourceTree = "<group>"; };
 		D3283AF61EBE6B95008B2237 /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
 		D3283AF91EBE6BC2008B2237 /* About.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
 		D3283AFA1EBE6BC2008B2237 /* HamburgerMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HamburgerMenu.storyboard; sourceTree = "<group>"; };
 		D3283AFB1EBE6BC2008B2237 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		D3283AFF1EBE6BE8008B2237 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D350F3351EC1830E00162D90 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		D350F3361EC1830E00162D90 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
+		D350F3391EC221CA00162D90 /* HamburgerMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerMenuCell.swift; sourceTree = "<group>"; };
+		D350F33D1EC2290D00162D90 /* MenuOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
 		D35BE4951EB692F1003E0C8F /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		D35BE4971EB69384003E0C8F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,6 +174,8 @@
 		3A75FD031EB40E27008F5400 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D350F3351EC1830E00162D90 /* AboutViewController.swift */,
+				D350F3361EC1830E00162D90 /* ProfilePageViewController.swift */,
 				D3283AF51EBE6B95008B2237 /* HamburgerMenuController.swift */,
 				D3283AF61EBE6B95008B2237 /* HamburgerViewController.swift */,
 				D31F4FE81EB4552F003CC557 /* MenuViewController.swift */,
@@ -191,6 +203,7 @@
 		3A75FD051EB40E39008F5400 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D350F33D1EC2290D00162D90 /* MenuOption.swift */,
 				D3009ABB1EB5848500E075ED /* Movie.swift */,
 				D3009ABC1EB5848500E075ED /* Location.swift */,
 				D3009ABD1EB5848500E075ED /* FirebaseMovie.swift */,
@@ -245,6 +258,8 @@
 		D3009AC11EB584B500E075ED /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D3240DB61EC77DEC00E744A1 /* ProfilePhotosCollectionViewCell.swift */,
+				D350F3391EC221CA00162D90 /* HamburgerMenuCell.swift */,
 				884098731EC2E13800F2B605 /* ActivityIndicator.swift */,
 				D3009AC21EB584C200E075ED /* ListViewCell.swift */,
 				3A2365DB1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift */,
@@ -397,19 +412,24 @@
 				D3283AF81EBE6B95008B2237 /* HamburgerViewController.swift in Sources */,
 				D3009ABE1EB5848500E075ED /* Movie.swift in Sources */,
 				3A224F9F1EAD611700091BB3 /* MainViewController.swift in Sources */,
+				D350F33A1EC221CA00162D90 /* HamburgerMenuCell.swift in Sources */,
 				884098741EC2E13800F2B605 /* ActivityIndicator.swift in Sources */,
 				881502811EC53AD700342769 /* iCarousel.m in Sources */,
 				D3009AC31EB584C200E075ED /* ListViewCell.swift in Sources */,
 				D3009ABF1EB5848500E075ED /* Location.swift in Sources */,
+				D350F3371EC1830E00162D90 /* AboutViewController.swift in Sources */,
 				D3009AC01EB5848500E075ED /* FirebaseMovie.swift in Sources */,
 				D3009AC51EB584CD00E075ED /* ListViewController.swift in Sources */,
 				3ADABD581EBFBB5700F5F44C /* TwitterClient.swift in Sources */,
 				884098761EC2E18500F2B605 /* Utility.swift in Sources */,
 				D35BE4981EB69384003E0C8F /* MapViewController.swift in Sources */,
 				3A2D58661EBE30BC00BB7DBF /* User.swift in Sources */,
+				D3240DB71EC77DEC00E744A1 /* ProfilePhotosCollectionViewCell.swift in Sources */,
+				D350F33E1EC2290D00162D90 /* MenuOption.swift in Sources */,
 				8894F1151EB945C500FFDAA1 /* MapView.swift in Sources */,
 				3A2D58641EBDCC2200BB7DBF /* PostViewController.swift in Sources */,
 				3ADABD561EBFA5D100F5F44C /* LocationImage.swift in Sources */,
+				D350F3381EC1830E00162D90 /* ProfilePageViewController.swift in Sources */,
 				3ADABD541EBF9FDF00F5F44C /* FullscreenViewController.swift in Sources */,
 				D35BE4961EB692F1003E0C8F /* Database.swift in Sources */,
 				3A2365DC1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift in Sources */,
