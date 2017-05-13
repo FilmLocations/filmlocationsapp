@@ -35,10 +35,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGV-ZQ-Ky4">
-                                <rect key="frame" x="0.0" y="577" width="375" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="t2L-1W-80m"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="577" width="375" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

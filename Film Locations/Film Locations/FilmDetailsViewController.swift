@@ -143,7 +143,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
                 posterImageView.setImageWith(posterImageURL)
             }
             addressLabel.text = movie.locations[locationIndex].address
-            titleLabel.text = "\(movie.title) \(movie.releaseYear)"
+            titleLabel.text = "\(movie.title) (\(movie.releaseYear))"
             overviewLabel.text = movie.description
         }
         
