@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import GooglePlaces
 import GoogleMaps
+import LyftSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyDkh00P83RkVTjmA98hUI2iACj368aTeGI")
         GMSPlacesClient.provideAPIKey("AIzaSyDkh00P83RkVTjmA98hUI2iACj368aTeGI")
 
+        LyftConfiguration.developer = (token: "gAAAAABZFqZoZE_eSsRjFOy3HYWn7u50o1eCzF5HD2hC_r40cjksVLPUCxTHGATX4gkNnZCSQ6zINPz9Zd5Q-HDdGRf1Tl5UfjsUC8TwS1i0Io5zlOA131SvgcYClI3VgV1mS3Y5vCnl8TuMt-5fgnU1vEcNSOWQRK9-saAw5t-7SLlUmRZi6Tw=", clientId: "2xxmjwMeqb1d")
+        
         Database.sharedInstance.getAllFilms { (movies) in
             print("We have \(movies.count) locations")
         }
