@@ -94,10 +94,10 @@ class MoviePosterView: UIView {
         tapGesture.delegate = self
         self.posterImageView.addGestureRecognizer(tapGesture)
         
-        bottonLeftVisualView.layer.cornerRadius = 20
+        bottonLeftVisualView.layer.cornerRadius = 15
         bottonLeftVisualView.clipsToBounds = true
         
-        topLeftVisualView.layer.cornerRadius = 20
+        topLeftVisualView.layer.cornerRadius = 15
         topLeftVisualView.clipsToBounds = true
     }
     

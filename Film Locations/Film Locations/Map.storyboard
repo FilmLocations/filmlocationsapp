@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="667" width="375" height="253"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="253" id="eIM-gx-RCW"/>
+                                    <constraint firstAttribute="height" constant="150" id="eIM-gx-RCW"/>
                                 </constraints>
                             </view>
                         </subviews>

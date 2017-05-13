@@ -30,29 +30,29 @@
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </imageView>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHt-zd-SMX">
-                    <rect key="frame" x="8" y="8" width="115" height="35.5"/>
+                    <rect key="frame" x="4" y="8" width="82" height="30.5"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="enG-JS-WkG">
-                        <rect key="frame" x="0.0" y="0.0" width="115" height="35.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="82" height="30.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAZ-in-fNa">
-                                <rect key="frame" x="16" y="8" width="39.5" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <rect key="frame" x="8" y="8" width="31" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUA-OV-ZtN">
-                                <rect key="frame" x="59.5" y="8" width="39.5" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <rect key="frame" x="43" y="8" width="31" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="OAZ-in-fNa" firstAttribute="top" secondItem="enG-JS-WkG" secondAttribute="top" constant="8" id="36m-gj-kWo"/>
-                            <constraint firstItem="OAZ-in-fNa" firstAttribute="leading" secondItem="enG-JS-WkG" secondAttribute="leading" constant="16" id="6lU-To-eF7"/>
+                            <constraint firstItem="OAZ-in-fNa" firstAttribute="leading" secondItem="enG-JS-WkG" secondAttribute="leading" constant="8" id="6lU-To-eF7"/>
                             <constraint firstItem="sUA-OV-ZtN" firstAttribute="leading" secondItem="OAZ-in-fNa" secondAttribute="trailing" constant="4" id="8AB-d4-R2W"/>
-                            <constraint firstAttribute="trailing" secondItem="sUA-OV-ZtN" secondAttribute="trailing" constant="16" id="WfK-1M-OeZ"/>
+                            <constraint firstAttribute="trailing" secondItem="sUA-OV-ZtN" secondAttribute="trailing" constant="8" id="WfK-1M-OeZ"/>
                             <constraint firstItem="sUA-OV-ZtN" firstAttribute="top" secondItem="enG-JS-WkG" secondAttribute="top" constant="8" id="bC5-Pj-Lbq"/>
                             <constraint firstAttribute="bottom" secondItem="OAZ-in-fNa" secondAttribute="bottom" constant="8" id="euv-o0-BFB"/>
                             <constraint firstAttribute="bottom" secondItem="sUA-OV-ZtN" secondAttribute="bottom" constant="8" id="sKO-ZF-mXj"/>
@@ -61,22 +61,22 @@
                     <blurEffect style="dark"/>
                 </visualEffectView>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IzV-tK-RhM">
-                    <rect key="frame" x="8" y="226.5" width="71.5" height="35.5"/>
+                    <rect key="frame" x="4" y="231.5" width="47" height="30.5"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SBJ-At-TiM">
-                        <rect key="frame" x="0.0" y="0.0" width="71.5" height="35.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="47" height="30.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPs-hn-BVb">
-                                <rect key="frame" x="16" y="8" width="39.5" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <rect key="frame" x="8" y="8" width="31" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="hPs-hn-BVb" firstAttribute="leading" secondItem="SBJ-At-TiM" secondAttribute="leading" constant="16" id="2UW-Zk-XKY"/>
+                            <constraint firstItem="hPs-hn-BVb" firstAttribute="leading" secondItem="SBJ-At-TiM" secondAttribute="leading" constant="8" id="2UW-Zk-XKY"/>
                             <constraint firstAttribute="bottom" secondItem="hPs-hn-BVb" secondAttribute="bottom" constant="8" id="PVu-Ns-MPk"/>
-                            <constraint firstAttribute="trailing" secondItem="hPs-hn-BVb" secondAttribute="trailing" constant="16" id="Xm6-0N-VQT"/>
+                            <constraint firstAttribute="trailing" secondItem="hPs-hn-BVb" secondAttribute="trailing" constant="8" id="Xm6-0N-VQT"/>
                             <constraint firstItem="hPs-hn-BVb" firstAttribute="top" secondItem="SBJ-At-TiM" secondAttribute="top" constant="8" id="ghc-1e-HhL"/>
                         </constraints>
                     </view>
@@ -87,9 +87,9 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="jP4-Mu-NUt" secondAttribute="trailing" id="F94-zg-fNN"/>
                 <constraint firstItem="jP4-Mu-NUt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GMU-Ha-KIH"/>
-                <constraint firstItem="IzV-tK-RhM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="O85-Fo-bRa"/>
+                <constraint firstItem="IzV-tK-RhM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="O85-Fo-bRa"/>
                 <constraint firstItem="FHt-zd-SMX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Ohy-Us-00i"/>
-                <constraint firstItem="FHt-zd-SMX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Y1F-tL-hGh"/>
+                <constraint firstItem="FHt-zd-SMX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="Y1F-tL-hGh"/>
                 <constraint firstItem="jP4-Mu-NUt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="c2B-sp-c3r"/>
                 <constraint firstAttribute="bottom" secondItem="jP4-Mu-NUt" secondAttribute="bottom" id="jZF-k7-eCA"/>
                 <constraint firstAttribute="bottom" secondItem="IzV-tK-RhM" secondAttribute="bottom" constant="8" id="rIX-tP-Vtl"/>
