@@ -296,7 +296,7 @@ extension MapViewController: MapViewDelegate{
     
     func showPosterImageView(markerIndex: Int) {
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
-            self.posterImageViewBottomConstraint.constant = -253
+            self.posterImageViewBottomConstraint.constant = -1 * self.carousel.bounds.height
             self.view.layoutIfNeeded()
         }, completion: {(sucess: Bool) in
             if sucess {
