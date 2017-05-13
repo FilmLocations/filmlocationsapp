@@ -72,22 +72,16 @@ class MoviePosterView: UIView {
         return round(distance) * 0.000621371
     }
     
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initSubviews()
+        self.setUp()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         initSubviews()
+        self.setUp()
     }
     
     func initSubviews() {
@@ -105,10 +99,32 @@ class MoviePosterView: UIView {
         
         topLeftVisualView.layer.cornerRadius = 20
         topLeftVisualView.clipsToBounds = true
-        
     }
     
+    func setUp() {
+        
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 1
+        self.layer.shadowOffset = CGSize.zero//(width: 2, height: 2)
+        self.layer.shadowRadius = 10
+        self.backgroundColor = UIColor.clear
+    }
     
+    let borderWidth = 0.8
+    let cornerRadius:Double = 10
+    var borderColor: UIColor = UIColor.gray
+    
+    override func draw(_ rect: CGRect) {
+        
+        UIBezierPath(roundedRect: bounds, cornerRadius: CGFloat(cornerRadius)).fill()
+        
+        let borderRect = bounds.insetBy(dx: CGFloat(borderWidth/2), dy: CGFloat(borderWidth/2))
+        let borderPath = UIBezierPath(roundedRect: borderRect, cornerRadius: CGFloat(cornerRadius - borderWidth/2))
+        borderColor.setStroke()
+        borderPath.lineWidth = CGFloat(borderWidth)
+        borderPath.stroke()
+
+    }
 }
 
 extension MoviePosterView : UIGestureRecognizerDelegate {

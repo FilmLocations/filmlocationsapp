@@ -262,7 +262,7 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
         
         let moviePosterViewDataSource = MoviePosterViewDataSource(movie: self.sortedMovies[index], displaySearchData: isSearchResultsDisplayed, referenceLocation: userLocation)
         
-        let moviePosterView = MoviePosterView(frame: CGRect(x: 8.0, y: 8.0 , width: self.carousel.bounds.height, height: self.carousel.bounds.height))
+        let moviePosterView = MoviePosterView(frame: CGRect(x: 8.0, y: 8.0 , width: self.carousel.bounds.height+50, height: self.carousel.bounds.height))
         moviePosterView.moviePosterDataSource = moviePosterViewDataSource
         moviePosterView.delegate = self
         
