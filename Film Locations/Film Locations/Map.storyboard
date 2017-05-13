@@ -22,16 +22,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lb5-Lr-KyW" customClass="MapView" customModule="Film_Locations" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="350"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="VRo-tM-ATU"/>
-                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWR-Eq-CKy" customClass="iCarousel">
-                                <rect key="frame" x="0.0" y="414" width="375" height="253"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XWR-Eq-CKy" customClass="iCarousel">
+                                <rect key="frame" x="0.0" y="667" width="375" height="253"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Arl-Bp-9w0">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Arl-Bp-9w0">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="253"/>
                                     </imageView>
                                 </subviews>
@@ -40,6 +37,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Arl-Bp-9w0" secondAttribute="trailing" id="Bpy-Cc-Wab"/>
                                     <constraint firstItem="Arl-Bp-9w0" firstAttribute="top" secondItem="XWR-Eq-CKy" secondAttribute="top" id="CFU-iC-u17"/>
                                     <constraint firstAttribute="bottom" secondItem="Arl-Bp-9w0" secondAttribute="bottom" id="Z0a-mB-n8f"/>
+                                    <constraint firstAttribute="height" constant="253" id="ZAb-qE-Rrl"/>
                                     <constraint firstItem="Arl-Bp-9w0" firstAttribute="leading" secondItem="XWR-Eq-CKy" secondAttribute="leading" id="fYY-Xi-nfy"/>
                                 </constraints>
                             </view>
@@ -49,10 +47,9 @@
                             <constraint firstItem="XWR-Eq-CKy" firstAttribute="leading" secondItem="e9M-Sm-SnY" secondAttribute="leading" id="I2A-Vg-goz"/>
                             <constraint firstItem="Lb5-Lr-KyW" firstAttribute="top" secondItem="8Vl-AW-vb4" secondAttribute="bottom" id="IfS-CE-zUA"/>
                             <constraint firstAttribute="trailing" secondItem="XWR-Eq-CKy" secondAttribute="trailing" id="Kqh-MZ-6lD"/>
-                            <constraint firstItem="Pxu-XN-Blk" firstAttribute="top" secondItem="XWR-Eq-CKy" secondAttribute="bottom" id="NxD-5c-9Ea"/>
                             <constraint firstItem="Lb5-Lr-KyW" firstAttribute="leading" secondItem="e9M-Sm-SnY" secondAttribute="leading" id="NxE-jR-nLw"/>
                             <constraint firstAttribute="trailing" secondItem="Lb5-Lr-KyW" secondAttribute="trailing" id="aFk-gv-z2s"/>
-                            <constraint firstItem="XWR-Eq-CKy" firstAttribute="top" secondItem="Lb5-Lr-KyW" secondAttribute="bottom" id="l1t-Y7-Mfm"/>
+                            <constraint firstItem="Pxu-XN-Blk" firstAttribute="top" secondItem="Lb5-Lr-KyW" secondAttribute="bottom" id="opf-Xb-2iG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gCm-TO-axw">
@@ -76,7 +73,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MapNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="xFL-i5-lTK" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q6k-A5-cZA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="q6k-A5-cZA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
