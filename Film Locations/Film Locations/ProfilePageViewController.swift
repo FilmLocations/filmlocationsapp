@@ -7,29 +7,83 @@
 //
 
 import UIKit
+import AFNetworking
+import FXBlurView
 
-class ProfilePageViewController: UIViewController {
-
+class ProfilePageViewController: UIViewController, MenuContentViewControllerProtocol {
+    
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userLocationLabel: UILabel!
+    @IBOutlet weak var visitedCounterLabel: UILabel!
+    @IBOutlet weak var favoriteCounterLabel: UILabel!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var delegate: MenuButtonPressDelegate?
+    
+    var user: User?
+    
+    var photos: [LocationImage] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        user = User.currentUser
+        
+        Database.sharedInstance.getUserImageMetadata(userId: (user?.screenname)!) { (locationImages) in
+            self.photos = locationImages
+            self.collectionView.reloadData()
+        }
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+    
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateUI()
     }
-    */
+    
+    @IBAction func onMenuPress(_ sender: UIBarButtonItem) {
+        delegate?.onMenuButtonPress()
+    }
 
+    func updateUI() {
+        
+        if user != nil && user?.screenname != "anonymous" {
+            userNameLabel.text = user?.name
+            userLocationLabel.text = user?.location
+            
+            if let profileImageURL = user?.profileUrl {
+                backgroundImageView.setImageWith(profileImageURL)
+                //            backgroundImageView.image = backgroundImageView.image?.blurredImage(withRadius: 5, iterations: 5, tintColor: nil)
+                profileImageView.setImageWith(profileImageURL)
+            }
+        }
+        
+        profileImageView.layer.cornerRadius = profileImageView.bounds.size.width/2
+        profileImageView.layer.masksToBounds = true
+    }
+}
+
+extension ProfilePageViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionCell", for: indexPath) as! ProfilePhotosCollectionViewCell
+        
+        Database.sharedInstance.getLocationImage(url: photos[indexPath.row].imageURL, completion: { (image) in
+            cell.photoImageView.image = image
+        })
+        
+        return cell
+    }
 }

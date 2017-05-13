@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -85,7 +86,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="YwC-9j-EKh" firstAttribute="top" secondItem="dr9-PI-62i" secondAttribute="top" constant="8" id="0lz-0G-wdH"/>
                                     <constraint firstItem="YwC-9j-EKh" firstAttribute="leading" secondItem="QZq-k8-vBG" secondAttribute="trailing" constant="33" id="2BH-g6-BLT"/>
@@ -228,7 +229,7 @@
                     <navigationItem key="navigationItem" id="NjJ-zV-5Ql">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="2HB-Bc-a49">
                             <connections>
-                                <action selector="onMenuPress:" destination="JSh-Oj-8wZ" id="Ec6-9p-iVK"/>
+                                <action selector="onMenuPress:" destination="JSh-Oj-8wZ" id="oEM-qW-Nrg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -250,7 +251,7 @@
             <objects>
                 <navigationController storyboardIdentifier="ListNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Enm-hR-vrk" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5ni-aS-XBe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5ni-aS-XBe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
