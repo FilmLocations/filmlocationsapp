@@ -55,6 +55,8 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     let locationManager = CLLocationManager()
     @IBOutlet weak var mapView: MapView!
     
+    var posterImageViewTopConstraint: NSLayoutConstraint!
+    
     var isSearchResultsDisplayed = false
     
     var flatMovies: [MapMovie]!
@@ -72,6 +74,9 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         carousel.delegate = self
         carousel.dataSource = self
         carousel.setNeedsLayout()
+        
+        self.posterImageViewTopConstraint = carousel.topAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor, constant: 0.0)
+        self.view.addConstraint(posterImageViewTopConstraint)
         
         presentIndicator()
         
@@ -266,12 +271,37 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
 
 extension MapViewController: MapViewDelegate{
     
+    func didTapOnMap() {
+        if self.posterImageViewTopConstraint.constant != 0 {
+            hidePosterImageView()
+        }
+    }
+    
     func didTap(markerIndex: Int) {
-        carousel.scrollToItem(at: markerIndex, animated: true)
-//        let xoffset = CGFloat(markerIndex) * CGFloat((self.scrollView.frame.height))
-//        
-//        let frame = CGRect(x:xoffset, y:0, width:self.mapView.frame.width, height:self.mapView.frame.height)
-//        self.scrollView.scrollRectToVisible(frame, animated: true)
+        
+        if self.posterImageViewTopConstraint.constant == 0 {
+            showPosterImageView(markerIndex: markerIndex)
+        } else {
+            self.carousel.scrollToItem(at: markerIndex, animated: false)
+        }
+    }
+    
+    func hidePosterImageView() {
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseIn, animations: {
+            self.posterImageViewTopConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    func showPosterImageView(markerIndex: Int) {
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
+            self.posterImageViewTopConstraint.constant = -253
+            self.view.layoutIfNeeded()
+        }, completion: {(sucess: Bool) in
+            if sucess {
+                self.carousel.scrollToItem(at: markerIndex, animated: false)
+            }
+        })
     }
     
 }

@@ -12,6 +12,7 @@ import GooglePlaces
 
 protocol MapViewDelegate: class {
     func didTap(markerIndex: Int)
+    func didTapOnMap()
 }
 
 class MapView: UIView {
@@ -79,6 +80,12 @@ class MapView: UIView {
 }
 
 extension MapView: GMSMapViewDelegate {
+    
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        print("MapView Tap")
+        delegate?.didTapOnMap()
+    }
+    
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
         
