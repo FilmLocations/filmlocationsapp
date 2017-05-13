@@ -50,7 +50,11 @@ PODS:
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GTMSessionFetcher/Core (1.1.9)
+  - LyftSDK (1.0.4):
+    - LyftSDK/Core (= 1.0.4)
+  - LyftSDK/Core (1.0.4)
   - SwiftyJSON (3.1.4)
+  - WCLShineButton (1.0.4)
 
 DEPENDENCIES:
   - AFNetworking
@@ -61,7 +65,9 @@ DEPENDENCIES:
   - FXBlurView (~> 1.6.4)
   - GoogleMaps (= 2.1.0)
   - GooglePlaces
+  - LyftSDK
   - SwiftyJSON (~> 3.1.4)
+  - WCLShineButton
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
@@ -77,8 +83,10 @@ SPEC CHECKSUMS:
   GooglePlaces: 16e96266483b8010e9f275399403647978523c86
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
+  LyftSDK: af4b38c913ba24df874a70e67ba387f952e49690
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  WCLShineButton: 1608b9a2dcbebd1a5a1364c821ef0de3e95af458
 
-PODFILE CHECKSUM: f32e312c4a133e8275354af666c631e052c561be
+PODFILE CHECKSUM: e36c68bcab93d42759bae46b30686b3743b4128e
 
 COCOAPODS: 1.2.0

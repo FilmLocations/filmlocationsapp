@@ -8,22 +8,26 @@
 
 import UIKit
 import AFNetworking
+import WCLShineButton
+import LyftSDK
+import CoreLocation
 
 class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
     
     @IBOutlet weak var photosCollectionView: UICollectionView!
     @IBOutlet weak var topBackgroundImageView: UIImageView!
     @IBOutlet weak var posterImageView: UIImageView!
-    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var addPhotoButton: UIButton!
-    @IBOutlet weak var likeButton: UIButton!
-    @IBOutlet weak var visitLocationButton: UIButton!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var numberOfVisitsLabel: UILabel!
     @IBOutlet weak var numberOfLikesLabel: UILabel!
     @IBOutlet weak var numberOfUploadsLabel: UILabel!
+    @IBOutlet weak var addPhotoView: UIView!
+    @IBOutlet weak var visitLocationView: UIView!
+    @IBOutlet weak var likesView: UIView!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var addressVisualEffectView: UIVisualEffectView!
+    @IBOutlet weak var lyftButton: LyftButton!
     
     var movie: Movie? {
         didSet {
@@ -35,17 +39,52 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     
     var locationIndex: Int!
     var locationImages: [LocationImage]!
+    
+    var visitButton: WCLShineButton!
+    var likeButton: WCLShineButton!
+    var addPhotoButton: WCLShineButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Set up action buttons
+        var param1 = WCLShineParams()
+        param1.bigShineColor = UIColor(rgb: (196,23,1))
+        param1.smallShineColor = UIColor(rgb: (102,102,102))
+        param1.enableFlashing = true
+        likeButton = WCLShineButton(frame: .init(x: 20, y: 15, width: 32, height: 32), params: param1)
+        likeButton.fillColor = UIColor(rgb: (196,23,1))
+        likeButton.color = UIColor(rgb: (170,170,170))
+        likeButton.image = .custom(#imageLiteral(resourceName: "heart"))
+        likeButton.addTarget(self, action: #selector(LikeLocation(_:)), for: .touchUpInside)
+        likesView.addSubview(likeButton)
+        
+        var param2 = WCLShineParams()
+        param2.bigShineColor = UIColor(rgb: (153,152,38))
+        param2.smallShineColor = UIColor(rgb: (102,102,102))
+        param2.enableFlashing = true
+        visitButton = WCLShineButton(frame: .init(x: 20, y: 15, width: 32, height: 32), params: param1)
+        visitButton.fillColor = UIColor(rgb: (87,80,129))
+        visitButton.color = UIColor(rgb: (170,170,170))
+        visitButton.image = .custom(#imageLiteral(resourceName: "checkmark"))
+        visitButton.addTarget(self, action: #selector(visitLocation(_:)), for: .touchUpInside)
+        visitLocationView.addSubview(visitButton)
+        
+        var param3 = WCLShineParams()
+        param3.bigShineColor = UIColor(rgb: (153,152,38))
+        param3.smallShineColor = UIColor(rgb: (102,102,102))
+        param3.enableFlashing = true
+        addPhotoButton = WCLShineButton(frame: .init(x: 20, y: 15, width: 32, height: 32), params: param1)
+        addPhotoButton.color = UIColor(rgb: (170,170,170))
+        addPhotoButton.image = .custom(#imageLiteral(resourceName: "plus"))
+        addPhotoButton.addTarget(self, action: #selector(addPhoto(_:)), for: .touchUpInside)
+        addPhotoView.addSubview(addPhotoButton)
+        
         // Do any additional setup after loading the view.
         user = User.currentUser
         
-        posterImageView.clipsToBounds = true
-        
         let placeId = movie!.locations[locationIndex].placeId
-        
+        let location = movie!.locations[locationIndex]
         Database.sharedInstance.getLocationImageMetadata(placeId: placeId) { (locationImages) in
             
             if locationImages.count > 0 {
@@ -62,6 +101,10 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
                 self.updateCounts()
             }
         }
+        
+        //TODO pass current location as pickup, otherwise destination has no effect
+        let destination = CLLocationCoordinate2D(latitude: location.lat, longitude: location.long)
+        lyftButton.configure(rideKind: LyftSDK.RideKind.Standard, pickup: nil, destination: destination)
         
         photosCollectionView.dataSource = self
         photosCollectionView.delegate = self
@@ -89,30 +132,36 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             return
         }
 
+        posterImageView.clipsToBounds = true
+        posterImageView.layer.cornerRadius = 4
+
+        addressVisualEffectView.layer.cornerRadius = 20
+        addressVisualEffectView.clipsToBounds = true
+        
         if let movie = movie {
             if let posterImageURL = movie.posterImageURL {
                 posterImageView.setImageWith(posterImageURL)
             }
             addressLabel.text = movie.locations[locationIndex].address
-            titleLabel.text = movie.title
+            titleLabel.text = "\(movie.title) \(movie.releaseYear)"
             overviewLabel.text = movie.description
         }
         
         // Anonymous users can't mark as visited or like
         if (user.isAnonymous) {
-            self.likeButton.isEnabled = false
-            self.visitLocationButton.isEnabled = false
+            likesView.isUserInteractionEnabled = false
+            visitLocationView.isUserInteractionEnabled = false
         }
 
         Database.sharedInstance.hasVisitedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasVisited) in
             if (hasVisited) {
-                self.visitLocationButton.setImage(#imageLiteral(resourceName: "checkmark-green"), for: UIControlState.normal)
+                self.visitButton.isSelected = true
             }
         }
 
         Database.sharedInstance.hasLikedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasLiked) in
             if (hasLiked) {
-                self.likeButton.setImage(#imageLiteral(resourceName: "heart-red"), for: UIControlState.normal)
+                self.likeButton.isSelected = true
             }
         }
 
@@ -175,28 +224,24 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     @IBAction func visitLocation(_ sender: UIButton) {
-        if (visitLocationButton.image(for: .normal) == #imageLiteral(resourceName: "checkmark-green")) {
+        if visitButton.isSelected {
             Database.sharedInstance.removeVisitLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
-                self.visitLocationButton.setImage(#imageLiteral(resourceName: "checkmark"), for: .normal)
                 self.updateCounts()
             })
         } else {
             Database.sharedInstance.visitLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
-                self.visitLocationButton.setImage(#imageLiteral(resourceName: "checkmark-green"), for: .normal)
                 self.updateCounts()
             })
         }
     }
 
     @IBAction func LikeLocation(_ sender: UIButton) {
-        if (likeButton.image(for: .normal) == #imageLiteral(resourceName: "heart-red")) {
+        if likeButton.isSelected {
             Database.sharedInstance.removeLikeLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
-                self.likeButton.setImage(#imageLiteral(resourceName: "heart"), for: .normal)
                 self.updateCounts()
             })
         } else {
             Database.sharedInstance.likeLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
-                self.likeButton.setImage(#imageLiteral(resourceName: "heart-red"), for: .normal)
                 self.updateCounts()
             })
         }
@@ -234,24 +279,30 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
 extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
-    // TODO - Load google images when we have no user uploaded ones. Prioritize user uploaded images
-  
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let images = self.locationImages {
             return images.count
         } else {
-            return 0
+            return 1
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationPhotoCollectionViewCell", for: indexPath) as! LocationPhotoCollectionViewCell
-            
-        Database.sharedInstance.getLocationImage(url: locationImages[indexPath.row].imageURL, completion: { (image) in
-            cell.locationPhotoImageView.image = image
-        })
         
+        if (locationImages != nil && locationImages.count > 0) {
+            Database.sharedInstance.getLocationImage(url: locationImages[indexPath.row].imageURL, completion: { (image) in
+                cell.locationPhotoImageView.image = image
+            })
+        } else {
+            print(movie!.locations[locationIndex].placeId)
+            Utility.loadFirstPhotoForPlace(placeID: movie!.locations[locationIndex].placeId, callback: { (image) in
+                cell.locationPhotoImageView.image = image
+                self.topBackgroundImageView.image = image
+            })
+        }
+      
         return cell
     }
     
@@ -260,12 +311,13 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
         
         let fullscreen = storyboard.instantiateViewController(withIdentifier: "Fullscreen") as! FullscreenViewController
         
-        fullscreen.locationImageMetadata = locationImages[indexPath.row]
+        if (locationImages != nil) {
+            fullscreen.locationImageMetadata = locationImages[indexPath.row]
+        }
         
         let cell = collectionView.cellForItem(at: indexPath as IndexPath) as! LocationPhotoCollectionViewCell
         fullscreen.locationImage = cell.locationPhotoImageView.image
         
         self.present(fullscreen, animated: true, completion: nil)
     }
-    
 }
