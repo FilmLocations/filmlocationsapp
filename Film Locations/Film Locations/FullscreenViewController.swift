@@ -13,6 +13,7 @@ class FullscreenViewController: UIViewController {
     @IBOutlet weak var locationImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
 
     var locationImageMetadata: LocationImage!
     var locationImage: UIImage!
@@ -23,8 +24,16 @@ class FullscreenViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         locationImageView.image = locationImage
-        descriptionLabel.text = "\(locationImageMetadata.userId) \(locationImageMetadata.description)"
-        timeLabel.text = locationImageMetadata.timestamp
+        
+        if let locationImageMetadata = locationImageMetadata {
+            userNameLabel.text = locationImageMetadata.userId
+            descriptionLabel.text = locationImageMetadata.description
+            timeLabel.text = locationImageMetadata.timestamp
+        } else {
+            descriptionLabel.text = "Image via Google"
+            timeLabel.text = ""
+            userNameLabel.text = ""
+        }
     }
 
     override func didReceiveMemoryWarning() {

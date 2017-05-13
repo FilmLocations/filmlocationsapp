@@ -23,6 +23,9 @@ class LoginViewController: UIViewController {
         if (User.currentUser != nil) {
             TwitterClient.sharedInstance?.logout()
         }
+        
+        twitterLoginButton.layer.cornerRadius = 4
+        continueWithoutLoginButton.layer.cornerRadius = 4
     }
 
     override func didReceiveMemoryWarning() {

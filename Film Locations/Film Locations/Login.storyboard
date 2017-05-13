@@ -23,11 +23,13 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4g-0R-Njb">
                                 <rect key="frame" x="16" y="587" width="343" height="60"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.34102231259999999" green="0.31284064049999999" blue="0.5076053143" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="eyN-fH-COg"/>
                                 </constraints>
-                                <state key="normal" title="Continue without login"/>
+                                <state key="normal" title="Continue without login">
+                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="onContinueWithoutLogin:" destination="5ZA-le-HpF" eventType="touchUpInside" id="3fr-ue-QmC"/>
                                 </connections>
@@ -38,13 +40,15 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Roq-Cp-Uga"/>
                                 </constraints>
-                                <state key="normal" title="Login with Twitter"/>
+                                <state key="normal" title="Login with Twitter">
+                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="onTwitterLogin:" destination="5ZA-le-HpF" eventType="touchUpInside" id="bXQ-Ja-JuH"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.91390103099999997" green="0.88802713160000002" blue="0.99976366760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="F4g-0R-Njb" secondAttribute="bottom" constant="20" id="32b-F4-rYN"/>
                             <constraint firstAttribute="trailing" secondItem="e15-dq-dyf" secondAttribute="trailing" constant="16" id="7jO-vk-08X"/>
