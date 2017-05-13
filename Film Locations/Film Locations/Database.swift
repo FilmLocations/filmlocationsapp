@@ -125,36 +125,46 @@ class Database {
         }
     }
     
-    func visitLocation(userId: String, locationId: String) {
+    func visitLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
         let ref = FIRDatabase.database().reference()
         let visits = ref.child("visits")
         
-        visits.child("\(userId)--\(locationId)").setValue(["timestamp": FIRServerValue.timestamp(),
-                                                           "locationId": locationId,
-                                                           "userId": userId])
+        visits.child("\(userId)--\(locationId)")
+              .setValue(["timestamp": FIRServerValue.timestamp(),
+                         "locationId": locationId,
+                         "userId": userId]) { (error, dbref) in
+              completion(true)
+        }
     }
     
-    func removeVisitLocation(userId: String, locationId: String) {
+    func removeVisitLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
         let ref = FIRDatabase.database().reference()
         let visits = ref.child("visits")
 
-        visits.child("\(userId)--\(locationId)").removeValue()
+        visits.child("\(userId)--\(locationId)").removeValue { (error, dbref) in
+            completion(true)
+        }
     }
 
-    func likeLocation(userId: String, locationId: String) {
+    func likeLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
         let ref = FIRDatabase.database().reference()
         let likes = ref.child("likes")
         
-        likes.child("\(userId)--\(locationId)").setValue(["timestamp": FIRServerValue.timestamp(),
-                                                          "locationId": locationId,
-                                                          "userId": userId])
+        likes.child("\(userId)--\(locationId)")
+             .setValue(["timestamp": FIRServerValue.timestamp(),
+                        "locationId": locationId,
+                        "userId": userId]) { (error, dbref) in
+            completion(true)
+        }
     }
     
-    func removeLikeLocation(userId: String, locationId: String) {
+    func removeLikeLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
         let ref = FIRDatabase.database().reference()
         let likes = ref.child("likes")
 
-        likes.child("\(userId)--\(locationId)").removeValue()
+        likes.child("\(userId)--\(locationId)").removeValue { (error, dbref) in
+            completion(true)
+        }
     }
 
     func hasVisitedLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {

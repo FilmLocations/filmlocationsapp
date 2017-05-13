@@ -16,10 +16,10 @@ struct InternalConfiguration {
     static let selectedCellColor = UIColor(red: 75/255, green: 64/255, blue: 127/255, alpha: 1)
     
     static func customizeTextAppearance(text: String) -> NSAttributedString {
-//        let shadow = NSShadow()
-//        shadow.shadowColor = UIColor.darkGray
-//        shadow.shadowOffset = CGSize(width: 2, height: 2)
-//        shadow.shadowBlurRadius = 4
+        //        let shadow = NSShadow()
+        //        shadow.shadowColor = UIColor.darkGray
+        //        shadow.shadowOffset = CGSize(width: 2, height: 2)
+        //        shadow.shadowBlurRadius = 4
         let attributeColor = UIColor.white
         
         return NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName: attributeColor/*,NSShadowAttributeName: shadow*/])
@@ -28,5 +28,15 @@ struct InternalConfiguration {
     static func customizeNavigationBar(navigationController: UINavigationController?) {
         navigationController?.navigationBar.barTintColor = navigationBarColor
         navigationController?.navigationBar.tintColor = .white
+    }
+
+    static func customizeTextAppearance1(text: String) -> NSAttributedString {
+        let shadow = NSShadow()
+        shadow.shadowColor = UIColor.black
+        shadow.shadowOffset = CGSize(width: 2, height: 2)
+        shadow.shadowBlurRadius = 4
+        let attributeColor = UIColor.white
+        
+        return NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName: attributeColor,NSShadowAttributeName: shadow])
     }
 }

@@ -25,39 +25,60 @@ class MoviePosterView: UIView {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var topLeftVisualView: UIVisualEffectView!
+    @IBOutlet weak var bottonLeftVisualView: UIVisualEffectView!
     
     weak var delegate: MoviePosterViewDelegate?
     
     var moviePosterDataSource: MoviePosterViewDataSource! {
         didSet{
-            self.yearLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "(\(moviePosterDataSource.movie.releaseYear))")
-            self.titleLabel.attributedText  = InternalConfiguration.customizeTextAppearance(text: moviePosterDataSource.movie.title)
+            self.yearLabel.attributedText = InternalConfiguration.customizeTextAppearance1(text: "(\(moviePosterDataSource.movie.releaseYear))")
+            self.titleLabel.attributedText  = InternalConfiguration.customizeTextAppearance1(text: moviePosterDataSource.movie.title)
             if !moviePosterDataSource.displaySearchData {
                 self.posterImageView.setImageWith(moviePosterDataSource.movie.posterImageURL!)
             } else {
                 self.posterImageView.image = UIImage(named: "Place-Dummy")
-                loadFirstPhotoForPlace(placeID: moviePosterDataSource.movie.location.placeId)
+                fetchImageForPoster(placeID: moviePosterDataSource.movie.location.placeId)
             }
             
             let movieLocation = CLLocation(latitude: moviePosterDataSource.movie.location.lat, longitude: moviePosterDataSource.movie.location.long)
             
             let distance = moviePosterDataSource.referenceLocation.distance(from: movieLocation)
             
-            self.distanceLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: "\(String(format: "%.2f", metersToMiles(distance:distance))) miles")
+            self.distanceLabel.attributedText = InternalConfiguration.customizeTextAppearance1(text: "\(String(format: "%.2f", metersToMiles(distance:distance))) miles")
         }
     }
     
+    func fetchImageForPoster(placeID: String) {
+        
+        Database.sharedInstance.getLocationImageMetadata(placeId: placeID) { (locationImages) in
+            
+            if locationImages.count > 0 {
+                Database.sharedInstance.getLocationImage(url: locationImages[0].imageURL, completion: {(locationImage) in
+                    self.posterImageView.image = locationImage
+                })
+            } else {
+                Utility.loadFirstPhotoForPlace(placeID: placeID, callback: { (image:UIImage?) in
+                    if let image = image {
+                        self.posterImageView.image = image
+                    }
+                })
+            }
+        }
+        
+    }
+    
     func metersToMiles(distance: Double) -> Double {
-            return round(distance) * 0.000621371
+        return round(distance) * 0.000621371
     }
-
+    
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -79,32 +100,15 @@ class MoviePosterView: UIView {
         tapGesture.delegate = self
         self.posterImageView.addGestureRecognizer(tapGesture)
         
+        bottonLeftVisualView.layer.cornerRadius = 20
+        bottonLeftVisualView.clipsToBounds = true
+        
+        topLeftVisualView.layer.cornerRadius = 20
+        topLeftVisualView.clipsToBounds = true
+        
     }
     
-    func loadFirstPhotoForPlace(placeID: String) {
-        GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
-            if let error = error {
-                // TODO: handle the error.
-                print("Error: \(error.localizedDescription)")
-            } else {
-                if let firstPhoto = photos?.results.first {
-                    self.loadImageForMetadata(photoMetadata: firstPhoto)
-                }
-            }
-        }
-    }
     
-    func loadImageForMetadata(photoMetadata: GMSPlacePhotoMetadata) {
-        GMSPlacesClient.shared().loadPlacePhoto(photoMetadata, callback: {
-            (photo, error) -> Void in
-            if let error = error {
-                // TODO: handle the error.
-                print("Error: \(error.localizedDescription)")
-            } else {
-                self.posterImageView.image = photo
-            }
-        })
-    }
 }
 
 extension MoviePosterView : UIGestureRecognizerDelegate {
