@@ -23,7 +23,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="q4w-gt-mmI">
                                 <rect key="frame" x="0.0" y="193" width="375" height="474"/>
-                                <color key="backgroundColor" red="0.29545769109999998" green="0.25282495760000001" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="474" id="BCB-lB-WKE"/>
                                 </constraints>
@@ -56,7 +56,7 @@
                                                 <constraint firstItem="Tan-fm-TrP" firstAttribute="centerY" secondItem="NcE-cf-QIv" secondAttribute="centerY" id="kht-7c-nay"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.29545769109999998" green="0.25282495760000001" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="menuLabel" destination="rhK-MJ-FB3" id="MgD-O7-gV8"/>
                                             <outlet property="menuSymbolImageView" destination="Tan-fm-TrP" id="qiD-fv-zdk"/>
@@ -88,7 +88,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.29411764705882354" green="0.25098039215686274" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.23921568627450979" green="0.69019607843137254" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="w0V-AD-lKc" firstAttribute="centerX" secondItem="V77-2A-LQg" secondAttribute="centerX" id="ayD-0v-9cX"/>
                                     <constraint firstItem="PwX-A3-JYA" firstAttribute="centerX" secondItem="V77-2A-LQg" secondAttribute="centerX" id="bbj-M7-fhh"/>

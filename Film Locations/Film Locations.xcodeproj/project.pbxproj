@@ -27,6 +27,7 @@
 		3ADABD581EBFBB5700F5F44C /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD571EBFBB5700F5F44C /* TwitterClient.swift */; };
 		3ADABD5A1EBFBEF600F5F44C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD591EBFBEF600F5F44C /* LoginViewController.swift */; };
 		881502811EC53AD700342769 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881502801EC53AD700342769 /* iCarousel.m */; };
+		881502861EC8F37400342769 /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = 881502851EC8F37400342769 /* style.json */; };
 		884098741EC2E13800F2B605 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884098731EC2E13800F2B605 /* ActivityIndicator.swift */; };
 		884098761EC2E18500F2B605 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884098751EC2E18500F2B605 /* Utility.swift */; };
 		88790C081EB6F9BE0025C5EE /* MoviePosterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */; };
@@ -82,6 +83,7 @@
 		8815027E1EC53AD600342769 /* Film Locations-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Film Locations-Bridging-Header.h"; sourceTree = "<group>"; };
 		8815027F1EC53AD700342769 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		881502801EC53AD700342769 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		881502851EC8F37400342769 /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
 		884098731EC2E13800F2B605 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		884098751EC2E18500F2B605 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviePosterView.xib; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				D31F4FEC1EB45633003CC557 /* InternalConfiguration.swift */,
 				3A224FA31EAD611700091BB3 /* Assets.xcassets */,
 				3A224FA51EAD611700091BB3 /* LaunchScreen.storyboard */,
+				881502851EC8F37400342769 /* style.json */,
 				3A224FA81EAD611700091BB3 /* Info.plist */,
 				3A2365D91EB543D700D60443 /* GoogleService-Info.plist */,
 			);
@@ -338,6 +341,7 @@
 				3A224FA71EAD611700091BB3 /* LaunchScreen.storyboard in Resources */,
 				3A75FD0C1EB416E5008F5400 /* Login.storyboard in Resources */,
 				D3283AFC1EBE6BC2008B2237 /* About.storyboard in Resources */,
+				881502861EC8F37400342769 /* style.json in Resources */,
 				3A75FD0E1EB41792008F5400 /* FilmDetails.storyboard in Resources */,
 				3A75FD081EB416A1008F5400 /* Map.storyboard in Resources */,
 				88790C081EB6F9BE0025C5EE /* MoviePosterView.xib in Resources */,
