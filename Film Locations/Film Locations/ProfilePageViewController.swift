@@ -38,6 +38,13 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
             self.photos = locationImages
             self.collectionView.reloadData()
         }
+        Database.sharedInstance.userVisitsCount(userId: (user?.screenname)!, completion: { (visitedCounter) in
+            self.visitedCounterLabel.text = "\(visitedCounter)"
+        })
+        
+        Database.sharedInstance.userLikesCount(userId: (user?.screenname)!) { (favoriteCounter) in
+            self.favoriteCounterLabel.text = "\(favoriteCounter)"
+        }
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -53,7 +60,7 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         delegate?.onMenuButtonPress()
     }
 
-    func updateUI() {
+    private func updateUI() {
         
         if user != nil && user?.screenname != "anonymous" {
             userNameLabel.text = user?.name
