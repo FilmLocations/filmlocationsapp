@@ -57,7 +57,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         param1.bigShineColor = UIColor(rgb: (196,23,1))
         param1.smallShineColor = UIColor(rgb: (102,102,102))
         param1.enableFlashing = true
-        likeButton = WCLShineButton(frame: .init(x: 25, y: 15, width: 32, height: 32), params: param1)
+        likeButton = WCLShineButton(frame: .init(x: 25, y: 5, width: 32, height: 32), params: param1)
         likeButton.fillColor = UIColor(rgb: (196,23,1))
         likeButton.color = UIColor(rgb: (170,170,170))
         likeButton.image = .custom(#imageLiteral(resourceName: "heart"))
@@ -68,7 +68,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         param2.bigShineColor = UIColor(rgb: (153,152,38))
         param2.smallShineColor = UIColor(rgb: (102,102,102))
         param2.enableFlashing = true
-        visitButton = WCLShineButton(frame: .init(x: 25, y: 15, width: 32, height: 32), params: param1)
+        visitButton = WCLShineButton(frame: .init(x: 25, y: 5, width: 32, height: 32), params: param1)
         visitButton.fillColor = UIColor(rgb: (87,80,129))
         visitButton.color = UIColor(rgb: (170,170,170))
         visitButton.image = .custom(#imageLiteral(resourceName: "checkmark"))
@@ -79,7 +79,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         param3.bigShineColor = UIColor(rgb: (153,152,38))
         param3.smallShineColor = UIColor(rgb: (102,102,102))
         param3.enableFlashing = true
-        addPhotoButton = WCLShineButton(frame: .init(x: 25, y: 15, width: 32, height: 32), params: param1)
+        addPhotoButton = WCLShineButton(frame: .init(x: 25, y: 5, width: 32, height: 32), params: param1)
         addPhotoButton.color = UIColor(rgb: (170,170,170))
         addPhotoButton.image = .custom(#imageLiteral(resourceName: "plus"))
         addPhotoButton.addTarget(self, action: #selector(addPhoto(_:)), for: .touchUpInside)
