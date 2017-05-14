@@ -57,6 +57,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
     //@IBOutlet weak var posterImageViewBottomConstraint: NSLayoutConstraint!
     var posterImageViewBottomConstraint: NSLayoutConstraint!
+    //var posterImageViewBottomConstraintConstant: Int!
     
     var isSearchResultsDisplayed = false
     
@@ -156,40 +157,6 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         
         return nil
     }
-    
-//    func removeScrollViewSubViews() {
-//        
-//        let subViews = self.scrollView.subviews
-//        for subview in subViews{
-//            subview.removeFromSuperview()
-//        }
-//    }
-    
-//    func updateScrollView(isSearchedData:Bool)  {
-//        //self.scrollView.delegate = self
-//        
-//        self.scrollView.isScrollEnabled = true;
-//        
-//        var xOffset:CGFloat = 0
-//        
-//        self.removeScrollViewSubViews()
-//        
-//        for movie in self.sortedMovies {
-//            if movie.posterImageURL != nil {
-//                
-//                let userLocation = CLLocation(latitude: self.userCurrentLocation.latitude, longitude: self.userCurrentLocation.longitude)
-//                
-//                let moviePosterViewDataSource = MoviePosterViewDataSource(movie: movie, displaySearchData: isSearchedData, referenceLocation: userLocation)
-//                
-//                let moviePosterView = MoviePosterView(frame: CGRect(x: xOffset, y: 8.0 , width: self.scrollView.frame.height, height: self.scrollView.frame.height))
-//                moviePosterView.moviePosterDataSource = moviePosterViewDataSource
-//                moviePosterView.delegate = self
-//                self.scrollView.addSubview(moviePosterView)
-//                xOffset = xOffset + self.scrollView.frame.height + 8
-//            }
-//        }
-//        self.scrollView.contentSize =  CGSize(width: xOffset, height: self.scrollView.frame.height)
-//    }
     
     /*
      // MARK: - Navigation
