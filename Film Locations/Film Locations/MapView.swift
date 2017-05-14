@@ -65,10 +65,11 @@ class MapView: UIView {
                 let marker = GMSMarker()
                 marker.position = CLLocationCoordinate2D(latitude: movie.location.lat, longitude: movie.location.long)
                 marker.title = movie.title
+                marker.snippet = movie.location.address
                 print(movie.title, movie.location.lat, movie.location.long, movie.location.address)
                 marker.isFlat = true
                 marker.userData = movie
-                marker.icon = UIImage(named: "UnSelectedMarker")
+                marker.icon = UIImage(named: "icon")
                 bounds = bounds.includingCoordinate(marker.position)
                 marker.map = self.googleMapView
             }
@@ -90,7 +91,7 @@ extension MapView: GMSMapViewDelegate {
         
         
         if let selectedMarker = mapView.selectedMarker {
-            selectedMarker.icon = UIImage(named: "UnSelectedMarker")
+            //selectedMarker.icon = UIImage(named: "UnSelectedMarker")
         }
         
         if mapView.selectedMarker == marker {
@@ -99,7 +100,7 @@ extension MapView: GMSMapViewDelegate {
         }
         
         mapView.selectedMarker = marker
-        marker.icon = UIImage(named: "SelectedMarker-1")
+        //marker.icon = UIImage(named: "SelectedMarker-1")
         
         if let markerMovie = marker.userData as? MapMovie {
             
