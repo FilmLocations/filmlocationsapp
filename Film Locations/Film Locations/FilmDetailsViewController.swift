@@ -43,6 +43,9 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     var visitButton: WCLShineButton!
     var likeButton: WCLShineButton!
     var addPhotoButton: WCLShineButton!
+    
+    var visitsCount = 0
+    var likesCount = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -171,34 +174,18 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     private func updateCounts() {
 
         Database.sharedInstance.locationLikesCount(placeId: (movie?.locations[locationIndex].placeId)!) { (count) in
-            if (count > 0) {
-                if (count == 1) {
-                    self.numberOfLikesLabel.text = "\(count) like"
-                } else {
-                    self.numberOfLikesLabel.text = "\(count) likes"
-                }
-            } else {
-                self.numberOfLikesLabel.text = " "
-            }
+            self.likesCount = count
+            self.numberOfLikesLabel.text = String(count)
         }
         Database.sharedInstance.locationVisitsCount(placeId: (movie?.locations[locationIndex].placeId)!) { (count) in
-            if (count > 0) {
-                if (count == 1) {
-                    self.numberOfVisitsLabel.text = "\(count) visit"
-                } else {
-                    self.numberOfVisitsLabel.text = "\(count) visits"
-                }
-            } else {
-                self.numberOfVisitsLabel.text = " "
-            }
+            self.visitsCount = count
+            self.numberOfVisitsLabel.text = String(count)
         }
 
         if let locationImages = locationImages {
-            if (locationImages.count == 1) {
-                self.numberOfUploadsLabel.text = "\(locationImages.count) upload"
-            } else {
-                self.numberOfUploadsLabel.text = "\(locationImages.count) uploads"
-            }
+            numberOfUploadsLabel.text = String(locationImages.count)
+        } else {
+            numberOfUploadsLabel.text = "0"
         }
     }
     
@@ -226,11 +213,13 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func visitLocation(_ sender: UIButton) {
         if visitButton.isSelected {
             Database.sharedInstance.removeVisitLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
-                self.updateCounts()
+                self.visitsCount = self.visitsCount - 1
+                self.numberOfVisitsLabel.text = String(self.visitsCount)
             })
         } else {
             Database.sharedInstance.visitLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
-                self.updateCounts()
+                self.visitsCount = self.visitsCount + 1
+                self.numberOfVisitsLabel.text = String(self.visitsCount)
             })
         }
     }
@@ -238,11 +227,13 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func LikeLocation(_ sender: UIButton) {
         if likeButton.isSelected {
             Database.sharedInstance.removeLikeLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
-                self.updateCounts()
+                self.likesCount = self.likesCount - 1
+                self.numberOfLikesLabel.text = String(self.likesCount)
             })
         } else {
             Database.sharedInstance.likeLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
-                self.updateCounts()
+                self.likesCount = self.likesCount + 1
+                self.numberOfLikesLabel.text = String(self.likesCount)
             })
         }
     }
@@ -296,10 +287,15 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
                 cell.locationPhotoImageView.image = image
             })
         } else {
-            print(movie!.locations[locationIndex].placeId)
             Utility.loadFirstPhotoForPlace(placeID: movie!.locations[locationIndex].placeId, callback: { (image) in
-                cell.locationPhotoImageView.image = image
-                self.topBackgroundImageView.image = image
+                
+                if (image != nil) {
+                    cell.locationPhotoImageView.image = image
+                    self.topBackgroundImageView.image = image
+                } else {
+                    cell.locationPhotoImageView.image = #imageLiteral(resourceName: "Place-Dummy")
+                    self.topBackgroundImageView.image = #imageLiteral(resourceName: "Place-Dummy")
+                }
             })
         }
       
