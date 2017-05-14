@@ -34,11 +34,6 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         
         user = User.currentUser
         
-        Database.sharedInstance.getUserImageMetadata(userId: (user?.screenname)!) { (locationImages) in
-            self.photos = locationImages
-            self.collectionView.reloadData()
-        }
-        
         collectionView.dataSource = self
         collectionView.delegate = self
     
@@ -46,6 +41,19 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        Database.sharedInstance.getUserImageMetadata(userId: (user?.screenname)!) { (locationImages) in
+            self.photos = locationImages
+            self.collectionView.reloadData()
+        }
+        Database.sharedInstance.userVisitsCount(userId: (user?.screenname)!, completion: { (visitedCounter) in
+            self.visitedCounterLabel.text = "\(visitedCounter)"
+        })
+        
+        Database.sharedInstance.userLikesCount(userId: (user?.screenname)!) { (favoriteCounter) in
+            self.favoriteCounterLabel.text = "\(favoriteCounter)"
+        }
+        
         updateUI()
     }
     
@@ -53,7 +61,7 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         delegate?.onMenuButtonPress()
     }
 
-    func updateUI() {
+    private func updateUI() {
         
         if user != nil && user?.screenname != "anonymous" {
             userNameLabel.text = user?.name
