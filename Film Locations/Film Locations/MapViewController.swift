@@ -43,7 +43,7 @@ struct MapMovie {
 
 class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
-    let maxNearByMovies = 20
+    let maxNearByMovies = 40
     let currentUsersLocationKey =  "kUserCurrentPreferncesKey"
     
     @IBOutlet weak var carousel: iCarousel!
