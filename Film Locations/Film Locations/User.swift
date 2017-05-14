@@ -25,7 +25,9 @@ class User: NSObject {
         
         let profileUrlString = dictionary["profile_image_url_https"] as? String
         if let profileUrlString = profileUrlString {
-            profileUrl = URL(string: profileUrlString)
+            let biggerImage = profileUrlString.replacingOccurrences(of:"normal", with: "bigger")
+            
+            profileUrl = URL(string: biggerImage)
         }
     }
     
