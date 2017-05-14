@@ -24,6 +24,7 @@ class Movie {
     var isExpandable: Bool { return locations.count > 1 }
     var isExpanded: Bool
     var numberOfRows: Int { return locations.count }
+    var popularity: Int?
     
     init(firebaseMovie: FirebaseMovie, locations: [Location], isExpanded: Bool) {
         
@@ -47,6 +48,7 @@ class Movie {
         self.title = firebaseMovie.title!
         self.locations = locations
         self.isExpanded = isExpanded
+        self.popularity = firebaseMovie.popularity
 
     }
     

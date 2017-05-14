@@ -28,6 +28,7 @@ class FirebaseMovie {
     private let dateKey = "release/date"
     private let yearKey = "release/year"
     private let titleKey = "title"
+    private let popularityKey = "popularity"
     
     private let baseStringURL = "http://image.tmdb.org/t/p/w500/"
     
@@ -47,6 +48,7 @@ class FirebaseMovie {
     var date: String?
     var releaseYear: String?
     var title: String?
+    var popularity: Int?
     
     init(snapshot: FIRDataSnapshot) {
         
@@ -75,6 +77,6 @@ class FirebaseMovie {
         date = snapshot.childSnapshot(forPath: dateKey).value as? String
         releaseYear = snapshot.childSnapshot(forPath: yearKey).value as? String
         title = snapshot.childSnapshot(forPath: titleKey).value as? String
-        
+        popularity = snapshot.childSnapshot(forPath: popularityKey).value as? Int
     }
 }

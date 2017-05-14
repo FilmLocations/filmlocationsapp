@@ -49,7 +49,7 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
                 movies = sortMoviesByReleaseDates()
             case .Popular:
                 popularFilterLabel.isHidden = false
-                filteredMovies = filteredMovies.sorted{$0.title > $1.title}
+                filteredMovies = sortMoviesByPopularity()
             case .MostVisited:
                 mostVisitedFilterLabel.isHidden = false
                 filteredMovies = filteredMovies.sorted{$0.numberOfRows > $1.numberOfRows}
@@ -155,6 +155,20 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
             let date2 = dateFormatter.date(from: stringDate2)
         
             return date1!.compare(date2!) == ComparisonResult.orderedDescending
+        }
+        return filteredMovies
+    }
+    
+    private func sortMoviesByPopularity() -> [Movie] {
+        filteredMovies.sort { (movie1, movie2) -> Bool in
+            guard let popularity1 = movie1.popularity else {
+                return false
+            }
+
+            guard let popularity2 = movie2.popularity else {
+                return false
+            }
+            return popularity1 > popularity2
         }
         return filteredMovies
     }
