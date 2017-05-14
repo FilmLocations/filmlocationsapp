@@ -41,6 +41,11 @@ class HamburgerViewController: UIViewController {
             
             self.addChildViewController(contentViewController)
             contentViewController.willMove(toParentViewController: self)
+            
+            // Adding shadow to ContentViewController
+            contentViewController.view.layer.shadowOpacity = 1
+            contentViewController.view.layer.shadowRadius = 6
+            
             contentView.addSubview(contentViewController.view)
             var vc = contentViewController.childViewControllers.first as? MenuContentViewControllerProtocol
             vc?.delegate = self
