@@ -86,4 +86,18 @@ extension ProfilePageViewController: UICollectionViewDataSource, UICollectionVie
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Fullscreen", bundle: nil)
+        
+        let fullscreen = storyboard.instantiateViewController(withIdentifier: "Fullscreen") as! FullscreenViewController
+        
+        fullscreen.locationImageMetadata = photos[indexPath.row]
+        
+        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as! ProfilePhotosCollectionViewCell
+        fullscreen.locationImage = cell.photoImageView.image
+        
+        self.present(fullscreen, animated: true, completion: nil)
+    }
+    
 }
