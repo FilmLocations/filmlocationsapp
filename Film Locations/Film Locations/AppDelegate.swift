@@ -21,7 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-
+        InternalConfiguration.setStatusBarBackgroundColor()
+        
+        UILabel.appearance().defaultFont =  UIFont(name: "Apple SD Gothic Neo", size: 15)
+        
+        
         FIRApp.configure()
         let memoryCapacity = 0
         let diskCapacity = 500 * 1024 * 1024

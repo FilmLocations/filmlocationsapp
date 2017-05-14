@@ -83,12 +83,10 @@ class MapView: UIView {
 extension MapView: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        print("MapView Tap")
         delegate?.didTapOnMap()
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        
         
         if let selectedMarker = mapView.selectedMarker {
             //selectedMarker.icon = UIImage(named: "UnSelectedMarker")
