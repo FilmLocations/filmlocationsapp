@@ -12,8 +12,8 @@ import SwiftyJSON
 struct InternalConfiguration {
     static let mapToggleIcon = "mapToggleIcon"
     static let listToggleIcon = "listToggleIcon"
-    static let navigationBarColor = UIColor(red: 87/255, green: 79/255, blue: 124/255, alpha: 1.0)
-    static let selectedCellColor = UIColor(red: 75/255, green: 64/255, blue: 127/255, alpha: 1)
+    static let navigationBarColor = UIColor.fl_primary //UIColor(red: 87/255, green: 79/255, blue: 124/255, alpha: 1.0)
+    static let selectedCellColor = UIColor.fl_secondary_text//UIColor(red: 75/255, green: 64/255, blue: 127/255, alpha: 1)
     
     static func customizeTextAppearance(text: String) -> NSAttributedString {
         //        let shadow = NSShadow()
@@ -44,9 +44,20 @@ struct InternalConfiguration {
         
         guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
         
-        statusBar.backgroundColor = UIColor.fl_primary_dark
+        statusBar.backgroundColor = UIColor.fl_primary
     }
     
+}
+
+extension UILabel{
+    dynamic var defaultFont: UIFont? {
+        get { return self.font }
+        set {
+            let sizeOfOldFont = self.font.pointSize
+            let fontNameOfNewFont = newValue?.fontName
+            self.font = UIFont(name: fontNameOfNewFont!, size: sizeOfOldFont)
+        }
+    }
 }
 
 extension UIColor {

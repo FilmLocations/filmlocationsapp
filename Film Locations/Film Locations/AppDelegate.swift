@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         InternalConfiguration.setStatusBarBackgroundColor()
         
+        UILabel.appearance().defaultFont =  UIFont(name: "Apple SD Gothic Neo", size: 15)
+        
         
         FIRApp.configure()
         let memoryCapacity = 0

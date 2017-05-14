@@ -39,6 +39,8 @@ class HamburgerViewController: UIViewController {
                 oldContentViewController.didMove(toParentViewController: nil)
             }
             
+            InternalConfiguration.customizeNavigationBar(navigationController: contentViewController as? UINavigationController)
+            
             self.addChildViewController(contentViewController)
             contentViewController.willMove(toParentViewController: self)
             contentView.addSubview(contentViewController.view)
