@@ -23,7 +23,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="q4w-gt-mmI">
                                 <rect key="frame" x="0.0" y="193" width="375" height="474"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="474" id="BCB-lB-WKE"/>
                                 </constraints>
@@ -56,7 +56,7 @@
                                                 <constraint firstItem="Tan-fm-TrP" firstAttribute="centerY" secondItem="NcE-cf-QIv" secondAttribute="centerY" id="kht-7c-nay"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="menuLabel" destination="rhK-MJ-FB3" id="MgD-O7-gV8"/>
                                             <outlet property="menuSymbolImageView" destination="Tan-fm-TrP" id="qiD-fv-zdk"/>

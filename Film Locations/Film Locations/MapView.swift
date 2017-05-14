@@ -80,7 +80,7 @@ class MapView: UIView {
                 print(movie.title, movie.location.lat, movie.location.long, movie.location.address)
                 marker.isFlat = true
                 marker.userData = movie
-                marker.icon = UIImage(named: "Location-Marker-48")
+                marker.icon = UIImage(named: "Location-Marker-48-5")
                 bounds = bounds.includingCoordinate(marker.position)
                 marker.map = self.googleMapView
             }

@@ -12,7 +12,7 @@ import SwiftyJSON
 struct InternalConfiguration {
     static let mapToggleIcon = "mapToggleIcon"
     static let listToggleIcon = "listToggleIcon"
-    static let navigationBarColor = UIColor.black //UIColor(red: 87/255, green: 79/255, blue: 124/255, alpha: 1.0)
+    static let navigationBarColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5) //UIColor(red: 87/255, green: 79/255, blue: 124/255, alpha: 1.0)
     static let selectedCellColor = UIColor.fl_secondary_text//UIColor(red: 75/255, green: 64/255, blue: 127/255, alpha: 1)
     
     static func customizeTextAppearance(text: String) -> NSAttributedString {
@@ -62,9 +62,10 @@ extension UILabel{
 
 extension UIColor {
     
-    static let fl_primary = UIColor.init(fromHexString: "#607D8BFF")
-    static let fl_primary_dark = UIColor.init(fromHexString: "#455A64FF")
+    static let fl_primary = UIColor.init(fromHexString: "#9e9e9eFF")
+    static let fl_primary_dark = UIColor.init(fromHexString: "#616161FF")
     static let fl_primary_light = UIColor.init(fromHexString: "#CFD8DCFF")
+    static let fl_secondary = UIColor.init(fromHexString: "#E7C877FF")
     static let fl_accent = UIColor.init(fromHexString: "#00BCD4FF")
     static let fl_primary_text = UIColor.init(fromHexString: "#212121FF")
     static let fl_secondary_text = UIColor.init(fromHexString: "#757575FF")
