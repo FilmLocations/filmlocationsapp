@@ -28,6 +28,8 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var addressVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var lyftButton: LyftButton!
+    @IBOutlet weak var miniPosterImage: UIImageView!
+
     
     var movie: Movie? {
         didSet {
@@ -106,8 +108,9 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         //TODO pass current location as pickup, otherwise destination has no effect
+        let pickup = CLLocationCoordinate2D(latitude: 37.7, longitude: -122.4)
         let destination = CLLocationCoordinate2D(latitude: location.lat, longitude: location.long)
-        lyftButton.configure(rideKind: LyftSDK.RideKind.Standard, pickup: nil, destination: destination)
+        lyftButton.configure(rideKind: LyftSDK.RideKind.Line, pickup: pickup, destination: destination)
         
         photosCollectionView.dataSource = self
         photosCollectionView.delegate = self
@@ -137,13 +140,15 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
         posterImageView.clipsToBounds = true
         posterImageView.layer.cornerRadius = 4
-
+        miniPosterImage.clipsToBounds = true
+        miniPosterImage.layer.cornerRadius = 4
         addressVisualEffectView.layer.cornerRadius = 20
         addressVisualEffectView.clipsToBounds = true
         
         if let movie = movie {
             if let posterImageURL = movie.posterImageURL {
                 posterImageView.setImageWith(posterImageURL)
+                miniPosterImage.setImageWith(posterImageURL)
             }
             addressLabel.text = movie.locations[locationIndex].address
             titleLabel.text = "\(movie.title) (\(movie.releaseYear))"
