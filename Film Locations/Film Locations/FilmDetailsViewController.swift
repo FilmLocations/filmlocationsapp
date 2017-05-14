@@ -57,7 +57,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         param1.bigShineColor = UIColor(rgb: (196,23,1))
         param1.smallShineColor = UIColor(rgb: (102,102,102))
         param1.enableFlashing = true
-        likeButton = WCLShineButton(frame: .init(x: 20, y: 15, width: 32, height: 32), params: param1)
+        likeButton = WCLShineButton(frame: .init(x: 25, y: 15, width: 32, height: 32), params: param1)
         likeButton.fillColor = UIColor(rgb: (196,23,1))
         likeButton.color = UIColor(rgb: (170,170,170))
         likeButton.image = .custom(#imageLiteral(resourceName: "heart"))
@@ -68,7 +68,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         param2.bigShineColor = UIColor(rgb: (153,152,38))
         param2.smallShineColor = UIColor(rgb: (102,102,102))
         param2.enableFlashing = true
-        visitButton = WCLShineButton(frame: .init(x: 20, y: 15, width: 32, height: 32), params: param1)
+        visitButton = WCLShineButton(frame: .init(x: 25, y: 15, width: 32, height: 32), params: param1)
         visitButton.fillColor = UIColor(rgb: (87,80,129))
         visitButton.color = UIColor(rgb: (170,170,170))
         visitButton.image = .custom(#imageLiteral(resourceName: "checkmark"))
@@ -79,7 +79,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         param3.bigShineColor = UIColor(rgb: (153,152,38))
         param3.smallShineColor = UIColor(rgb: (102,102,102))
         param3.enableFlashing = true
-        addPhotoButton = WCLShineButton(frame: .init(x: 20, y: 15, width: 32, height: 32), params: param1)
+        addPhotoButton = WCLShineButton(frame: .init(x: 25, y: 15, width: 32, height: 32), params: param1)
         addPhotoButton.color = UIColor(rgb: (170,170,170))
         addPhotoButton.image = .custom(#imageLiteral(resourceName: "plus"))
         addPhotoButton.addTarget(self, action: #selector(addPhoto(_:)), for: .touchUpInside)
@@ -108,7 +108,11 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         //TODO pass current location as pickup, otherwise destination has no effect
-        let pickup = CLLocationCoordinate2D(latitude: 37.7, longitude: -122.4)
+        var pickup = CLLocationCoordinate2D(latitude: 37.7, longitude: -122.4)
+        if let userCurrentLocation = UserDefaults.standard.dictionary(forKey: "kUserCurrentPreferncesKey") {
+            pickup = CLLocationCoordinate2D(latitude: userCurrentLocation["lat"] as! CLLocationDegrees, longitude: userCurrentLocation["long"] as! CLLocationDegrees)
+        }
+        
         let destination = CLLocationCoordinate2D(latitude: location.lat, longitude: location.long)
         lyftButton.configure(rideKind: LyftSDK.RideKind.Line, pickup: pickup, destination: destination)
         
@@ -197,6 +201,33 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func tapTopImage(_ sender: UITapGestureRecognizer) {
+        openFullscreenView(indexPath: nil)
+    }
+    
+    func openFullscreenView(indexPath: IndexPath?) {
+        let storyboard = UIStoryboard(name: "Fullscreen", bundle: nil)
+        
+        let fullscreen = storyboard.instantiateViewController(withIdentifier: "Fullscreen") as! FullscreenViewController
+        
+        if let indexPath = indexPath {
+            if (locationImages != nil) {
+                fullscreen.locationImageMetadata = locationImages[indexPath.row]
+            }
+            
+            let cell = photosCollectionView.cellForItem(at: indexPath as IndexPath) as! LocationPhotoCollectionViewCell
+            fullscreen.locationImage = cell.locationPhotoImageView.image
+        
+        } else {
+            if (locationImages != nil) {
+                fullscreen.locationImageMetadata = locationImages[0]
+            }
+            fullscreen.locationImage = topBackgroundImageView.image
+        }
+        
+        self.present(fullscreen, animated: true, completion: nil)
     }
     
     @IBAction func addPhoto(_ sender: UIButton) {      
@@ -308,17 +339,6 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Fullscreen", bundle: nil)
-        
-        let fullscreen = storyboard.instantiateViewController(withIdentifier: "Fullscreen") as! FullscreenViewController
-        
-        if (locationImages != nil) {
-            fullscreen.locationImageMetadata = locationImages[indexPath.row]
-        }
-        
-        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as! LocationPhotoCollectionViewCell
-        fullscreen.locationImage = cell.locationPhotoImageView.image
-        
-        self.present(fullscreen, animated: true, completion: nil)
+        openFullscreenView(indexPath: indexPath)
     }
 }

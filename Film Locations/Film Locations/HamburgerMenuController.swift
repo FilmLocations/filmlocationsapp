@@ -69,6 +69,13 @@ class HamburgerMenuController: UIViewController {
         updateUI()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        user = User.currentUser
+        updateUI()
+    }
+    
     private func updateUI() {
         if user != nil && user?.screenname != "anonymous" {
             userNameLabel.text = user?.name
