@@ -100,7 +100,7 @@ extension MapView: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
         if let selectedMarker = mapView.selectedMarker {
-            //selectedMarker.icon = UIImage(named: "UnSelectedMarker")
+            //selectedMarker.icon = UIImage(named: "Location-Marker-48")
         }
         
         if mapView.selectedMarker == marker {
