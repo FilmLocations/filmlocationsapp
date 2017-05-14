@@ -86,7 +86,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.23921568627450979" green="0.69019607843137254" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="YwC-9j-EKh" firstAttribute="top" secondItem="dr9-PI-62i" secondAttribute="top" constant="8" id="0lz-0G-wdH"/>
                                     <constraint firstItem="YwC-9j-EKh" firstAttribute="leading" secondItem="QZq-k8-vBG" secondAttribute="trailing" constant="33" id="2BH-g6-BLT"/>
@@ -267,6 +267,6 @@
     </scenes>
     <resources>
         <image name="mapPin" width="128" height="128"/>
-        <image name="releaseYear" width="128" height="128"/>
+        <image name="releaseYear" width="256" height="256"/>
     </resources>
 </document>

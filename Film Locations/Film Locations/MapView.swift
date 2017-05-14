@@ -36,9 +36,20 @@ class MapView: UIView {
         let camera = GMSCameraPosition.camera(withLatitude: 0.0, longitude: 0.0, zoom: 10.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.delegate = self
+        
+        do {
+            // Set the map style by passing the URL of the local file.
+            if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
+                mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+            } else {
+                NSLog("Unable to find style.json")
+            }
+        } catch {
+            NSLog("One or more of the map styles failed to load. \(error)")
+        }
+        
         self.googleMapView = mapView
         self.googleMapView.isMyLocationEnabled = true
-        
         self.addSubview(self.googleMapView)
     }
     
@@ -69,7 +80,7 @@ class MapView: UIView {
                 print(movie.title, movie.location.lat, movie.location.long, movie.location.address)
                 marker.isFlat = true
                 marker.userData = movie
-                marker.icon = UIImage(named: "icon")
+                marker.icon = UIImage(named: "Location-Marker-48")
                 bounds = bounds.includingCoordinate(marker.position)
                 marker.map = self.googleMapView
             }
