@@ -203,6 +203,33 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func tapTopImage(_ sender: UITapGestureRecognizer) {
+        openFullscreenView(indexPath: nil)
+    }
+    
+    func openFullscreenView(indexPath: IndexPath?) {
+        let storyboard = UIStoryboard(name: "Fullscreen", bundle: nil)
+        
+        let fullscreen = storyboard.instantiateViewController(withIdentifier: "Fullscreen") as! FullscreenViewController
+        
+        if let indexPath = indexPath {
+            if (locationImages != nil) {
+                fullscreen.locationImageMetadata = locationImages[indexPath.row]
+            }
+            
+            let cell = photosCollectionView.cellForItem(at: indexPath as IndexPath) as! LocationPhotoCollectionViewCell
+            fullscreen.locationImage = cell.locationPhotoImageView.image
+        
+        } else {
+            if (locationImages != nil) {
+                fullscreen.locationImageMetadata = locationImages[0]
+            }
+            fullscreen.locationImage = topBackgroundImageView.image
+        }
+        
+        self.present(fullscreen, animated: true, completion: nil)
+    }
+    
     @IBAction func addPhoto(_ sender: UIButton) {      
         let vc = UIImagePickerController()
         vc.delegate = self
@@ -312,17 +339,6 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Fullscreen", bundle: nil)
-        
-        let fullscreen = storyboard.instantiateViewController(withIdentifier: "Fullscreen") as! FullscreenViewController
-        
-        if (locationImages != nil) {
-            fullscreen.locationImageMetadata = locationImages[indexPath.row]
-        }
-        
-        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as! LocationPhotoCollectionViewCell
-        fullscreen.locationImage = cell.locationPhotoImageView.image
-        
-        self.present(fullscreen, animated: true, completion: nil)
+        openFullscreenView(indexPath: indexPath)
     }
 }

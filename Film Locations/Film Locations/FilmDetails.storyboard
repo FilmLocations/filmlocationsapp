@@ -112,9 +112,13 @@
                                     <imageView clipsSubviews="YES" alpha="0.90000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jVB-Jz-qyv" userLabel="Top Background Image View">
                                         <rect key="frame" x="20" y="0.0" width="375" height="280"/>
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="280" id="KwD-lN-p7j"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="C6T-8s-eDa" appends="YES" id="oO9-Sx-Qx5"/>
+                                        </connections>
                                     </imageView>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6d-Dc-9xB">
                                         <rect key="frame" x="74" y="246" width="321" height="34"/>
@@ -281,6 +285,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEx-Xz-FyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="C6T-8s-eDa" userLabel="Top Image Tap Gesture">
+                    <connections>
+                        <action selector="tapTopImage:" destination="1hP-5W-E5H" id="d1L-zC-Pw1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="200.80000000000001" y="99.850074962518747"/>
         </scene>
