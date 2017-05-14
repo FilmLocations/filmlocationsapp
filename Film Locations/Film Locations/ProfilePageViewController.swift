@@ -34,6 +34,14 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         
         user = User.currentUser
         
+        collectionView.dataSource = self
+        collectionView.delegate = self
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         Database.sharedInstance.getUserImageMetadata(userId: (user?.screenname)!) { (locationImages) in
             self.photos = locationImages
             self.collectionView.reloadData()
@@ -46,13 +54,6 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
             self.favoriteCounterLabel.text = "\(favoriteCounter)"
         }
         
-        collectionView.dataSource = self
-        collectionView.delegate = self
-    
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         updateUI()
     }
     
