@@ -26,6 +26,13 @@ class LoginViewController: UIViewController {
         
         twitterLoginButton.layer.cornerRadius = 4
         continueWithoutLoginButton.layer.cornerRadius = 4
+
+        view.backgroundColor = UIColor.fl_primary
+
+        twitterLoginButton.titleLabel?.textColor = UIColor.fl_primary_text
+
+        continueWithoutLoginButton.backgroundColor = UIColor.fl_primary_dark
+        continueWithoutLoginButton.titleLabel?.textColor = UIColor.fl_primary_text
     }
 
     override func didReceiveMemoryWarning() {

@@ -19,7 +19,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9fF-t1-iOA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ihS-5S-lXg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="830"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="840"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3fZ-BX-RaF">
@@ -227,7 +227,7 @@
                                     <constraint firstItem="ZnS-v6-8us" firstAttribute="top" secondItem="jVB-Jz-qyv" secondAttribute="bottom" constant="3.5" id="3zj-Fn-aeU"/>
                                     <constraint firstItem="k8b-TY-ETn" firstAttribute="top" secondItem="ajE-zd-Zxv" secondAttribute="bottom" constant="1" id="7A1-8j-b9a"/>
                                     <constraint firstAttribute="trailing" secondItem="jVB-Jz-qyv" secondAttribute="trailing" constant="20" id="9hS-Yr-uzZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="jM9-59-IuD" secondAttribute="bottom" constant="164.5" id="E45-1R-vtT"/>
+                                    <constraint firstAttribute="bottom" secondItem="jM9-59-IuD" secondAttribute="bottom" constant="84.5" id="E45-1R-vtT"/>
                                     <constraint firstItem="BYr-PY-xWv" firstAttribute="bottom" secondItem="jVB-Jz-qyv" secondAttribute="bottom" id="E6l-LH-t0D"/>
                                     <constraint firstAttribute="trailing" secondItem="k8b-TY-ETn" secondAttribute="trailing" constant="20" id="EnV-Jh-NFP"/>
                                     <constraint firstItem="uvw-qF-faI" firstAttribute="leading" secondItem="jM9-59-IuD" secondAttribute="trailing" constant="8" id="JBt-bp-Oti"/>
@@ -258,18 +258,19 @@
                         </subviews>
                         <color key="backgroundColor" red="0.91461115726989717" green="0.88818912285337515" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="9fF-t1-iOA" firstAttribute="top" secondItem="3fZ-BX-RaF" secondAttribute="bottom" id="IZu-07-0BZ"/>
+                            <constraint firstItem="9fF-t1-iOA" firstAttribute="top" secondItem="3fZ-BX-RaF" secondAttribute="bottom" constant="10" id="IZu-07-0BZ"/>
                             <constraint firstItem="3fZ-BX-RaF" firstAttribute="centerX" secondItem="ihS-5S-lXg" secondAttribute="centerX" id="Mcz-DN-8Us"/>
                             <constraint firstItem="3fZ-BX-RaF" firstAttribute="top" secondItem="ihS-5S-lXg" secondAttribute="top" id="SLN-Sy-RFr"/>
                             <constraint firstItem="3fZ-BX-RaF" firstAttribute="leading" secondItem="ihS-5S-lXg" secondAttribute="leadingMargin" constant="-36" id="tdR-Lf-NuH"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="830"/>
+                    <size key="freeformSize" width="375" height="840"/>
                     <connections>
                         <outlet property="addPhotoView" destination="nhO-vo-nNI" id="tJc-sJ-ZcB"/>
                         <outlet property="addressLabel" destination="lRA-LP-8YD" id="y3O-Xj-tFw"/>
                         <outlet property="addressVisualEffectView" destination="K6d-Dc-9xB" id="LzP-d5-dVp"/>
+                        <outlet property="likesNameLabel" destination="Bbe-og-cZb" id="Y23-bz-be5"/>
                         <outlet property="likesView" destination="iLu-iA-XOj" id="XwB-Fm-Szf"/>
                         <outlet property="lyftButton" destination="hpZ-bg-Odz" id="rIc-sA-C2z"/>
                         <outlet property="miniPosterImage" destination="BYr-PY-xWv" id="K81-lj-hNZ"/>
@@ -281,7 +282,9 @@
                         <outlet property="posterImageView" destination="jM9-59-IuD" id="ob4-iq-WzB"/>
                         <outlet property="titleLabel" destination="uvw-qF-faI" id="bs2-7U-SNE"/>
                         <outlet property="topBackgroundImageView" destination="jVB-Jz-qyv" id="92M-70-5dr"/>
+                        <outlet property="uploadsNameLabel" destination="1sD-mO-f0d" id="bgc-19-7cy"/>
                         <outlet property="visitLocationView" destination="NDW-Oq-Xcf" id="ia5-iO-stB"/>
+                        <outlet property="visitsNameLabel" destination="pLF-B3-gWv" id="aH5-f4-OYg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEx-Xz-FyK" userLabel="First Responder" sceneMemberID="firstResponder"/>

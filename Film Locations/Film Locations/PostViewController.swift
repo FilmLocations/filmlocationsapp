@@ -13,6 +13,8 @@ class PostViewController: UIViewController {
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var descriptionTextField: UITextField!
     
+    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     var postImage: UIImage!
     var postPlaceId: String!
     
@@ -21,6 +23,10 @@ class PostViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         postImageView.image = postImage
+
+        view.backgroundColor = UIColor.fl_primary_dark
+        postButton.tintColor = UIColor.fl_secondary_text
+        cancelButton.tintColor = UIColor.fl_secondary_text
     }
 
     override func didReceiveMemoryWarning() {
