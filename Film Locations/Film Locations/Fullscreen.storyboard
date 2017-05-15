@@ -30,6 +30,7 @@
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pg3-Kk-62R">
                                 <rect key="frame" x="0.0" y="62" width="375" height="478"/>
+                                <color key="tintColor" red="0.9137254901960784" green="0.88802713160000002" blue="0.99976366760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="478" id="nE0-oc-2AG"/>
                                 </constraints>
@@ -76,6 +77,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="9iy-X5-Ead" id="FOg-ey-XbK"/>
                         <outlet property="descriptionLabel" destination="pGV-ZQ-Ky4" id="F1s-LZ-0pL"/>
                         <outlet property="locationImageView" destination="Pg3-Kk-62R" id="jtJ-Ep-bMg"/>
                         <outlet property="timeLabel" destination="SeW-vw-Ypi" id="a1e-vt-vWE"/>

@@ -14,6 +14,7 @@ class FullscreenViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
 
     var locationImageMetadata: LocationImage!
     var locationImage: UIImage!
@@ -26,7 +27,7 @@ class FullscreenViewController: UIViewController {
         locationImageView.image = locationImage
         
         if let locationImageMetadata = locationImageMetadata {
-            userNameLabel.text = locationImageMetadata.userId
+            userNameLabel.text = "@\(locationImageMetadata.userId)"
             descriptionLabel.text = locationImageMetadata.description
             timeLabel.text = locationImageMetadata.timestamp
         } else {
@@ -34,6 +35,12 @@ class FullscreenViewController: UIViewController {
             timeLabel.text = ""
             userNameLabel.text = ""
         }
+
+        view.backgroundColor = UIColor.fl_primary_dark
+        userNameLabel.textColor = UIColor.fl_accent
+        timeLabel.textColor = UIColor.fl_accent
+        descriptionLabel.textColor = UIColor.fl_primary_text
+        backButton.tintColor = UIColor.fl_accent
     }
 
     override func didReceiveMemoryWarning() {

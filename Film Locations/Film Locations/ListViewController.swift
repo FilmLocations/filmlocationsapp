@@ -89,7 +89,7 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
 
         filtersView.backgroundColor = UIColor.fl_secondary
         filtersView.tintColor = UIColor.black
-        
+
         newMoviesFilterLabel.backgroundColor = UIColor.black
         popularFilterLabel.backgroundColor = UIColor.black
         mostVisitedFilterLabel.backgroundColor = UIColor.black

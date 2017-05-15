@@ -140,11 +140,10 @@ extension HamburgerMenuController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)    
         hamburgerViewController.contentViewController = viewControllers[indexPath.row]
     }
-    
+
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.contentView.backgroundColor = UIColor.black
         cell.contentView.alpha = 0.9
-        
         cell.tintColor = UIColor.white
     }
 }

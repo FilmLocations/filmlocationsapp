@@ -30,7 +30,9 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var addressVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var lyftButton: LyftButton!
     @IBOutlet weak var miniPosterImage: UIImageView!
-    
+    @IBOutlet weak var uploadsNameLabel: UILabel!
+    @IBOutlet weak var visitsNameLabel: UILabel!
+    @IBOutlet weak var likesNameLabel: UILabel!
 
     var movie: Movie? {
         didSet {
@@ -70,9 +72,9 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         param2.smallShineColor = UIColor(rgb: (102,102,102))
         param2.enableFlashing = true
         visitButton = WCLShineButton(frame: .init(x: 25, y: 5, width: 32, height: 32), params: param1)
-        visitButton.fillColor = UIColor(rgb: (87,80,129))
+        visitButton.fillColor = UIColor.fl_accent!
         visitButton.color = UIColor(rgb: (170,170,170))
-        visitButton.image = .custom(#imageLiteral(resourceName: "checkmark"))
+        visitButton.image = .custom(#imageLiteral(resourceName: "check"))
         visitButton.addTarget(self, action: #selector(visitLocation(_:)), for: .touchUpInside)
         visitLocationView.addSubview(visitButton)
         
@@ -115,23 +117,49 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         let destination = CLLocationCoordinate2D(latitude: location.lat, longitude: location.long)
+        lyftButton.style = .mulberryLight
         lyftButton.configure(rideKind: LyftSDK.RideKind.Line, pickup: pickup, destination: destination)
         
         photosCollectionView.dataSource = self
         photosCollectionView.delegate = self
         
-        let visitButtonGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onVisitButtonTapped(_:)))
-        let likeButtonGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onLikeButtonTapped(_:)))
+        if (user.isAnonymous) {
+            let visitButtonGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onVisitButtonTapped(_:)))
+            let likeButtonGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onLikeButtonTapped(_:)))
 
-        visitButtonGestureRecognizer.delegate = self
-        likeButtonGestureRecognizer.delegate = self
-        visitLocationView.addGestureRecognizer(visitButtonGestureRecognizer)
-        likesView.isUserInteractionEnabled = true
-        likesView.addGestureRecognizer(likeButtonGestureRecognizer)
+            visitButtonGestureRecognizer.delegate = self
+            likeButtonGestureRecognizer.delegate = self
+            visitLocationView.addGestureRecognizer(visitButtonGestureRecognizer)
+            likesView.addGestureRecognizer(likeButtonGestureRecognizer)
+        }
 
         updateUI()
 
         addBackButton()
+
+        view.backgroundColor = UIColor.fl_primary_dark
+        likesView.backgroundColor = UIColor.fl_primary_dark
+        visitLocationView.backgroundColor = UIColor.fl_primary_dark
+        addPhotoView.backgroundColor = UIColor.fl_primary_dark
+        photosCollectionView.backgroundColor = UIColor.fl_primary_dark
+        lyftButton.backgroundColor = UIColor.fl_primary_dark
+        titleLabel.textColor = UIColor.fl_primary_light
+        overviewLabel.textColor = UIColor.fl_primary_light
+        numberOfUploadsLabel.textColor = UIColor.fl_secondary_text
+        numberOfVisitsLabel.textColor = UIColor.fl_secondary_text
+        numberOfLikesLabel.textColor = UIColor.fl_secondary_text
+        numberOfUploadsLabel.backgroundColor = UIColor.fl_accent
+        numberOfLikesLabel.backgroundColor = UIColor.fl_accent
+        numberOfVisitsLabel.backgroundColor = UIColor.fl_accent
+        uploadsNameLabel.backgroundColor = UIColor.fl_accent
+        visitsNameLabel.backgroundColor = UIColor.fl_accent
+        likesNameLabel.backgroundColor = UIColor.fl_accent
+        uploadsNameLabel.textColor = UIColor.fl_secondary_text
+        visitsNameLabel.textColor = UIColor.fl_secondary_text
+        likesNameLabel.textColor = UIColor.fl_secondary_text
+        addressLabel.textColor = UIColor.fl_secondary_text
+        navigationController?.navigationBar.tintColor = UIColor.fl_secondary_text
+        navigationController?.navigationBar.barTintColor = UIColor.fl_accent
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -148,7 +176,8 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     
     func onVisitButtonTapped(_ sender: UIView) {
         if (user.isAnonymous) {
-            let banner = Banner(title: "Login", subtitle: "Please login to mark this location as visited!", image: nil, backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+            let banner = Banner(title: "Login", subtitle: "Please login to mark this location as visited", image: nil, backgroundColor: UIColor.fl_accent!)
+            banner.textColor = UIColor.fl_primary_text!
             banner.dismissesOnTap = true
             banner.show(duration: 4.0)
         }
@@ -156,7 +185,8 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
     func onLikeButtonTapped(_ sender: UIView) {
         if (user.isAnonymous) {
-            let banner = Banner(title: "Login", subtitle: "Please login to like this location!", image: nil, backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+            let banner = Banner(title: "Login", subtitle: "Please login to like this location", image: nil, backgroundColor: UIColor.fl_accent!)
+            banner.textColor = UIColor.fl_primary_text!
             banner.dismissesOnTap = true
             banner.show(duration: 4.0)
         }

@@ -40,7 +40,7 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         
         collectionView.dataSource = self
         collectionView.delegate = self
-  
+
         transparentBackgroundView.backgroundColor = UIColor.fl_secondary
         transparentBackgroundView.alpha = 0.85
         
@@ -93,7 +93,7 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         
         profileImageView.layer.cornerRadius = profileImageView.bounds.size.width/2
         profileImageView.layer.masksToBounds = true
-        
+
         borderView.layer.cornerRadius = borderView.bounds.size.width/2
         borderView.layer.masksToBounds = true
     }

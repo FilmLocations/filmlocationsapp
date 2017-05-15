@@ -12,7 +12,7 @@ import SwiftyJSON
 struct InternalConfiguration {
     static let mapToggleIcon = "mapToggleIcon"
     static let listToggleIcon = "listToggleIcon"
-    
+
     static let navigationBarColor = UIColor.black //UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
     static let selectedCellColor = UIColor.fl_secondary_text
     
@@ -78,7 +78,7 @@ extension UIColor {
 //    static let fl_secondary_text = UIColor.init(fromHexString: "#757575FF")
 //    static let fl_icons = UIColor.init(fromHexString: "#FFFFFFFF")
 //    static let fl_divider = UIColor.init(fromHexString: "#BDBDBDFF")
-    
+
     public convenience init?(fromHexString: String) {
         let r, g, b, a: CGFloat
         

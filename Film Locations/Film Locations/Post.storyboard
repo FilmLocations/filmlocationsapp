@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -62,7 +63,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="k6f-0U-e9T" id="OGQ-8g-Sig"/>
                         <outlet property="descriptionTextField" destination="D40-Y4-kJJ" id="OeK-UD-IIf"/>
+                        <outlet property="postButton" destination="1ol-5R-syD" id="W5T-Ef-etb"/>
                         <outlet property="postImageView" destination="pTz-AK-Tua" id="oTT-rZ-t6F"/>
                     </connections>
                 </viewController>
