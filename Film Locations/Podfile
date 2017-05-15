@@ -17,4 +17,5 @@ target 'Film Locations' do
   pod 'BDBOAuth1Manager'
   pod 'WCLShineButton'
   pod 'LyftSDK'
+  pod 'BRYXBanner'
 end

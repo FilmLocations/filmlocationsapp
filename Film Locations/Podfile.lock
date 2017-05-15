@@ -16,6 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
+  - BRYXBanner (0.7.2)
   - Firebase/Core (3.17.0):
     - FirebaseAnalytics (= 3.9.0)
     - FirebaseCore (= 3.6.0)
@@ -59,6 +60,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager
+  - BRYXBanner
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
@@ -72,6 +74,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
+  BRYXBanner: ed407a56c53f2add0aaa16f810062eac48d802cf
   Firebase: 4b66b5b59c43edac745b87f0c87e42cdd0279c13
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
@@ -87,6 +90,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   WCLShineButton: 1608b9a2dcbebd1a5a1364c821ef0de3e95af458
 
-PODFILE CHECKSUM: e36c68bcab93d42759bae46b30686b3743b4128e
+PODFILE CHECKSUM: af76f3c9e0d3703bd84fdf5b05ba7a461fe18faa
 
 COCOAPODS: 1.2.0

@@ -11,8 +11,9 @@ import AFNetworking
 import WCLShineButton
 import LyftSDK
 import CoreLocation
+import BRYXBanner
 
-class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var photosCollectionView: UICollectionView!
     @IBOutlet weak var topBackgroundImageView: UIImageView!
@@ -29,8 +30,8 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var addressVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var lyftButton: LyftButton!
     @IBOutlet weak var miniPosterImage: UIImageView!
-
     
+
     var movie: Movie? {
         didSet {
             updateUI()
@@ -119,6 +120,15 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         photosCollectionView.dataSource = self
         photosCollectionView.delegate = self
         
+        let visitButtonGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onVisitButtonTapped(_:)))
+        let likeButtonGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onLikeButtonTapped(_:)))
+
+        visitButtonGestureRecognizer.delegate = self
+        likeButtonGestureRecognizer.delegate = self
+        visitLocationView.addGestureRecognizer(visitButtonGestureRecognizer)
+        likesView.isUserInteractionEnabled = true
+        likesView.addGestureRecognizer(likeButtonGestureRecognizer)
+
         updateUI()
 
         addBackButton()
@@ -136,6 +146,22 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         self.dismiss(animated: true, completion: nil)
     }
     
+    func onVisitButtonTapped(_ sender: UIView) {
+        if (user.isAnonymous) {
+            let banner = Banner(title: "Login", subtitle: "Please login to mark this location as visited!", image: nil, backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+            banner.dismissesOnTap = true
+            banner.show(duration: 4.0)
+        }
+    }
+
+    func onLikeButtonTapped(_ sender: UIView) {
+        if (user.isAnonymous) {
+            let banner = Banner(title: "Login", subtitle: "Please login to like this location!", image: nil, backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+            banner.dismissesOnTap = true
+            banner.show(duration: 4.0)
+        }
+    }
+
     private func updateUI() {
     
         if viewIfLoaded == nil {
@@ -161,8 +187,8 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         
         // Anonymous users can't mark as visited or like
         if (user.isAnonymous) {
-            likesView.isUserInteractionEnabled = false
-            visitLocationView.isUserInteractionEnabled = false
+            visitButton.isUserInteractionEnabled = false
+            likeButton.isUserInteractionEnabled = false
         }
 
         Database.sharedInstance.hasVisitedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasVisited) in
