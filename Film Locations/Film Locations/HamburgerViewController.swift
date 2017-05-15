@@ -78,7 +78,7 @@ extension HamburgerViewController: MenuButtonPressDelegate {
     func onMenuButtonPress() {
         print("Menu pressed")
         UIView.animate(withDuration: 0.3, animations: {
-            self.leftMarginConstraint.constant = self.view.frame.size.width - 50
+            self.leftMarginConstraint.constant = self.view.frame.size.width - 100
         })
     }
 }

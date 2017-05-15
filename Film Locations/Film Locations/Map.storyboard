@@ -44,7 +44,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gCm-TO-axw">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="u0j-ML-QsH">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="u0j-ML-QsH">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onMenuPress:" destination="Ne4-ir-tMd" id="luU-fR-X4O"/>
                             </connections>
@@ -64,7 +65,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MapNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="xFL-i5-lTK" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="q6k-A5-cZA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q6k-A5-cZA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -78,4 +79,7 @@
             <point key="canvasLocation" x="0.80000000000000004" y="6.746626686656672"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu" width="32" height="32"/>
+    </resources>
 </document>

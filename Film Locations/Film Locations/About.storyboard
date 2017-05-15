@@ -32,7 +32,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="G3w-57-aLQ">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="TFg-c5-vKS">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="TFg-c5-vKS">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onMenuPress:" destination="IyK-VO-VoV" id="TEZ-zU-Lk2"/>
                             </connections>
@@ -48,7 +49,7 @@
             <objects>
                 <navigationController storyboardIdentifier="AboutNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Xbt-bv-YPD" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FnC-U8-Ssp">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FnC-U8-Ssp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -62,4 +63,7 @@
             <point key="canvasLocation" x="77.599999999999994" y="150.67466266866569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu" width="32" height="32"/>
+    </resources>
 </document>

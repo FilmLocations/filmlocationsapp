@@ -82,7 +82,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.23921568627450979" green="0.69019607843137254" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="YwC-9j-EKh" firstAttribute="top" secondItem="dr9-PI-62i" secondAttribute="top" constant="8" id="0lz-0G-wdH"/>
                                     <constraint firstItem="YwC-9j-EKh" firstAttribute="leading" secondItem="QZq-k8-vBG" secondAttribute="trailing" constant="33" id="2BH-g6-BLT"/>
@@ -223,7 +222,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NjJ-zV-5Ql">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="2HB-Bc-a49">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="2HB-Bc-a49">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onMenuPress:" destination="JSh-Oj-8wZ" id="oEM-qW-Nrg"/>
                             </connections>
@@ -247,7 +247,7 @@
             <objects>
                 <navigationController storyboardIdentifier="ListNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Enm-hR-vrk" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5ni-aS-XBe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5ni-aS-XBe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -263,6 +263,7 @@
     </scenes>
     <resources>
         <image name="mapPin" width="128" height="128"/>
+        <image name="menu" width="32" height="32"/>
         <image name="releaseYear" width="256" height="256"/>
     </resources>
 </document>
