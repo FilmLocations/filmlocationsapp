@@ -41,19 +41,22 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         collectionView.dataSource = self
         collectionView.delegate = self
 
-        transparentBackgroundView.backgroundColor = UIColor.fl_secondary
+        transparentBackgroundView.backgroundColor = UIColor.white
         transparentBackgroundView.alpha = 0.85
         
-        visitedView.backgroundColor = UIColor.white
+        visitedView.backgroundColor = UIColor.fl_secondary
         visitedView.alpha = 1
-        visitedCounterLabel.textColor = UIColor.black
+        visitedCounterLabel.textColor = UIColor.white
         
-        favoritesView.backgroundColor = UIColor.white
+        favoritesView.backgroundColor = UIColor.fl_secondary
         favoritesView.alpha = 1
-        favoriteCounterLabel.textColor = UIColor.black
+        favoriteCounterLabel.textColor = UIColor.white
         
-        collectionView.backgroundColor = UIColor.fl_secondary
+        collectionView.backgroundColor = UIColor.white
         collectionView.alpha = 1
+        
+        userNameLabel.textColor = UIColor.fl_secondary
+        userLocationLabel.textColor = UIColor.fl_secondary
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,7 +88,8 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
             userLocationLabel.text = user?.location
             
             if let profileImageURL = user?.profileUrl {
-                backgroundImageView.setImageWith(profileImageURL)
+                backgroundImageView.backgroundColor = UIColor.white
+//                backgroundImageView.setImageWith(profileImageURL)
                 //            backgroundImageView.image = backgroundImageView.image?.blurredImage(withRadius: 5, iterations: 5, tintColor: nil)
                 profileImageView.setImageWith(profileImageURL)
             }

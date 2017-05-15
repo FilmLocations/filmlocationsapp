@@ -49,7 +49,7 @@ class ListViewCell: UITableViewCell {
             
             if let posterImageURL = movie.posterImageURL {
                 posterImageView.setImageWith(posterImageURL)
-                posterImageView.image = posterImageView.image?.blurredImage(withRadius: 2, iterations: 5, tintColor: nil)
+//                posterImageView.image = posterImageView.image?.blurredImage(withRadius: 2, iterations: 5, tintColor: nil)
             }
         }
     }
