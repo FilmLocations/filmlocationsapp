@@ -43,15 +43,15 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
 
         transparentBackgroundView.backgroundColor = UIColor.fl_secondary
         transparentBackgroundView.alpha = 0.85
-
+        
         visitedView.backgroundColor = UIColor.white
         visitedView.alpha = 1
         visitedCounterLabel.textColor = UIColor.black
-
+        
         favoritesView.backgroundColor = UIColor.white
         favoritesView.alpha = 1
         favoriteCounterLabel.textColor = UIColor.black
-
+        
         collectionView.backgroundColor = UIColor.fl_secondary
         collectionView.alpha = 1
     }

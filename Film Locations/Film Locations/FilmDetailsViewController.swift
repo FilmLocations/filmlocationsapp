@@ -33,7 +33,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var uploadsNameLabel: UILabel!
     @IBOutlet weak var visitsNameLabel: UILabel!
     @IBOutlet weak var likesNameLabel: UILabel!
-    
+
     var movie: Movie? {
         didSet {
             updateUI()

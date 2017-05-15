@@ -26,7 +26,7 @@ struct InternalConfiguration {
         navigationController?.navigationBar.barTintColor = navigationBarColor
         navigationController?.navigationBar.tintColor = .white
     }
-
+    
     static func customizeTextAppearance1(text: String) -> NSAttributedString {
         let shadow = NSShadow()
         shadow.shadowColor = UIColor.black

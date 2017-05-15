@@ -90,13 +90,13 @@ class HamburgerMenuController: UIViewController {
         
         profileImageView.layer.cornerRadius = profileImageView.bounds.size.width/2
         profileImageView.layer.masksToBounds = true
-
+        
         borderView.layer.cornerRadius = borderView.bounds.size.width/2
         borderView.layer.masksToBounds = true
-
+        
         tableView.backgroundColor = UIColor.black
         tableView.alpha = 0.9
-
+        
         headerView.backgroundColor = UIColor.fl_secondary
         headerView.tintColor = UIColor.white
     }
@@ -144,7 +144,6 @@ extension HamburgerMenuController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.contentView.backgroundColor = UIColor.black
         cell.contentView.alpha = 0.9
-
         cell.tintColor = UIColor.white
     }
 }
