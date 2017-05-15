@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Database.sharedInstance.getAllFilms { (movies) in
             print("We have \(movies.count) locations")
         }
-        
+        UIApplication.shared.statusBarStyle = .lightContent
         return true
     }
 
