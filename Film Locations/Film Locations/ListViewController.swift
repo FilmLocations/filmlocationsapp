@@ -86,6 +86,14 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
         setupSearchBar()
         
         filtersView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onFilterTapGesture(_:))))
+
+        filtersView.backgroundColor = UIColor.fl_secondary
+        filtersView.tintColor = UIColor.black
+        
+        newMoviesFilterLabel.backgroundColor = UIColor.black
+        popularFilterLabel.backgroundColor = UIColor.black
+        mostVisitedFilterLabel.backgroundColor = UIColor.black
+        favoritesFilterLabel.backgroundColor = UIColor.black
     }
     
     @IBAction func onMenuPress(_ sender: UIBarButtonItem) {
