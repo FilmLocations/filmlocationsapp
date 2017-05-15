@@ -12,17 +12,14 @@ import SwiftyJSON
 struct InternalConfiguration {
     static let mapToggleIcon = "mapToggleIcon"
     static let listToggleIcon = "listToggleIcon"
-    static let navigationBarColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5) //UIColor(red: 87/255, green: 79/255, blue: 124/255, alpha: 1.0)
-    static let selectedCellColor = UIColor.fl_secondary_text//UIColor(red: 75/255, green: 64/255, blue: 127/255, alpha: 1)
+
+    static let navigationBarColor = UIColor.black //UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
+    static let selectedCellColor = UIColor.fl_secondary_text
     
     static func customizeTextAppearance(text: String) -> NSAttributedString {
-        //        let shadow = NSShadow()
-        //        shadow.shadowColor = UIColor.darkGray
-        //        shadow.shadowOffset = CGSize(width: 2, height: 2)
-        //        shadow.shadowBlurRadius = 4
         let attributeColor = UIColor.white
         
-        return NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName: attributeColor/*,NSShadowAttributeName: shadow*/])
+        return NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName: attributeColor])
     }
     
     static func customizeNavigationBar(navigationController: UINavigationController?) {
@@ -41,12 +38,10 @@ struct InternalConfiguration {
     }
     
     static func setStatusBarBackgroundColor() {
-        
         guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
         statusBar.backgroundColor = UIColor.fl_primary_dark
         
     }
-    
 }
 
 extension UILabel{
@@ -61,18 +56,29 @@ extension UILabel{
 }
 
 extension UIColor {
-    
-    static let fl_primary = UIColor.init(fromHexString: "#9e9e9eFF")
-    static let fl_primary_dark = UIColor.init(fromHexString: "#616161FF")
+
+    static let fl_primary = UIColor.init(fromHexString: "#607D8BFF")
+    static let fl_primary_dark = UIColor.init(fromHexString: "#455A64FF")
     static let fl_primary_light = UIColor.init(fromHexString: "#CFD8DCFF")
-    static let fl_secondary = UIColor.init(fromHexString: "#E7C877FF")
     static let fl_accent = UIColor.init(fromHexString: "#00BCD4FF")
     static let fl_primary_text = UIColor.init(fromHexString: "#212121FF")
     static let fl_secondary_text = UIColor.init(fromHexString: "#757575FF")
     static let fl_icons = UIColor.init(fromHexString: "#FFFFFFFF")
     static let fl_divider = UIColor.init(fromHexString: "#BDBDBDFF")
+    static let fl_secondary = UIColor.init(fromHexString: "#00BCD4FF")
+    static let fl_secondary_700 = UIColor.init(fromHexString: "#0097A7FF")
     
     
+//    static let fl_primary = UIColor.init(fromHexString: "#9e9e9eFF")
+//    static let fl_primary_dark = UIColor.init(fromHexString: "#616161FF")
+//    static let fl_primary_light = UIColor.init(fromHexString: "#CFD8DCFF")
+//    static let fl_secondary = UIColor.init(fromHexString: "#E7C877FF")
+//    static let fl_accent = UIColor.init(fromHexString: "#00BCD4FF")
+//    static let fl_primary_text = UIColor.init(fromHexString: "#212121FF")
+//    static let fl_secondary_text = UIColor.init(fromHexString: "#757575FF")
+//    static let fl_icons = UIColor.init(fromHexString: "#FFFFFFFF")
+//    static let fl_divider = UIColor.init(fromHexString: "#BDBDBDFF")
+
     public convenience init?(fromHexString: String) {
         let r, g, b, a: CGFloat
         
@@ -99,5 +105,4 @@ extension UIColor {
         return nil
     }
 
-    
 }

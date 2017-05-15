@@ -12,8 +12,10 @@ import AFNetworking
 class HamburgerMenuController: UIViewController {
 
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userLocationLabel: UILabel!
+    @IBOutlet weak var borderView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -88,6 +90,15 @@ class HamburgerMenuController: UIViewController {
         
         profileImageView.layer.cornerRadius = profileImageView.bounds.size.width/2
         profileImageView.layer.masksToBounds = true
+
+        borderView.layer.cornerRadius = borderView.bounds.size.width/2
+        borderView.layer.masksToBounds = true
+
+        tableView.backgroundColor = UIColor.black
+        tableView.alpha = 0.9
+
+        headerView.backgroundColor = UIColor.fl_secondary
+        headerView.tintColor = UIColor.white
     }
     
     private func setupMenuOptions() {
@@ -123,10 +134,17 @@ extension HamburgerMenuController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let backgroundView = UIView()
-        backgroundView.backgroundColor = InternalConfiguration.selectedCellColor
+        backgroundView.backgroundColor = UIColor.fl_secondary
         tableView.cellForRow(at: indexPath)?.selectedBackgroundView = backgroundView
         
         tableView.deselectRow(at: indexPath, animated: true)    
         hamburgerViewController.contentViewController = viewControllers[indexPath.row]
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.contentView.backgroundColor = UIColor.black
+        cell.contentView.alpha = 0.9
+
+        cell.tintColor = UIColor.white
     }
 }

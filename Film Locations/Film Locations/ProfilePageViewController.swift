@@ -13,7 +13,11 @@ import FXBlurView
 class ProfilePageViewController: UIViewController, MenuContentViewControllerProtocol {
     
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var transparentBackgroundView: UIView!
+    @IBOutlet weak var visitedView: UIView!
+    @IBOutlet weak var favoritesView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userLocationLabel: UILabel!
     @IBOutlet weak var visitedCounterLabel: UILabel!
@@ -36,7 +40,20 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         
         collectionView.dataSource = self
         collectionView.delegate = self
-    
+
+        transparentBackgroundView.backgroundColor = UIColor.fl_secondary
+        transparentBackgroundView.alpha = 0.85
+
+        visitedView.backgroundColor = UIColor.white
+        visitedView.alpha = 1
+        visitedCounterLabel.textColor = UIColor.black
+
+        favoritesView.backgroundColor = UIColor.white
+        favoritesView.alpha = 1
+        favoriteCounterLabel.textColor = UIColor.black
+
+        collectionView.backgroundColor = UIColor.fl_secondary
+        collectionView.alpha = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +93,9 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         
         profileImageView.layer.cornerRadius = profileImageView.bounds.size.width/2
         profileImageView.layer.masksToBounds = true
+
+        borderView.layer.cornerRadius = borderView.bounds.size.width/2
+        borderView.layer.masksToBounds = true
     }
 }
 
