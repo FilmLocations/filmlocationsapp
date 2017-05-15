@@ -42,5 +42,5 @@ Discover film locations nearby you in San Francisco. Visit the locations and sha
 
 ### GIF
 
-<img src='https://github.com/FilmLocations/filmlocationsapp/blob/master/FilmLocations_04_30.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/FilmLocations/filmlocationsapp/blob/master/FilmLocations_05_14.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
