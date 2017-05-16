@@ -36,10 +36,9 @@ class FullscreenViewController: UIViewController {
             userNameLabel.text = ""
         }
 
-        view.backgroundColor = UIColor.fl_primary_dark
         userNameLabel.textColor = UIColor.fl_accent
         timeLabel.textColor = UIColor.fl_accent
-        descriptionLabel.textColor = UIColor.fl_primary_text
+        descriptionLabel.textColor = UIColor.fl_primary_dark
         backButton.tintColor = UIColor.fl_accent
     }
 

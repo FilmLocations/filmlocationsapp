@@ -24,9 +24,8 @@ class PostViewController: UIViewController {
         // Do any additional setup after loading the view.
         postImageView.image = postImage
 
-        view.backgroundColor = UIColor.fl_primary_dark
-        postButton.tintColor = UIColor.fl_secondary_text
-        cancelButton.tintColor = UIColor.fl_secondary_text
+        postButton.tintColor = UIColor.fl_primary
+        cancelButton.tintColor = UIColor.fl_primary
     }
 
     override func didReceiveMemoryWarning() {
