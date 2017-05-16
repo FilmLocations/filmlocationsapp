@@ -63,7 +63,7 @@ class MapView: UIView {
     
     func updateMapsMarkers(sortedMovies:[MapMovie]) {
         
-        if googleMapView.selectedMarker == nil {
+        //if googleMapView.selectedMarker == nil {
             
             self.displayData = sortedMovies
             
@@ -77,8 +77,8 @@ class MapView: UIView {
                 marker.position = CLLocationCoordinate2D(latitude: movie.location.lat, longitude: movie.location.long)
                 marker.title = movie.title
                 marker.snippet = movie.location.address
-                print(movie.title, movie.location.lat, movie.location.long, movie.location.address)
-                //marker.isFlat = true
+                //print(movie.title, movie.location.lat, movie.location.long, movie.location.address)
+                marker.isFlat = true
                 marker.userData = movie
                 marker.icon = UIImage(named: "Location-Marker-48")
                 bounds = bounds.includingCoordinate(marker.position)
@@ -87,7 +87,7 @@ class MapView: UIView {
             
             let update = GMSCameraUpdate.fit(bounds, withPadding: 20)
             self.googleMapView.animate(with: update)
-        }
+       // }
     }
 }
 
