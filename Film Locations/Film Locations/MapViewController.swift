@@ -246,7 +246,6 @@ extension MapViewController: MapViewDelegate{
     }
     
     func didTap(markerIndex: Int) {
-        
         if self.posterImageViewBottomConstraint.constant == posterImageViewBottomConstraintConstantPadding {
             showPosterImageView(markerIndex: markerIndex)
         } else {
@@ -255,16 +254,15 @@ extension MapViewController: MapViewDelegate{
     }
     
     func hidePosterImageView() {
+        self.posterImageViewBottomConstraint.constant = self.posterImageViewBottomConstraintConstantPadding
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseIn, animations: {
-            self.posterImageViewBottomConstraint.constant = self.posterImageViewBottomConstraintConstantPadding
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
     
     func showPosterImageView(markerIndex: Int) {
-        
+        self.posterImageViewBottomConstraint.constant = -1 * self.carousel.bounds.height
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
-            self.posterImageViewBottomConstraint.constant = -1 * self.carousel.bounds.height
             self.view.layoutIfNeeded()
         }, completion: {(sucess: Bool) in
             if sucess {
@@ -289,6 +287,7 @@ extension MapViewController: CLLocationManagerDelegate {
             self.userCurrentLocation = CLLocationCoordinate2D (latitude: 37.7881968, longitude: -122.3960219)
             self.currentLocationUpdated()
             lastUpdatedTimestamp = currentTime
+            manager.stopUpdatingLocation()
         }
     }
 }
