@@ -87,7 +87,7 @@
                                     <constraint firstItem="YwC-9j-EKh" firstAttribute="leading" secondItem="QZq-k8-vBG" secondAttribute="trailing" constant="33" id="2BH-g6-BLT"/>
                                     <constraint firstItem="mLD-E6-HNL" firstAttribute="top" secondItem="fgq-eJ-nDx" secondAttribute="bottom" constant="5" id="4wd-gU-kg8"/>
                                     <constraint firstAttribute="bottom" secondItem="w3H-0r-nl3" secondAttribute="bottom" id="54I-G1-LXd"/>
-                                    <constraint firstAttribute="trailing" secondItem="xNd-pH-4bv" secondAttribute="trailing" constant="8" id="88z-wP-05T"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xNd-pH-4bv" secondAttribute="trailing" constant="8" id="88z-wP-05T"/>
                                     <constraint firstAttribute="bottom" secondItem="87x-Da-bof" secondAttribute="bottom" id="97G-KQ-z8a"/>
                                     <constraint firstItem="7mE-aJ-h7P" firstAttribute="width" secondItem="fgq-eJ-nDx" secondAttribute="width" id="AJE-PP-6fQ"/>
                                     <constraint firstItem="QZq-k8-vBG" firstAttribute="top" secondItem="dr9-PI-62i" secondAttribute="top" constant="8" id="BQc-TX-ooG"/>
@@ -110,7 +110,7 @@
                                     <constraint firstItem="mLD-E6-HNL" firstAttribute="top" secondItem="QZq-k8-vBG" secondAttribute="bottom" constant="5" id="kke-qp-616"/>
                                     <constraint firstAttribute="bottom" secondItem="7mE-aJ-h7P" secondAttribute="bottom" id="oM6-2A-RCM"/>
                                     <constraint firstItem="w3H-0r-nl3" firstAttribute="top" secondItem="YwC-9j-EKh" secondAttribute="bottom" constant="5" id="sow-wH-EJT"/>
-                                    <constraint firstItem="QZq-k8-vBG" firstAttribute="leading" secondItem="dr9-PI-62i" secondAttribute="leading" constant="8" id="uNx-zr-WfN"/>
+                                    <constraint firstItem="QZq-k8-vBG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dr9-PI-62i" secondAttribute="leading" constant="8" id="uNx-zr-WfN"/>
                                     <constraint firstItem="7mE-aJ-h7P" firstAttribute="leading" secondItem="fgq-eJ-nDx" secondAttribute="leading" id="uR4-Un-hsZ"/>
                                     <constraint firstItem="87x-Da-bof" firstAttribute="leading" secondItem="xNd-pH-4bv" secondAttribute="leading" id="vJE-hg-eey"/>
                                     <constraint firstAttribute="trailing" secondItem="mLD-E6-HNL" secondAttribute="trailing" id="yTb-bb-NER"/>
@@ -247,7 +247,7 @@
             <objects>
                 <navigationController storyboardIdentifier="ListNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Enm-hR-vrk" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5ni-aS-XBe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5ni-aS-XBe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
