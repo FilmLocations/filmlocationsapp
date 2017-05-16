@@ -212,7 +212,12 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         if let selectedMovieCell = tableView.cellForRow(at: indexPath) as? ListViewCell {
-            // whatever
+            
+            // while expanding, move selected movie on top of the table
+            if (selectedMovieCell.movie?.isExpanded)! == false {
+                tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+            }
+            
             selectedMovieCell.movie?.isExpanded = !((selectedMovieCell.movie?.isExpanded)!)
             
             tableView.reloadData()
