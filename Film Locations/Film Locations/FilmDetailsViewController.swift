@@ -23,8 +23,8 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var numberOfVisitsLabel: UILabel!
     @IBOutlet weak var numberOfLikesLabel: UILabel!
     @IBOutlet weak var numberOfUploadsLabel: UILabel!
-    @IBOutlet weak var addPhotoView: UIView!
     @IBOutlet weak var visitLocationView: UIView!
+    @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var likesView: UIView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var addressVisualEffectView: UIVisualEffectView!
@@ -47,7 +47,6 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     
     var visitButton: WCLShineButton!
     var likeButton: WCLShineButton!
-    var addPhotoButton: WCLShineButton!
     
     var visitsCount = 0
     var likesCount = 0
@@ -56,37 +55,27 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
         
         // Set up action buttons
-        var param1 = WCLShineParams()
-        param1.bigShineColor = UIColor(rgb: (196,23,1))
-        param1.smallShineColor = UIColor(rgb: (102,102,102))
-        param1.enableFlashing = true
-        likeButton = WCLShineButton(frame: .init(x: 25, y: 5, width: 32, height: 32), params: param1)
+        var shineParams = WCLShineParams()
+        shineParams.bigShineColor = UIColor.fl_accent!
+        shineParams.smallShineColor = UIColor.fl_primary!
+        likeButton = WCLShineButton(frame: .init(x: 25, y: 5, width: 38, height: 38), params: shineParams)
         likeButton.fillColor = UIColor(rgb: (196,23,1))
-        likeButton.color = UIColor(rgb: (170,170,170))
+        likeButton.color = UIColor.fl_primary!
         likeButton.image = .custom(#imageLiteral(resourceName: "heart"))
         likeButton.addTarget(self, action: #selector(LikeLocation(_:)), for: .touchUpInside)
         likesView.addSubview(likeButton)
         
-        var param2 = WCLShineParams()
-        param2.bigShineColor = UIColor(rgb: (153,152,38))
-        param2.smallShineColor = UIColor(rgb: (102,102,102))
-        param2.enableFlashing = true
-        visitButton = WCLShineButton(frame: .init(x: 25, y: 5, width: 32, height: 32), params: param1)
+        visitButton = WCLShineButton(frame: .init(x: 22, y: 4, width: 40, height: 40), params: shineParams)
         visitButton.fillColor = UIColor.fl_accent!
-        visitButton.color = UIColor(rgb: (170,170,170))
+        visitButton.color = UIColor.fl_primary!
         visitButton.image = .custom(#imageLiteral(resourceName: "check"))
         visitButton.addTarget(self, action: #selector(visitLocation(_:)), for: .touchUpInside)
         visitLocationView.addSubview(visitButton)
         
-        var param3 = WCLShineParams()
-        param3.bigShineColor = UIColor(rgb: (153,152,38))
-        param3.smallShineColor = UIColor(rgb: (102,102,102))
-        param3.enableFlashing = true
-        addPhotoButton = WCLShineButton(frame: .init(x: 25, y: 5, width: 32, height: 32), params: param1)
-        addPhotoButton.color = UIColor(rgb: (170,170,170))
-        addPhotoButton.image = .custom(#imageLiteral(resourceName: "plus"))
-        addPhotoButton.addTarget(self, action: #selector(addPhoto(_:)), for: .touchUpInside)
-        addPhotoView.addSubview(addPhotoButton)
+        let origImage = #imageLiteral(resourceName: "plus")
+        let tintedImage = origImage.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        addPhotoButton.setImage(tintedImage, for: .normal)
+        addPhotoButton.tintColor = UIColor.fl_primary
         
         // Do any additional setup after loading the view.
         user = User.currentUser
@@ -140,7 +129,6 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         view.backgroundColor = UIColor.white
         likesView.backgroundColor = UIColor.white
         visitLocationView.backgroundColor = UIColor.white
-        addPhotoView.backgroundColor = UIColor.white
         photosCollectionView.backgroundColor = UIColor.white
         titleLabel.textColor = UIColor.fl_primary_light
         overviewLabel.textColor = UIColor.fl_primary_light
