@@ -117,7 +117,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         let destination = CLLocationCoordinate2D(latitude: location.lat, longitude: location.long)
-        lyftButton.style = .mulberryLight
+        lyftButton.style = .mulberryDark
         lyftButton.configure(rideKind: LyftSDK.RideKind.Line, pickup: pickup, destination: destination)
         
         photosCollectionView.dataSource = self
@@ -137,29 +137,28 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
         addBackButton()
 
-        view.backgroundColor = UIColor.fl_primary_dark
-        likesView.backgroundColor = UIColor.fl_primary_dark
-        visitLocationView.backgroundColor = UIColor.fl_primary_dark
-        addPhotoView.backgroundColor = UIColor.fl_primary_dark
-        photosCollectionView.backgroundColor = UIColor.fl_primary_dark
-        lyftButton.backgroundColor = UIColor.fl_primary_dark
+        view.backgroundColor = UIColor.white
+        likesView.backgroundColor = UIColor.white
+        visitLocationView.backgroundColor = UIColor.white
+        addPhotoView.backgroundColor = UIColor.white
+        photosCollectionView.backgroundColor = UIColor.white
         titleLabel.textColor = UIColor.fl_primary_light
         overviewLabel.textColor = UIColor.fl_primary_light
-        numberOfUploadsLabel.textColor = UIColor.fl_secondary_text
-        numberOfVisitsLabel.textColor = UIColor.fl_secondary_text
-        numberOfLikesLabel.textColor = UIColor.fl_secondary_text
+        numberOfUploadsLabel.textColor = UIColor.fl_primary_text
+        numberOfVisitsLabel.textColor = UIColor.fl_primary_text
+        numberOfLikesLabel.textColor = UIColor.fl_primary_text
         numberOfUploadsLabel.backgroundColor = UIColor.fl_accent
         numberOfLikesLabel.backgroundColor = UIColor.fl_accent
         numberOfVisitsLabel.backgroundColor = UIColor.fl_accent
         uploadsNameLabel.backgroundColor = UIColor.fl_accent
         visitsNameLabel.backgroundColor = UIColor.fl_accent
         likesNameLabel.backgroundColor = UIColor.fl_accent
-        uploadsNameLabel.textColor = UIColor.fl_secondary_text
-        visitsNameLabel.textColor = UIColor.fl_secondary_text
-        likesNameLabel.textColor = UIColor.fl_secondary_text
-        addressLabel.textColor = UIColor.fl_secondary_text
-        navigationController?.navigationBar.tintColor = UIColor.fl_secondary_text
-        navigationController?.navigationBar.barTintColor = UIColor.fl_accent
+        uploadsNameLabel.textColor = UIColor.fl_primary_text
+        visitsNameLabel.textColor = UIColor.fl_primary_text
+        likesNameLabel.textColor = UIColor.fl_primary_text
+        addressLabel.textColor = UIColor.fl_primary_text
+        navigationController?.navigationBar.tintColor = UIColor.fl_primary_text
+        navigationController?.navigationBar.barTintColor = UIColor.fl_primary_dark
     }
     
     override func viewDidAppear(_ animated: Bool) {

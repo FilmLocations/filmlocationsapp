@@ -30,15 +30,12 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhO-vo-nNI">
                                                 <rect key="frame" x="0.0" y="0.0" width="79" height="45"/>
-                                                <color key="backgroundColor" red="0.91390103099999997" green="0.88802713160000002" blue="0.99976366760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDW-Oq-Xcf">
                                                 <rect key="frame" x="79" y="0.0" width="79" height="45"/>
-                                                <color key="backgroundColor" red="0.91390103099999997" green="0.88802713160000002" blue="0.99976366760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLu-iA-XOj">
                                                 <rect key="frame" x="158" y="0.0" width="79" height="45"/>
-                                                <color key="backgroundColor" red="0.91390103099999997" green="0.88802713160000002" blue="0.99976366760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                         </subviews>
                                         <constraints>
@@ -48,7 +45,6 @@
                                     </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="k8b-TY-ETn">
                                         <rect key="frame" x="20" y="383.5" width="375" height="200"/>
-                                        <color key="backgroundColor" red="0.91390103099999997" green="0.88802713160000002" blue="0.99976366760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="UBb-t6-EDl"/>
                                         </constraints>
@@ -256,7 +252,6 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.91461115726989717" green="0.88818912285337515" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9fF-t1-iOA" firstAttribute="top" secondItem="3fZ-BX-RaF" secondAttribute="bottom" constant="10" id="IZu-07-0BZ"/>
                             <constraint firstItem="3fZ-BX-RaF" firstAttribute="centerX" secondItem="ihS-5S-lXg" secondAttribute="centerX" id="Mcz-DN-8Us"/>
