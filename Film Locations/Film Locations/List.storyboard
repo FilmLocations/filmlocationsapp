@@ -110,7 +110,7 @@
                                     <constraint firstItem="mLD-E6-HNL" firstAttribute="top" secondItem="QZq-k8-vBG" secondAttribute="bottom" constant="5" id="kke-qp-616"/>
                                     <constraint firstAttribute="bottom" secondItem="7mE-aJ-h7P" secondAttribute="bottom" id="oM6-2A-RCM"/>
                                     <constraint firstItem="w3H-0r-nl3" firstAttribute="top" secondItem="YwC-9j-EKh" secondAttribute="bottom" constant="5" id="sow-wH-EJT"/>
-                                    <constraint firstItem="QZq-k8-vBG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dr9-PI-62i" secondAttribute="leading" constant="8" id="uNx-zr-WfN"/>
+                                    <constraint firstItem="QZq-k8-vBG" firstAttribute="leading" secondItem="dr9-PI-62i" secondAttribute="leading" constant="8" id="uNx-zr-WfN"/>
                                     <constraint firstItem="7mE-aJ-h7P" firstAttribute="leading" secondItem="fgq-eJ-nDx" secondAttribute="leading" id="uR4-Un-hsZ"/>
                                     <constraint firstItem="87x-Da-bof" firstAttribute="leading" secondItem="xNd-pH-4bv" secondAttribute="leading" id="vJE-hg-eey"/>
                                     <constraint firstAttribute="trailing" secondItem="mLD-E6-HNL" secondAttribute="trailing" id="yTb-bb-NER"/>
@@ -192,6 +192,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="Ar9-QC-yyt" secondAttribute="bottom" constant="8" id="yI9-KA-xVj"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="numberOfLocationsLabel" destination="S2T-wV-2cg" id="LIn-Ci-ows"/>
                                             <outlet property="posterImageView" destination="JCS-5u-WNl" id="siJ-Aw-WVP"/>
@@ -247,7 +248,7 @@
             <objects>
                 <navigationController storyboardIdentifier="ListNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Enm-hR-vrk" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5ni-aS-XBe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5ni-aS-XBe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
