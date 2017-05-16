@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Pastel
 
 class LoginViewController: UIViewController {
 
@@ -27,12 +28,29 @@ class LoginViewController: UIViewController {
         twitterLoginButton.layer.cornerRadius = 4
         continueWithoutLoginButton.layer.cornerRadius = 4
 
-        view.backgroundColor = UIColor.fl_primary
-
-        twitterLoginButton.titleLabel?.textColor = UIColor.fl_primary_text
-
         continueWithoutLoginButton.backgroundColor = UIColor.fl_primary_dark
         continueWithoutLoginButton.titleLabel?.textColor = UIColor.fl_primary_text
+     
+        let pastelView = PastelView(frame: view.bounds)
+        
+        // Custom Direction
+        pastelView.startPoint = .bottomLeft
+        pastelView.endPoint = .topRight
+        
+        // Custom Duration
+        pastelView.animationDuration = 3.0
+        
+        // Custom Color
+        pastelView.setColors(colors: [UIColor(red: 0/255, green: 188/255, blue: 212/255, alpha: 1.0),
+                                      UIColor(red: 0/255, green: 180/255, blue: 204/255, alpha: 1.0),
+                                      UIColor(red: 0/255, green: 158/255, blue: 179/255, alpha: 1.0),
+                                      UIColor(red: 0/255, green: 135/255, blue: 153/255, alpha: 1.0),
+                                      UIColor(red: 0/255, green: 113/255, blue: 128/255, alpha: 1.0),
+                                      UIColor(red: 0/255, green: 90/255, blue: 102/255, alpha: 1.0),
+                                      UIColor(red: 0/255, green: 68/255, blue: 77/255, alpha: 1.0)])
+        
+        pastelView.startAnimation()
+        view.insertSubview(pastelView, at: 0)
     }
 
     override func didReceiveMemoryWarning() {

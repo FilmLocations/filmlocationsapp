@@ -18,4 +18,5 @@ target 'Film Locations' do
   pod 'WCLShineButton'
   pod 'LyftSDK'
   pod 'BRYXBanner'
+  pod 'Pastel'
 end

@@ -54,6 +54,7 @@ PODS:
   - LyftSDK (1.0.4):
     - LyftSDK/Core (= 1.0.4)
   - LyftSDK/Core (1.0.4)
+  - Pastel (0.2.0)
   - SwiftyJSON (3.1.4)
   - WCLShineButton (1.0.4)
 
@@ -68,6 +69,7 @@ DEPENDENCIES:
   - GoogleMaps (= 2.1.0)
   - GooglePlaces
   - LyftSDK
+  - Pastel
   - SwiftyJSON (~> 3.1.4)
   - WCLShineButton
 
@@ -87,9 +89,10 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   LyftSDK: af4b38c913ba24df874a70e67ba387f952e49690
+  Pastel: f3d9a543a8bcdc385bd432513d3dcc0476276732
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   WCLShineButton: 1608b9a2dcbebd1a5a1364c821ef0de3e95af458
 
-PODFILE CHECKSUM: af76f3c9e0d3703bd84fdf5b05ba7a461fe18faa
+PODFILE CHECKSUM: 8d6f66599406d243eec93e647cfdc6cd8b4205d9
 
 COCOAPODS: 1.2.0

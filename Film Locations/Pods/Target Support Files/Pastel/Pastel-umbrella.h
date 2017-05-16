@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double BRYXBannerVersionNumber;
-FOUNDATION_EXPORT const unsigned char BRYXBannerVersionString[];
+FOUNDATION_EXPORT double PastelVersionNumber;
+FOUNDATION_EXPORT const unsigned char PastelVersionString[];
 

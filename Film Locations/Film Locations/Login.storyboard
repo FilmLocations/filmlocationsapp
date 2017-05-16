@@ -45,7 +45,7 @@
                                     <constraint firstAttribute="height" constant="60" id="Roq-Cp-Uga"/>
                                 </constraints>
                                 <state key="normal" title="Login with Twitter">
-                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.25838714292823733" green="0.26094543147208127" blue="0.26094543147208127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="onTwitterLogin:" destination="5ZA-le-HpF" eventType="touchUpInside" id="bXQ-Ja-JuH"/>
