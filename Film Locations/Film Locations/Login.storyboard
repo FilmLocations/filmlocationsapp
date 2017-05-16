@@ -25,8 +25,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4g-0R-Njb">
-                                <rect key="frame" x="16" y="587" width="343" height="60"/>
-                                <color key="backgroundColor" red="0.34102231259999999" green="0.31284064049999999" blue="0.5076053143" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="43" y="587" width="289" height="60"/>
+                                <color key="backgroundColor" red="0.049296596389875484" green="0.045433462768754672" blue="0.074654980964466988" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="eyN-fH-COg"/>
                                 </constraints>
@@ -37,13 +37,13 @@
                                     <action selector="onContinueWithoutLogin:" destination="5ZA-le-HpF" eventType="touchUpInside" id="3fr-ue-QmC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e15-dq-dyf">
-                                <rect key="frame" x="16" y="500" width="343" height="60"/>
-                                <color key="backgroundColor" red="0.31994250419999998" green="0.84137207270000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e15-dq-dyf">
+                                <rect key="frame" x="43" y="503" width="289" height="60"/>
+                                <color key="backgroundColor" red="0.34897065162658691" green="0.67801016569137573" blue="0.92336666584014893" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Roq-Cp-Uga"/>
                                 </constraints>
-                                <state key="normal" title="Login with Twitter">
+                                <state key="normal" image="twitterlogin">
                                     <color key="titleColor" red="0.25838714292823733" green="0.26094543147208127" blue="0.26094543147208127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -53,14 +53,18 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="F4g-0R-Njb" secondAttribute="bottom" constant="20" id="32b-F4-rYN"/>
-                            <constraint firstAttribute="trailing" secondItem="e15-dq-dyf" secondAttribute="trailing" constant="16" id="7jO-vk-08X"/>
-                            <constraint firstItem="F4g-0R-Njb" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" constant="16" id="8qF-Hh-F6V"/>
+                            <constraint firstAttribute="trailing" secondItem="e15-dq-dyf" secondAttribute="trailing" constant="43" id="7jO-vk-08X"/>
+                            <constraint firstItem="F4g-0R-Njb" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" constant="43" id="8qF-Hh-F6V"/>
+                            <constraint firstItem="8hP-mp-6bG" firstAttribute="top" secondItem="8m3-ut-hiV" secondAttribute="top" id="CuD-VY-RNq"/>
+                            <constraint firstItem="8hP-mp-6bG" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" id="DjM-qW-TOt"/>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="F29-yk-LcK"/>
                             <constraint firstAttribute="trailing" secondItem="8hP-mp-6bG" secondAttribute="trailing" id="Gu7-pK-Ip2"/>
-                            <constraint firstAttribute="trailing" secondItem="F4g-0R-Njb" secondAttribute="trailing" constant="16" id="OOC-lI-FpY"/>
-                            <constraint firstItem="F4g-0R-Njb" firstAttribute="top" secondItem="e15-dq-dyf" secondAttribute="bottom" constant="27" id="Qs9-sH-L0X"/>
+                            <constraint firstAttribute="trailing" secondItem="F4g-0R-Njb" secondAttribute="trailing" constant="43" id="OOC-lI-FpY"/>
+                            <constraint firstItem="F4g-0R-Njb" firstAttribute="top" secondItem="e15-dq-dyf" secondAttribute="bottom" constant="24" id="Qs9-sH-L0X"/>
+                            <constraint firstAttribute="trailing" secondItem="8hP-mp-6bG" secondAttribute="trailing" id="aYE-3H-BMY"/>
                             <constraint firstItem="8hP-mp-6bG" firstAttribute="top" secondItem="8m3-ut-hiV" secondAttribute="top" id="d2J-Kg-t3X"/>
-                            <constraint firstItem="e15-dq-dyf" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" constant="16" id="qKA-nu-lbd"/>
+                            <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="i7G-ha-NDZ"/>
+                            <constraint firstItem="e15-dq-dyf" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" constant="43" id="qKA-nu-lbd"/>
                             <constraint firstItem="8hP-mp-6bG" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" id="r4j-Bo-1Wk"/>
                         </constraints>
                     </view>
@@ -76,5 +80,6 @@
     </scenes>
     <resources>
         <image name="mapscreenshot" width="724" height="1116"/>
+        <image name="twitterlogin" width="290" height="62"/>
     </resources>
 </document>
