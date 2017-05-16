@@ -74,32 +74,32 @@
                                     <constraint firstAttribute="height" constant="403" id="BCB-lB-WKE"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCell" rowHeight="70" id="wv8-v5-NSj" customClass="HamburgerMenuCell" customModule="Film_Locations" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                    <tableViewCell clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCell" rowHeight="36" id="wv8-v5-NSj" customClass="HamburgerMenuCell" customModule="Film_Locations" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="36"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wv8-v5-NSj" id="NcE-cf-QIv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="35.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tan-fm-TrP">
-                                                    <rect key="frame" x="30" y="19" width="30" height="30"/>
+                                                    <rect key="frame" x="28" y="16" width="20" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="3GZ-Ve-wDO"/>
-                                                        <constraint firstAttribute="height" constant="30" id="BtD-JS-HD1"/>
+                                                        <constraint firstAttribute="width" constant="20" id="1FY-6Q-6al"/>
+                                                        <constraint firstAttribute="height" constant="20" id="buu-28-lUp"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhK-MJ-FB3">
-                                                    <rect key="frame" x="68" y="19" width="57" height="30"/>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="25"/>
+                                                    <rect key="frame" x="56" y="14" width="48" height="24"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Tan-fm-TrP" firstAttribute="leading" secondItem="NcE-cf-QIv" secondAttribute="leading" constant="30" id="5xG-rL-hhe"/>
-                                                <constraint firstItem="rhK-MJ-FB3" firstAttribute="centerY" secondItem="NcE-cf-QIv" secondAttribute="centerY" id="UpX-xg-7ZE"/>
-                                                <constraint firstItem="rhK-MJ-FB3" firstAttribute="leading" secondItem="Tan-fm-TrP" secondAttribute="trailing" constant="8" id="k3H-5C-hXv"/>
-                                                <constraint firstItem="Tan-fm-TrP" firstAttribute="centerY" secondItem="NcE-cf-QIv" secondAttribute="centerY" id="kht-7c-nay"/>
+                                                <constraint firstItem="Tan-fm-TrP" firstAttribute="top" secondItem="NcE-cf-QIv" secondAttribute="top" constant="16" id="PKk-Um-yhp"/>
+                                                <constraint firstItem="rhK-MJ-FB3" firstAttribute="leading" secondItem="Tan-fm-TrP" secondAttribute="trailing" constant="8" id="PbB-Xl-Erp"/>
+                                                <constraint firstItem="Tan-fm-TrP" firstAttribute="leading" secondItem="NcE-cf-QIv" secondAttribute="leading" constant="28" id="vpo-Vq-XDY"/>
+                                                <constraint firstItem="rhK-MJ-FB3" firstAttribute="centerY" secondItem="Tan-fm-TrP" secondAttribute="centerY" id="ztg-Nb-NVr"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
