@@ -57,12 +57,12 @@ extension UILabel{
 
 extension UIColor {
 
-    static let fl_primary = UIColor.init(fromHexString: "#607D8BFF")
-    static let fl_primary_dark = UIColor.init(fromHexString: "#455A64FF")
-    static let fl_primary_light = UIColor.init(fromHexString: "#CFD8DCFF")
+    static let fl_primary = UIColor.init(fromHexString: "#212121FF")
+    static let fl_primary_dark = UIColor.init(fromHexString: "#000000FF")
+    static let fl_primary_light = UIColor.init(fromHexString: "#333333FF")
     static let fl_accent = UIColor.init(fromHexString: "#00BCD4FF")
-    static let fl_primary_text = UIColor.init(fromHexString: "#212121FF")
-    static let fl_secondary_text = UIColor.init(fromHexString: "#757575FF")
+    static let fl_primary_text = UIColor.init(fromHexString: "#f2f2f2FF")
+    static let fl_secondary_text = UIColor.init(fromHexString: "#a6a6a6FF")
     static let fl_icons = UIColor.init(fromHexString: "#FFFFFFFF")
     static let fl_divider = UIColor.init(fromHexString: "#BDBDBDFF")
     static let fl_secondary = UIColor.init(fromHexString: "#00BCD4FF")
