@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5ZA-le-HpF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5ZA-le-HpF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,17 +39,21 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e15-dq-dyf">
                                 <rect key="frame" x="16" y="500" width="343" height="60"/>
-                                <color key="backgroundColor" red="0.31994250419999998" green="0.84137207270000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Roq-Cp-Uga"/>
                                 </constraints>
                                 <state key="normal" title="Login with Twitter">
-                                    <color key="titleColor" red="0.25838714292823733" green="0.26094543147208127" blue="0.26094543147208127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.73725490196078436" blue="0.83137254901960778" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="onTwitterLogin:" destination="5ZA-le-HpF" eventType="touchUpInside" id="bXQ-Ja-JuH"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Twitter-Bird-128" translatesAutoresizingMaskIntoConstraints="NO" id="jAW-1P-ZAM">
+                                <rect key="frame" x="82" y="510" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="F4g-0R-Njb" secondAttribute="bottom" constant="20" id="32b-F4-rYN"/>
@@ -75,6 +79,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Twitter-Bird-128" width="128" height="128"/>
         <image name="mapscreenshot" width="724" height="1116"/>
     </resources>
 </document>
