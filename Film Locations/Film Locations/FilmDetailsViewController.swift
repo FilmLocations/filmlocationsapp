@@ -255,6 +255,9 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         
         let fullscreen = storyboard.instantiateViewController(withIdentifier: "Fullscreen") as! FullscreenViewController
         
+        let nav = UINavigationController(rootViewController: fullscreen)
+        nav.navigationBar.barTintColor = UIColor.fl_primary_dark
+        
         if let indexPath = indexPath {
             if (locationImages != nil) {
                 fullscreen.locationImageMetadata = locationImages[indexPath.row]
@@ -270,7 +273,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             fullscreen.locationImage = topBackgroundImageView.image
         }
         
-        self.present(fullscreen, animated: true, completion: nil)
+        self.present(nav, animated: true, completion: nil)
     }
     
     @IBAction func addPhoto(_ sender: UIButton) {      
@@ -372,8 +375,10 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
                     cell.locationPhotoImageView.image = image
                     self.topBackgroundImageView.image = image
                 } else {
-                    cell.locationPhotoImageView.image = #imageLiteral(resourceName: "Place-Dummy")
-                    self.topBackgroundImageView.image = #imageLiteral(resourceName: "Place-Dummy")
+                    Utility.loadRandomPhotoForPlace(placeID: "ChIJIQBpAG2ahYAR_6128GcTUEo", callback: { (image:UIImage?) in
+                        cell.locationPhotoImageView.image = image
+                        self.topBackgroundImageView.image = image
+                    })
                 }
             })
         }

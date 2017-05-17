@@ -235,6 +235,17 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
         
         return moviePosterView
     }
+    
+    func carouselDidEndScrollingAnimation(_ carousel: iCarousel) {
+        if self.posterImageViewBottomConstraint.constant != posterImageViewBottomConstraintConstantPadding {
+            mapView.selectMarker(index: carousel.currentItemIndex)
+        }
+    }
+    
+    func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
+        
+        mapView.selectMarker(index: index)
+    }
 }
 
 extension MapViewController: MapViewDelegate{
@@ -329,6 +340,9 @@ extension MapViewController: UISearchBarDelegate{
 
 extension MapViewController: MoviePosterViewDelegate {
     func didTapOnImage(selectedMovie: MapMovie) {
+        
+        mapView.unSelectMarker()
+        
         let filmDetailsStoryBoard = UIStoryboard(name: "FilmDetails", bundle: nil)
         let detailsViewController = filmDetailsStoryBoard.instantiateViewController(withIdentifier: "FilmDetailsViewController") as? FilmDetailsViewController
         

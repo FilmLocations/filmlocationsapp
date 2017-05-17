@@ -14,11 +14,11 @@ class FullscreenViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var backButton: UIButton!
 
     var locationImageMetadata: LocationImage!
     var locationImage: UIImage!
     
+   // @IBOutlet weak var navigationBar: UINavigationBar!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,10 +36,14 @@ class FullscreenViewController: UIViewController {
             userNameLabel.text = ""
         }
 
-        userNameLabel.textColor = UIColor.fl_accent
-        timeLabel.textColor = UIColor.fl_accent
-        descriptionLabel.textColor = UIColor.fl_primary_dark
-        backButton.tintColor = UIColor.fl_accent
+        userNameLabel.textColor = UIColor.white
+        timeLabel.textColor = UIColor.white
+        descriptionLabel.textColor = UIColor.white
+        
+        let button1 = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(onBackButton))
+        button1.tintColor = UIColor.white
+        self.navigationItem.leftBarButtonItem  = button1
+        
     }
 
     override func didReceiveMemoryWarning() {
