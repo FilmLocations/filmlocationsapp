@@ -33,7 +33,7 @@
                                 <color key="tintColor" red="0.9137254901960784" green="0.88802713160000002" blue="0.99976366760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KhK-Ad-iB2">
-                                <rect key="frame" x="0.0" y="581" width="375" height="66"/>
+                                <rect key="frame" x="0.0" y="601" width="375" height="66"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGV-ZQ-Ky4">
                                         <rect key="frame" x="16" y="37" width="351" height="21"/>
@@ -75,7 +75,7 @@
                             <constraint firstItem="Pg3-Kk-62R" firstAttribute="top" secondItem="fSM-Jy-AoV" secondAttribute="bottom" id="dxZ-vI-v3l"/>
                             <constraint firstItem="Pg3-Kk-62R" firstAttribute="leading" secondItem="OJz-oj-sbA" secondAttribute="leading" id="t0T-LF-en7"/>
                             <constraint firstItem="KhK-Ad-iB2" firstAttribute="leading" secondItem="OJz-oj-sbA" secondAttribute="leading" id="xg0-c9-kK3"/>
-                            <constraint firstItem="e7A-jH-0f6" firstAttribute="top" secondItem="KhK-Ad-iB2" secondAttribute="bottom" constant="20" id="zcu-ML-aKZ"/>
+                            <constraint firstItem="e7A-jH-0f6" firstAttribute="top" secondItem="KhK-Ad-iB2" secondAttribute="bottom" id="zcu-ML-aKZ"/>
                         </constraints>
                     </view>
                     <connections>
