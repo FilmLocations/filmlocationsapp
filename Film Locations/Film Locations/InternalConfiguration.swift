@@ -67,7 +67,7 @@ extension UIColor {
     static let fl_divider = UIColor.init(fromHexString: "#BDBDBDFF")
     static let fl_secondary = UIColor.init(fromHexString: "#00BCD4FF")
     static let fl_secondary_700 = UIColor.init(fromHexString: "#0097A7FF")
-    
+    static let fl_secondary_200 = UIColor.init(fromHexString: "#80DEEAFF")
     
 //    static let fl_primary = UIColor.init(fromHexString: "#9e9e9eFF")
 //    static let fl_primary_dark = UIColor.init(fromHexString: "#616161FF")

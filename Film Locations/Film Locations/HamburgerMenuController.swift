@@ -40,7 +40,8 @@ class HamburgerMenuController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.rowHeight = tableView.frame.height / CGFloat(menu.count - 1)
+//        tableView.rowHeight = 52 //tableView.frame.height / CGFloat(menu.count - 1)
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         let mapStoryBoard = UIStoryboard(name: "Map", bundle: nil)
         let mapNavigationController = mapStoryBoard.instantiateViewController(withIdentifier: "MapNavigationController")
@@ -67,6 +68,9 @@ class HamburgerMenuController: UIViewController {
         hamburgerViewController.contentViewController = mapNavigationController
         
         //tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .top)
+        
+        // remove separator line
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
         updateUI()
     }

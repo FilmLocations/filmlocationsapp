@@ -309,7 +309,7 @@
 				TargetAttributes = {
 					3A224F981EAD611700091BB3 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 57478PSBBB;
+						DevelopmentTeam = WSE9V4ZK6U;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -559,7 +559,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 57478PSBBB;
+				DEVELOPMENT_TEAM = WSE9V4ZK6U;
 				INFOPLIST_FILE = "Film Locations/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -577,7 +577,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 57478PSBBB;
+				DEVELOPMENT_TEAM = WSE9V4ZK6U;
 				INFOPLIST_FILE = "Film Locations/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
