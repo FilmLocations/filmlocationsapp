@@ -82,7 +82,7 @@ class MapView: UIView {
                 //print(movie.title, movie.location.lat, movie.location.long, movie.location.address)
                 marker.isFlat = true
                 marker.userData = movie
-                marker.icon = UIImage(named: "Location-Marker-48")
+                marker.icon = UIImage(named: "Location-Marker")
                 bounds = bounds.includingCoordinate(marker.position)
                 marker.map = self.googleMapView
                 
@@ -111,7 +111,7 @@ class MapView: UIView {
         
         let selectedMarker = markers[currentSelectedMarker!]
         // un select it
-        selectedMarker.icon = UIImage(named: "Location-Marker-48")
+        selectedMarker.icon = UIImage(named: "Location-Marker")
         currentSelectedMarker = nil
         googleMapView.selectedMarker = nil
     }
@@ -127,8 +127,10 @@ class MapView: UIView {
         
         if let selectedMarker = googleMapView.selectedMarker {
             // un select it
-            selectedMarker.icon = UIImage(named: "Location-Marker-48")
+            selectedMarker.icon = UIImage(named: "Location-Marker")
         }
+        
+        googleMapView.animate(with: GMSCameraUpdate.setTarget(marker.position))
         
         googleMapView.selectedMarker = marker
         

@@ -239,7 +239,6 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
     func carouselDidEndScrollingAnimation(_ carousel: iCarousel) {
         if self.posterImageViewBottomConstraint.constant != posterImageViewBottomConstraintConstantPadding {
             mapView.selectMarker(index: carousel.currentItemIndex)
-            print(carousel.currentItemIndex)
         }
     }
     
