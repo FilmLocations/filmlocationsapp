@@ -389,7 +389,6 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationPhotoCollectionViewCell", for: indexPath) as! LocationPhotoCollectionViewCell
-        cell.locationPhotoImageView.image = nil
         
         if (locationImages != nil && locationImages.count > 0) {
             Database.sharedInstance.getLocationImage(url: locationImages[indexPath.row].imageURL, completion: { (image) in
@@ -397,18 +396,18 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
             })
         } else {
             if (hasTriedLoadingUserImages) {
-            Utility.loadFirstPhotoForPlace(placeID: movie!.locations[locationIndex].placeId, callback: { (image) in
-                
-                if (image != nil) {
-                    cell.locationPhotoImageView.image = image
-                    self.topBackgroundImageView.image = image
-                } else {
-                    Utility.loadRandomPhotoForPlace(placeID: "ChIJIQBpAG2ahYAR_6128GcTUEo", callback: { (image:UIImage?) in
+                Utility.loadFirstPhotoForPlace(placeID: movie!.locations[locationIndex].placeId, callback: { (image) in
+                    
+                    if (image != nil) {
                         cell.locationPhotoImageView.image = image
                         self.topBackgroundImageView.image = image
-                    })
-                }
-            })
+                    } else {
+                        Utility.loadRandomPhotoForPlace(placeID: "ChIJIQBpAG2ahYAR_6128GcTUEo", callback: { (image:UIImage?) in
+                            cell.locationPhotoImageView.image = image
+                            self.topBackgroundImageView.image = image
+                        })
+                    }
+                })
             }
         }
       
