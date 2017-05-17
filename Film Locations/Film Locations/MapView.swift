@@ -20,6 +20,8 @@ class MapView: UIView {
     var googleMapView: GMSMapView!
     weak var delegate:MapViewDelegate?
     
+    var markers = [GMSMarker]()
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.loadInitialMap()
@@ -83,11 +85,54 @@ class MapView: UIView {
                 marker.icon = UIImage(named: "Location-Marker-48")
                 bounds = bounds.includingCoordinate(marker.position)
                 marker.map = self.googleMapView
+                
+                markers.append(marker)
+                
             }
             
             let update = GMSCameraUpdate.fit(bounds, withPadding: 20)
             self.googleMapView.animate(with: update)
        // }
+    }
+    
+    var currentSelectedMarker:Int?
+    
+    func selectMarker(index: Int)  {
+        let marker = markers[index]
+        
+        self.selectMarker(marker: marker)
+    }
+    
+    func unSelectMarker()  {
+       
+        if currentSelectedMarker == nil {
+            return
+        }
+        
+        let selectedMarker = markers[currentSelectedMarker!]
+        // un select it
+        selectedMarker.icon = UIImage(named: "Location-Marker-48")
+        currentSelectedMarker = nil
+        googleMapView.selectedMarker = nil
+    }
+    
+    func selectMarker(marker: GMSMarker)  {
+        if let markerMovie = marker.userData as? MapMovie {
+            
+            if let index = self.displayData.index(where: {$0.location.placeId ==  markerMovie.location.placeId }){
+                delegate?.didTap(markerIndex: index)
+                currentSelectedMarker = index
+            }
+        }
+        
+        if let selectedMarker = googleMapView.selectedMarker {
+            // un select it
+            selectedMarker.icon = UIImage(named: "Location-Marker-48")
+        }
+        
+        googleMapView.selectedMarker = marker
+        
+        marker.icon = UIImage(named: "Selected-Marker")
     }
 }
 
@@ -95,29 +140,17 @@ extension MapView: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         delegate?.didTapOnMap()
-        mapView.selectedMarker = nil
+        self.unSelectMarker()
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
-        if let markerMovie = marker.userData as? MapMovie {
-            
-            if let index = self.displayData.index(where: {$0.location.placeId ==  markerMovie.location.placeId }){
-                delegate?.didTap(markerIndex: index)
-            }
-        }
-        
-        if let selectedMarker = mapView.selectedMarker {
-            //selectedMarker.icon = UIImage(named: "Location-Marker-48")
-        }
-        
         if mapView.selectedMarker == marker {
-            mapView.selectedMarker = nil
             return true
         }
         
-        mapView.selectedMarker = marker
-        //marker.icon = UIImage(named: "SelectedMarker-1")
+        self.selectMarker(marker: marker)
+        
         return true
     }
 }
