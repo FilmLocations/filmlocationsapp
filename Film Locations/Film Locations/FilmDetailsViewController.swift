@@ -50,6 +50,8 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     
     var visitsCount = 0
     var likesCount = 0
+    
+    var hasTriedLoadingUserImages = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,13 +91,17 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
                     self.topBackgroundImageView.image = locationImage
                 })
                 
-                if self.locationImages != nil {
-                    self.locationImages = nil
-                }
+//                if self.locationImages != nil {
+//                    self.locationImages = nil
+//                }
                 
                 self.locationImages = locationImages
                 self.photosCollectionView.reloadData()
                 self.updateCounts()
+                self.hasTriedLoadingUserImages = true
+            } else {
+                self.photosCollectionView.reloadData()
+                self.hasTriedLoadingUserImages = true
             }
         }
         
@@ -150,7 +156,23 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        viewDidLoad()
+        let placeId = movie!.locations[locationIndex].placeId
+
+        Database.sharedInstance.getLocationImageMetadata(placeId: placeId) { (locationImages) in
+            
+            if self.locationImages != nil && locationImages.count != self.locationImages.count {
+            
+                if locationImages.count > 0 {
+                    Database.sharedInstance.getLocationImage(url: locationImages[0].imageURL, completion: {(locationImage) in
+                        self.topBackgroundImageView.image = locationImage
+                    })
+
+                    self.locationImages = locationImages
+                    self.photosCollectionView.reloadData()
+                    self.updateCounts()
+                }
+            }
+        }
     }
 
     private func addBackButton() {
@@ -356,19 +378,25 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
         if let images = self.locationImages {
             return images.count
         } else {
-            return 1
+            if (hasTriedLoadingUserImages) {
+                return 1
+            } else {
+                return 0
+            }
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationPhotoCollectionViewCell", for: indexPath) as! LocationPhotoCollectionViewCell
+        cell.locationPhotoImageView.image = nil
         
         if (locationImages != nil && locationImages.count > 0) {
             Database.sharedInstance.getLocationImage(url: locationImages[indexPath.row].imageURL, completion: { (image) in
                 cell.locationPhotoImageView.image = image
             })
         } else {
+            if (hasTriedLoadingUserImages) {
             Utility.loadFirstPhotoForPlace(placeID: movie!.locations[locationIndex].placeId, callback: { (image) in
                 
                 if (image != nil) {
@@ -381,6 +409,7 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
                     })
                 }
             })
+            }
         }
       
         return cell
