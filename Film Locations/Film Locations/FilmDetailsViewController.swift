@@ -189,7 +189,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         posterImageView.layer.cornerRadius = 4
         miniPosterImage.clipsToBounds = true
         miniPosterImage.layer.cornerRadius = 4
-        addressVisualEffectView.layer.cornerRadius = 20
+        addressVisualEffectView.layer.cornerRadius = 10
         addressVisualEffectView.clipsToBounds = true
         
         if let movie = movie {
