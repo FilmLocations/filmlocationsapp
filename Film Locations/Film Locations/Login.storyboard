@@ -21,9 +21,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapscreenshot" translatesAutoresizingMaskIntoConstraints="NO" id="8hP-mp-6bG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4g-0R-Njb">
                                 <rect key="frame" x="16" y="587" width="343" height="60"/>
                                 <color key="backgroundColor" red="0.049296596389875484" green="0.045433462768754672" blue="0.074654980964466988" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -67,6 +64,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapscreenshot" translatesAutoresizingMaskIntoConstraints="NO" id="8hP-mp-6bG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="e15-dq-dyf" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="1Aj-hR-9g8"/>
@@ -91,6 +91,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="appTitle" destination="O0F-Ym-R88" id="FDo-GY-dDi"/>
                         <outlet property="continueWithoutLoginButton" destination="F4g-0R-Njb" id="Wek-mp-Kbh"/>
                         <outlet property="twitterLoginButton" destination="e15-dq-dyf" id="KD8-sc-wPj"/>
                     </connections>

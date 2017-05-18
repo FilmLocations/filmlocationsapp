@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var twitterLoginButton: UIButton!
     @IBOutlet weak var continueWithoutLoginButton: UIButton!
+    @IBOutlet weak var appTitle: UILabel!
     
     
     override func viewDidLoad() {
@@ -51,6 +52,9 @@ class LoginViewController: UIViewController {
         
         pastelView.startAnimation()
         view.insertSubview(pastelView, at: 0)
+        
+        appTitle.defaultFont = UIFont(name: "AppleColorEmoji", size: 40)
+        
     }
 
     override func didReceiveMemoryWarning() {
