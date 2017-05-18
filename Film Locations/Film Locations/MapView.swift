@@ -117,18 +117,21 @@ class MapView: UIView {
     }
     
     func selectMarker(marker: GMSMarker)  {
+        
+        self.unSelectMarker()
+        
         if let markerMovie = marker.userData as? MapMovie {
             
-            if let index = self.displayData.index(where: {$0.location.placeId ==  markerMovie.location.placeId }){
+            if let index = self.displayData.index(where: {$0.location.placeId ==  markerMovie.location.placeId &&  $0.id ==  markerMovie.id}){
                 delegate?.didTap(markerIndex: index)
                 currentSelectedMarker = index
             }
         }
         
-        if let selectedMarker = googleMapView.selectedMarker {
-            // un select it
-            selectedMarker.icon = UIImage(named: "Location-Marker")
-        }
+//        if let selectedMarker = googleMapView.selectedMarker {
+//            // un select it
+//            selectedMarker.icon = UIImage(named: "Location-Marker")
+//        }
         
         googleMapView.animate(with: GMSCameraUpdate.setTarget(marker.position))
         

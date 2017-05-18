@@ -341,7 +341,7 @@ extension MapViewController: UISearchBarDelegate{
 extension MapViewController: MoviePosterViewDelegate {
     func didTapOnImage(selectedMovie: MapMovie) {
         
-        mapView.unSelectMarker()
+        //mapView.unSelectMarker()
         
         let filmDetailsStoryBoard = UIStoryboard(name: "FilmDetails", bundle: nil)
         let detailsViewController = filmDetailsStoryBoard.instantiateViewController(withIdentifier: "FilmDetailsViewController") as? FilmDetailsViewController
