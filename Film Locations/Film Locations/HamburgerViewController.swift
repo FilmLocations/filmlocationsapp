@@ -20,7 +20,7 @@ class HamburgerViewController: UIViewController {
     
     var originalLeftMargin: CGFloat!
     
-    var isMenuOpen = false
+    var isMenuOpen = true
     
     var menuViewController: UIViewController! {
         didSet {
