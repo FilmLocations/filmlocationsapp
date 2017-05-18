@@ -20,6 +20,8 @@ class HamburgerViewController: UIViewController {
     
     var originalLeftMargin: CGFloat!
     
+    var isMenuOpen = false
+    
     var menuViewController: UIViewController! {
         didSet {
             view.layoutIfNeeded()
@@ -53,13 +55,33 @@ class HamburgerViewController: UIViewController {
             vc?.delegate = self
             
             contentViewController.didMove(toParentViewController: self)
-            
-            // After the content view is selected, the menu view disappears automatically
-            UIView.animate(withDuration: 0.3) {
-                self.leftMarginConstraint.constant = 0
-                self.view.layoutIfNeeded()
-            }
+            self.toggleMenu()
         }
+    }
+    
+    func toggleMenu()  {
+        if isMenuOpen {
+            hideMenu()
+        } else {
+            openMenu()
+        }
+    }
+    
+    func hideMenu() {
+        self.isMenuOpen = false
+        UIView.animate(withDuration: 0.3) {
+            self.leftMarginConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func openMenu()  {
+        
+        self.isMenuOpen = true
+        UIView.animate(withDuration: 0.3, animations: {
+            self.leftMarginConstraint.constant = self.view.frame.size.width - 100
+            self.view.layoutIfNeeded()
+        })
     }
     
     override func viewDidLoad() {
@@ -77,8 +99,6 @@ class HamburgerViewController: UIViewController {
 extension HamburgerViewController: MenuButtonPressDelegate {
     func onMenuButtonPress() {
         print("Menu pressed")
-        UIView.animate(withDuration: 0.3, animations: {
-            self.leftMarginConstraint.constant = self.view.frame.size.width - 100
-        })
+        self.toggleMenu()
     }
 }
