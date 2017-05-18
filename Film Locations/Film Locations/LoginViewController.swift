@@ -53,7 +53,7 @@ class LoginViewController: UIViewController {
         pastelView.startAnimation()
         view.insertSubview(pastelView, at: 0)
         
-        appTitle.defaultFont = UIFont(name: "AppleColorEmoji", size: 40)
+        appTitle.defaultFont = UIFont(name: "Angelface", size: 70)
         
     }
 
