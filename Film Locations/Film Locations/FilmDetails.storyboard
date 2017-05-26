@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="840"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3fZ-BX-RaF">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fZ-BX-RaF">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="840"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="k8b-TY-ETn">
@@ -157,28 +157,6 @@
                                             <constraint firstItem="lwn-Um-Izr" firstAttribute="leading" secondItem="ajE-zd-Zxv" secondAttribute="leading" id="jTy-ah-7Lj"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZnS-v6-8us">
-                                        <rect key="frame" x="61" y="284" width="237" height="45"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1TD-wC-8da">
-                                                <rect key="frame" x="0.0" y="0.0" width="79" height="45"/>
-                                                <state key="normal" image="plus"/>
-                                                <connections>
-                                                    <action selector="addPhoto:" destination="1hP-5W-E5H" eventType="touchUpInside" id="27T-Fy-9FQ"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDW-Oq-Xcf">
-                                                <rect key="frame" x="79" y="0.0" width="79" height="45"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLu-iA-XOj">
-                                                <rect key="frame" x="158" y="0.0" width="79" height="45"/>
-                                            </view>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="237" id="817-WA-2pJ"/>
-                                            <constraint firstAttribute="height" constant="45" id="hAI-OY-c3G"/>
-                                        </constraints>
-                                    </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BYr-PY-xWv">
                                         <rect key="frame" x="0.0" y="200" width="54" height="80"/>
                                         <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -209,6 +187,28 @@
                                         </view>
                                         <blurEffect style="dark"/>
                                     </visualEffectView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZnS-v6-8us">
+                                        <rect key="frame" x="61" y="284" width="237" height="45"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1TD-wC-8da">
+                                                <rect key="frame" x="0.0" y="0.0" width="79" height="45"/>
+                                                <state key="normal" image="plus"/>
+                                                <connections>
+                                                    <action selector="addPhoto:" destination="1hP-5W-E5H" eventType="touchUpInside" id="27T-Fy-9FQ"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDW-Oq-Xcf">
+                                                <rect key="frame" x="79" y="0.0" width="79" height="45"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLu-iA-XOj">
+                                                <rect key="frame" x="158" y="0.0" width="79" height="45"/>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="237" id="817-WA-2pJ"/>
+                                            <constraint firstAttribute="height" constant="45" id="hAI-OY-c3G"/>
+                                        </constraints>
+                                    </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpZ-bg-Odz" customClass="LyftButton" customModule="LyftSDK">
                                         <rect key="frame" x="50" y="748" width="260" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
