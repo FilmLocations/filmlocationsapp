@@ -25,7 +25,7 @@
 
 import UIKit
 
-
+@IBDesignable
 public class WCLShineButton: UIControl {
     
     /// 更多的配置参数
@@ -37,14 +37,14 @@ public class WCLShineButton: UIControl {
     }
     
     /// 未点击的颜色
-    public var color: UIColor = UIColor.lightGray {
+    @IBInspectable public var color: UIColor = UIColor.lightGray {
         willSet {
             clickLayer.color = newValue
         }
     }
     
     /// 点击后的颜色
-    public var fillColor: UIColor   = UIColor(rgb: (255, 102, 102)) {
+    @IBInspectable public var fillColor: UIColor = UIColor(rgb: (255, 102, 102)) {
         willSet {
             clickLayer.fillColor = newValue
             shineLayer.fillColor = newValue
@@ -89,6 +89,28 @@ public class WCLShineButton: UIControl {
         initLayers()
     }
     
+    public func setClicked(_ clicked: Bool, animated: Bool = true) {
+        guard clicked != clickLayer.clicked else {
+            return
+        }
+        if clicked {
+            shineLayer.endAnim = { [weak self] in
+                self?.clickLayer.clicked = clicked
+                if animated {
+                    self?.clickLayer.startAnim()
+                }
+                self?.isSelected = clicked
+            }
+            if animated {
+                shineLayer.startAnim()
+            } else {
+                shineLayer.endAnim?()
+            }
+        } else {
+            clickLayer.clicked = clicked
+            isSelected = clicked
+        }
+    }
     
     //MARK: Override
     override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -98,11 +120,13 @@ public class WCLShineButton: UIControl {
                 self?.clickLayer.clicked = !(self?.clickLayer.clicked ?? false)
                 self?.clickLayer.startAnim()
                 self?.isSelected = self?.clickLayer.clicked ?? false
+                self?.sendActions(for: .valueChanged)
             }
             shineLayer.startAnim()
         }else {
             clickLayer.clicked = !clickLayer.clicked
             isSelected = clickLayer.clicked
+            sendActions(for: .valueChanged)
         }
     }
     

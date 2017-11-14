@@ -24,7 +24,7 @@ class ProfilePhotosCollectionViewCell: UICollectionViewCell {
         photoImageView.image = nil
         
         if let photo = locationImage {
-            if let photoURL = URL(string: photo.imageURL) {
+            if let photoURL = URL(string: photo.imageName) {
                 photoImageView.layer.cornerRadius = 4
                 photoImageView.layer.masksToBounds = true
                 photoImageView.setImageWith(photoURL)

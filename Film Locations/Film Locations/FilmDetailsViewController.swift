@@ -87,7 +87,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         Database.sharedInstance.getLocationImageMetadata(placeId: placeId) { (locationImages) in
             
             if locationImages.count > 0 {
-                Database.sharedInstance.getLocationImage(url: locationImages[0].imageURL, completion: {(locationImage) in
+                Database.sharedInstance.getLocationImage(filename: locationImages[0].imageName, completion: {(locationImage) in
                     self.topBackgroundImageView.image = locationImage
                 })
                 
@@ -163,7 +163,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             if self.locationImages != nil && locationImages.count != self.locationImages.count {
             
                 if locationImages.count > 0 {
-                    Database.sharedInstance.getLocationImage(url: locationImages[0].imageURL, completion: {(locationImage) in
+                    Database.sharedInstance.getLocationImage(filename: locationImages[0].imageName, completion: {(locationImage) in
                         self.topBackgroundImageView.image = locationImage
                     })
 
@@ -228,17 +228,17 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         if (user.isAnonymous) {
             visitButton.isUserInteractionEnabled = false
             likeButton.isUserInteractionEnabled = false
-        }
-
-        Database.sharedInstance.hasVisitedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasVisited) in
-            if (hasVisited) {
-                self.visitButton.isSelected = true
+        } else {
+            Database.sharedInstance.hasVisitedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasVisited) in
+                if (hasVisited) {
+                    self.visitButton.isSelected = true
+                }
             }
-        }
 
-        Database.sharedInstance.hasLikedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasLiked) in
-            if (hasLiked) {
-                self.likeButton.isSelected = true
+            Database.sharedInstance.hasLikedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasLiked) in
+                if (hasLiked) {
+                    self.likeButton.isSelected = true
+                }
             }
         }
 
@@ -391,7 +391,7 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationPhotoCollectionViewCell", for: indexPath) as! LocationPhotoCollectionViewCell
         
         if (locationImages != nil && locationImages.count > 0) {
-            Database.sharedInstance.getLocationImage(url: locationImages[indexPath.row].imageURL, completion: { (image) in
+            Database.sharedInstance.getLocationImage(filename: locationImages[indexPath.row].imageName, completion: { (image) in
                 cell.locationPhotoImageView.image = image
             })
         } else {

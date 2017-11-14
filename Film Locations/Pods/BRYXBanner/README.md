@@ -35,7 +35,7 @@ Demo project requires iOS 8, though BRYXBanner works on iOS 7+.
 
 ## Installation
 
-BRYXBanner is available through [CocoaPods](http://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage).
+BRYXBanner is available through [CocoaPods](http://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage). 
 
 #### Using CocoaPods
 

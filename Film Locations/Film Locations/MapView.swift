@@ -32,10 +32,8 @@ class MapView: UIView {
         self.loadInitialMap()
     }
     
-    
-    
     private func loadInitialMap() {
-        let camera = GMSCameraPosition.camera(withLatitude: 0.0, longitude: 0.0, zoom: 10.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 37.7749, longitude: -122.4194, zoom: 10.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.delegate = self
         
@@ -44,10 +42,10 @@ class MapView: UIView {
             if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
                 mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
             } else {
-                NSLog("Unable to find style.json")
+                print("Unable to find style.json")
             }
         } catch {
-            NSLog("One or more of the map styles failed to load. \(error)")
+            print("One or more of the map styles failed to load. \(error)")
         }
         
         self.googleMapView = mapView

@@ -7,337 +7,322 @@
 //
 
 import UIKit
-import FirebaseDatabase
-import FirebaseStorage
+import Alamofire
+import SwiftyJSON
+import AWSCore
+import AWSCognito
+import AWSS3
 
 class Database {
     
     static let sharedInstance = Database()
     
-    func getAllFilms(completion: @escaping ([Movie]) -> ()) {
+    let databaseURL: String!
+    let credentialsProvider: AWSCognitoCredentialsProvider?
+    let formatter = DateFormatter()
+    let isoFormatter = ISO8601DateFormatter()
+    
+    init() {
+        print("Initializing Database")
         
-        let ref = FIRDatabase.database().reference()
-        let films = ref.child("films")
-        
-        var firebaseMovies = [FirebaseMovie]()
-        
-        films.observe(.value, with: { (snapshot) in
+        if let keys = NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Keys", ofType: "plist")!) {
+            let AWSCognitoCredentialsIdentityPoolID = keys["AWSCognitoCredentialsIdentityPoolID"] as! String
             
-            for child in snapshot.children {
-                let data = child as! FIRDataSnapshot
-                
-                let firebaseMovie = FirebaseMovie(snapshot: data)
-                firebaseMovies.append(firebaseMovie)
-            }
+            // Initialize the Amazon Cognito credentials provider
+            credentialsProvider = AWSCognitoCredentialsProvider(regionType: .USWest2,
+                                                                identityPoolId: AWSCognitoCredentialsIdentityPoolID)
+
+            databaseURL = keys["FilmLocationsServiceURL"] as! String
             
-            let movies = self.mapFirebaseMoviesToMovies(firebaseMovies: firebaseMovies)
-            completion(movies)
-        })
+            formatter.dateFormat = "MMM dd, YYYY"
+        } else {
+            credentialsProvider = nil
+            databaseURL = ""
+            print("Keys file missing!")
+        }
     }
     
-    private func mapFirebaseMoviesToMovies(firebaseMovies: [FirebaseMovie]) -> [Movie] {
-        var mappedObjects: [String: Movie] = [:]
-        var locations: [Location] = []
-        var allMovies: [Movie] = []
+    
+    func getAllFilms(completion: @escaping ([Movie]) -> ()) {
         
-        if !firebaseMovies.isEmpty {
-            
-            for (_, movie) in firebaseMovies.enumerated() {
+        var movieLocations: [Movie] = []
+        
+        Alamofire.request(databaseURL + "locations").responseJSON { response in
+        
+            if let value = response.result.value {
                 
-                // The Movie object is created only in case the data fetched from Firebase is valid
+                let json = JSON(value)
                 
-                if let _ = movie.id,
-                   let title = movie.title,
-                   let _ = movie.releaseYear,
-                   let _ = movie.posterImageURL,
-                   let _ = movie.description,
-                   let placeId = movie.placeId,
-                   let address = movie.address,
-                   let lat = movie.lat,
-                   let long = movie.long {
-
-                    if mappedObjects[title] == nil {
-                        locations.removeAll()
-                        locations.append(Location(placeId: placeId, address: address, lat: lat, long: long))
-                        mappedObjects[title] = Movie(firebaseMovie: movie, locations: locations, isExpanded: false)
-                    }
-                    else {
-                        mappedObjects[title]?.locations.append(Location(placeId: placeId, address: address, lat: lat, long: long))
-                    }
+                for location in json {
+                    movieLocations.append(Movie(json: location.1))
                 }
+                print("Locations list is \(movieLocations)")
+                
+                completion(movieLocations)
             }
         }
-        
-        for (_, movie) in mappedObjects.enumerated() {
-            allMovies.append(movie.value)
-        }
-        
-        return allMovies
     }
 
     func addPhoto(userId: String, placeId: String, image: UIImage, description: String, completion: @escaping (Bool) -> ()) {
         print("Adding photo for \(userId) to \(placeId)")
-
-        // Get a reference to the storage service using the default Firebase App
-        let storage = FIRStorage.storage()
-        // Create a storage reference from our storage service
-        let storageRef = storage.reference()
         
-        if let data = UIImageJPEGRepresentation(image, 0.5) as Data? {
+        let configuration = AWSServiceConfiguration(region:.USWest2, credentialsProvider:credentialsProvider)
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
+        let testFileURL1 = URL(fileURLWithPath: NSTemporaryDirectory().appendingFormat("temp"))
+        let data = UIImageJPEGRepresentation(image, 0.5)
+        
+        do {
+            try data!.write(to: testFileURL1)
+        } catch  {
+            print("Couldn't write file")
+        }
 
-            let filename = Date().timeIntervalSince1970
+        let filename = Date().timeIntervalSince1970
 
-            // Create a reference to the file you want to upload
-            let imageRef = storageRef.child("photos/\(placeId)/\(filename).jpg")
-
-            let metadata = FIRStorageMetadata()
-            metadata.contentType = "image/jpg"
+        
+        if let uploadRequest = AWSS3TransferManagerUploadRequest() {
+            uploadRequest.bucket = "filmlocations"
+            uploadRequest.key = "\(filename).png"
+            uploadRequest.body = testFileURL1
             
-            // Upload the file to the path
-            imageRef.put(data, metadata: metadata) { (metadata, error) in
-                guard let metadata = metadata else {
-                    // Uh-oh, an error occurred!
-                    print("Error uploading photo \(error.debugDescription)")
-                    return
+            
+            let transferManager = AWSS3TransferManager.default()
+            
+            transferManager.upload(uploadRequest).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
+                
+                if let error = task.error as NSError? {
+                    if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
+                        switch code {
+                        case .cancelled, .paused:
+                            break
+                        default:
+                            print("Error uploading: \(uploadRequest.key!) Error: \(error)")
+                        }
+                    } else {
+                        print("Error uploading: \(uploadRequest.key!) Error: \(error)")
+                    }
+                    return nil
                 }
-                // Metadata contains file metadata such as size, content-type, and download URL.
-                if let downloadURL = metadata.downloadURL() {
-                    
-                    //Add URL to firebase for retrieval
-                    let ref = FIRDatabase.database().reference()
-                    let images = ref.child("locationImages/\(placeId)")
-                    let userImages = ref.child("userImages/\(userId)")
-                    
-                    let newImage = [
-                        "url": downloadURL.absoluteString,
-                        "userId": userId,
-                        "description": description,
-                        "placeId": placeId,
-                        "timestamp": FIRServerValue.timestamp(),
+                
+                let uploadOutput = task.result
+                print("Upload output is \(uploadOutput!)")
+                print("Upload complete for: \(uploadRequest.key!)")
+                
+                let parameters = [
+                    "name": "\(filename).png",
+                    "userId": userId,
+                    "description": description,
+                    "placeId": placeId
                     ] as [String : Any]
-                    
-                    images.childByAutoId().setValue(newImage)
-                    userImages.childByAutoId().setValue(newImage)
-                    
+                print("send to images API \(parameters)")
+
+                Alamofire.request(self.databaseURL + "images", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
                     completion(true)
                 }
-            }
+                
+                return nil
+            })
         }
     }
-    
+
     func visitLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
-        let ref = FIRDatabase.database().reference()
-        let visits = ref.child("visits")
         
-        visits.child("\(userId)--\(locationId)")
-              .setValue(["timestamp": FIRServerValue.timestamp(),
-                         "locationId": locationId,
-                         "userId": userId]) { (error, dbref) in
-              completion(true)
+        Alamofire.request(databaseURL + "locations/\(locationId)/visit/\(userId)", method: .post).responseJSON { response in
+                completion(true)
         }
     }
     
     func removeVisitLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
-        let ref = FIRDatabase.database().reference()
-        let visits = ref.child("visits")
-
-        visits.child("\(userId)--\(locationId)").removeValue { (error, dbref) in
+        
+        Alamofire.request(databaseURL + "locations/\(locationId)/visit/\(userId)", method: .delete).responseJSON { response in
             completion(true)
         }
     }
 
     func likeLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
-        let ref = FIRDatabase.database().reference()
-        let likes = ref.child("likes")
-        
-        likes.child("\(userId)--\(locationId)")
-             .setValue(["timestamp": FIRServerValue.timestamp(),
-                        "locationId": locationId,
-                        "userId": userId]) { (error, dbref) in
+       
+        Alamofire.request(databaseURL + "locations/\(locationId)/like/\(userId)", method: .post).responseJSON { response in
             completion(true)
         }
     }
     
     func removeLikeLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
-        let ref = FIRDatabase.database().reference()
-        let likes = ref.child("likes")
-
-        likes.child("\(userId)--\(locationId)").removeValue { (error, dbref) in
+        
+        Alamofire.request(databaseURL + "locations/\(locationId)/like/\(userId)", method: .delete).responseJSON { response in
             completion(true)
         }
     }
 
     func hasVisitedLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
-        let ref = FIRDatabase.database().reference()
-
-        let visit = ref.child("visits/\(userId)--\(locationId)")
         
-        visit.observeSingleEvent(of: .value, with: { (snapshot) in
-            if (snapshot.exists()) {
-                completion(true)
-            } else {
+        Alamofire.request(databaseURL + "locations/\(locationId)/visit/\(userId)").responseJSON { response in
+            guard let hasVisited = response.result.value as? Bool else {
                 completion(false)
+                return
             }
-        })
+            completion(hasVisited)
+        }
     }
     
     func hasLikedLocation(userId: String, locationId: String, completion: @escaping (Bool) -> ()) {
-        let ref = FIRDatabase.database().reference()
         
-        let like = ref.child("likes/\(userId)--\(locationId)")
-        
-        like.observeSingleEvent(of: .value, with: { (snapshot) in
-            if (snapshot.exists()) {
-                completion(true)
+        Alamofire.request(databaseURL + "locations/\(locationId)/like/\(userId)").responseJSON { response in
+            if let hasLiked = response.result.value as? Bool {
+                completion(hasLiked)
             } else {
                 completion(false)
             }
-        })
+        }
     }
     
     func userLikesCount(userId: String, completion: @escaping (Int) -> ()) {
-        let ref = FIRDatabase.database().reference()
         
-        let likes = ref.child("likes").queryOrderedByKey().queryStarting(atValue: userId)
-        
-        var likesCount = 0
-        likes.observeSingleEvent(of: .value, with: { (snapshot) in
-            if (snapshot.exists()) {
-                for child in snapshot.children {
-                    let data = child as! FIRDataSnapshot
-                    if (data.key.hasPrefix(userId)) {
-                        likesCount = likesCount + 1
-                    } else {
-                        break
-                    }
-                }
-                
-                completion(likesCount)
+        Alamofire.request(databaseURL + "users/\(userId)/likes").responseJSON { response in
+            if let count = response.result.value as? Int {
+                completion(count)
             } else {
                 completion(0)
             }
-        })
+        }
     }
     
     func locationLikesCount(placeId: String, completion: @escaping (Int) -> ()) {
-        let ref = FIRDatabase.database().reference()
         
-        let likes = ref.child("likes").queryOrdered(byChild: "locationId").queryEqual(toValue: placeId)
-        
-        likes.observeSingleEvent(of: .value, with: { (snapshot) in
-            if (snapshot.exists()) {
-                completion(Int(snapshot.childrenCount))
+        Alamofire.request(databaseURL + "locations/\(placeId)/likes").responseJSON { response in
+            if let count = response.result.value as? Int {
+                completion(count)
             } else {
                 completion(0)
             }
-        })
+        }
     }
     
     func locationVisitsCount(placeId: String, completion: @escaping (Int) -> ()) {
-        let ref = FIRDatabase.database().reference()
         
-        let likes = ref.child("visits").queryOrdered(byChild: "locationId").queryEqual(toValue: placeId)
-        
-        likes.observeSingleEvent(of: .value, with: { (snapshot) in
-            if (snapshot.exists()) {
-                completion(Int(snapshot.childrenCount))
+        Alamofire.request(databaseURL + "locations/\(placeId)/visits").responseJSON { response in
+            if let count = response.result.value as? Int {
+                completion(count)
             } else {
                 completion(0)
             }
-        })
+        }
     }
     
     func userVisitsCount(userId: String, completion: @escaping (Int) -> ()) {
-        let ref = FIRDatabase.database().reference()
         
-        let likes = ref.child("visits").queryOrderedByKey().queryStarting(atValue: userId)
-        
-        var likesCount = 0
-        likes.observeSingleEvent(of: .value, with: { (snapshot) in
-            if (snapshot.exists()) {
-                for child in snapshot.children {
-                    let data = child as! FIRDataSnapshot
-                    if (data.key.hasPrefix(userId)) {
-                        likesCount = likesCount + 1
-                    } else {
-                        break
-                    }
-                }
-                
-                completion(likesCount)
+        Alamofire.request(databaseURL + "users/\(userId)/visits").responseJSON { response in
+            if let count = response.result.value as? Int {
+                completion(count)
             } else {
                 completion(0)
             }
-        })
+        }
     }
     
     func getUserImageMetadata(userId: String, completion: @escaping ([LocationImage]) -> ()) {
-        let ref = FIRDatabase.database().reference()
-        let imageURLs = ref.child("userImages/\(userId)")
-        var locationImages = [LocationImage]()
         
-        imageURLs.observeSingleEvent(of: .value, with: { (snapshot) in
-            for child in snapshot.children {
-                let data = child as! FIRDataSnapshot
-                
-                let url = data.childSnapshot(forPath: "url").value as! String
-                let description = data.childSnapshot(forPath: "description").value as? String ?? ""
-                let userId = data.childSnapshot(forPath: "userId").value as! String
-                let timestamp = data.childSnapshot(forPath: "timestamp").value as? TimeInterval
-                let placeId = data.childSnapshot(forPath: "placeId").value as! String
-                
-                var formattedTimestamp = ""
-                let date = Date(timeIntervalSince1970: timestamp!/1000)
-                let formatter = DateFormatter()
-                formatter.dateFormat = "MMM dd, YYYY"
-                formattedTimestamp = formatter.string(from: date)
-                
-                let location = LocationImage(imageURL: url, description: description, userId: userId, timestamp: formattedTimestamp, placeId: placeId)
-                
-                locationImages.append(location)
-            }
+        Alamofire.request(databaseURL + "images?userId=\(userId)", encoding: JSONEncoding.default).responseJSON { response in
+            var locationImages = [LocationImage]()
             
-            completion(locationImages)
-        })
+            if let value = response.result.value {
+                
+                let json = JSON(value)
+                
+                for location in json {
+        
+                    let location = self.convertLocationImageData(location: location)
+                    
+                    locationImages.append(location)
+                }
+                print("Images list is \(locationImages)")
+                
+                completion(locationImages)
+            }
+        }
     }
     
     func getLocationImageMetadata(placeId: String, completion: @escaping ([LocationImage]) -> ()) {
-        let ref = FIRDatabase.database().reference()
-        let imageURLs = ref.child("locationImages/\(placeId)")
-        var locationImages = [LocationImage]()
-        
-        imageURLs.observeSingleEvent(of: .value, with: { (snapshot) in
-            for child in snapshot.children {
-                let data = child as! FIRDataSnapshot
-                
-                let url = data.childSnapshot(forPath: "url").value as! String
-                let description = data.childSnapshot(forPath: "description").value as? String ?? ""
-                let userId = data.childSnapshot(forPath: "userId").value as! String
-                let timestamp = data.childSnapshot(forPath: "timestamp").value as? TimeInterval
-                
-                var formattedTimestamp = ""
-                let date = Date(timeIntervalSince1970: timestamp!/1000)
-                let formatter = DateFormatter()
-                formatter.dateFormat = "MMM dd, YYYY"
-                formattedTimestamp = formatter.string(from: date)
-                
-                let location = LocationImage(imageURL: url, description: description, userId: userId, timestamp: formattedTimestamp, placeId: placeId)
-  
-                locationImages.append(location)
-            }
+        Alamofire.request(databaseURL + "images?placeId=\(placeId)", encoding: JSONEncoding.default).responseJSON { response in
+            var locationImages = [LocationImage]()
             
-            completion(locationImages)
-        })
+            if let value = response.result.value {
+                
+                let json = JSON(value)
+                
+                for location in json {
+                    
+                    let location = self.convertLocationImageData(location: location)
+                    
+                    locationImages.append(location)
+                }
+                print("Images list is \(locationImages)")
+                
+                completion(locationImages)
+            }
+        }
     }
     
-    func getLocationImage(url: String,  completion: @escaping (UIImage) -> ()) {
+    func convertLocationImageData(location: (String, JSON)) -> LocationImage {
         
-        let storage = FIRStorage.storage()
-        let storageRef = storage.reference(forURL: url)
+        let fileName = location.1["name"].stringValue
+        let description = location.1["description"].stringValue
+        let userId = location.1["userId"].stringValue
+        let timestamp = location.1["date"]["$date"].stringValue
+        let placeId = location.1["placeId"].stringValue
         
-        storageRef.data(withMaxSize: (10 * 1024 * 1024)) { (data, error) -> Void in
-            let image = UIImage(data: data!)
-            completion(image!)
+        var formattedTimestamp = ""
+        
+        let trimmedIsoString = timestamp.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
+        
+        if let date = isoFormatter.date(from: trimmedIsoString) {
+            formattedTimestamp = formatter.string(from: date)
+        }
+        
+        let location = LocationImage(imageName: fileName, description: description, userId: userId, timestamp: formattedTimestamp, placeId: placeId)
+        
+        return location
+    }
+    
+    func getLocationImage(filename: String,  completion: @escaping (UIImage) -> ()) {
+        
+        print("Getting image with URL \(filename)")
+        
+        let downloadingFileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(filename)
+        
+        if let downloadRequest = AWSS3TransferManagerDownloadRequest() {
+            downloadRequest.bucket = "filmlocations"
+            downloadRequest.key = filename
+            downloadRequest.downloadingFileURL = downloadingFileURL
+            
+            let configuration = AWSServiceConfiguration(region:.USWest2, credentialsProvider:credentialsProvider)
+            AWSServiceManager.default().defaultServiceConfiguration = configuration
+            
+            let transferManager = AWSS3TransferManager.default()
+
+            transferManager.download(downloadRequest).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
+                
+                if let error = task.error as NSError? {
+                    if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
+                        switch code {
+                        case .cancelled, .paused:
+                            break
+                        default:
+                            print("Error downloading: \(downloadRequest.key!) Error: \(error)")
+                        }
+                    } else {
+                        print("Error downloading: \(downloadRequest.key!) Error: \(error)")
+                    }
+                    return nil
+                }
+                print("Download complete for: \(downloadRequest.key!)")
+                //let downloadOutput = task.result
+                
+                let image = UIImage(contentsOfFile: downloadingFileURL.path)
+                
+                completion(image!)
+                return nil
+            })
         }
     }
 }
