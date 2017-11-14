@@ -8,14 +8,15 @@
 
 import UIKit
 
-public class PastelView: UIView {
+open class PastelView: UIView {
 
     private struct Animation {
         static let keyPath = "colors"
         static let key = "ColorChange"
     }
     
-    public enum Point {
+    @objc
+    public enum PastelPoint: Int {
         case left
         case top
         case right
@@ -24,7 +25,6 @@ public class PastelView: UIView {
         case topRight
         case bottomLeft
         case bottomRight
-        case custom(position: CGPoint)
         
         var point: CGPoint {
             switch self {
@@ -36,15 +36,25 @@ public class PastelView: UIView {
             case .topRight: return CGPoint(x: 1.0, y: 0.0)
             case .bottomLeft: return CGPoint(x: 0.0, y: 1.0)
             case .bottomRight: return CGPoint(x: 1.0, y: 1.0)
-            case .custom(let point):
-                return point
             }
         }
     }
     
     // Custom Direction
-    open var startPoint: Point = .topRight
-    open var endPoint: Point = .bottomLeft
+    open var startPoint: CGPoint = PastelPoint.topRight.point
+    open var endPoint: CGPoint = PastelPoint.bottomLeft.point
+    
+    open var startPastelPoint = PastelPoint.topRight {
+        didSet {
+            startPoint = startPastelPoint.point
+        }
+    }
+    
+    open var endPastelPoint = PastelPoint.bottomLeft {
+        didSet {
+            endPoint = endPastelPoint.point
+        }
+    }
     
     // Custom Duration
     open var animationDuration: TimeInterval = 5.0
@@ -74,8 +84,13 @@ public class PastelView: UIView {
         super.init(coder: aDecoder)
     }
     
-    public override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
+    }
+
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        gradient.frame = bounds
     }
     
     public func startAnimation() {
@@ -87,8 +102,8 @@ public class PastelView: UIView {
     fileprivate func setup() {
         gradient.frame = bounds
         gradient.colors = currentGradientSet()
-        gradient.startPoint = startPoint.point
-        gradient.endPoint = endPoint.point
+        gradient.startPoint = startPoint
+        gradient.endPoint = endPoint
         gradient.drawsAsynchronously = true
         
         layer.insertSublayer(gradient, at: 0)
@@ -100,12 +115,16 @@ public class PastelView: UIView {
                 colors[(currentGradient + 1) % colors.count].cgColor]
     }
     
-    public func setColors(colors: [UIColor]) {
+    public func setColors(_ colors: [UIColor]) {
         guard colors.count > 0 else { return }
         self.colors = colors
     }
     
-    public func addColor(color: UIColor) {
+    public func setPastelGradient(_ gradient: PastelGradient) {
+        setColors(gradient.colors())
+    }
+    
+    public func addcolor(_ color: UIColor) {
         self.colors.append(color)
     }
     
@@ -120,7 +139,7 @@ public class PastelView: UIView {
         gradient.add(animation, forKey: Animation.key)
     }
     
-    public override func removeFromSuperview() {
+    open override func removeFromSuperview() {
         super.removeFromSuperview()
         gradient.removeAllAnimations()
         gradient.removeFromSuperlayer()

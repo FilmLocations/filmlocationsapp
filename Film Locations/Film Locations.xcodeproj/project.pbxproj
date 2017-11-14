@@ -12,7 +12,6 @@
 		3A224FA41EAD611700091BB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A224FA31EAD611700091BB3 /* Assets.xcassets */; };
 		3A224FA71EAD611700091BB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A224FA51EAD611700091BB3 /* LaunchScreen.storyboard */; };
 		3A2365D81EB47E4F00D60443 /* FilmDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2365D71EB47E4F00D60443 /* FilmDetailsViewController.swift */; };
-		3A2365DA1EB543D700D60443 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A2365D91EB543D700D60443 /* GoogleService-Info.plist */; };
 		3A2365DC1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2365DB1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift */; };
 		3A2D58641EBDCC2200BB7DBF /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2D58631EBDCC2200BB7DBF /* PostViewController.swift */; };
 		3A2D58661EBE30BC00BB7DBF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2D58651EBE30BC00BB7DBF /* User.swift */; };
@@ -35,9 +34,9 @@
 		88790C0C1EB6FA3D0025C5EE /* MoviePosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88790C0B1EB6FA3D0025C5EE /* MoviePosterView.swift */; };
 		8894F1151EB945C500FFDAA1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8894F1141EB945C500FFDAA1 /* MapView.swift */; };
 		8A559882E961A19DE2C6ECF3 /* Pods_Film_Locations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA186C724D76407B1FE1434 /* Pods_Film_Locations.framework */; };
+		C4409ED91FBB99BD007F7E3F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4409ED81FBB99BD007F7E3F /* Keys.plist */; };
 		D3009ABE1EB5848500E075ED /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009ABB1EB5848500E075ED /* Movie.swift */; };
 		D3009ABF1EB5848500E075ED /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009ABC1EB5848500E075ED /* Location.swift */; };
-		D3009AC01EB5848500E075ED /* FirebaseMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009ABD1EB5848500E075ED /* FirebaseMovie.swift */; };
 		D3009AC31EB584C200E075ED /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009AC21EB584C200E075ED /* ListViewCell.swift */; };
 		D3009AC51EB584CD00E075ED /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009AC41EB584CD00E075ED /* ListViewController.swift */; };
 		D31F4FEA1EB4552F003CC557 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31F4FE81EB4552F003CC557 /* MenuViewController.swift */; };
@@ -66,7 +65,6 @@
 		3A224FA61EAD611700091BB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A224FA81EAD611700091BB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A2365D71EB47E4F00D60443 /* FilmDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmDetailsViewController.swift; sourceTree = "<group>"; };
-		3A2365D91EB543D700D60443 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A2365DB1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A2D58631EBDCC2200BB7DBF /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		3A2D58651EBE30BC00BB7DBF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -92,10 +90,10 @@
 		88790C0B1EB6FA3D0025C5EE /* MoviePosterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviePosterView.swift; sourceTree = "<group>"; };
 		8894F1141EB945C500FFDAA1 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		95F5320A160EB9BDD66EB8A0 /* Pods-Film Locations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Film Locations.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations.debug.xcconfig"; sourceTree = "<group>"; };
+		C4409ED81FBB99BD007F7E3F /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		D251F5A791118332ED48C6CD /* Pods-Film Locations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Film Locations.release.xcconfig"; path = "Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations.release.xcconfig"; sourceTree = "<group>"; };
 		D3009ABB1EB5848500E075ED /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		D3009ABC1EB5848500E075ED /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		D3009ABD1EB5848500E075ED /* FirebaseMovie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseMovie.swift; sourceTree = "<group>"; };
 		D3009AC21EB584C200E075ED /* ListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		D3009AC41EB584CD00E075ED /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		D31F4FE81EB4552F003CC557 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 			children = (
 				8815027D1EC539E600342769 /* 3rdParty */,
 				D3009AC11EB584B500E075ED /* Views */,
-				88E1F1B41EB50049004CC616 /* CustomNavigation */,
 				3A75FD041EB40E2E008F5400 /* API */,
 				3A75FD051EB40E39008F5400 /* Models */,
 				3A75FD031EB40E27008F5400 /* View Controllers */,
@@ -172,7 +169,7 @@
 				3A224FA51EAD611700091BB3 /* LaunchScreen.storyboard */,
 				881502851EC8F37400342769 /* style.json */,
 				3A224FA81EAD611700091BB3 /* Info.plist */,
-				3A2365D91EB543D700D60443 /* GoogleService-Info.plist */,
+				C4409ED81FBB99BD007F7E3F /* Keys.plist */,
 			);
 			path = "Film Locations";
 			sourceTree = "<group>";
@@ -212,7 +209,6 @@
 				D350F33D1EC2290D00162D90 /* MenuOption.swift */,
 				D3009ABB1EB5848500E075ED /* Movie.swift */,
 				D3009ABC1EB5848500E075ED /* Location.swift */,
-				D3009ABD1EB5848500E075ED /* FirebaseMovie.swift */,
 				3A2D58651EBE30BC00BB7DBF /* User.swift */,
 				3ADABD551EBFA5D100F5F44C /* LocationImage.swift */,
 			);
@@ -252,13 +248,6 @@
 				8815027E1EC53AD600342769 /* Film Locations-Bridging-Header.h */,
 			);
 			name = 3rdParty;
-			sourceTree = "<group>";
-		};
-		88E1F1B41EB50049004CC616 /* CustomNavigation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = CustomNavigation;
 			sourceTree = "<group>";
 		};
 		D3009AC11EB584B500E075ED /* Views */ = {
@@ -312,7 +301,7 @@
 				TargetAttributes = {
 					3A224F981EAD611700091BB3 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = WSE9V4ZK6U;
+						DevelopmentTeam = 57478PSBBB;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -349,11 +338,11 @@
 				3A75FD081EB416A1008F5400 /* Map.storyboard in Resources */,
 				88790C081EB6F9BE0025C5EE /* MoviePosterView.xib in Resources */,
 				D3283B001EBE6BE8008B2237 /* Main.storyboard in Resources */,
-				3A2365DA1EB543D700D60443 /* GoogleService-Info.plist in Resources */,
 				3A224FA41EAD611700091BB3 /* Assets.xcassets in Resources */,
 				3ADABD521EBF9A5C00F5F44C /* Fullscreen.storyboard in Resources */,
 				3A2D58681EBE333B00BB7DBF /* Post.storyboard in Resources */,
 				D31F4FEB1EB4552F003CC557 /* MenuViewController.xib in Resources */,
+				C4409ED91FBB99BD007F7E3F /* Keys.plist in Resources */,
 				3A75FD0A1EB416CF008F5400 /* List.storyboard in Resources */,
 				D3283AFD1EBE6BC2008B2237 /* HamburgerMenu.storyboard in Resources */,
 				3A82987D1ECD2423002FF6E8 /* Angelface.otf in Resources */,
@@ -370,13 +359,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Film Locations-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2276AF9E1FC5A66BB113A678 /* [CP] Copy Pods Resources */ = {
@@ -385,9 +377,13 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -400,9 +396,34 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BDBOAuth1Manager/BDBOAuth1Manager.framework",
+				"${BUILT_PRODUCTS_DIR}/BRYXBanner/BRYXBanner.framework",
+				"${BUILT_PRODUCTS_DIR}/FXBlurView/FXBlurView.framework",
+				"${BUILT_PRODUCTS_DIR}/LyftSDK/LyftSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/Pastel/Pastel.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/WCLShineButton/WCLShineButton.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognito.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BDBOAuth1Manager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BRYXBanner.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FXBlurView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LyftSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pastel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WCLShineButton.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -426,7 +447,6 @@
 				D3009AC31EB584C200E075ED /* ListViewCell.swift in Sources */,
 				D3009ABF1EB5848500E075ED /* Location.swift in Sources */,
 				D350F3371EC1830E00162D90 /* AboutViewController.swift in Sources */,
-				D3009AC01EB5848500E075ED /* FirebaseMovie.swift in Sources */,
 				D3009AC51EB584CD00E075ED /* ListViewController.swift in Sources */,
 				3ADABD581EBFBB5700F5F44C /* TwitterClient.swift in Sources */,
 				884098761EC2E18500F2B605 /* Utility.swift in Sources */,
@@ -563,9 +583,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = WSE9V4ZK6U;
+				DEVELOPMENT_TEAM = 57478PSBBB;
 				INFOPLIST_FILE = "Film Locations/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.spring17.FilmLocations.Film-Locations";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -581,9 +601,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = WSE9V4ZK6U;
+				DEVELOPMENT_TEAM = 57478PSBBB;
 				INFOPLIST_FILE = "Film Locations/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codepath.spring17.FilmLocations.Film-Locations";
 				PRODUCT_NAME = "$(TARGET_NAME)";

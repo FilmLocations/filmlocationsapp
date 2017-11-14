@@ -42,7 +42,7 @@ class WCLShineLayer: CALayer, CAAnimationDelegate {
     var endAnim: (()->Void)?
     
     //MARK: Public Methods
-    public func startAnim() {
+    func startAnim() {
         let anim = CAKeyframeAnimation(keyPath: "path")
         anim.duration = params.animDuration * 0.1
         let size = frame.size
@@ -94,7 +94,8 @@ class WCLShineLayer: CALayer, CAAnimationDelegate {
     }
     
     @objc private func flashAction() {
-        shapeLayer.strokeColor = params.colorRandom[Int(arc4random())%params.colorRandom.count].cgColor
+        let index = Int(arc4random()%UInt32(params.colorRandom.count))
+        shapeLayer.strokeColor = params.colorRandom[index].cgColor
     }
     
     //MARK: CAAnimationDelegate

@@ -112,7 +112,7 @@ extension ProfilePageViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionCell", for: indexPath) as! ProfilePhotosCollectionViewCell
         
-        Database.sharedInstance.getLocationImage(url: photos[indexPath.row].imageURL, completion: { (image) in
+        Database.sharedInstance.getLocationImage(filename: photos[indexPath.row].imageName, completion: { (image) in
             cell.photoImageView.image = image
         })
         

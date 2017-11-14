@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import GooglePlaces
 import GoogleMaps
 import LyftSDK
@@ -24,22 +23,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        // InternalConfiguration.setStatusBarBackgroundColor()
         
         UILabel.appearance().defaultFont =  UIFont(name: "Apple SD Gothic Neo", size: 15)
-        
-        
-        FIRApp.configure()
+                
         let memoryCapacity = 0
         let diskCapacity = 500 * 1024 * 1024
         let cache = URLCache(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, diskPath: "myDataPath")
         URLCache.shared = cache
         
-        GMSServices.provideAPIKey("AIzaSyDkh00P83RkVTjmA98hUI2iACj368aTeGI")
-        GMSPlacesClient.provideAPIKey("AIzaSyDkh00P83RkVTjmA98hUI2iACj368aTeGI")
+        guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist") else {
+            print("Keys file not found!")
+            return false
+        }
+        
+        let keys = NSDictionary(contentsOfFile: path)!
+        
+        let gmsServicesAPIKey = keys["GMSServicesAPIKey"] as! String
+        let gmsPlacesClientAPIKey = keys["GMSPlacesClientAPIKey"] as! String
+        
+        GMSServices.provideAPIKey(gmsServicesAPIKey)
+        GMSPlacesClient.provideAPIKey(gmsPlacesClientAPIKey)
 
-        LyftConfiguration.developer = (token: "gAAAAABZFqZoZE_eSsRjFOy3HYWn7u50o1eCzF5HD2hC_r40cjksVLPUCxTHGATX4gkNnZCSQ6zINPz9Zd5Q-HDdGRf1Tl5UfjsUC8TwS1i0Io5zlOA131SvgcYClI3VgV1mS3Y5vCnl8TuMt-5fgnU1vEcNSOWQRK9-saAw5t-7SLlUmRZi6Tw=", clientId: "2xxmjwMeqb1d")
+        let lyftConfigToken = keys["LyftConfigToken"] as! String
+        let lyftClientID = keys["LyftClientID"] as! String
+        
+        LyftConfiguration.developer = (token: lyftConfigToken, clientId: lyftClientID)
+        
         
         Database.sharedInstance.getAllFilms { (movies) in
             print("We have \(movies.count) locations")
         }
+        
         UIApplication.shared.statusBarStyle = .lightContent
         return true
     }

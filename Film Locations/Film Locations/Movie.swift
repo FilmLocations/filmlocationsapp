@@ -6,6 +6,7 @@
 //  Copyright © 2017 Codepath Spring17. All rights reserved.
 //
 import Foundation
+import SwiftyJSON
 
 class Movie {
     var actors: [String]?
@@ -20,36 +21,58 @@ class Movie {
     var date: String?
     var releaseYear: String
     var title: String
+    
+    //TODO NEED TO REMOVE THESE, since each of these objects is now always 1 location
+    
     var locations: [Location]
     var isExpandable: Bool { return locations.count > 1 }
     var isExpanded: Bool
     var numberOfRows: Int { return locations.count }
-    var popularity: Int?
     
-    init(firebaseMovie: FirebaseMovie, locations: [Location], isExpanded: Bool) {
-        
-        self.actors = firebaseMovie.actors
-        self.description = firebaseMovie.description
-        self.genreIds = firebaseMovie.genreIds
-        
-        // unwraping the optional value is safe here because a check was done before creating the Movie object
-        self.id = firebaseMovie.id!
-        self.backdropImageURL = firebaseMovie.backdropImageURL
-        self.posterImageURL = firebaseMovie.posterImageURL
-        self.company = firebaseMovie.company
-        self.director = firebaseMovie.director
-        self.writer = firebaseMovie.writer
-        self.date = firebaseMovie.date
-        
-        // unwraping the optional value is safe here because a check was done before creating the Movie object
-        self.releaseYear = firebaseMovie.releaseYear!
-        
-        // unwraping the optional value is safe here because a check was done before creating the Movie object
-        self.title = firebaseMovie.title!
-        self.locations = locations
-        self.isExpanded = isExpanded
-        self.popularity = firebaseMovie.popularity
+    //////
+    
+    
+    var popularity: Int?
+    var location: Location?
+    
+    private let baseStringURL = "http://image.tmdb.org/t/p/w500"
 
+    
+    init(json: JSON) {
+        self.actors = json["actors"].arrayValue.map{$0.stringValue}
+        
+        self.description = json["description"].stringValue
+        
+        self.genreIds = json["genres"].arrayValue.map{$0.intValue}
+        
+        self.id = json["tmdbid"].intValue
+        
+        let backdropImage = json["images"]["backdrop"].stringValue
+        self.backdropImageURL = URL(string: baseStringURL + backdropImage)
+        
+        let posterImage = json["images"]["poster"].stringValue
+        self.posterImageURL = URL(string: baseStringURL + posterImage)
+
+        self.company = json["production"]["company"].stringValue
+        self.director = json["production"]["director"].stringValue
+        self.writer = json["production"]["writer"].stringValue
+        
+        self.date = json["date"].stringValue
+        self.releaseYear = json["year"].stringValue
+        
+        self.title = json["title"].stringValue
+        
+        self.popularity = json["popularity"].intValue
+        
+        let address = json["address"].stringValue
+        let lat = json["gps"]["lat"].doubleValue
+        let long = json["gps"]["lng"].doubleValue
+        let placeId = json["placeId"].stringValue
+        
+        self.location = Location(placeId: placeId, address: address, lat: lat, long: long)
+        
+        self.locations = [self.location!]
+        self.isExpanded = false
     }
     
     private var formatConversion = { (stringDate: String?) -> String? in

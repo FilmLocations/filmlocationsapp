@@ -54,7 +54,7 @@ class MoviePosterView: UIView {
         Database.sharedInstance.getLocationImageMetadata(placeId: placeID) { (locationImages) in
             
             if locationImages.count > 0 {
-                Database.sharedInstance.getLocationImage(url: locationImages[0].imageURL, completion: {(locationImage) in
+                Database.sharedInstance.getLocationImage(filename: locationImages[0].imageName, completion: {(locationImage) in
                     self.posterImageView.image = locationImage
                 })
             } else {

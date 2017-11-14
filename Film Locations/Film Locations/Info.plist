@@ -41,9 +41,11 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Film Locations uses the camera to upload photos.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Location needs </string>
+	<string>Film Locations uses your location to find film locations near you</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Film Locations uses your location to find film locations near you</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>When in usage string</string>
+	<string>Film Locations uses your location to find film locations near you</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Film Locations allows you to choose images from your library.</string>
 	<key>UILaunchStoryboardName</key>

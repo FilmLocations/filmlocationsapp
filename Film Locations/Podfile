@@ -1,17 +1,14 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '10.3'
 
 target 'Film Locations' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for Film Locations
-  pod 'Firebase/Core'
-  pod 'Firebase/Database'
-  pod 'Firebase/Storage'
-  pod 'GoogleMaps', '= 2.1.0'
-  pod 'GooglePlaces'
   pod 'AFNetworking'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces' 
   pod 'SwiftyJSON', '~>3.1.4'
   pod 'FXBlurView', '~>1.6.4'
   pod 'BDBOAuth1Manager'
@@ -19,4 +16,7 @@ target 'Film Locations' do
   pod 'LyftSDK'
   pod 'BRYXBanner'
   pod 'Pastel'
+  pod 'Alamofire', '~> 4.4'
+  pod 'AWSS3'
+  pod 'AWSCognito'
 end
