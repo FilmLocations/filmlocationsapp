@@ -96,7 +96,7 @@ class MenuViewController: UIViewController {
         toggleButtonImage = UIImage(named: image)!
     }
     
-    func toggleActiveView(_ sender: UIButton) {
+    @objc func toggleActiveView(_ sender: UIButton) {
         if activeViewController == firstViewController {
             activeViewController = secondViewController
             updateToggleButtonIcon(with: InternalConfiguration.mapToggleIcon)

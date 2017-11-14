@@ -179,11 +179,11 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(onBackButtonPress(_:)))
     }
     
-    func onBackButtonPress(_ sender: UIButton) {
+    @objc func onBackButtonPress(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func onVisitButtonTapped(_ sender: UIView) {
+    @objc func onVisitButtonTapped(_ sender: UIView) {
         if (user.isAnonymous) {
             let banner = Banner(title: "Login", subtitle: "Please login to mark this location as visited", image: nil, backgroundColor: UIColor.fl_accent!)
             banner.textColor = UIColor.fl_primary_text!
@@ -192,7 +192,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
 
-    func onLikeButtonTapped(_ sender: UIView) {
+    @objc func onLikeButtonTapped(_ sender: UIView) {
         if (user.isAnonymous) {
             let banner = Banner(title: "Login", subtitle: "Please login to like this location", image: nil, backgroundColor: UIColor.fl_accent!)
             banner.textColor = UIColor.fl_primary_text!

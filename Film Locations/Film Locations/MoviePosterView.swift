@@ -136,7 +136,7 @@ class MoviePosterView: UIView {
 
 extension MoviePosterView : UIGestureRecognizerDelegate {
     
-    func didTapOnImageView(sender: UITapGestureRecognizer){
+    @objc func didTapOnImageView(sender: UITapGestureRecognizer){
         self.delegate?.didTapOnImage(selectedMovie: moviePosterDataSource.movie)
         
     }

@@ -19,7 +19,7 @@ struct InternalConfiguration {
     static func customizeTextAppearance(text: String) -> NSAttributedString {
         let attributeColor = UIColor.white
         
-        return NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName: attributeColor])
+        return NSAttributedString(string: text, attributes: [NSAttributedStringKey.foregroundColor: attributeColor])
     }
     
     static func customizeNavigationBar(navigationController: UINavigationController?) {
@@ -34,7 +34,7 @@ struct InternalConfiguration {
         shadow.shadowBlurRadius = 4
         let attributeColor = UIColor.white
         
-        return NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName: attributeColor,NSShadowAttributeName: shadow])
+        return NSAttributedString(string: text, attributes: [NSAttributedStringKey.foregroundColor: attributeColor,NSAttributedStringKey.shadow: shadow])
     }
     
     static func setStatusBarBackgroundColor() {
@@ -45,7 +45,7 @@ struct InternalConfiguration {
 }
 
 extension UILabel{
-    dynamic var defaultFont: UIFont? {
+    @objc dynamic var defaultFont: UIFont? {
         get { return self.font }
         set {
             let sizeOfOldFont = self.font.pointSize
