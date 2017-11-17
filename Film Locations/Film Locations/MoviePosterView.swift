@@ -10,13 +10,13 @@ import UIKit
 import GooglePlaces
 
 struct MoviePosterViewDataSource {
-    var movie: MapMovie
+    var movie: FilmLocation
     var displaySearchData = false
     var referenceLocation: CLLocation
 }
 
 protocol MoviePosterViewDelegate: class {
-    func didTapOnImage(selectedMovie: MapMovie)
+    func didTapOnImage(selectedMovie: FilmLocation)
 }
 
 class MoviePosterView: UIView {
@@ -38,10 +38,10 @@ class MoviePosterView: UIView {
                 self.posterImageView.setImageWith(moviePosterDataSource.movie.posterImageURL!)
             } else {
                 self.posterImageView.image = UIImage(named: "Place-Dummy")
-                fetchImageForPoster(placeID: moviePosterDataSource.movie.location.placeId)
+                fetchImageForPoster(placeID: moviePosterDataSource.movie.placeId)
             }
             
-            let movieLocation = CLLocation(latitude: moviePosterDataSource.movie.location.lat, longitude: moviePosterDataSource.movie.location.long)
+            let movieLocation = CLLocation(latitude: moviePosterDataSource.movie.lat, longitude: moviePosterDataSource.movie.long)
             
             let distance = moviePosterDataSource.referenceLocation.distance(from: movieLocation)
             

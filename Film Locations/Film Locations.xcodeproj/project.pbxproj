@@ -35,8 +35,7 @@
 		8894F1151EB945C500FFDAA1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8894F1141EB945C500FFDAA1 /* MapView.swift */; };
 		8A559882E961A19DE2C6ECF3 /* Pods_Film_Locations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA186C724D76407B1FE1434 /* Pods_Film_Locations.framework */; };
 		C4409ED91FBB99BD007F7E3F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4409ED81FBB99BD007F7E3F /* Keys.plist */; };
-		D3009ABE1EB5848500E075ED /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009ABB1EB5848500E075ED /* Movie.swift */; };
-		D3009ABF1EB5848500E075ED /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009ABC1EB5848500E075ED /* Location.swift */; };
+		D3009ABE1EB5848500E075ED /* FilmLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009ABB1EB5848500E075ED /* FilmLocation.swift */; };
 		D3009AC31EB584C200E075ED /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009AC21EB584C200E075ED /* ListViewCell.swift */; };
 		D3009AC51EB584CD00E075ED /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009AC41EB584CD00E075ED /* ListViewController.swift */; };
 		D31F4FEA1EB4552F003CC557 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31F4FE81EB4552F003CC557 /* MenuViewController.swift */; };
@@ -92,8 +91,7 @@
 		95F5320A160EB9BDD66EB8A0 /* Pods-Film Locations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Film Locations.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations.debug.xcconfig"; sourceTree = "<group>"; };
 		C4409ED81FBB99BD007F7E3F /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		D251F5A791118332ED48C6CD /* Pods-Film Locations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Film Locations.release.xcconfig"; path = "Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations.release.xcconfig"; sourceTree = "<group>"; };
-		D3009ABB1EB5848500E075ED /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		D3009ABC1EB5848500E075ED /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		D3009ABB1EB5848500E075ED /* FilmLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmLocation.swift; sourceTree = "<group>"; };
 		D3009AC21EB584C200E075ED /* ListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		D3009AC41EB584CD00E075ED /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		D31F4FE81EB4552F003CC557 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -207,8 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				D350F33D1EC2290D00162D90 /* MenuOption.swift */,
-				D3009ABB1EB5848500E075ED /* Movie.swift */,
-				D3009ABC1EB5848500E075ED /* Location.swift */,
+				D3009ABB1EB5848500E075ED /* FilmLocation.swift */,
 				3A2D58651EBE30BC00BB7DBF /* User.swift */,
 				3ADABD551EBFA5D100F5F44C /* LocationImage.swift */,
 			);
@@ -439,13 +436,12 @@
 			files = (
 				3ADABD5A1EBFBEF600F5F44C /* LoginViewController.swift in Sources */,
 				D3283AF81EBE6B95008B2237 /* HamburgerViewController.swift in Sources */,
-				D3009ABE1EB5848500E075ED /* Movie.swift in Sources */,
+				D3009ABE1EB5848500E075ED /* FilmLocation.swift in Sources */,
 				3A224F9F1EAD611700091BB3 /* MainViewController.swift in Sources */,
 				D350F33A1EC221CA00162D90 /* HamburgerMenuCell.swift in Sources */,
 				884098741EC2E13800F2B605 /* ActivityIndicator.swift in Sources */,
 				881502811EC53AD700342769 /* iCarousel.m in Sources */,
 				D3009AC31EB584C200E075ED /* ListViewCell.swift in Sources */,
-				D3009ABF1EB5848500E075ED /* Location.swift in Sources */,
 				D350F3371EC1830E00162D90 /* AboutViewController.swift in Sources */,
 				D3009AC51EB584CD00E075ED /* ListViewController.swift in Sources */,
 				3ADABD581EBFBB5700F5F44C /* TwitterClient.swift in Sources */,

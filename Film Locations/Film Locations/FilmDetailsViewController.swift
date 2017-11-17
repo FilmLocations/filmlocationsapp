@@ -34,15 +34,13 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var visitsNameLabel: UILabel!
     @IBOutlet weak var likesNameLabel: UILabel!
 
-    var movie: Movie? {
+    var movie: FilmLocation! {
         didSet {
             updateUI()
         }
     }
     
     var user: User!
-    
-    var locationIndex: Int!
     var locationImages: [LocationImage]!
     
     var visitButton: WCLShineButton!
@@ -82,8 +80,8 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         // Do any additional setup after loading the view.
         user = User.currentUser
         
-        let placeId = movie!.locations[locationIndex].placeId
-        let location = movie!.locations[locationIndex]
+        let placeId = movie.placeId
+        
         Database.sharedInstance.getLocationImageMetadata(placeId: placeId) { (locationImages) in
             
             if locationImages.count > 0 {
@@ -111,7 +109,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             pickup = CLLocationCoordinate2D(latitude: userCurrentLocation["lat"] as! CLLocationDegrees, longitude: userCurrentLocation["long"] as! CLLocationDegrees)
         }
         
-        let destination = CLLocationCoordinate2D(latitude: location.lat, longitude: location.long)
+        let destination = CLLocationCoordinate2D(latitude: movie.lat, longitude: movie.long)
         lyftButton.style = .mulberryDark
         lyftButton.configure(rideKind: LyftSDK.RideKind.Line, pickup: pickup, destination: destination)
         
@@ -156,7 +154,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let placeId = movie!.locations[locationIndex].placeId
+        let placeId = movie.placeId
 
         Database.sharedInstance.getLocationImageMetadata(placeId: placeId) { (locationImages) in
             
@@ -219,7 +217,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
                 posterImageView.setImageWith(posterImageURL)
                 miniPosterImage.setImageWith(posterImageURL)
             }
-            addressLabel.text = movie.locations[locationIndex].address
+            addressLabel.text = movie.address
             titleLabel.text = "\(movie.title) (\(movie.releaseYear))"
             overviewLabel.text = movie.description
         }
@@ -229,13 +227,13 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             visitButton.isUserInteractionEnabled = false
             likeButton.isUserInteractionEnabled = false
         } else {
-            Database.sharedInstance.hasVisitedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasVisited) in
+            Database.sharedInstance.hasVisitedLocation(userId: user.screenname, locationId: movie.placeId) { (hasVisited) in
                 if (hasVisited) {
                     self.visitButton.isSelected = true
                 }
             }
 
-            Database.sharedInstance.hasLikedLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!) { (hasLiked) in
+            Database.sharedInstance.hasLikedLocation(userId: user.screenname, locationId: movie.placeId) { (hasLiked) in
                 if (hasLiked) {
                     self.likeButton.isSelected = true
                 }
@@ -247,11 +245,11 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
     private func updateCounts() {
 
-        Database.sharedInstance.locationLikesCount(placeId: (movie?.locations[locationIndex].placeId)!) { (count) in
+        Database.sharedInstance.locationLikesCount(placeId: movie.placeId) { (count) in
             self.likesCount = count
             self.numberOfLikesLabel.text = String(count)
         }
-        Database.sharedInstance.locationVisitsCount(placeId: (movie?.locations[locationIndex].placeId)!) { (count) in
+        Database.sharedInstance.locationVisitsCount(placeId: movie.placeId) { (count) in
             self.visitsCount = count
             self.numberOfVisitsLabel.text = String(count)
         }
@@ -316,12 +314,12 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
     @IBAction func visitLocation(_ sender: UIButton) {
         if visitButton.isSelected {
-            Database.sharedInstance.removeVisitLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
+            Database.sharedInstance.removeVisitLocation(userId: user.screenname, locationId: movie.placeId, completion: { (completion) in
                 self.visitsCount = self.visitsCount - 1
                 self.numberOfVisitsLabel.text = String(self.visitsCount)
             })
         } else {
-            Database.sharedInstance.visitLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
+            Database.sharedInstance.visitLocation(userId: user.screenname, locationId: movie.placeId, completion: { (completion) in
                 self.visitsCount = self.visitsCount + 1
                 self.numberOfVisitsLabel.text = String(self.visitsCount)
             })
@@ -330,12 +328,12 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
     @IBAction func LikeLocation(_ sender: UIButton) {
         if likeButton.isSelected {
-            Database.sharedInstance.removeLikeLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
+            Database.sharedInstance.removeLikeLocation(userId: user.screenname, locationId: movie.placeId, completion: { (completion) in
                 self.likesCount = self.likesCount - 1
                 self.numberOfLikesLabel.text = String(self.likesCount)
             })
         } else {
-            Database.sharedInstance.likeLocation(userId: user.screenname, locationId: (movie?.locations[locationIndex].placeId)!, completion: { (completion) in
+            Database.sharedInstance.likeLocation(userId: user.screenname, locationId: movie.placeId, completion: { (completion) in
                 self.likesCount = self.likesCount + 1
                 self.numberOfLikesLabel.text = String(self.likesCount)
             })
@@ -354,7 +352,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     
             let pvc = storyboard.instantiateViewController(withIdentifier: "Post") as! PostViewController
             pvc.postImage = editedImage
-            pvc.postPlaceId = self.movie?.locations[self.locationIndex].placeId
+            pvc.postPlaceId = self.movie.placeId
 
             self.present(pvc, animated: true, completion: nil)
         }
@@ -396,7 +394,7 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
             })
         } else {
             if (hasTriedLoadingUserImages) {
-                Utility.loadFirstPhotoForPlace(placeID: movie!.locations[locationIndex].placeId, callback: { (image) in
+                Utility.loadFirstPhotoForPlace(placeID: movie.placeId, callback: { (image) in
                     
                     if (image != nil) {
                         cell.locationPhotoImageView.image = image
