@@ -58,21 +58,21 @@ class FilmLocation {
         
         address = json["address"].stringValue
         lat = json["gps"]["lat"].doubleValue
-        long = json["gps"]["lng"].doubleValue
+        long = json["gps"]["long"].doubleValue
         placeId = json["placeId"].stringValue
     }
     
-    private var formatConversion = { (stringDate: String?) -> String? in
-        var returnDate: String?
-        
-        if let stringDate = stringDate {
-            var formatter = DateFormatter()
-            formatter.dateFormat = "YYYY-MM-DD"
-            if let date = formatter.date(from: stringDate) {
-                formatter.dateFormat = "MMM dd, YYYY"
-                returnDate = formatter.string(from: date)
-            }
-        }
-        return returnDate
-    }
+//    private var formatConversion = { (stringDate: String?) -> String? in
+//        var returnDate: String?
+//        
+//        if let stringDate = stringDate {
+//            var formatter = DateFormatter()
+//            formatter.dateFormat = "YYYY-MM-DD"
+//            if let date = formatter.date(from: stringDate) {
+//                formatter.dateFormat = "MMM dd, YYYY"
+//                returnDate = formatter.string(from: date)
+//            }
+//        }
+//        return returnDate
+//    }
 }
