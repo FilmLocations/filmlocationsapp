@@ -43,9 +43,9 @@ class Database {
     }
     
     
-    func getAllFilms(completion: @escaping ([Movie]) -> ()) {
+    func getAllFilms(completion: @escaping ([FilmLocation]) -> ()) {
         
-        var movieLocations: [Movie] = []
+        var movieLocations: [FilmLocation] = []
         
         Alamofire.request(databaseURL + "locations").responseJSON { response in
         
@@ -54,7 +54,7 @@ class Database {
                 let json = JSON(value)
                 
                 for location in json {
-                    movieLocations.append(Movie(json: location.1))
+                    movieLocations.append(FilmLocation(json: location.1))
                 }
                 print("Locations list is \(movieLocations)")
                 

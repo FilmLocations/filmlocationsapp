@@ -21,8 +21,8 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
     @IBOutlet weak var mostVisitedFilterLabel: UILabel!
     @IBOutlet weak var favoritesFilterLabel: UILabel!
     
-    var movies: [Movie] = []
-    var filteredMovies: [Movie] = []
+    var locations: [FilmLocation] = []
+    var filteredMovies: [FilmLocation] = []
     var isSearchActive = false
     let search = UISearchBar()
     
@@ -46,13 +46,14 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
             switch newValue {
             case .NewMovies:
                 newMoviesFilterLabel.isHidden = false
-                movies = sortMoviesByReleaseDates()
+                locations = sortMoviesByReleaseDates()
             case .Popular:
                 popularFilterLabel.isHidden = false
                 filteredMovies = sortMoviesByPopularity()
             case .MostVisited:
                 mostVisitedFilterLabel.isHidden = false
-                filteredMovies = filteredMovies.sorted{$0.numberOfRows > $1.numberOfRows}
+                //TODO, not correct
+                //filteredMovies = filteredMovies.sorted{$0.numberOfRows > $1.numberOfRows}
             case .Favorites:
                 favoritesFilterLabel.isHidden = false
                 filteredMovies = filteredMovies.sorted{$0.releaseYear > $1.releaseYear}
@@ -76,8 +77,8 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         
-        Database.sharedInstance.getAllFilms { (movies: [Movie]) in
-            self.movies = movies
+        Database.sharedInstance.getAllFilms { movies in
+            self.locations = movies
             self.filteredMovies = movies
             self.activeFilter = self.getPersistantActiveFilter()
             self.tableView.reloadData()
@@ -145,7 +146,7 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
         }
     }
     
-    private func sortMoviesByReleaseDates() -> [Movie] {
+    private func sortMoviesByReleaseDates() -> [FilmLocation] {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-DD"
@@ -167,7 +168,7 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
         return filteredMovies
     }
     
-    private func sortMoviesByPopularity() -> [Movie] {
+    private func sortMoviesByPopularity() -> [FilmLocation] {
         filteredMovies.sort { (movie1, movie2) -> Bool in
             guard let popularity1 = movie1.popularity else {
                 return false
@@ -189,7 +190,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredMovies[section].isExpanded ? filteredMovies[section].numberOfRows + 1 : 1
+        return 2 //filteredMovies[section].isExpanded ? filteredMovies[section].numberOfRows + 1 : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -204,7 +205,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         else {
             // display movie poster
             cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath)
-            cell.textLabel?.text = filteredMovies[indexPath.section].locations[indexPath.row - 1].address
+            cell.textLabel?.text = filteredMovies[indexPath.section].address
         }
         return cell!
     }
@@ -214,11 +215,11 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         if let selectedMovieCell = tableView.cellForRow(at: indexPath) as? ListViewCell {
             
             // while expanding, move selected movie on top of the table
-            if (selectedMovieCell.movie?.isExpanded)! == false {
-                tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
-            }
-            
-            selectedMovieCell.movie?.isExpanded = !((selectedMovieCell.movie?.isExpanded)!)
+//            if (selectedMovieCell.movie?.isExpanded)! == false {
+//                tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+//            }
+//
+//            selectedMovieCell.movie?.isExpanded = !((selectedMovieCell.movie?.isExpanded)!)
             
             tableView.reloadData()
         }
@@ -230,8 +231,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
 
             if let detailsViewController = detailsViewController {
             
-                detailsViewController.locationIndex = indexPath.row - 1
-                detailsViewController.movie = filteredMovies[indexPath.section]
+                detailsViewController.location = filteredMovies[indexPath.section]
                 
                 let navigationController = UINavigationController(rootViewController: detailsViewController)
                 navigationController.setViewControllers([detailsViewController], animated: false)
@@ -281,7 +281,7 @@ extension ListViewController: UISearchBarDelegate {
         searchBar.text = nil
         searchBar.resignFirstResponder()
         isSearchActive = false
-        filteredMovies = movies
+        filteredMovies = locations
         tableView.reloadData()
     }
     
@@ -291,7 +291,7 @@ extension ListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         isSearchActive = searchText != ""
-        filteredMovies = isSearchActive ? movies.filter{$0.title.localizedCaseInsensitiveContains(searchText) || $0.releaseYear.contains(searchText)} : movies
+        filteredMovies = isSearchActive ? locations.filter{$0.title.localizedCaseInsensitiveContains(searchText) || $0.releaseYear.contains(searchText)} : locations
         tableView.reloadData()
     }
 }

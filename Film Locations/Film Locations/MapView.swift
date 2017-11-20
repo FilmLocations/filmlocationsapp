@@ -16,7 +16,7 @@ protocol MapViewDelegate: class {
 }
 
 class MapView: UIView {
-    var displayData:[MapMovie]!
+    var displayData:[FilmLocation]!
     var googleMapView: GMSMapView!
     weak var delegate:MapViewDelegate?
     
@@ -61,7 +61,7 @@ class MapView: UIView {
         googleMapView.selectedMarker = nil
     }
     
-    func updateMapsMarkers(sortedMovies:[MapMovie]) {
+    func updateMapsMarkers(sortedMovies:[FilmLocation]) {
         
         //if googleMapView.selectedMarker == nil {
             
@@ -74,9 +74,9 @@ class MapView: UIView {
             for movie in sortedMovies {
                 // Creates a marker in the center of the map.
                 let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2D(latitude: movie.location.lat, longitude: movie.location.long)
+                marker.position = CLLocationCoordinate2D(latitude: movie.lat, longitude: movie.long)
                 marker.title = movie.title
-                marker.snippet = movie.location.address
+                marker.snippet = movie.address
                 //print(movie.title, movie.location.lat, movie.location.long, movie.location.address)
                 marker.isFlat = true
                 marker.userData = movie
@@ -118,9 +118,9 @@ class MapView: UIView {
         
         self.unSelectMarker()
         
-        if let markerMovie = marker.userData as? MapMovie {
+        if let markerMovie = marker.userData as? FilmLocation {
             
-            if let index = self.displayData.index(where: {$0.location.placeId ==  markerMovie.location.placeId &&  $0.id ==  markerMovie.id}){
+            if let index = self.displayData.index(where: {$0.placeId ==  markerMovie.placeId &&  $0.id ==  markerMovie.id}){
                 delegate?.didTap(markerIndex: index)
                 currentSelectedMarker = index
             }

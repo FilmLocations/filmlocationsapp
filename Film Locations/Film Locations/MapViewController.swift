@@ -9,38 +9,6 @@
 import UIKit
 import CoreLocation
 
-struct MapMovie {
-    
-    var id: Int
-    var posterImageURL: URL?
-    var releaseYear: String
-    var title: String
-    var location: Location
-    
-    init(movie: Movie, location: Location) {
-        self.id = movie.id
-        self.location = location
-        self.posterImageURL = movie.posterImageURL
-        self.releaseYear = movie.releaseYear
-        self.title = movie.title
-    }
-    
-    static func toMapMovies(movies : [Movie]) -> [MapMovie]{
-        
-        var mapMovies = [MapMovie]()
-        
-        for movie in movies {
-            
-            for location in movie.locations {
-                mapMovies.append(MapMovie(movie: movie, location: location))
-                print(location.address)
-            }
-        }
-        return mapMovies
-    }
-    
-}
-
 class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
     let maxNearByMovies = 40
@@ -61,9 +29,8 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
     var isSearchResultsDisplayed = false
     
-    var flatMovies: [MapMovie]!
-    var movies: [Movie]!
-    var sortedMovies:[MapMovie]!
+    var movies: [FilmLocation]!
+    var sortedMovies:[FilmLocation]!
     
     let activityIndicator = ActivityIndicator()
     
@@ -84,9 +51,8 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         
         // Do any additional setup after loading the view.
         
-        Database.sharedInstance.getAllFilms { (movies: [Movie]) in
+        Database.sharedInstance.getAllFilms { movies in
             self.movies = movies
-            self.flatMovies = MapMovie.toMapMovies(movies: movies)
             
             // Ask for Authorisation from the User.
             self.locationManager.requestAlwaysAuthorization()
@@ -116,9 +82,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
             self.navigationItem.titleView = searchBar
             
             self.hideIndicator()
-            
         }
-        
     }
     
     func presentIndicator()  {
@@ -173,7 +137,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         // Update map view
         print("Uesr locations = \(userCurrentLocation.latitude) \(userCurrentLocation.longitude)")
         
-        self.sortedMovies = self.sortMoviesFromUserLocation(moviesToSort: self.flatMovies)
+        self.sortedMovies = self.sortMoviesFromUserLocation(moviesToSort: self.movies)
         self.updateViewWithNewData()
     }
     
@@ -192,14 +156,14 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     }
     
     // TODO: Move this method to API class as utility method
-    func sortMoviesFromUserLocation(moviesToSort: [MapMovie]) -> [MapMovie] {
+    func sortMoviesFromUserLocation(moviesToSort: [FilmLocation]) -> [FilmLocation] {
         
-        let sortedMovies = moviesToSort.sorted { (movie1:MapMovie, movie2:MapMovie) -> Bool in
+        let sortedMovies = moviesToSort.sorted { (movie1:FilmLocation, movie2:FilmLocation) -> Bool in
             
             let currentLocation = CLLocation(latitude: userCurrentLocation.latitude, longitude: userCurrentLocation.longitude)
             
-            let location1 = CLLocation(latitude: movie1.location.lat, longitude: movie1.location.long)
-            let location2 = CLLocation(latitude: movie2.location.lat, longitude: movie2.location.long)
+            let location1 = CLLocation(latitude: movie1.lat, longitude: movie1.long)
+            let location2 = CLLocation(latitude: movie2.lat, longitude: movie2.long)
             
             let differnce1 =  currentLocation.distance(from: location1)
             let differnce2 = currentLocation.distance(from: location2)
@@ -220,7 +184,6 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
         } else {
             return 0
         }
-        
     }
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
@@ -243,7 +206,6 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
     }
     
     func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
-        
         mapView.selectMarker(index: index)
     }
 }
@@ -309,8 +271,7 @@ extension MapViewController: UISearchBarDelegate{
         searchBar.text = ""
         self.isSearchResultsDisplayed = false
         self.currentLocationUpdated()
-        searchBar.resignFirstResponder()
-        
+        searchBar.resignFirstResponder()        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -318,7 +279,7 @@ extension MapViewController: UISearchBarDelegate{
         if let query = searchBar.text {
             
             if query.characters.count > 0 {
-                let filteredMovies = self.flatMovies.filter { (movie:MapMovie) -> Bool in
+                let filteredMovies = movies.filter { (movie:FilmLocation) -> Bool in
                     
                     if (movie.title.lowercased().range(of:query.lowercased()) != nil) || (movie.releaseYear.lowercased().range(of: query.lowercased()) != nil) {
                         return true
@@ -339,7 +300,7 @@ extension MapViewController: UISearchBarDelegate{
 }
 
 extension MapViewController: MoviePosterViewDelegate {
-    func didTapOnImage(selectedMovie: MapMovie) {
+    func didTapOnImage(selectedMovie: FilmLocation) {
         
         //mapView.unSelectMarker()
         
@@ -349,26 +310,13 @@ extension MapViewController: MoviePosterViewDelegate {
         if let detailsViewController = detailsViewController {
             
             if let movie = self.movies.filter({$0.id == selectedMovie.id}).first {
-                
-                var locationIndex: Int = 0
-                
-                for (index,location) in movie.locations.enumerated() {
-                    if location.placeId == selectedMovie.location.placeId {
-                        locationIndex = index
-                        break
-                    }
-                }
-                
-                detailsViewController.locationIndex = locationIndex
-                detailsViewController.movie = movie
+                detailsViewController.location = movie
                 
                 let navigationController = UINavigationController(rootViewController: detailsViewController)
                 navigationController.setViewControllers([detailsViewController], animated: false)
                 
                 self.present(navigationController, animated: true, completion: nil)
             }
-            
-            
         }
     }
 }

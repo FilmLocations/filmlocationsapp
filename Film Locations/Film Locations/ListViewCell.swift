@@ -18,7 +18,7 @@ class ListViewCell: UITableViewCell {
     @IBOutlet weak var posterImageView: UIImageView!
     
 
-    var movie: Movie? {
+    var movie: FilmLocation? {
         didSet {
             updateUI()
         }
@@ -36,13 +36,14 @@ class ListViewCell: UITableViewCell {
             
             titleLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: movie.title)
             yearLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: movie.releaseYear)
-                        
-            var numberOfLocation = "\(movie.locations.count)"
-            if movie.locations.count == 1 {
-                numberOfLocation = numberOfLocation + " LOCATION"
+            
+            //TODO handle new counting method
+            var numberOfLocation = 1.description
+            if numberOfLocation == "1" {
+                numberOfLocation = "1 LOCATION"
             }
             else {
-                numberOfLocation = numberOfLocation + " LOCATIONS"
+                numberOfLocation = "\(numberOfLocation) LOCATIONS"
             }
             
             numberOfLocationsLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: numberOfLocation)
