@@ -21,7 +21,7 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
     @IBOutlet weak var mostVisitedFilterLabel: UILabel!
     @IBOutlet weak var favoritesFilterLabel: UILabel!
     
-    var movies: [FilmLocation] = []
+    var locations: [FilmLocation] = []
     var filteredMovies: [FilmLocation] = []
     var isSearchActive = false
     let search = UISearchBar()
@@ -46,7 +46,7 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
             switch newValue {
             case .NewMovies:
                 newMoviesFilterLabel.isHidden = false
-                movies = sortMoviesByReleaseDates()
+                locations = sortMoviesByReleaseDates()
             case .Popular:
                 popularFilterLabel.isHidden = false
                 filteredMovies = sortMoviesByPopularity()
@@ -77,8 +77,8 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         
-        Database.sharedInstance.getAllFilms { (movies: [FilmLocation]) in
-            self.movies = movies
+        Database.sharedInstance.getAllFilms { movies in
+            self.locations = movies
             self.filteredMovies = movies
             self.activeFilter = self.getPersistantActiveFilter()
             self.tableView.reloadData()
@@ -231,7 +231,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
 
             if let detailsViewController = detailsViewController {
             
-                detailsViewController.movie = filteredMovies[indexPath.section]
+                detailsViewController.location = filteredMovies[indexPath.section]
                 
                 let navigationController = UINavigationController(rootViewController: detailsViewController)
                 navigationController.setViewControllers([detailsViewController], animated: false)
@@ -281,7 +281,7 @@ extension ListViewController: UISearchBarDelegate {
         searchBar.text = nil
         searchBar.resignFirstResponder()
         isSearchActive = false
-        filteredMovies = movies
+        filteredMovies = locations
         tableView.reloadData()
     }
     
@@ -291,7 +291,7 @@ extension ListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         isSearchActive = searchText != ""
-        filteredMovies = isSearchActive ? movies.filter{$0.title.localizedCaseInsensitiveContains(searchText) || $0.releaseYear.contains(searchText)} : movies
+        filteredMovies = isSearchActive ? locations.filter{$0.title.localizedCaseInsensitiveContains(searchText) || $0.releaseYear.contains(searchText)} : locations
         tableView.reloadData()
     }
 }

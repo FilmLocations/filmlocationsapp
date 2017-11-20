@@ -51,9 +51,8 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         
         // Do any additional setup after loading the view.
         
-        Database.sharedInstance.getAllFilms { (movies: [FilmLocation]) in
+        Database.sharedInstance.getAllFilms { movies in
             self.movies = movies
-          //  self.flatMovies = movies
             
             // Ask for Authorisation from the User.
             self.locationManager.requestAlwaysAuthorization()
@@ -83,9 +82,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
             self.navigationItem.titleView = searchBar
             
             self.hideIndicator()
-            
         }
-        
     }
     
     func presentIndicator()  {
@@ -187,7 +184,6 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
         } else {
             return 0
         }
-        
     }
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
@@ -210,7 +206,6 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
     }
     
     func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
-        
         mapView.selectMarker(index: index)
     }
 }
@@ -276,8 +271,7 @@ extension MapViewController: UISearchBarDelegate{
         searchBar.text = ""
         self.isSearchResultsDisplayed = false
         self.currentLocationUpdated()
-        searchBar.resignFirstResponder()
-        
+        searchBar.resignFirstResponder()        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -316,7 +310,7 @@ extension MapViewController: MoviePosterViewDelegate {
         if let detailsViewController = detailsViewController {
             
             if let movie = self.movies.filter({$0.id == selectedMovie.id}).first {
-                detailsViewController.movie = movie
+                detailsViewController.location = movie
                 
                 let navigationController = UINavigationController(rootViewController: detailsViewController)
                 navigationController.setViewControllers([detailsViewController], animated: false)
