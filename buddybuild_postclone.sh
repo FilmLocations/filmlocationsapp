@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "We're in the script"
+echo "Copying secure Keys.plist to source directory"
 
 mv ${BUDDYBUILD_SECURE_FILES}/Keys.plist Film\ Locations/Film\ Locations/
 
