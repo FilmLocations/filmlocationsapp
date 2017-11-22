@@ -14,7 +14,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var twitterLoginButton: UIButton!
     @IBOutlet weak var continueWithoutLoginButton: UIButton!
     @IBOutlet weak var appTitle: UILabel!
-    
+
+    var pastelView = PastelView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class LoginViewController: UIViewController {
         continueWithoutLoginButton.backgroundColor = UIColor.fl_primary_dark
         continueWithoutLoginButton.titleLabel?.textColor = UIColor.fl_primary_text
      
-        let pastelView = PastelView(frame: view.bounds)
+        pastelView = PastelView(frame: view.bounds)
         
         // Custom Direction
         pastelView.startPastelPoint = .bottomLeft
@@ -64,20 +65,25 @@ class LoginViewController: UIViewController {
     
     @IBAction func onTwitterLogin(_ sender: Any) {
         TwitterClient.sharedInstance?.login(success: {            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let hvc = storyboard.instantiateViewController(withIdentifier: "HamburgerView") as! HamburgerViewController
-            self.present(hvc, animated: true, completion: nil)
+            self.goToMain()
             
         }, failure: { (error: Error) in
             print("Error: \(error.localizedDescription)")
         })
-        
     }
 
     @IBAction func onContinueWithoutLogin(_ sender: Any) {
+        goToMain()
+    }
+    
+    func goToMain() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let hvc = storyboard.instantiateViewController(withIdentifier: "HamburgerView") as! HamburgerViewController
         self.present(hvc, animated: true, completion: nil)
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        pastelView.bindFrameToSuperviewBounds()
     }
     
     /*
@@ -90,4 +96,19 @@ class LoginViewController: UIViewController {
     }
     */
 
+}
+
+extension UIView {
+    
+    func bindFrameToSuperviewBounds() {
+        guard let superview = self.superview else {
+            print("Error! `superview` was nil – call `addSubview(view: UIView)` before calling `bindFrameToSuperviewBounds()` to fix this.")
+            return
+        }
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[subview]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["subview": self]))
+        superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[subview]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["subview": self]))
+    }
+    
 }

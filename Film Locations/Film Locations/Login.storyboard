@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -79,7 +79,9 @@
                             <constraint firstAttribute="trailing" secondItem="e15-dq-dyf" secondAttribute="trailing" constant="16" id="7jO-vk-08X"/>
                             <constraint firstItem="F4g-0R-Njb" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" constant="16" id="8qF-Hh-F6V"/>
                             <constraint firstItem="e15-dq-dyf" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="ECu-BI-IrM"/>
+                            <constraint firstItem="8hP-mp-6bG" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" id="Erc-eq-CP9"/>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="F29-yk-LcK"/>
+                            <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="GM6-ZN-g8i"/>
                             <constraint firstAttribute="trailing" secondItem="8hP-mp-6bG" secondAttribute="trailing" id="Gu7-pK-Ip2"/>
                             <constraint firstItem="AVt-6W-DSE" firstAttribute="top" secondItem="dcz-DO-5qu" secondAttribute="bottom" constant="8" id="Ltu-c5-eTg"/>
                             <constraint firstItem="F4g-0R-Njb" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="NTs-Qu-Pe3"/>
@@ -88,11 +90,11 @@
                             <constraint firstItem="O0F-Ym-R88" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="Qxr-4d-88S"/>
                             <constraint firstItem="O0F-Ym-R88" firstAttribute="top" secondItem="AVt-6W-DSE" secondAttribute="bottom" constant="8" id="To8-Av-7hX"/>
                             <constraint firstItem="AVt-6W-DSE" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="TzE-zp-QWs"/>
+                            <constraint firstItem="8hP-mp-6bG" firstAttribute="top" secondItem="8m3-ut-hiV" secondAttribute="top" id="ZOp-oN-zLe"/>
+                            <constraint firstAttribute="trailing" secondItem="8hP-mp-6bG" secondAttribute="trailing" id="chD-cc-ZIt"/>
                             <constraint firstItem="F4g-0R-Njb" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="czZ-yi-gTs"/>
-                            <constraint firstItem="8hP-mp-6bG" firstAttribute="top" secondItem="8m3-ut-hiV" secondAttribute="top" id="d2J-Kg-t3X"/>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="i7G-ha-NDZ"/>
                             <constraint firstItem="e15-dq-dyf" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" constant="16" id="qKA-nu-lbd"/>
-                            <constraint firstItem="8hP-mp-6bG" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" id="r4j-Bo-1Wk"/>
                         </constraints>
                     </view>
                     <connections>
