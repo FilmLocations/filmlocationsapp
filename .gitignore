@@ -5,6 +5,10 @@
 # API keys
 Film Locations/Film Locations/Keys.plist
 
+# Config
+Film Locations/Debug.xcconfig
+Film Locations/Release.xcconfig
+
 ## Build generated
 build/
 DerivedData/

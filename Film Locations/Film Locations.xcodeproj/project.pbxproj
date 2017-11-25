@@ -90,6 +90,8 @@
 		8894F1141EB945C500FFDAA1 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		95F5320A160EB9BDD66EB8A0 /* Pods-Film Locations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Film Locations.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations.debug.xcconfig"; sourceTree = "<group>"; };
 		C4409ED81FBB99BD007F7E3F /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		C4E5BEB01FCA0FE200569148 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		C4E5BEB31FCA13AB00569148 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		D251F5A791118332ED48C6CD /* Pods-Film Locations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Film Locations.release.xcconfig"; path = "Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations.release.xcconfig"; sourceTree = "<group>"; };
 		D3009ABB1EB5848500E075ED /* FilmLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmLocation.swift; sourceTree = "<group>"; };
 		D3009AC21EB584C200E075ED /* ListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
@@ -136,6 +138,8 @@
 		3A224F901EAD611700091BB3 = {
 			isa = PBXGroup;
 			children = (
+				C4E5BEB01FCA0FE200569148 /* Debug.xcconfig */,
+				C4E5BEB31FCA13AB00569148 /* Release.xcconfig */,
 				3A82987C1ECD2423002FF6E8 /* Angelface.otf */,
 				3A224F9B1EAD611700091BB3 /* Film Locations */,
 				3A224F9A1EAD611700091BB3 /* Products */,
@@ -276,6 +280,7 @@
 				3A224F971EAD611700091BB3 /* Resources */,
 				7CFD87DB1F66D03A67104C78 /* [CP] Embed Pods Frameworks */,
 				2276AF9E1FC5A66BB113A678 /* [CP] Copy Pods Resources */,
+				C4881D031FC564DA00AF805B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -426,6 +431,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		C4881D031FC564DA00AF805B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" $FABRIC_APIKEY $FABRIC_BUILDSECRET";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -587,7 +605,7 @@
 		};
 		3A224FAC1EAD611700091BB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95F5320A160EB9BDD66EB8A0 /* Pods-Film Locations.debug.xcconfig */;
+			baseConfigurationReference = C4E5BEB01FCA0FE200569148 /* Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -606,7 +624,7 @@
 		};
 		3A224FAD1EAD611700091BB3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D251F5A791118332ED48C6CD /* Pods-Film Locations.release.xcconfig */;
+			baseConfigurationReference = C4E5BEB31FCA13AB00569148 /* Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

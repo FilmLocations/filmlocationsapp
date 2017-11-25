@@ -23,6 +23,9 @@ PODS:
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
   - BRYXBanner (0.8.0)
+  - Crashlytics (3.9.3):
+    - Fabric (~> 1.7.2)
+  - Fabric (1.7.2)
   - FXBlurView (1.6.4)
   - GoogleMaps (2.5.0):
     - GoogleMaps/Maps (= 2.5.0)
@@ -45,6 +48,8 @@ DEPENDENCIES:
   - AWSS3
   - BDBOAuth1Manager
   - BRYXBanner
+  - Crashlytics
+  - Fabric
   - FXBlurView (~> 1.6.4)
   - GoogleMaps
   - GooglePlaces
@@ -61,6 +66,8 @@ SPEC CHECKSUMS:
   AWSS3: a92df2b4625488b5aae142f4311379fcd6bae3a7
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   BRYXBanner: 406c3775789136531da6f3c98058be2f16e08a34
+  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
+  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   GooglePlaces: dd70d9d71ea1c7944846afe67de3712c99b30a77
@@ -69,6 +76,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   WCLShineButton: d8b979b6f6f9f6709f9e241e6e1a4712a1a9b36b
 
-PODFILE CHECKSUM: 3c4fd1b6d64e0de268b99116c518f9cb7046e842
+PODFILE CHECKSUM: ce13e81899e3d6a732fbe02358bfa810d3a5cfa7
 
 COCOAPODS: 1.3.1

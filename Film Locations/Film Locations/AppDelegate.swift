@@ -10,6 +10,8 @@ import UIKit
 import GooglePlaces
 import GoogleMaps
 import LyftSDK
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,6 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         UIApplication.shared.statusBarStyle = .lightContent
+
+        Fabric.with([Answers.self, Crashlytics.self])
+        
         return true
     }
 
