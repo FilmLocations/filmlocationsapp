@@ -21,23 +21,22 @@ class FilmLocation {
     var date: String?
     var releaseYear: String
     var title: String
-    var popularity: Int?
+    var popularity: Double?
     var address: String
     var lat: Double
     var long: Double
     var placeId: String
     
     private let baseStringURL = "http://image.tmdb.org/t/p/w500"
-
     
     init(json: JSON) {
         actors = json["actors"].arrayValue.map{$0.stringValue}
         
         description = json["description"].stringValue
         
-        genreIds = json["genres"].arrayValue.map{$0.intValue}
+        genreIds = json["genres"].arrayValue.map{$0["$numberInt"].intValue}
         
-        id = json["tmdbid"].intValue
+        id = json["tmdbid"]["$numberInt"].intValue
         
         let backdropImage = json["images"]["backdrop"].stringValue
         backdropImageURL = URL(string: baseStringURL + backdropImage)
@@ -54,25 +53,11 @@ class FilmLocation {
         
         title = json["title"].stringValue
         
-        popularity = json["popularity"].intValue
+        popularity = json["popularity"].doubleValue
         
         address = json["address"].stringValue
         lat = json["gps"]["lat"].doubleValue
         long = json["gps"]["long"].doubleValue
         placeId = json["placeId"].stringValue
     }
-    
-//    private var formatConversion = { (stringDate: String?) -> String? in
-//        var returnDate: String?
-//        
-//        if let stringDate = stringDate {
-//            var formatter = DateFormatter()
-//            formatter.dateFormat = "YYYY-MM-DD"
-//            if let date = formatter.date(from: stringDate) {
-//                formatter.dateFormat = "MMM dd, YYYY"
-//                returnDate = formatter.string(from: date)
-//            }
-//        }
-//        return returnDate
-//    }
 }
