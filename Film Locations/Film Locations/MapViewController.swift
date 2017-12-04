@@ -52,10 +52,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         Database.sharedInstance.getAllLocations { locations in
             self.locations = locations
             
-            // Ask for Authorisation from the User.
-            self.locationManager.requestAlwaysAuthorization()
-            
-            // For use in foreground
+            // Request location when in use only
             self.locationManager.requestWhenInUseAuthorization()
             
             if let currentLocation =  self.retrieveCurrentLocation(){
@@ -162,10 +159,10 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
             let location1 = CLLocation(latitude: movie1.lat, longitude: movie1.long)
             let location2 = CLLocation(latitude: movie2.lat, longitude: movie2.long)
             
-            let differnce1 =  currentLocation.distance(from: location1)
-            let differnce2 = currentLocation.distance(from: location2)
+            let difference1 =  currentLocation.distance(from: location1)
+            let difference2 = currentLocation.distance(from: location2)
             
-            return differnce1 < differnce2
+            return difference1 < difference2
         }
         
         let toIndex = sortedMovies.count < maxNearByMovies ? sortedMovies.count : maxNearByMovies
@@ -240,7 +237,6 @@ extension MapViewController: MapViewDelegate{
             }
         })
     }
-    
 }
 
 extension MapViewController: CLLocationManagerDelegate {

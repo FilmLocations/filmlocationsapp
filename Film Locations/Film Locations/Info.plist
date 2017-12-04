@@ -31,26 +31,26 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-    <key>Fabric</key>
-    <dict>
-        <key>APIKey</key>
-        <string>$(FABRIC_APIKEY)</string>
-        <key>Kits</key>
-        <array>
-            <dict>
-                <key>KitInfo</key>
-                <dict/>
-                <key>KitName</key>
-                <string>Answers</string>
-            </dict>
-            <dict>
-                <key>KitInfo</key>
-                <dict/>
-                <key>KitName</key>
-                <string>Crashlytics</string>
-            </dict>
-        </array>
-    </dict>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>$(FABRIC_APIKEY)</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Answers</string>
+			</dict>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -60,10 +60,6 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Film Locations uses the camera to upload photos.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Film Locations uses your location to find film locations near you</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Film Locations uses your location to find film locations near you</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Film Locations uses your location to find film locations near you</string>
 	<key>NSPhotoLibraryUsageDescription</key>
