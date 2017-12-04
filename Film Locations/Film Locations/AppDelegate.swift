@@ -50,8 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LyftConfiguration.developer = (token: lyftConfigToken, clientId: lyftClientID)
         
         
-        Database.sharedInstance.getAllFilms { (movies) in
-            print("We have \(movies.count) locations")
+        Database.sharedInstance.getAllLocations { locations in
+            print("We have \(locations.count) locations")
         }
         
         UIApplication.shared.statusBarStyle = .lightContent

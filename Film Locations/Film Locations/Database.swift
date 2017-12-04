@@ -43,7 +43,7 @@ class Database {
     }
     
     
-    func getAllFilms(completion: @escaping ([FilmLocation]) -> ()) {
+    func getAllLocations(completion: @escaping ([FilmLocation]) -> ()) {
         
         var movieLocations: [FilmLocation] = []
         
@@ -56,7 +56,6 @@ class Database {
                 for location in json {
                     movieLocations.append(FilmLocation(json: location.1))
                 }
-                print("Locations list is \(movieLocations)")
                 
                 completion(movieLocations)
             }

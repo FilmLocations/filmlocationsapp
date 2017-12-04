@@ -29,7 +29,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
     var isSearchResultsDisplayed = false
     
-    var movies: [FilmLocation]!
+    var locations: [FilmLocation]!
     var sortedMovies:[FilmLocation]!
     
     let activityIndicator = ActivityIndicator()
@@ -49,10 +49,8 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         
         presentIndicator()
         
-        // Do any additional setup after loading the view.
-        
-        Database.sharedInstance.getAllFilms { movies in
-            self.movies = movies
+        Database.sharedInstance.getAllLocations { locations in
+            self.locations = locations
             
             // Ask for Authorisation from the User.
             self.locationManager.requestAlwaysAuthorization()
@@ -74,9 +72,8 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
             
             // Add searchbar to navigation
             let searchBar = UISearchBar()
-            searchBar.placeholder = "Search Movies"
+            searchBar.placeholder = "Search Films"
             searchBar.sizeToFit()
-            //self.mapView.bringSubview(toFront: self.searchBar)
             searchBar.showsCancelButton = true
             searchBar.delegate = self
             self.navigationItem.titleView = searchBar
@@ -135,10 +132,10 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
     func currentLocationUpdated() {
         // Update map view
-        print("Uesr locations = \(userCurrentLocation.latitude) \(userCurrentLocation.longitude)")
+        print("User locations = \(userCurrentLocation.latitude) \(userCurrentLocation.longitude)")
         
-        self.sortedMovies = self.sortMoviesFromUserLocation(moviesToSort: self.movies)
-        self.updateViewWithNewData()
+        sortedMovies = sortMoviesFromUserLocation(moviesToSort: locations)
+        updateViewWithNewData()
     }
     
     func updateViewWithNewData() {
@@ -279,7 +276,7 @@ extension MapViewController: UISearchBarDelegate{
         if let query = searchBar.text {
             
             if query.characters.count > 0 {
-                let filteredMovies = movies.filter { (movie:FilmLocation) -> Bool in
+                let filteredMovies = locations.filter { (movie:FilmLocation) -> Bool in
                     
                     if (movie.title.lowercased().range(of:query.lowercased()) != nil) || (movie.releaseYear.lowercased().range(of: query.lowercased()) != nil) {
                         return true
@@ -309,7 +306,7 @@ extension MapViewController: MoviePosterViewDelegate {
         
         if let detailsViewController = detailsViewController {
             
-            if let movie = self.movies.filter({$0.id == selectedMovie.id}).first {
+            if let movie = self.locations.filter({$0.id == selectedMovie.id}).first {
                 detailsViewController.location = movie
                 
                 let navigationController = UINavigationController(rootViewController: detailsViewController)

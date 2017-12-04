@@ -383,7 +383,7 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
             })
         } else {
             if (hasTriedLoadingUserImages) {
-                Utility.loadFirstPhotoForPlace(placeID: location.placeId, callback: { (image) in
+                Utility.loadFirstPhotoForPlace(placeID: location.placeId, callback: { image in
                     
                     if (image != nil) {
                         cell.locationPhotoImageView.image = image
