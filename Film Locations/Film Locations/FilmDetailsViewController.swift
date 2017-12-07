@@ -149,7 +149,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidAppear(_ animated: Bool) {
 
-        Database.sharedInstance.getLocationImageMetadata(placeId: location.placeId) { (locationImages) in
+        Database.sharedInstance.getLocationImageMetadata(placeId: location.placeId) { locationImages in
             
             if self.locationImages != nil && locationImages.count != self.locationImages.count {
             
@@ -303,12 +303,12 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
     @IBAction func visitLocation(_ sender: UIButton) {
         if visitButton.isSelected {
-            Database.sharedInstance.removeVisitLocation(userId: user.screenname, locationId: location.placeId, completion: { (completion) in
+            Database.sharedInstance.removeVisitLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
                 self.visitsCount = self.visitsCount - 1
                 self.numberOfVisitsLabel.text = String(self.visitsCount)
             })
         } else {
-            Database.sharedInstance.visitLocation(userId: user.screenname, locationId: location.placeId, completion: { (completion) in
+            Database.sharedInstance.visitLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
                 self.visitsCount = self.visitsCount + 1
                 self.numberOfVisitsLabel.text = String(self.visitsCount)
             })
@@ -317,12 +317,12 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
     @IBAction func LikeLocation(_ sender: UIButton) {
         if likeButton.isSelected {
-            Database.sharedInstance.removeLikeLocation(userId: user.screenname, locationId: location.placeId, completion: { (completion) in
+            Database.sharedInstance.removeLikeLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
                 self.likesCount = self.likesCount - 1
                 self.numberOfLikesLabel.text = String(self.likesCount)
             })
         } else {
-            Database.sharedInstance.likeLocation(userId: user.screenname, locationId: location.placeId, completion: { (completion) in
+            Database.sharedInstance.likeLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
                 self.likesCount = self.likesCount + 1
                 self.numberOfLikesLabel.text = String(self.likesCount)
             })
@@ -378,7 +378,7 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationPhotoCollectionViewCell", for: indexPath) as! LocationPhotoCollectionViewCell
         
         if (locationImages != nil && locationImages.count > 0) {
-            Database.sharedInstance.getLocationImage(filename: locationImages[indexPath.row].imageName, completion: { (image) in
+            Database.sharedInstance.getLocationImage(filename: locationImages[indexPath.row].imageName, completion: { image in
                 cell.locationPhotoImageView.image = image
             })
         } else {
