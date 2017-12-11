@@ -14,18 +14,16 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     let maxNearByMovies = 40
     let currentUsersLocationKey =  "kUserCurrentPreferncesKey"
     
+    @IBOutlet weak var mapView: MapView!
     @IBOutlet weak var carousel: iCarousel!
     
     var scrollingImages:[UIImage]! = []
-    //@IBOutlet weak var scrollView: UIScrollView!
-    var lastUpdatedTimestamp:TimeInterval = 0
+    var lastUpdatedTimestamp: TimeInterval = 0
     var userCurrentLocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     let locationManager = CLLocationManager()
-    @IBOutlet weak var mapView: MapView!
     
-    //@IBOutlet weak var posterImageViewBottomConstraint: NSLayoutConstraint!
     var posterImageViewBottomConstraint: NSLayoutConstraint!
-    var posterImageViewBottomConstraintConstantPadding:CGFloat = 20.0
+    var posterImageViewBottomConstraintConstantPadding: CGFloat = 20.0
     
     var isSearchResultsDisplayed = false
     
@@ -44,8 +42,8 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         carousel.dataSource = self
         carousel.setNeedsLayout()
         
-        self.posterImageViewBottomConstraint = carousel.topAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor, constant: posterImageViewBottomConstraintConstantPadding)
-        self.view.addConstraint(posterImageViewBottomConstraint)
+        posterImageViewBottomConstraint = carousel.topAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor, constant: posterImageViewBottomConstraintConstantPadding)
+        view.addConstraint(posterImageViewBottomConstraint)
         
         presentIndicator()
         
@@ -55,7 +53,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
             // Request location when in use only
             self.locationManager.requestWhenInUseAuthorization()
             
-            if let currentLocation =  self.retrieveCurrentLocation(){
+            if let currentLocation =  self.retrieveCurrentLocation() {
                 self.userCurrentLocation = currentLocation
             }
             
@@ -80,12 +78,11 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     }
     
     func presentIndicator()  {
-        self.activityIndicator.showActivityIndicator(uiView: (self.navigationController?.view)!)
-        //self.activityIndicator.startAnimating()
+        activityIndicator.showActivityIndicator(uiView: (navigationController?.view)!)
     }
     
     func hideIndicator()  {
-        self.activityIndicator.hideActivityIndicator(view: (self.navigationController?.view)!)
+        activityIndicator.hideActivityIndicator(view: (navigationController?.view)!)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -137,15 +134,15 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
     func updateViewWithNewData() {
         //TODO: consider calling map marker and scroll view in a single for loop
-        self.mapView.updateMapsMarkers(sortedMovies: self.sortedMovies)
-        self.carousel.reloadData()
+        mapView.updateMapsMarkers(sortedMovies: sortedMovies)
+        carousel.reloadData()
         //self.updateScrollView(isSearchedData: false)
     }
     
     func updateViewWithSearchData() {
         //TODO: consider calling map marker and scroll view in a single for loop
-        self.mapView.updateMapsMarkers(sortedMovies: self.sortedMovies)
-        self.carousel.reloadData()
+        mapView.updateMapsMarkers(sortedMovies: sortedMovies)
+        carousel.reloadData()
         //self.updateScrollView(isSearchedData: true)
     }
     
@@ -173,8 +170,8 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
 
 extension MapViewController: iCarouselDelegate, iCarouselDataSource {
     func numberOfItems(in carousel: iCarousel) -> Int {
-        if self.sortedMovies != nil {
-            return self.sortedMovies.count
+        if sortedMovies != nil {
+            return sortedMovies.count
         } else {
             return 0
         }
@@ -182,11 +179,11 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         
-        let userLocation = CLLocation(latitude: self.userCurrentLocation.latitude, longitude: self.userCurrentLocation.longitude)
+        let userLocation = CLLocation(latitude: userCurrentLocation.latitude, longitude: userCurrentLocation.longitude)
         
-        let moviePosterViewDataSource = MoviePosterViewDataSource(movie: self.sortedMovies[index], displaySearchData: isSearchResultsDisplayed, referenceLocation: userLocation)
+        let moviePosterViewDataSource = MoviePosterViewDataSource(movie: sortedMovies[index], displaySearchData: isSearchResultsDisplayed, referenceLocation: userLocation)
         
-        let moviePosterView = MoviePosterView(frame: CGRect(x: 8.0, y: 8.0 , width: self.carousel.bounds.height+80, height: self.carousel.bounds.height))
+        let moviePosterView = MoviePosterView(frame: CGRect(x: 8.0, y: 8.0 , width: carousel.bounds.height+80, height: carousel.bounds.height))
         moviePosterView.moviePosterDataSource = moviePosterViewDataSource
         moviePosterView.delegate = self
         
@@ -194,7 +191,7 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
     }
     
     func carouselDidEndScrollingAnimation(_ carousel: iCarousel) {
-        if self.posterImageViewBottomConstraint.constant != posterImageViewBottomConstraintConstantPadding {
+        if posterImageViewBottomConstraint.constant != posterImageViewBottomConstraintConstantPadding {
             mapView.selectMarker(index: carousel.currentItemIndex)
         }
     }
@@ -204,7 +201,7 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
     }
 }
 
-extension MapViewController: MapViewDelegate{
+extension MapViewController: MapViewDelegate {
     
     func didTapOnMap() {
         if self.posterImageViewBottomConstraint.constant != posterImageViewBottomConstraintConstantPadding {
@@ -213,26 +210,28 @@ extension MapViewController: MapViewDelegate{
     }
     
     func didTap(markerIndex: Int) {
-        if self.posterImageViewBottomConstraint.constant == posterImageViewBottomConstraintConstantPadding {
+        if posterImageViewBottomConstraint.constant == posterImageViewBottomConstraintConstantPadding {
             showPosterImageView(markerIndex: markerIndex)
         } else {
-            self.carousel.scrollToItem(at: markerIndex, animated: false)
+            carousel.scrollToItem(at: markerIndex, animated: false)
         }
     }
     
     func hidePosterImageView() {
-        self.posterImageViewBottomConstraint.constant = self.posterImageViewBottomConstraintConstantPadding
+        posterImageViewBottomConstraint.constant = posterImageViewBottomConstraintConstantPadding
+        
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
     
     func showPosterImageView(markerIndex: Int) {
-        self.posterImageViewBottomConstraint.constant = -1 * self.carousel.bounds.height
+        posterImageViewBottomConstraint.constant = -1 * carousel.bounds.height
+        
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
-        }, completion: {(sucess: Bool) in
-            if sucess {
+        }, completion: { success in
+            if success {
                 self.carousel.scrollToItem(at: markerIndex, animated: false)
             }
         })
@@ -247,23 +246,23 @@ extension MapViewController: CLLocationManagerDelegate {
         if ((currentTime - lastUpdatedTimestamp) > 1 * 30) && !isSearchResultsDisplayed && ((userCurrentLocation.latitude != manager.location!.coordinate.latitude) || (userCurrentLocation.longitude != manager.location!.coordinate.longitude)) {
             let locValue:CLLocationCoordinate2D = manager.location!.coordinate
             print("locations = \(locValue.latitude) \(locValue.longitude)")
-            self.userCurrentLocation = locValue
+            userCurrentLocation = locValue
             
             //remove this line
-            self.userCurrentLocation = CLLocationCoordinate2D (latitude: 37.7881968, longitude: -122.3960219)
-            self.currentLocationUpdated()
+            //self.userCurrentLocation = CLLocationCoordinate2D (latitude: 37.7881968, longitude: -122.3960219)
+            currentLocationUpdated()
             lastUpdatedTimestamp = currentTime
             manager.stopUpdatingLocation()
         }
     }
 }
 
-extension MapViewController: UISearchBarDelegate{
+extension MapViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
-        self.isSearchResultsDisplayed = false
-        self.currentLocationUpdated()
+        isSearchResultsDisplayed = false
+        currentLocationUpdated()
         searchBar.resignFirstResponder()        
     }
     
@@ -272,7 +271,7 @@ extension MapViewController: UISearchBarDelegate{
         if let query = searchBar.text {
             
             if query.characters.count > 0 {
-                let filteredMovies = locations.filter { (movie:FilmLocation) -> Bool in
+                let filteredMovies = locations.filter { movie -> Bool in
                     
                     if (movie.title.lowercased().range(of:query.lowercased()) != nil) || (movie.releaseYear.lowercased().range(of: query.lowercased()) != nil) {
                         return true
@@ -280,19 +279,19 @@ extension MapViewController: UISearchBarDelegate{
                     return false
                 }
                 
-                self.sortedMovies = self.sortMoviesFromUserLocation(moviesToSort: filteredMovies)
+                sortedMovies = sortMoviesFromUserLocation(moviesToSort: filteredMovies)
                 
-                self.updateViewWithSearchData()
-                self.isSearchResultsDisplayed = true
+                updateViewWithSearchData()
+                isSearchResultsDisplayed = true
             }
         } else {
-            self.isSearchResultsDisplayed = false
+            isSearchResultsDisplayed = false
         }
-        
     }
 }
 
 extension MapViewController: MoviePosterViewDelegate {
+    
     func didTapOnImage(selectedMovie: FilmLocation) {
         
         //mapView.unSelectMarker()
@@ -302,13 +301,13 @@ extension MapViewController: MoviePosterViewDelegate {
         
         if let detailsViewController = detailsViewController {
             
-            if let movie = self.locations.filter({$0.id == selectedMovie.id}).first {
+            if let movie = locations.filter({$0.id == selectedMovie.id}).first {
                 detailsViewController.location = movie
                 
                 let navigationController = UINavigationController(rootViewController: detailsViewController)
                 navigationController.setViewControllers([detailsViewController], animated: false)
                 
-                self.present(navigationController, animated: true, completion: nil)
+                present(navigationController, animated: true, completion: nil)
             }
         }
     }
