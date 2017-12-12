@@ -40,8 +40,7 @@ class HamburgerMenuController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.rowHeight = 60 //tableView.frame.height / CGFloat(menu.count - 1)
-//        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = 60
         
         let mapStoryBoard = UIStoryboard(name: "Map", bundle: nil)
         let mapNavigationController = mapStoryBoard.instantiateViewController(withIdentifier: "MapNavigationController")
@@ -112,7 +111,6 @@ class HamburgerMenuController: UIViewController {
             menuOptions.append(menuOption)
         }
     }
-    
 }
 
 extension HamburgerMenuController: UITableViewDataSource, UITableViewDelegate {

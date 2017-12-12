@@ -23,7 +23,7 @@ class HamburgerMenuCell: UITableViewCell {
         // clean all existing data
         menuSymbolImageView.image = nil
         menuLabel.text = nil
-        self.backgroundColor = UIColor.fl_primary_dark
+        backgroundColor = UIColor.fl_primary_dark
         
         if let option = option {
             menuSymbolImageView.image = UIImage(named: option.symbol)

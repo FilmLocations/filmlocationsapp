@@ -236,37 +236,10 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
                 let navigationController = UINavigationController(rootViewController: detailsViewController)
                 navigationController.setViewControllers([detailsViewController], animated: false)
                 
-                self.present(navigationController, animated: true, completion: nil)
+                present(navigationController, animated: true, completion: nil)
             }
         }
     }
-    
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        
-//        // Setup the CATransform3D structure
-//        var rotation = CATransform3DIdentity
-//        
-//        rotation = CATransform3DMakeRotation(CGFloat((90.0 * .pi)/180), 0.0, 0.7, 0.4)
-//        rotation.m34 = 1.0 / (-600)
-//        
-//        // Define the initial state (Before the animation)
-//        cell.layer.shadowColor = UIColor.black.cgColor
-//        cell.layer.shadowOffset = CGSize(width: 10, height: 10)
-//        cell.alpha = 0
-//        
-//        cell.layer.transform = rotation
-//        cell.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
-//        
-//        // Define the final state (After the animation) and commit the animation
-//        UIView.beginAnimations("rotation", context: nil)
-//        UIView.setAnimationDuration(0.8)
-//        cell.layer.transform = CATransform3DIdentity
-//        cell.alpha = 1
-//        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
-//        UIView.commitAnimations()
-//        
-//    }
-
 }
 
 extension ListViewController: UISearchBarDelegate {

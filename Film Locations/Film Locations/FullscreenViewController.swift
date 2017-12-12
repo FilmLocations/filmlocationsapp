@@ -35,15 +35,14 @@ class FullscreenViewController: UIViewController {
             timeLabel.text = ""
             userNameLabel.text = ""
         }
-
+        
         userNameLabel.textColor = UIColor.white
         timeLabel.textColor = UIColor.white
         descriptionLabel.textColor = UIColor.white
         
         let button1 = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(onBackButton))
         button1.tintColor = UIColor.white
-        self.navigationItem.leftBarButtonItem  = button1
-        
+        navigationItem.leftBarButtonItem  = button1
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,8 +51,7 @@ class FullscreenViewController: UIViewController {
     }
 
     @IBAction func onBackButton(_ sender: Any) {
-        
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     /*

@@ -42,8 +42,6 @@ class Utility {
                     callback(nil)
                     return
                 }
-                
-                
             }
         }
     }
@@ -73,6 +71,4 @@ class Utility {
             }
         }
     }
-    
 }
-

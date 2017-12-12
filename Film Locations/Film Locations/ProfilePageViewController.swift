@@ -62,15 +62,15 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        Database.sharedInstance.getUserImageMetadata(userId: (user?.screenname)!) { (locationImages) in
+        Database.sharedInstance.getUserImageMetadata(userId: (user?.screenname)!) { locationImages in
             self.photos = locationImages
             self.collectionView.reloadData()
         }
-        Database.sharedInstance.userVisitsCount(userId: (user?.screenname)!, completion: { (visitedCounter) in
+        Database.sharedInstance.userVisitsCount(userId: (user?.screenname)!, completion: { visitedCounter in
             self.visitedCounterLabel.text = "\(visitedCounter)"
         })
         
-        Database.sharedInstance.userLikesCount(userId: (user?.screenname)!) { (favoriteCounter) in
+        Database.sharedInstance.userLikesCount(userId: (user?.screenname)!) { favoriteCounter in
             self.favoriteCounterLabel.text = "\(favoriteCounter)"
         }
         
@@ -132,7 +132,6 @@ extension ProfilePageViewController: UICollectionViewDataSource, UICollectionVie
         let cell = collectionView.cellForItem(at: indexPath as IndexPath) as! ProfilePhotosCollectionViewCell
         fullscreen.locationImage = cell.photoImageView.image
         
-        self.present(nav, animated: true, completion: nil)
+        present(nav, animated: true, completion: nil)
     }
-    
 }

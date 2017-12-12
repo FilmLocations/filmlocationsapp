@@ -86,10 +86,7 @@ class MenuViewController: UIViewController {
             let heightConstraint = toggleButton.heightAnchor.constraint(equalToConstant: 30.0)
             
             NSLayoutConstraint.activate([topConstraint, leadingConstraint, widthConstraint, heightConstraint])
-            
         }
-
-        
     }
     
     private func updateToggleButtonIcon(with image: String) {
@@ -106,5 +103,4 @@ class MenuViewController: UIViewController {
             updateToggleButtonIcon(with: InternalConfiguration.listToggleIcon)
         }
     }
-
 }

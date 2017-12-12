@@ -31,13 +31,13 @@ class MoviePosterView: UIView {
     weak var delegate: MoviePosterViewDelegate?
     
     var moviePosterDataSource: MoviePosterViewDataSource! {
-        didSet{
-            self.yearLabel.attributedText = InternalConfiguration.customizeTextAppearance1(text: "(\(moviePosterDataSource.movie.releaseYear))")
-            self.titleLabel.attributedText  = InternalConfiguration.customizeTextAppearance1(text: moviePosterDataSource.movie.title)
+        didSet {
+            yearLabel.attributedText = InternalConfiguration.customizeTextAppearance1(text: "(\(moviePosterDataSource.movie.releaseYear))")
+            titleLabel.attributedText  = InternalConfiguration.customizeTextAppearance1(text: moviePosterDataSource.movie.title)
             if !moviePosterDataSource.displaySearchData {
-                self.posterImageView.setImageWith(moviePosterDataSource.movie.posterImageURL!)
+                posterImageView.setImageWith(moviePosterDataSource.movie.posterImageURL!)
             } else {
-                self.posterImageView.image = UIImage(named: "Place-Dummy")
+                posterImageView.image = UIImage(named: "Place-Dummy")
                 fetchImageForPoster(placeID: moviePosterDataSource.movie.placeId)
             }
             
@@ -45,16 +45,16 @@ class MoviePosterView: UIView {
             
             let distance = moviePosterDataSource.referenceLocation.distance(from: movieLocation)
             
-            self.distanceLabel.attributedText = InternalConfiguration.customizeTextAppearance1(text: "\(String(format: "%.2f", metersToMiles(distance:distance))) miles")
+            distanceLabel.attributedText = InternalConfiguration.customizeTextAppearance1(text: "\(String(format: "%.2f", metersToMiles(distance:distance))) miles")
         }
     }
     
     func fetchImageForPoster(placeID: String) {
         
-        Database.sharedInstance.getLocationImageMetadata(placeId: placeID) { (locationImages) in
+        Database.sharedInstance.getLocationImageMetadata(placeId: placeID) { locationImages in
             
             if locationImages.count > 0 {
-                Database.sharedInstance.getLocationImage(filename: locationImages[0].imageName, completion: {(locationImage) in
+                Database.sharedInstance.getLocationImage(filename: locationImages[0].imageName, completion: { locationImage in
                     self.posterImageView.image = locationImage
                 })
             } else {
@@ -67,12 +67,10 @@ class MoviePosterView: UIView {
                                 self.posterImageView.image = image
                             }
                         })
-                        
                     }
                 })
             }
         }
-        
     }
     
     func metersToMiles(distance: Double) -> Double {
@@ -82,13 +80,13 @@ class MoviePosterView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initSubviews()
-        self.setUp()
+        setUp()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         initSubviews()
-        self.setUp()
+        setUp()
     }
     
     func initSubviews() {
@@ -99,7 +97,7 @@ class MoviePosterView: UIView {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnImageView(sender:)))
         tapGesture.delegate = self
-        self.posterImageView.addGestureRecognizer(tapGesture)
+        posterImageView.addGestureRecognizer(tapGesture)
         
         bottonLeftVisualView.layer.cornerRadius = 15
         bottonLeftVisualView.clipsToBounds = true
@@ -109,12 +107,11 @@ class MoviePosterView: UIView {
     }
     
     func setUp() {
-        
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 1
-        self.layer.shadowOffset = CGSize.zero//(width: 2, height: 2)
-        self.layer.shadowRadius = 10
-        self.backgroundColor = UIColor.clear
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 1
+        layer.shadowOffset = CGSize.zero
+        layer.shadowRadius = 10
+        backgroundColor = UIColor.clear
     }
     
     let borderWidth = 0.8
@@ -130,14 +127,12 @@ class MoviePosterView: UIView {
         borderColor.setStroke()
         borderPath.lineWidth = CGFloat(borderWidth)
         borderPath.stroke()
-
     }
 }
 
 extension MoviePosterView : UIGestureRecognizerDelegate {
     
     @objc func didTapOnImageView(sender: UITapGestureRecognizer){
-        self.delegate?.didTapOnImage(selectedMovie: moviePosterDataSource.movie)
-        
+        delegate?.didTapOnImage(selectedMovie: moviePosterDataSource.movie)
     }
 }

@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
         let listViewController = listStoryBoard.instantiateViewController(withIdentifier: "List") as? ListViewController
                 
         let menu = MenuViewController(nibName: "MenuViewController", bundle: nil)
-        self.navController?.setViewControllers([menu], animated: false)
+        navController?.setViewControllers([menu], animated: false)
         menu.firstViewController = mapViewController
         menu.secondViewController = listViewController
         
@@ -33,7 +33,6 @@ class MainViewController: UIViewController {
         
         window.rootViewController = menu
         window.makeKeyAndVisible()
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,19 +43,15 @@ class MainViewController: UIViewController {
         
         switch identifier {
         case "MainSegue":
-            self.navController = segue.destination as? UINavigationController
+            navController = segue.destination as? UINavigationController
             print("")
         default:
             print("")
         }
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
 }

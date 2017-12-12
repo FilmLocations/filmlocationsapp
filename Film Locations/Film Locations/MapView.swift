@@ -24,12 +24,12 @@ class MapView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.loadInitialMap()
+        loadInitialMap()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.loadInitialMap()
+        loadInitialMap()
     }
     
     private func loadInitialMap() {
@@ -48,9 +48,9 @@ class MapView: UIView {
             print("One or more of the map styles failed to load. \(error)")
         }
         
-        self.googleMapView = mapView
-        self.googleMapView.isMyLocationEnabled = true
-        self.addSubview(self.googleMapView)
+        googleMapView = mapView
+        googleMapView.isMyLocationEnabled = true
+        addSubview(googleMapView)
     }
     
     override func layoutSubviews() {
@@ -65,9 +65,9 @@ class MapView: UIView {
         
         //if googleMapView.selectedMarker == nil {
             
-            self.displayData = sortedMovies
+            displayData = sortedMovies
             
-            self.googleMapView.clear()
+            googleMapView.clear()
             
             var bounds = GMSCoordinateBounds()
             
@@ -82,14 +82,13 @@ class MapView: UIView {
                 marker.userData = movie
                 marker.icon = UIImage(named: "Location-Marker")
                 bounds = bounds.includingCoordinate(marker.position)
-                marker.map = self.googleMapView
+                marker.map = googleMapView
                 
                 markers.append(marker)
-                
             }
             
             let update = GMSCameraUpdate.fit(bounds, withPadding: 20)
-            self.googleMapView.animate(with: update)
+            googleMapView.animate(with: update)
        // }
     }
     
@@ -98,7 +97,7 @@ class MapView: UIView {
     func selectMarker(index: Int)  {
         let marker = markers[index]
         
-        self.selectMarker(marker: marker)
+        selectMarker(marker: marker)
     }
     
     func unSelectMarker()  {
@@ -120,7 +119,7 @@ class MapView: UIView {
         
         if let markerMovie = marker.userData as? FilmLocation {
             
-            if let index = self.displayData.index(where: {$0.placeId ==  markerMovie.placeId &&  $0.id ==  markerMovie.id}){
+            if let index = displayData.index(where: {$0.placeId ==  markerMovie.placeId &&  $0.id ==  markerMovie.id}) {
                 delegate?.didTap(markerIndex: index)
                 currentSelectedMarker = index
             }
@@ -152,7 +151,7 @@ extension MapView: GMSMapViewDelegate {
             return true
         }
         
-        self.selectMarker(marker: marker)
+        selectMarker(marker: marker)
         
         return true
     }

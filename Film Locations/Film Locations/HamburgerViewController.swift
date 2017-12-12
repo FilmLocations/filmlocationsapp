@@ -43,7 +43,7 @@ class HamburgerViewController: UIViewController {
             
             InternalConfiguration.customizeNavigationBar(navigationController: contentViewController as? UINavigationController)
             
-            self.addChildViewController(contentViewController)
+            addChildViewController(contentViewController)
             contentViewController.willMove(toParentViewController: self)
             
             // Adding shadow to ContentViewController
@@ -55,7 +55,7 @@ class HamburgerViewController: UIViewController {
             vc?.delegate = self
             
             contentViewController.didMove(toParentViewController: self)
-            self.toggleMenu()
+            toggleMenu()
         }
     }
     
@@ -68,7 +68,7 @@ class HamburgerViewController: UIViewController {
     }
     
     func hideMenu() {
-        self.isMenuOpen = false
+        isMenuOpen = false
         UIView.animate(withDuration: 0.3) {
             self.leftMarginConstraint.constant = 0
             self.view.layoutIfNeeded()
@@ -76,8 +76,7 @@ class HamburgerViewController: UIViewController {
     }
     
     func openMenu()  {
-        
-        self.isMenuOpen = true
+        isMenuOpen = true
         UIView.animate(withDuration: 0.3, animations: {
             self.leftMarginConstraint.constant = self.view.frame.size.width - 100
             self.view.layoutIfNeeded()
@@ -92,13 +91,12 @@ class HamburgerViewController: UIViewController {
         let menuViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerMenuView") as! HamburgerMenuController
         menuViewController.hamburgerViewController = self
         self.menuViewController = menuViewController
-
     }
 }
 
 extension HamburgerViewController: MenuButtonPressDelegate {
     func onMenuButtonPress() {
         print("Menu pressed")
-        self.toggleMenu()
+        toggleMenu()
     }
 }

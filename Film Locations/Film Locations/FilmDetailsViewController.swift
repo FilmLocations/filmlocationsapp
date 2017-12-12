@@ -167,15 +167,15 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     private func addBackButton() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(onBackButtonPress(_:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(onBackButtonPress(_:)))
     }
     
     @objc func onBackButtonPress(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func onVisitButtonTapped(_ sender: UIView) {
-        if (user.isAnonymous) {
+        if user.isAnonymous {
             let banner = Banner(title: "Login", subtitle: "Please login to mark this location as visited", image: nil, backgroundColor: UIColor.fl_accent!)
             banner.textColor = UIColor.fl_primary_text!
             banner.dismissesOnTap = true
@@ -184,7 +184,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     @objc func onLikeButtonTapped(_ sender: UIView) {
-        if (user.isAnonymous) {
+        if user.isAnonymous {
             let banner = Banner(title: "Login", subtitle: "Please login to like this location", image: nil, backgroundColor: UIColor.fl_accent!)
             banner.textColor = UIColor.fl_primary_text!
             banner.dismissesOnTap = true
@@ -216,7 +216,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         // Anonymous users can't mark as visited or like
-        if (user.isAnonymous) {
+        if user.isAnonymous {
             visitButton.isUserInteractionEnabled = false
             likeButton.isUserInteractionEnabled = false
         } else {
@@ -282,7 +282,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             fullscreen.locationImage = topBackgroundImageView.image
         }
         
-        self.present(nav, animated: true, completion: nil)
+        present(nav, animated: true, completion: nil)
     }
     
     @IBAction func addPhoto(_ sender: UIButton) {      
@@ -298,7 +298,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             vc.sourceType = .photoLibrary
         }
         
-        self.present(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
 
     @IBAction func visitLocation(_ sender: UIButton) {
@@ -362,7 +362,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let images = self.locationImages {
+        if let images = locationImages {
             return images.count
         } else {
             if (hasTriedLoadingUserImages) {
@@ -385,7 +385,7 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
             if (hasTriedLoadingUserImages) {
                 Utility.loadFirstPhotoForPlace(placeID: location.placeId, callback: { image in
                     
-                    if (image != nil) {
+                    if image != nil {
                         cell.locationPhotoImageView.image = image
                         self.topBackgroundImageView.image = image
                     } else {
