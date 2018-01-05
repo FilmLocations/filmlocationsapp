@@ -21,4 +21,5 @@ target 'Film Locations' do
   pod 'AWSCognito'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'TwitterKit'
 end
