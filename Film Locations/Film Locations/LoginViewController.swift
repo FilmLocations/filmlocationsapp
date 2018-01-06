@@ -13,7 +13,8 @@ import TwitterKit
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var continueWithoutLoginButton: UIButton!
-    @IBOutlet weak var appTitle: UILabel!
+    @IBOutlet weak var filmLocationsLabel: UILabel!
+    @IBOutlet weak var sanFranciscoLabel: UILabel!
     
     var pastelView = PastelView()
     
@@ -76,8 +77,8 @@ class LoginViewController: UIViewController {
         pastelView.startAnimation()
         view.insertSubview(pastelView, at: 0)
         
-        appTitle.defaultFont = UIFont(name: "Angelface", size: 70)
-        
+        filmLocationsLabel.defaultFont = UIFont(name: "Angelface", size: 70)
+        sanFranciscoLabel.defaultFont = UIFont(name: "Angelface", size: 70)
     }
 
     override func didReceiveMemoryWarning() {

@@ -40,15 +40,14 @@
                                     <action selector="onContinueWithoutLogin:" destination="5ZA-le-HpF" eventType="touchUpInside" id="3fr-ue-QmC"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClapperBoard_season_2_pose" translatesAutoresizingMaskIntoConstraints="NO" id="AVt-6W-DSE">
-                                <rect key="frame" x="100" y="28" width="175" height="190"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="190" id="7Ar-lh-5EH"/>
-                                    <constraint firstAttribute="width" constant="175" id="tbQ-yh-QOJ"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Film Locations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0F-Ym-R88">
-                                <rect key="frame" x="-40.5" y="226" width="456.5" height="82"/>
+                                <rect key="frame" x="47" y="226" width="281.5" height="84"/>
+                                <fontDescription key="fontDescription" name="Angelface" family="Angelface" pointSize="70"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Francisco" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQy-fB-VWN">
+                                <rect key="frame" x="53" y="111" width="270" height="84"/>
                                 <fontDescription key="fontDescription" name="Angelface" family="Angelface" pointSize="70"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -59,18 +58,19 @@
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="F29-yk-LcK"/>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="GM6-ZN-g8i"/>
                             <constraint firstAttribute="trailing" secondItem="8hP-mp-6bG" secondAttribute="trailing" id="Gu7-pK-Ip2"/>
-                            <constraint firstItem="AVt-6W-DSE" firstAttribute="top" secondItem="dcz-DO-5qu" secondAttribute="bottom" constant="8" id="Ltu-c5-eTg"/>
                             <constraint firstItem="O0F-Ym-R88" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="Qxr-4d-88S"/>
-                            <constraint firstItem="O0F-Ym-R88" firstAttribute="top" secondItem="AVt-6W-DSE" secondAttribute="bottom" constant="8" id="To8-Av-7hX"/>
-                            <constraint firstItem="AVt-6W-DSE" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="TzE-zp-QWs"/>
+                            <constraint firstItem="bQy-fB-VWN" firstAttribute="centerX" secondItem="8hP-mp-6bG" secondAttribute="centerX" id="URa-mo-X3r"/>
                             <constraint firstItem="8hP-mp-6bG" firstAttribute="top" secondItem="8m3-ut-hiV" secondAttribute="top" id="ZOp-oN-zLe"/>
+                            <constraint firstItem="O0F-Ym-R88" firstAttribute="top" secondItem="bQy-fB-VWN" secondAttribute="bottom" constant="31" id="Zqh-Gx-OMJ"/>
                             <constraint firstAttribute="trailing" secondItem="8hP-mp-6bG" secondAttribute="trailing" id="chD-cc-ZIt"/>
+                            <constraint firstItem="bQy-fB-VWN" firstAttribute="top" secondItem="dcz-DO-5qu" secondAttribute="bottom" constant="91" id="gZg-rS-NOo"/>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="i7G-ha-NDZ"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="appTitle" destination="O0F-Ym-R88" id="FDo-GY-dDi"/>
                         <outlet property="continueWithoutLoginButton" destination="F4g-0R-Njb" id="Wek-mp-Kbh"/>
+                        <outlet property="filmLocationsLabel" destination="O0F-Ym-R88" id="FDo-GY-dDi"/>
+                        <outlet property="sanFranciscoLabel" destination="bQy-fB-VWN" id="Pa1-kI-DN1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZl-bz-dGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -79,7 +79,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ClapperBoard_season_2_pose" width="817" height="714"/>
         <image name="mapscreenshot" width="724" height="1116"/>
     </resources>
 </document>
