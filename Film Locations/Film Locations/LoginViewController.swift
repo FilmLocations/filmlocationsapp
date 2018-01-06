@@ -8,14 +8,15 @@
 
 import UIKit
 import Pastel
+import TwitterKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var twitterLoginButton: UIButton!
     @IBOutlet weak var continueWithoutLoginButton: UIButton!
     @IBOutlet weak var appTitle: UILabel!
-
+    
     var pastelView = PastelView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +25,31 @@ class LoginViewController: UIViewController {
         
         // If we go to login screen but there's already a user, log them out
         if (User.currentUser != nil) {
-            TwitterClient.sharedInstance?.logout()
+            Twitter.sharedInstance().sessionStore.logOutUserID((User.currentUser?.screenname)!)
         }
         
-        twitterLoginButton.layer.cornerRadius = 4
+        let logInButton = TWTRLogInButton(logInCompletion: { session, error in
+            if (session != nil) {
+                print("signed in as \(session!.userName)");
+                self.goToMain()
+            } else {
+                // TODO handle login failure
+                print("error: \(error!.localizedDescription)");
+            }
+        })
+        
+        view.addSubview(logInButton)
+        logInButton.translatesAutoresizingMaskIntoConstraints = false
+        continueWithoutLoginButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        logInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        logInButton.bottomAnchor.constraint(equalTo: continueWithoutLoginButton.topAnchor, constant: -16).isActive = true
+        
+        continueWithoutLoginButton.heightAnchor.constraint(equalTo: logInButton.heightAnchor).isActive = true
+        continueWithoutLoginButton.widthAnchor.constraint(equalTo: logInButton.widthAnchor).isActive = true
+        continueWithoutLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        continueWithoutLoginButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -16).isActive = true
+        
         continueWithoutLoginButton.layer.cornerRadius = 4
 
         continueWithoutLoginButton.backgroundColor = UIColor.fl_primary_dark
@@ -61,15 +83,6 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func onTwitterLogin(_ sender: Any) {
-        TwitterClient.sharedInstance?.login(success: {            
-            self.goToMain()
-            
-        }, failure: { (error: Error) in
-            print("Error: \(error.localizedDescription)")
-        })
     }
 
     @IBAction func onContinueWithoutLogin(_ sender: Any) {

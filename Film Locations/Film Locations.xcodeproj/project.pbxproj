@@ -24,7 +24,6 @@
 		3ADABD521EBF9A5C00F5F44C /* Fullscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ADABD511EBF9A5C00F5F44C /* Fullscreen.storyboard */; };
 		3ADABD541EBF9FDF00F5F44C /* FullscreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD531EBF9FDF00F5F44C /* FullscreenViewController.swift */; };
 		3ADABD561EBFA5D100F5F44C /* LocationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD551EBFA5D100F5F44C /* LocationImage.swift */; };
-		3ADABD581EBFBB5700F5F44C /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD571EBFBB5700F5F44C /* TwitterClient.swift */; };
 		3ADABD5A1EBFBEF600F5F44C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD591EBFBEF600F5F44C /* LoginViewController.swift */; };
 		881502811EC53AD700342769 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881502801EC53AD700342769 /* iCarousel.m */; };
 		881502861EC8F37400342769 /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = 881502851EC8F37400342769 /* style.json */; };
@@ -76,7 +75,6 @@
 		3ADABD511EBF9A5C00F5F44C /* Fullscreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Fullscreen.storyboard; sourceTree = "<group>"; };
 		3ADABD531EBF9FDF00F5F44C /* FullscreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenViewController.swift; sourceTree = "<group>"; };
 		3ADABD551EBFA5D100F5F44C /* LocationImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationImage.swift; sourceTree = "<group>"; };
-		3ADABD571EBFBB5700F5F44C /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		3ADABD591EBFBEF600F5F44C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7CA186C724D76407B1FE1434 /* Pods_Film_Locations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Film_Locations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8815027E1EC53AD600342769 /* Film Locations-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Film Locations-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				D35BE4951EB692F1003E0C8F /* Database.swift */,
-				3ADABD571EBFBB5700F5F44C /* TwitterClient.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -464,7 +461,6 @@
 				D3009AC31EB584C200E075ED /* ListViewCell.swift in Sources */,
 				D350F3371EC1830E00162D90 /* AboutViewController.swift in Sources */,
 				D3009AC51EB584CD00E075ED /* ListViewController.swift in Sources */,
-				3ADABD581EBFBB5700F5F44C /* TwitterClient.swift in Sources */,
 				884098761EC2E18500F2B605 /* Utility.swift in Sources */,
 				D35BE4981EB69384003E0C8F /* MapViewController.swift in Sources */,
 				3A2D58661EBE30BC00BB7DBF /* User.swift in Sources */,

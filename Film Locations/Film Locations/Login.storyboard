@@ -29,12 +29,10 @@
                             <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapscreenshot" translatesAutoresizingMaskIntoConstraints="NO" id="8hP-mp-6bG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4g-0R-Njb">
-                                <rect key="frame" x="16" y="587" width="343" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4g-0R-Njb">
+                                <rect key="frame" x="16" y="607" width="343" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.049296596389875484" green="0.045433462768754672" blue="0.074654980964466988" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="eyN-fH-COg"/>
-                                </constraints>
                                 <state key="normal" title="Continue without login">
                                     <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -42,23 +40,6 @@
                                     <action selector="onContinueWithoutLogin:" destination="5ZA-le-HpF" eventType="touchUpInside" id="3fr-ue-QmC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e15-dq-dyf">
-                                <rect key="frame" x="16" y="500" width="343" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Roq-Cp-Uga"/>
-                                </constraints>
-                                <state key="normal" title="Login with Twitter">
-                                    <color key="titleColor" red="0.0" green="0.73725490196078436" blue="0.83137254901960778" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="onTwitterLogin:" destination="5ZA-le-HpF" eventType="touchUpInside" id="bXQ-Ja-JuH"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Twitter-Bird-128" translatesAutoresizingMaskIntoConstraints="NO" id="jAW-1P-ZAM">
-                                <rect key="frame" x="82" y="510" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClapperBoard_season_2_pose" translatesAutoresizingMaskIntoConstraints="NO" id="AVt-6W-DSE">
                                 <rect key="frame" x="100" y="28" width="175" height="190"/>
                                 <constraints>
@@ -67,40 +48,29 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Film Locations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0F-Ym-R88">
-                                <rect key="frame" x="-41" y="226" width="456.5" height="82"/>
+                                <rect key="frame" x="-40.5" y="226" width="456.5" height="82"/>
                                 <fontDescription key="fontDescription" name="Angelface" family="Angelface" pointSize="70"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="e15-dq-dyf" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="1Aj-hR-9g8"/>
-                            <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="F4g-0R-Njb" secondAttribute="bottom" constant="20" id="32b-F4-rYN"/>
-                            <constraint firstAttribute="trailing" secondItem="e15-dq-dyf" secondAttribute="trailing" constant="16" id="7jO-vk-08X"/>
-                            <constraint firstItem="F4g-0R-Njb" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" constant="16" id="8qF-Hh-F6V"/>
-                            <constraint firstItem="e15-dq-dyf" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="ECu-BI-IrM"/>
                             <constraint firstItem="8hP-mp-6bG" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" id="Erc-eq-CP9"/>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="F29-yk-LcK"/>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="GM6-ZN-g8i"/>
                             <constraint firstAttribute="trailing" secondItem="8hP-mp-6bG" secondAttribute="trailing" id="Gu7-pK-Ip2"/>
                             <constraint firstItem="AVt-6W-DSE" firstAttribute="top" secondItem="dcz-DO-5qu" secondAttribute="bottom" constant="8" id="Ltu-c5-eTg"/>
-                            <constraint firstItem="F4g-0R-Njb" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="NTs-Qu-Pe3"/>
-                            <constraint firstAttribute="trailing" secondItem="F4g-0R-Njb" secondAttribute="trailing" constant="16" id="OOC-lI-FpY"/>
-                            <constraint firstItem="F4g-0R-Njb" firstAttribute="top" secondItem="e15-dq-dyf" secondAttribute="bottom" constant="27" id="Qs9-sH-L0X"/>
                             <constraint firstItem="O0F-Ym-R88" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="Qxr-4d-88S"/>
                             <constraint firstItem="O0F-Ym-R88" firstAttribute="top" secondItem="AVt-6W-DSE" secondAttribute="bottom" constant="8" id="To8-Av-7hX"/>
                             <constraint firstItem="AVt-6W-DSE" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="TzE-zp-QWs"/>
                             <constraint firstItem="8hP-mp-6bG" firstAttribute="top" secondItem="8m3-ut-hiV" secondAttribute="top" id="ZOp-oN-zLe"/>
                             <constraint firstAttribute="trailing" secondItem="8hP-mp-6bG" secondAttribute="trailing" id="chD-cc-ZIt"/>
-                            <constraint firstItem="F4g-0R-Njb" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="czZ-yi-gTs"/>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="i7G-ha-NDZ"/>
-                            <constraint firstItem="e15-dq-dyf" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" constant="16" id="qKA-nu-lbd"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="appTitle" destination="O0F-Ym-R88" id="FDo-GY-dDi"/>
                         <outlet property="continueWithoutLoginButton" destination="F4g-0R-Njb" id="Wek-mp-Kbh"/>
-                        <outlet property="twitterLoginButton" destination="e15-dq-dyf" id="KD8-sc-wPj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZl-bz-dGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -110,7 +80,6 @@
     </scenes>
     <resources>
         <image name="ClapperBoard_season_2_pose" width="817" height="714"/>
-        <image name="Twitter-Bird-128" width="128" height="128"/>
         <image name="mapscreenshot" width="724" height="1116"/>
     </resources>
 </document>

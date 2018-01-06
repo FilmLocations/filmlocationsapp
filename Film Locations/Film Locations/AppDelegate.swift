@@ -12,6 +12,7 @@ import GoogleMaps
 import LyftSDK
 import Fabric
 import Crashlytics
+import TwitterKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -37,6 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let keys = NSDictionary(contentsOfFile: path)!
+        
+        let twitterConsumerKey = keys["TwitterConsumerKey"] as! String
+        let twitterConsumerSecret = keys["TwitterConsumerSecret"] as! String
+        
+        Twitter.sharedInstance().start(withConsumerKey: twitterConsumerKey, consumerSecret: twitterConsumerSecret)
         
         let gmsServicesAPIKey = keys["GMSServicesAPIKey"] as! String
         let gmsPlacesClientAPIKey = keys["GMSPlacesClientAPIKey"] as! String
@@ -85,9 +91,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        let client = TwitterClient.sharedInstance
-        client?.handleOpenUrl(url: url)
-        
-        return true
+        return Twitter.sharedInstance().application(app, open: url, options: options)
     }
 }
