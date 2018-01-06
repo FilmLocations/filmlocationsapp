@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let twitterConsumerKey = keys["TwitterConsumerKey"] as! String
         let twitterConsumerSecret = keys["TwitterConsumerSecret"] as! String
         
-        Twitter.sharedInstance().start(withConsumerKey: twitterConsumerKey, consumerSecret: twitterConsumerSecret)
+        TWTRTwitter.sharedInstance().start(withConsumerKey: twitterConsumerKey, consumerSecret: twitterConsumerSecret)
         
         let gmsServicesAPIKey = keys["GMSServicesAPIKey"] as! String
         let gmsPlacesClientAPIKey = keys["GMSPlacesClientAPIKey"] as! String
@@ -91,6 +91,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        return Twitter.sharedInstance().application(app, open: url, options: options)
+        return TWTRTwitter.sharedInstance().application(app, open: url, options: options)
     }
 }

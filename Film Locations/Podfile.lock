@@ -14,12 +14,12 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
-  - Alamofire (4.5.1)
-  - AWSCognito (2.6.5):
-    - AWSCore (= 2.6.5)
-  - AWSCore (2.6.5)
-  - AWSS3 (2.6.5):
-    - AWSCore (= 2.6.5)
+  - Alamofire (4.6.0)
+  - AWSCognito (2.6.10):
+    - AWSCore (= 2.6.10)
+  - AWSCore (2.6.10)
+  - AWSS3 (2.6.10):
+    - AWSCore (= 2.6.10)
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
   - BRYXBanner (0.8.0)
@@ -39,9 +39,9 @@ PODS:
   - LyftSDK/Core (1.0.6)
   - Pastel (0.3.0)
   - SwiftyJSON (3.1.4)
-  - TwitterCore (3.0.2)
-  - TwitterKit (3.2.1):
-    - TwitterCore (>= 3.0.2)
+  - TwitterCore (3.1.0)
+  - TwitterKit (3.3.0):
+    - TwitterCore (>= 3.1.0)
   - WCLShineButton (1.0.7)
 
 DEPENDENCIES:
@@ -64,10 +64,10 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  AWSCognito: 763ef7a193e6eaeddff382db4daa7608ec61be69
-  AWSCore: b4895b4a5256d0040f8825ad31f3477d081f508f
-  AWSS3: a92df2b4625488b5aae142f4311379fcd6bae3a7
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  AWSCognito: 94d97a52c51310dfd20f2db5dc4fce7ebce0e8dc
+  AWSCore: 5bb072a6b5b185f43ddbd239d6554d2f8a285ad2
+  AWSS3: 1124570c2c2dba6be7e6e67d123cc5181073c53d
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   BRYXBanner: 406c3775789136531da6f3c98058be2f16e08a34
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
@@ -78,8 +78,8 @@ SPEC CHECKSUMS:
   LyftSDK: 17eb5abdb12f72203b68a1eac982823bfadda743
   Pastel: 738740c84f2b15bbcd96ebe99c4e6c2f5dd42262
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
-  TwitterCore: e0420b01e02e7d20e94690e37f43e75de219ab8d
-  TwitterKit: 205ac89824bbfe9e85a16c420d30bb7bcbedac45
+  TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
+  TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
   WCLShineButton: d8b979b6f6f9f6709f9e241e6e1a4712a1a9b36b
 
 PODFILE CHECKSUM: c9e2fc3d978930f544acc215becb9b40329da551

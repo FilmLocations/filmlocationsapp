@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
         
         // If we go to login screen but there's already a user, log them out
         if (User.currentUser != nil) {
-            Twitter.sharedInstance().sessionStore.logOutUserID((User.currentUser?.screenname)!)
+           TWTRTwitter.sharedInstance().sessionStore.logOutUserID((User.currentUser?.screenname)!)
         }
         
         let logInButton = TWTRLogInButton(logInCompletion: { session, error in
