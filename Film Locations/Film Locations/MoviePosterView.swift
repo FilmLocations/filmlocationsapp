@@ -10,13 +10,13 @@ import UIKit
 import GooglePlaces
 
 struct MoviePosterViewDataSource {
-    var movie: FilmLocation
+    var location: FilmLocation
     var displaySearchData = false
     var referenceLocation: CLLocation
 }
 
 protocol MoviePosterViewDelegate: class {
-    func didTapOnImage(selectedMovie: FilmLocation)
+    func didTapOnImage(selectedLocation: FilmLocation)
 }
 
 class MoviePosterView: UIView {
@@ -32,16 +32,16 @@ class MoviePosterView: UIView {
     
     var moviePosterDataSource: MoviePosterViewDataSource! {
         didSet {
-            yearLabel.attributedText = InternalConfiguration.customizeTextAppearance1(text: "(\(moviePosterDataSource.movie.releaseYear))")
-            titleLabel.attributedText  = InternalConfiguration.customizeTextAppearance1(text: moviePosterDataSource.movie.title)
+            yearLabel.attributedText = InternalConfiguration.customizeTextAppearance1(text: "(\(moviePosterDataSource.location.releaseYear))")
+            titleLabel.attributedText  = InternalConfiguration.customizeTextAppearance1(text: moviePosterDataSource.location.title)
             if !moviePosterDataSource.displaySearchData {
-                posterImageView.setImageWith(moviePosterDataSource.movie.posterImageURL!)
+                posterImageView.setImageWith(moviePosterDataSource.location.posterImageURL!)
             } else {
                 posterImageView.image = UIImage(named: "Place-Dummy")
-                fetchImageForPoster(placeID: moviePosterDataSource.movie.placeId)
+                fetchImageForPoster(placeID: moviePosterDataSource.location.placeId)
             }
             
-            let movieLocation = CLLocation(latitude: moviePosterDataSource.movie.lat, longitude: moviePosterDataSource.movie.long)
+            let movieLocation = CLLocation(latitude: moviePosterDataSource.location.lat, longitude: moviePosterDataSource.location.long)
             
             let distance = moviePosterDataSource.referenceLocation.distance(from: movieLocation)
             
@@ -133,6 +133,6 @@ class MoviePosterView: UIView {
 extension MoviePosterView : UIGestureRecognizerDelegate {
     
     @objc func didTapOnImageView(sender: UITapGestureRecognizer){
-        delegate?.didTapOnImage(selectedMovie: moviePosterDataSource.movie)
+        delegate?.didTapOnImage(selectedLocation: moviePosterDataSource.location)
     }
 }

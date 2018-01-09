@@ -181,7 +181,7 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
         
         let userLocation = CLLocation(latitude: userCurrentLocation.latitude, longitude: userCurrentLocation.longitude)
         
-        let moviePosterViewDataSource = MoviePosterViewDataSource(movie: sortedMovies[index], displaySearchData: isSearchResultsDisplayed, referenceLocation: userLocation)
+        let moviePosterViewDataSource = MoviePosterViewDataSource(location: sortedMovies[index], displaySearchData: isSearchResultsDisplayed, referenceLocation: userLocation)
         
         let moviePosterView = MoviePosterView(frame: CGRect(x: 8.0, y: 8.0 , width: carousel.bounds.height+80, height: carousel.bounds.height))
         moviePosterView.moviePosterDataSource = moviePosterViewDataSource
@@ -292,23 +292,20 @@ extension MapViewController: UISearchBarDelegate {
 
 extension MapViewController: MoviePosterViewDelegate {
     
-    func didTapOnImage(selectedMovie: FilmLocation) {
+    func didTapOnImage(selectedLocation: FilmLocation) {
         
         //mapView.unSelectMarker()
         
         let filmDetailsStoryBoard = UIStoryboard(name: "FilmDetails", bundle: nil)
-        let detailsViewController = filmDetailsStoryBoard.instantiateViewController(withIdentifier: "FilmDetailsViewController") as? FilmDetailsViewController
         
-        if let detailsViewController = detailsViewController {
+        if let detailsViewController = filmDetailsStoryBoard.instantiateViewController(withIdentifier: "FilmDetailsViewController") as? FilmDetailsViewController {
             
-            if let movie = locations.filter({$0.id == selectedMovie.id}).first {
-                detailsViewController.location = movie
-                
-                let navigationController = UINavigationController(rootViewController: detailsViewController)
-                navigationController.setViewControllers([detailsViewController], animated: false)
-                
-                present(navigationController, animated: true, completion: nil)
-            }
+            detailsViewController.location = selectedLocation
+            
+            let navigationController = UINavigationController(rootViewController: detailsViewController)
+            navigationController.setViewControllers([detailsViewController], animated: false)
+            
+            present(navigationController, animated: true, completion: nil)
         }
     }
 }
