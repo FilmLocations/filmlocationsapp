@@ -93,7 +93,7 @@ class LoginViewController: UIViewController {
     func goToMain() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let hvc = storyboard.instantiateViewController(withIdentifier: "HamburgerView") as! HamburgerViewController
-        self.present(hvc, animated: true, completion: nil)
+        present(hvc, animated: true, completion: nil)
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
