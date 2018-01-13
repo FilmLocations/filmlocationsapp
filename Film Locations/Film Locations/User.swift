@@ -9,26 +9,21 @@ import UIKit
 
 class User: NSObject {
     
-    var name: String?
     var screenname: String!
-    var profileUrl: URL?
-    var dictionary: [String: Any]
+    var name: String?
+    var formattedScreenName: String?
+    var profileImageURL: String?
+    var profileURL: URL?
     var location: String?
     var isAnonymous = false
 
-    init(dictionary: [String: Any]) {
-        self.dictionary = dictionary
+    init(screenName: String, name: String?, formattedScreenName: String?, profileImageURL: String?, profileURL: URL?) {
         
-        name = dictionary["name"] as? String
-        screenname = dictionary["screen_name"] as? String
-        location = dictionary["location"] as? String
-        
-        let profileUrlString = dictionary["profile_image_url_https"] as? String
-        if let profileUrlString = profileUrlString {
-            let biggerImage = profileUrlString.replacingOccurrences(of:"normal", with: "bigger")
-            
-            profileUrl = URL(string: biggerImage)
-        }
+        self.screenname = screenName
+        self.name = name
+        self.formattedScreenName = formattedScreenName
+        self.profileImageURL = profileImageURL
+        self.profileURL = profileURL
     }
     
     static var _currentUser: User?
@@ -36,10 +31,7 @@ class User: NSObject {
     class var currentUser: User? {
         get {
             if _currentUser == nil {
-                let userInfo = [
-                    "name" : "anonymous",
-                    "screen_name" : "anonymous" ]
-                let user = User(dictionary: userInfo)
+                let user = User(screenName: "anonymous", name: "anonymous", formattedScreenName: "anonymous", profileImageURL: nil, profileURL: nil)
                 user.isAnonymous = true
                 return user
             } else {

@@ -14,12 +14,11 @@ class HamburgerMenuController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var userLocationLabel: UILabel!
     @IBOutlet weak var borderView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
     
-    var menu = ["Map View", "List View", "Profile", "About", "Logout", "Login"]
+    var menu = ["Map", "List", "Profile", "About", "Logout", "Login"]
     var symbols = ["map", "list", "profile", "about", "logout", "login"]
     var menuOptions: [MenuOption] = []
     
@@ -66,8 +65,6 @@ class HamburgerMenuController: UIViewController {
         // setup the screen displayed after launching
         hamburgerViewController.contentViewController = mapNavigationController
         
-        //tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .top)
-        
         // remove separator line
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
@@ -82,12 +79,11 @@ class HamburgerMenuController: UIViewController {
     }
     
     private func updateUI() {
+        
         if user != nil && user?.screenname != "anonymous" {
             userNameLabel.text = user?.name
-            userLocationLabel.text = user?.location
-            
-            if let profileImageURL = user?.profileUrl {
-                profileImageView.setImageWith(profileImageURL)
+            if let profileImageURL = user?.profileImageURL {
+                profileImageView.setImageWith(URL(string: profileImageURL)!)
             }
         }
         
@@ -126,7 +122,7 @@ extension HamburgerMenuController: UITableViewDataSource, UITableViewDelegate {
         cell.option = menuOptions[indexPath.row]
         
         if (indexPath.row == 4) {
-            let isUserLoggedIn = (User._currentUser == nil || User._currentUser?.screenname == "anonymous") ? false : true
+            let isUserLoggedIn = (User._currentUser == nil || (User._currentUser?.isAnonymous)!) ? false : true
             cell.option = isUserLoggedIn ? menuOptions[indexPath.row] : menuOptions[indexPath.row + 1]
         }
         

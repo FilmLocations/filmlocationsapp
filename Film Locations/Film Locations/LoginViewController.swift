@@ -26,13 +26,23 @@ class LoginViewController: UIViewController {
         
         // If we go to login screen but there's already a user, log them out
         if (User.currentUser != nil) {
-           TWTRTwitter.sharedInstance().sessionStore.logOutUserID((User.currentUser?.screenname)!)
+            let store = TWTRTwitter.sharedInstance().sessionStore
+            
+            if let userID = store.session()?.userID {
+                store.logOutUserID(userID)
+            }
         }
-        
+
         let logInButton = TWTRLogInButton(logInCompletion: { session, error in
             if (session != nil) {
                 print("signed in as \(session!.userName)");
                 self.goToMain()
+                
+                let client = TWTRAPIClient()
+                client.loadUser(withID: session!.userID, completion: { (user, error) in
+                    User.currentUser = User(screenName: (user?.screenName)!, name: user?.name, formattedScreenName: (user?.formattedScreenName)!, profileImageURL: user?.profileImageLargeURL, profileURL: user?.profileURL)
+                })
+                                
             } else {
                 // TODO handle login failure
                 print("error: \(error!.localizedDescription)");

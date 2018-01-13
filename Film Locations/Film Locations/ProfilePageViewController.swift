@@ -87,7 +87,7 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
             userNameLabel.text = user?.name
             userLocationLabel.text = user?.location
             
-            if let profileImageURL = user?.profileUrl {
+            if let profileImageURL = user?.profileURL {
                 backgroundImageView.backgroundColor = UIColor.white
                 backgroundImageView.setImageWith(profileImageURL)
                 //            backgroundImageView.image = backgroundImageView.image?.blurredImage(withRadius: 5, iterations: 5, tintColor: nil)
