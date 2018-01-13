@@ -31,6 +31,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     var sortedMovies:[FilmLocation]!
     
     let activityIndicator = ActivityIndicator()
+    let searchBar = UISearchBar()
     
     var delegate: MenuButtonPressDelegate?
     
@@ -64,17 +65,15 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
             }
             
             self.mapView.delegate = self
-            
-            // Add searchbar to navigation
-            let searchBar = UISearchBar()
-            searchBar.placeholder = "Search Films"
-            searchBar.sizeToFit()
-            searchBar.showsCancelButton = true
-            searchBar.delegate = self
-            self.navigationItem.titleView = searchBar
-            
+
             self.hideIndicator()
         }
+        
+        // Add searchbar to navigation
+        searchBar.placeholder = "Search Films"
+        searchBar.sizeToFit()
+        searchBar.delegate = self
+        self.navigationItem.titleView = searchBar
     }
     
     func presentIndicator()  {
@@ -96,6 +95,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     }
     
     @IBAction func onMenuPress(_ sender: UIBarButtonItem) {
+        searchBar.resignFirstResponder()
         delegate?.onMenuButtonPress()
     }
     
@@ -204,6 +204,8 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
 extension MapViewController: MapViewDelegate {
     
     func didTapOnMap() {
+        searchBar.resignFirstResponder()
+        
         if self.posterImageViewBottomConstraint.constant != posterImageViewBottomConstraintConstantPadding {
             hidePosterImageView()
         }
@@ -247,9 +249,7 @@ extension MapViewController: CLLocationManagerDelegate {
             let locValue:CLLocationCoordinate2D = manager.location!.coordinate
             print("locations = \(locValue.latitude) \(locValue.longitude)")
             userCurrentLocation = locValue
-            
-            //remove this line
-            //self.userCurrentLocation = CLLocationCoordinate2D (latitude: 37.7881968, longitude: -122.3960219)
+
             currentLocationUpdated()
             lastUpdatedTimestamp = currentTime
             manager.stopUpdatingLocation()
@@ -293,8 +293,6 @@ extension MapViewController: UISearchBarDelegate {
 extension MapViewController: MoviePosterViewDelegate {
     
     func didTapOnImage(selectedLocation: FilmLocation) {
-        
-        //mapView.unSelectMarker()
         
         let filmDetailsStoryBoard = UIStoryboard(name: "FilmDetails", bundle: nil)
         
