@@ -50,6 +50,8 @@ class MapView: UIView {
         
         googleMapView = mapView
         googleMapView.isMyLocationEnabled = true
+        googleMapView.settings.myLocationButton = true
+        
         addSubview(googleMapView)
     }
     
