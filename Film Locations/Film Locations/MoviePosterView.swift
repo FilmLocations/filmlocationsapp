@@ -12,7 +12,7 @@ import GooglePlaces
 struct MoviePosterViewDataSource {
     var location: FilmLocation
     var displaySearchData = false
-    var referenceLocation: CLLocation
+    var currentUserLocation: CLLocation?
 }
 
 protocol MoviePosterViewDelegate: class {
@@ -43,9 +43,14 @@ class MoviePosterView: UIView {
             
             let movieLocation = CLLocation(latitude: moviePosterDataSource.location.lat, longitude: moviePosterDataSource.location.long)
             
-            let distance = moviePosterDataSource.referenceLocation.distance(from: movieLocation)
+            if let currentLocation = moviePosterDataSource.currentUserLocation {
+                let distance = currentLocation.distance(from: movieLocation)
             
-            distanceLabel.attributedText = InternalConfiguration.customizeTextAppearance1(text: "\(String(format: "%.2f", metersToMiles(distance:distance))) miles")
+                distanceLabel.attributedText = InternalConfiguration.customizeTextAppearance1(text: "\(String(format: "%.2f", metersToMiles(distance:distance))) miles")
+            } else {
+                distanceLabel.isHidden = true
+                bottonLeftVisualView.isHidden = true
+            }
         }
     }
     

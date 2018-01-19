@@ -19,7 +19,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
     var scrollingImages:[UIImage]! = []
     var lastUpdatedTimestamp: TimeInterval = 0
-    var userCurrentLocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    var userCurrentLocation: CLLocationCoordinate2D?
     let locationManager = CLLocationManager()
     
     var posterImageViewBottomConstraint: NSLayoutConstraint!
@@ -179,9 +179,9 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         
-        let userLocation = CLLocation(latitude: userCurrentLocation.latitude, longitude: userCurrentLocation.longitude)
+        let userLocation: CLLocation? = CLLocation(latitude: userCurrentLocation!.latitude, longitude: userCurrentLocation!.longitude)
         
-        let moviePosterViewDataSource = MoviePosterViewDataSource(location: sortedMovies[index], displaySearchData: isSearchResultsDisplayed, referenceLocation: userLocation)
+        let moviePosterViewDataSource = MoviePosterViewDataSource(location: sortedLocations[index], displaySearchData: isSearchResultsDisplayed, currentUserLocation: userLocation)
         
         let moviePosterView = MoviePosterView(frame: CGRect(x: 8.0, y: 8.0 , width: carousel.bounds.height+80, height: carousel.bounds.height))
         moviePosterView.moviePosterDataSource = moviePosterViewDataSource
