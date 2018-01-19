@@ -38,14 +38,6 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        carousel.type = .coverFlow2
-        carousel.delegate = self
-        carousel.dataSource = self
-        carousel.setNeedsLayout()
-        
-        posterImageViewBottomConstraint = carousel.topAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor, constant: posterImageViewBottomConstraintConstantPadding)
-        view.addConstraint(posterImageViewBottomConstraint)
-        
         presentIndicator()
         
         Database.sharedInstance.getAllLocations { locations in
@@ -65,7 +57,15 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
             }
             
             self.mapView.delegate = self
-
+            
+            self.carousel.type = .coverFlow2
+            self.carousel.delegate = self
+            self.carousel.dataSource = self
+            self.carousel.setNeedsLayout()
+            
+            self.posterImageViewBottomConstraint = self.carousel.topAnchor.constraint(equalTo: self.bottomLayoutGuide.bottomAnchor, constant: self.posterImageViewBottomConstraintConstantPadding)
+            self.view.addConstraint(self.posterImageViewBottomConstraint)
+            
             self.hideIndicator()
         }
         
@@ -73,7 +73,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         searchBar.placeholder = "Search Films"
         searchBar.sizeToFit()
         searchBar.delegate = self
-        self.navigationItem.titleView = searchBar
+        navigationItem.titleView = searchBar
     }
     
     func presentIndicator()  {
@@ -112,18 +112,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         
         return nil
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    
+
     func currentLocationUpdated() {
         // Update map view
         print("User locations = \(userCurrentLocation.latitude) \(userCurrentLocation.longitude)")
