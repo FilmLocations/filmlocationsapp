@@ -11,11 +11,11 @@ import CoreLocation
 
 class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
-    let maxNearByMovies = 40
-    let currentUsersLocationKey =  "kUserCurrentPreferncesKey"
-    
     @IBOutlet weak var mapView: MapView!
     @IBOutlet weak var carousel: iCarousel!
+    
+    let maxNearbyMovies = 45
+    let currentUsersLocationKey =  "kUserCurrentPreferencesKey"
     
     var scrollingImages:[UIImage]! = []
     var lastUpdatedTimestamp: TimeInterval = 0

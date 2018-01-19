@@ -99,7 +99,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         
         //TODO pass current location as pickup, otherwise destination has no effect
         var pickup = CLLocationCoordinate2D(latitude: 37.7, longitude: -122.4)
-        if let userCurrentLocation = UserDefaults.standard.dictionary(forKey: "kUserCurrentPreferncesKey") {
+        if let userCurrentLocation = UserDefaults.standard.dictionary(forKey: "kUserCurrentPreferencesKey") {
             pickup = CLLocationCoordinate2D(latitude: userCurrentLocation["lat"] as! CLLocationDegrees, longitude: userCurrentLocation["long"] as! CLLocationDegrees)
         }
         
