@@ -13,13 +13,14 @@ import GooglePlaces
 protocol MapViewDelegate: class {
     func didTap(markerIndex: Int)
     func didTapOnMap()
+    func didMoveInMap(newLocation: CLLocationCoordinate2D)
 }
 
 class MapView: UIView {
-    var displayData:[FilmLocation]!
+    var displayData: [FilmLocation]!
     var googleMapView: GMSMapView!
-    weak var delegate:MapViewDelegate?
-    
+    weak var delegate: MapViewDelegate?
+    var currentSelectedMarker: GMSMarker?
     var markers = [GMSMarker]()
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,7 +34,7 @@ class MapView: UIView {
     }
     
     private func loadInitialMap() {
-        let camera = GMSCameraPosition.camera(withLatitude: 37.7749, longitude: -122.4194, zoom: 10.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 37.7749, longitude: -122.4194, zoom: 13.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.delegate = self
         
@@ -63,38 +64,30 @@ class MapView: UIView {
         googleMapView.selectedMarker = nil
     }
     
-    func updateMapsMarkers(sortedMovies:[FilmLocation]) {
+    func updateMapsMarkers(sortedLocations: [FilmLocation]) {
         
-        //if googleMapView.selectedMarker == nil {
+        displayData = sortedLocations
+
+        currentSelectedMarker = nil
+        googleMapView.clear()
+        
+        var bounds = GMSCoordinateBounds()
+        
+        for movie in sortedLocations {
+            // Creates a marker in the center of the map.
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: movie.lat, longitude: movie.long)
+            marker.title = movie.title
+            marker.snippet = movie.address
+            marker.isFlat = true
+            marker.userData = movie
+            marker.icon = UIImage(named: "Location-Marker")
+            bounds = bounds.includingCoordinate(marker.position)
+            marker.map = googleMapView
             
-            displayData = sortedMovies
-            
-            googleMapView.clear()
-            
-            var bounds = GMSCoordinateBounds()
-            
-            for movie in sortedMovies {
-                // Creates a marker in the center of the map.
-                let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2D(latitude: movie.lat, longitude: movie.long)
-                marker.title = movie.title
-                marker.snippet = movie.address
-                //print(movie.title, movie.location.lat, movie.location.long, movie.location.address)
-                marker.isFlat = true
-                marker.userData = movie
-                marker.icon = UIImage(named: "Location-Marker")
-                bounds = bounds.includingCoordinate(marker.position)
-                marker.map = googleMapView
-                
-                markers.append(marker)
-            }
-            
-            let update = GMSCameraUpdate.fit(bounds, withPadding: 20)
-            googleMapView.animate(with: update)
-       // }
+            markers.append(marker)
+        }
     }
-    
-    var currentSelectedMarker:Int?
     
     func selectMarker(index: Int)  {
         let marker = markers[index]
@@ -104,12 +97,10 @@ class MapView: UIView {
     
     func unSelectMarker()  {
        
-        if currentSelectedMarker == nil {
+        guard let selectedMarker = currentSelectedMarker else {
             return
         }
-        
-        let selectedMarker = markers[currentSelectedMarker!]
-        // un select it
+
         selectedMarker.icon = UIImage(named: "Location-Marker")
         currentSelectedMarker = nil
         googleMapView.selectedMarker = nil
@@ -117,22 +108,15 @@ class MapView: UIView {
     
     func selectMarker(marker: GMSMarker)  {
         
-        self.unSelectMarker()
+        unSelectMarker()
         
         if let markerMovie = marker.userData as? FilmLocation {
             
-            if let index = displayData.index(where: {$0.placeId ==  markerMovie.placeId &&  $0.id ==  markerMovie.id}) {
+            if let index = displayData.index(where: {$0.placeId == markerMovie.placeId && $0.id ==  markerMovie.id}) {
                 delegate?.didTap(markerIndex: index)
-                currentSelectedMarker = index
+                currentSelectedMarker = marker
             }
         }
-        
-//        if let selectedMarker = googleMapView.selectedMarker {
-//            // un select it
-//            selectedMarker.icon = UIImage(named: "Location-Marker")
-//        }
-        
-        googleMapView.animate(with: GMSCameraUpdate.setTarget(marker.position))
         
         googleMapView.selectedMarker = marker
         
@@ -142,9 +126,13 @@ class MapView: UIView {
 
 extension MapView: GMSMapViewDelegate {
     
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        delegate?.didMoveInMap(newLocation: position.target)
+    }
+    
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         delegate?.didTapOnMap()
-        self.unSelectMarker()
+        unSelectMarker()
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {

@@ -28,12 +28,14 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     var isSearchResultsDisplayed = false
     
     var locations: [FilmLocation]!
-    var sortedMovies:[FilmLocation]!
+    var sortedLocations:[FilmLocation]!
     
     let activityIndicator = ActivityIndicator()
     let searchBar = UISearchBar()
     
     var delegate: MenuButtonPressDelegate?
+    
+    var viewingMapLocation: CLLocationCoordinate2D!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +50,9 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
             
             if let currentLocation =  self.retrieveCurrentLocation() {
                 self.userCurrentLocation = currentLocation
+                self.viewingMapLocation = currentLocation
+            } else {
+                self.viewingMapLocation = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
             }
             
             if CLLocationManager.locationServicesEnabled() {
@@ -114,33 +119,20 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     }
 
     func currentLocationUpdated() {
-        // Update map view
-        print("User locations = \(userCurrentLocation.latitude) \(userCurrentLocation.longitude)")
-        
-        sortedMovies = sortMoviesFromUserLocation(moviesToSort: locations)
+        sortedLocations = sortMoviesFromUserLocation(moviesToSort: locations, at: userCurrentLocation ?? viewingMapLocation)
         updateViewWithNewData()
     }
     
     func updateViewWithNewData() {
-        //TODO: consider calling map marker and scroll view in a single for loop
-        mapView.updateMapsMarkers(sortedMovies: sortedMovies)
+        mapView.updateMapsMarkers(sortedLocations: sortedLocations)
         carousel.reloadData()
-        //self.updateScrollView(isSearchedData: false)
     }
     
-    func updateViewWithSearchData() {
-        //TODO: consider calling map marker and scroll view in a single for loop
-        mapView.updateMapsMarkers(sortedMovies: sortedMovies)
-        carousel.reloadData()
-        //self.updateScrollView(isSearchedData: true)
-    }
-    
-    // TODO: Move this method to API class as utility method
-    func sortMoviesFromUserLocation(moviesToSort: [FilmLocation]) -> [FilmLocation] {
+    func sortMoviesFromUserLocation(moviesToSort: [FilmLocation], at location: CLLocationCoordinate2D) -> [FilmLocation] {
         
         let sortedMovies = moviesToSort.sorted { (movie1:FilmLocation, movie2:FilmLocation) -> Bool in
             
-            let currentLocation = CLLocation(latitude: userCurrentLocation.latitude, longitude: userCurrentLocation.longitude)
+            let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
             
             let location1 = CLLocation(latitude: movie1.lat, longitude: movie1.long)
             let location2 = CLLocation(latitude: movie2.lat, longitude: movie2.long)
@@ -151,7 +143,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
             return difference1 < difference2
         }
         
-        let toIndex = sortedMovies.count < maxNearByMovies ? sortedMovies.count : maxNearByMovies
+        let toIndex = sortedMovies.count < maxNearbyMovies ? sortedMovies.count : maxNearbyMovies
         
         return Array(sortedMovies[0..<toIndex])
     }
@@ -159,8 +151,8 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
 
 extension MapViewController: iCarouselDelegate, iCarouselDataSource {
     func numberOfItems(in carousel: iCarousel) -> Int {
-        if sortedMovies != nil {
-            return sortedMovies.count
+        if sortedLocations != nil {
+            return sortedLocations.count
         } else {
             return 0
         }
@@ -192,9 +184,15 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
 
 extension MapViewController: MapViewDelegate {
     
+    func didMoveInMap(newLocation: CLLocationCoordinate2D) {
+        viewingMapLocation = newLocation
+        sortedLocations = sortMoviesFromUserLocation(moviesToSort: locations, at: newLocation)
+        updateViewWithNewData()
+    }
+    
     func didTapOnMap() {
         searchBar.resignFirstResponder()
-        
+
         if self.posterImageViewBottomConstraint.constant != posterImageViewBottomConstraintConstantPadding {
             hidePosterImageView()
         }
@@ -234,7 +232,7 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let currentTime = NSDate().timeIntervalSince1970
-        if ((currentTime - lastUpdatedTimestamp) > 1 * 30) && !isSearchResultsDisplayed && ((userCurrentLocation.latitude != manager.location!.coordinate.latitude) || (userCurrentLocation.longitude != manager.location!.coordinate.longitude)) {
+        if ((currentTime - lastUpdatedTimestamp) > 1 * 30) && !isSearchResultsDisplayed {
             let locValue:CLLocationCoordinate2D = manager.location!.coordinate
             print("locations = \(locValue.latitude) \(locValue.longitude)")
             userCurrentLocation = locValue
@@ -268,9 +266,9 @@ extension MapViewController: UISearchBarDelegate {
                     return false
                 }
                 
-                sortedMovies = sortMoviesFromUserLocation(moviesToSort: filteredMovies)
+                sortedLocations = sortMoviesFromUserLocation(moviesToSort: filteredMovies, at: viewingMapLocation)
                 
-                updateViewWithSearchData()
+                updateViewWithNewData()
                 isSearchResultsDisplayed = true
             }
         } else {
