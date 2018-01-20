@@ -192,7 +192,12 @@ extension MapViewController: MapViewDelegate {
     
     func didTapOnMap() {
         searchBar.resignFirstResponder()
-
+        
+        if (delegate?.isSideMenuOpen() ?? false) {
+            delegate?.onMenuButtonPress()
+            return
+        }
+        
         if self.posterImageViewBottomConstraint.constant != posterImageViewBottomConstraintConstantPadding {
             hidePosterImageView()
         }

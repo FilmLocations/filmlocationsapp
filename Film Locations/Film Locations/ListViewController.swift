@@ -9,6 +9,7 @@
 import UIKit
 
 protocol MenuButtonPressDelegate {
+    func isSideMenuOpen() -> Bool
     func onMenuButtonPress()
 }
 

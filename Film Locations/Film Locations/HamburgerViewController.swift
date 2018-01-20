@@ -99,4 +99,8 @@ extension HamburgerViewController: MenuButtonPressDelegate {
         print("Menu pressed")
         toggleMenu()
     }
+    
+    func isSideMenuOpen() -> Bool {
+        return isMenuOpen
+    }
 }
