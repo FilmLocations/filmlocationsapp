@@ -17,8 +17,8 @@ class ListViewCell: UITableViewCell {
     @IBOutlet weak var numberOfLocationsLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     
-
-    var movie: FilmLocation? {
+    
+    var movie: FilmListViewItem? {
         didSet {
             updateUI()
         }
@@ -37,20 +37,18 @@ class ListViewCell: UITableViewCell {
             titleLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: movie.title)
             yearLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: movie.releaseYear)
             
-            //TODO handle new counting method
-            var numberOfLocation = 1.description
-            if numberOfLocation == "1" {
-                numberOfLocation = "1 LOCATION"
+            var numberOfLocations = ""
+            if movie.addresses.count == 1 {
+                numberOfLocations = "1 LOCATION"
             }
             else {
-                numberOfLocation = "\(numberOfLocation) LOCATIONS"
+                numberOfLocations = "\(movie.addresses.count) LOCATIONS"
             }
             
-            numberOfLocationsLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: numberOfLocation)
+            numberOfLocationsLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: numberOfLocations)
             
             if let posterImageURL = movie.posterImageURL {
                 posterImageView.setImageWith(posterImageURL)
-//                posterImageView.image = posterImageView.image?.blurredImage(withRadius: 2, iterations: 5, tintColor: nil)
             }
         }
     }
