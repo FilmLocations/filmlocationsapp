@@ -22,18 +22,13 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var numberOfVisitsLabel: UILabel!
     @IBOutlet weak var numberOfLikesLabel: UILabel!
-    @IBOutlet weak var numberOfUploadsLabel: UILabel!
     @IBOutlet weak var visitLocationView: UIView!
-    @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var likesView: UIView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var addressVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var lyftButton: LyftButton!
-    @IBOutlet weak var miniPosterImage: UIImageView!
-    @IBOutlet weak var uploadsNameLabel: UILabel!
-    @IBOutlet weak var visitsNameLabel: UILabel!
-    @IBOutlet weak var likesNameLabel: UILabel!
-
+    @IBOutlet weak var poweredByGoogleImageView: UIImageView!
+    
     var location: FilmLocation! {
         didSet {
             updateUI()
@@ -46,36 +41,54 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     var visitButton: WCLShineButton!
     var likeButton: WCLShineButton!
     
-    var visitsCount = 0
-    var likesCount = 0
+    var visitsCount = 0 {
+        didSet {
+            var text = "\(visitsCount) visit"
+            
+            if visitsCount > 1 || visitsCount == 0 {
+                text = "\(text)s"
+            }
+            numberOfVisitsLabel.text = text
+        }
+    }
+    var likesCount = 0 {
+        didSet {
+            var text = "\(likesCount) like"
+
+            if likesCount > 1 || likesCount == 0 {
+                text = "\(text)s"
+            }
+            numberOfLikesLabel.text = text
+        }
+    }
     
     var hasTriedLoadingUserImages = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(onBackButtonPress(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPhoto(_:)))
         
         // Set up action buttons
         var shineParams = WCLShineParams()
         shineParams.bigShineColor = UIColor.fl_accent!
         shineParams.smallShineColor = UIColor.fl_primary!
-        likeButton = WCLShineButton(frame: .init(x: 25, y: 5, width: 38, height: 38), params: shineParams)
+        likeButton = WCLShineButton(frame: .init(x: 5, y: 0, width: 25, height: 25), params: shineParams)
         likeButton.fillColor = UIColor(rgb: (196,23,1))
         likeButton.color = UIColor.fl_primary!
         likeButton.image = .custom(#imageLiteral(resourceName: "heart"))
         likeButton.addTarget(self, action: #selector(LikeLocation(_:)), for: .touchUpInside)
+        likesView.layer.zPosition = 1
         likesView.addSubview(likeButton)
         
-        visitButton = WCLShineButton(frame: .init(x: 22, y: 4, width: 40, height: 40), params: shineParams)
+        visitButton = WCLShineButton(frame: .init(x: 5, y: 0, width: 25, height: 25), params: shineParams)
         visitButton.fillColor = UIColor.fl_accent!
         visitButton.color = UIColor.fl_primary!
         visitButton.image = .custom(#imageLiteral(resourceName: "check"))
         visitButton.addTarget(self, action: #selector(visitLocation(_:)), for: .touchUpInside)
+        likesView.layer.zPosition = 1
         visitLocationView.addSubview(visitButton)
-        
-        let origImage = #imageLiteral(resourceName: "plus")
-        let tintedImage = origImage.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-        addPhotoButton.setImage(tintedImage, for: .normal)
-        addPhotoButton.tintColor = UIColor.fl_primary
         
         // Do any additional setup after loading the view.
         user = User.currentUser
@@ -85,6 +98,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             if locationImages.count > 0 {
                 Database.sharedInstance.getLocationImage(filename: locationImages[0].imageName, completion: { locationImage in
                     self.topBackgroundImageView.image = locationImage
+                    self.poweredByGoogleImageView.isHidden = true
                 })
                 
                 self.locationImages = locationImages
@@ -97,15 +111,15 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             }
         }
         
-        //TODO pass current location as pickup, otherwise destination has no effect
-        var pickup = CLLocationCoordinate2D(latitude: 37.7, longitude: -122.4)
         if let userCurrentLocation = UserDefaults.standard.dictionary(forKey: "kUserCurrentPreferencesKey") {
-            pickup = CLLocationCoordinate2D(latitude: userCurrentLocation["lat"] as! CLLocationDegrees, longitude: userCurrentLocation["long"] as! CLLocationDegrees)
+            let userLocation = CLLocationCoordinate2D(latitude: userCurrentLocation["lat"] as! CLLocationDegrees, longitude: userCurrentLocation["long"] as! CLLocationDegrees)
+            
+            let destination = CLLocationCoordinate2D(latitude: location.lat, longitude: location.long)
+            lyftButton.style = .mulberryLight
+            lyftButton.configure(rideKind: LyftSDK.RideKind.Line, pickup: userLocation, destination: destination)
+        } else {
+            lyftButton.removeFromSuperview()
         }
-        
-        let destination = CLLocationCoordinate2D(latitude: location.lat, longitude: location.long)
-        lyftButton.style = .mulberryDark
-        lyftButton.configure(rideKind: LyftSDK.RideKind.Line, pickup: pickup, destination: destination)
         
         photosCollectionView.dataSource = self
         photosCollectionView.delegate = self
@@ -122,26 +136,14 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
         updateUI()
 
-        addBackButton()
-
         view.backgroundColor = UIColor.white
         likesView.backgroundColor = UIColor.white
         visitLocationView.backgroundColor = UIColor.white
         photosCollectionView.backgroundColor = UIColor.white
         titleLabel.textColor = UIColor.fl_primary_light
         overviewLabel.textColor = UIColor.fl_primary_light
-        numberOfUploadsLabel.textColor = UIColor.fl_primary_text
-        numberOfVisitsLabel.textColor = UIColor.fl_primary_text
-        numberOfLikesLabel.textColor = UIColor.fl_primary_text
-        numberOfUploadsLabel.backgroundColor = UIColor.fl_accent
-        numberOfLikesLabel.backgroundColor = UIColor.fl_accent
-        numberOfVisitsLabel.backgroundColor = UIColor.fl_accent
-        uploadsNameLabel.backgroundColor = UIColor.fl_accent
-        visitsNameLabel.backgroundColor = UIColor.fl_accent
-        likesNameLabel.backgroundColor = UIColor.fl_accent
-        uploadsNameLabel.textColor = UIColor.fl_primary_text
-        visitsNameLabel.textColor = UIColor.fl_primary_text
-        likesNameLabel.textColor = UIColor.fl_primary_text
+        numberOfVisitsLabel.textColor = UIColor.fl_primary_dark
+        numberOfLikesLabel.textColor = UIColor.fl_primary_dark
         addressLabel.textColor = UIColor.fl_primary_text
         navigationController?.navigationBar.tintColor = UIColor.fl_primary_text
         navigationController?.navigationBar.barTintColor = UIColor.fl_primary_dark
@@ -164,10 +166,6 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
                 }
             }
         }
-    }
-
-    private func addBackButton() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(onBackButtonPress(_:)))
     }
     
     @objc func onBackButtonPress(_ sender: UIButton) {
@@ -200,15 +198,10 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
         posterImageView.clipsToBounds = true
         posterImageView.layer.cornerRadius = 4
-        miniPosterImage.clipsToBounds = true
-        miniPosterImage.layer.cornerRadius = 4
-        addressVisualEffectView.layer.cornerRadius = 10
-        addressVisualEffectView.clipsToBounds = true
         
         if let movie = location {
             if let posterImageURL = movie.posterImageURL {
                 posterImageView.setImageWith(posterImageURL)
-                miniPosterImage.setImageWith(posterImageURL)
             }
             addressLabel.text = movie.address
             titleLabel.text = "\(movie.title) (\(movie.releaseYear))"
@@ -233,20 +226,11 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     private func updateCounts() {
-
         Database.sharedInstance.locationLikesCount(placeId: location.placeId) { count in
             self.likesCount = count
-            self.numberOfLikesLabel.text = String(count)
         }
         Database.sharedInstance.locationVisitsCount(placeId: location.placeId) { count in
             self.visitsCount = count
-            self.numberOfVisitsLabel.text = String(count)
-        }
-
-        if let locationImages = locationImages {
-            numberOfUploadsLabel.text = String(locationImages.count)
-        } else {
-            numberOfUploadsLabel.text = "0"
         }
     }
     
@@ -285,7 +269,16 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         present(nav, animated: true, completion: nil)
     }
     
-    @IBAction func addPhoto(_ sender: UIButton) {      
+    @IBAction func addPhoto(_ sender: UIButton) {
+        
+        guard !user.isAnonymous else {
+            let banner = Banner(title: "Login", subtitle: "Please login to contribute a photo of this location", image: nil, backgroundColor: UIColor.fl_accent!)
+            banner.textColor = UIColor.fl_primary_text!
+            banner.dismissesOnTap = true
+            banner.show(duration: 4.0)
+            return
+        }
+        
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
@@ -305,12 +298,10 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         if visitButton.isSelected {
             Database.sharedInstance.removeVisitLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
                 self.visitsCount = self.visitsCount - 1
-                self.numberOfVisitsLabel.text = String(self.visitsCount)
             })
         } else {
             Database.sharedInstance.visitLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
                 self.visitsCount = self.visitsCount + 1
-                self.numberOfVisitsLabel.text = String(self.visitsCount)
             })
         }
     }
@@ -319,12 +310,10 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         if likeButton.isSelected {
             Database.sharedInstance.removeLikeLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
                 self.likesCount = self.likesCount - 1
-                self.numberOfLikesLabel.text = String(self.likesCount)
             })
         } else {
             Database.sharedInstance.likeLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
                 self.likesCount = self.likesCount + 1
-                self.numberOfLikesLabel.text = String(self.likesCount)
             })
         }
     }
@@ -346,17 +335,6 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             self.present(pvc, animated: true, completion: nil)
         }
     }
- 
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
 extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -378,6 +356,8 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationPhotoCollectionViewCell", for: indexPath) as! LocationPhotoCollectionViewCell
         
         if (locationImages != nil && locationImages.count > 0) {
+            poweredByGoogleImageView.isHidden = true
+            
             Database.sharedInstance.getLocationImage(filename: locationImages[indexPath.row].imageName, completion: { image in
                 cell.locationPhotoImageView.image = image
             })
