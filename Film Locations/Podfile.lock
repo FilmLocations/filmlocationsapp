@@ -15,11 +15,11 @@ PODS:
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
   - Alamofire (4.6.0)
-  - AWSCognito (2.6.10):
-    - AWSCore (= 2.6.10)
-  - AWSCore (2.6.10)
-  - AWSS3 (2.6.10):
-    - AWSCore (= 2.6.10)
+  - AWSCognito (2.6.11):
+    - AWSCore (= 2.6.11)
+  - AWSCore (2.6.11)
+  - AWSS3 (2.6.11):
+    - AWSCore (= 2.6.11)
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
   - BRYXBanner (0.8.0)
@@ -65,9 +65,9 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
-  AWSCognito: 94d97a52c51310dfd20f2db5dc4fce7ebce0e8dc
-  AWSCore: 5bb072a6b5b185f43ddbd239d6554d2f8a285ad2
-  AWSS3: 1124570c2c2dba6be7e6e67d123cc5181073c53d
+  AWSCognito: 1e6f65e3512bc9332e28c64e8a36001bce6213f9
+  AWSCore: a461695bf302a32a366768bf36056be3a2c87d8d
+  AWSS3: d13e29a4dbfecb7cd99b4ce833a9fe221dee8cba
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   BRYXBanner: 406c3775789136531da6f3c98058be2f16e08a34
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
