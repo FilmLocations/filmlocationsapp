@@ -22,4 +22,5 @@ target 'Film Locations' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'TwitterKit'
+  pod 'NVActivityIndicatorView'
 end

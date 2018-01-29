@@ -37,6 +37,9 @@ PODS:
   - LyftSDK (1.0.6):
     - LyftSDK/Core (= 1.0.6)
   - LyftSDK/Core (1.0.6)
+  - NVActivityIndicatorView (4.1.1):
+    - NVActivityIndicatorView/Presenter (= 4.1.1)
+  - NVActivityIndicatorView/Presenter (4.1.1)
   - Pastel (0.3.0)
   - SwiftyJSON (3.1.4)
   - TwitterCore (3.1.0)
@@ -57,6 +60,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
   - LyftSDK
+  - NVActivityIndicatorView
   - Pastel
   - SwiftyJSON (~> 3.1.4)
   - TwitterKit
@@ -76,12 +80,13 @@ SPEC CHECKSUMS:
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   GooglePlaces: dd70d9d71ea1c7944846afe67de3712c99b30a77
   LyftSDK: 17eb5abdb12f72203b68a1eac982823bfadda743
+  NVActivityIndicatorView: 60109b9bf46efc2e71ab81453196ccdfdfeea870
   Pastel: 738740c84f2b15bbcd96ebe99c4e6c2f5dd42262
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
   WCLShineButton: d8b979b6f6f9f6709f9e241e6e1a4712a1a9b36b
 
-PODFILE CHECKSUM: c9e2fc3d978930f544acc215becb9b40329da551
+PODFILE CHECKSUM: ec9af9ecca9ad21319dbbe5f672c4d07290ab194
 
 COCOAPODS: 1.3.1
