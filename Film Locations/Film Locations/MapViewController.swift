@@ -8,11 +8,13 @@
 
 import UIKit
 import CoreLocation
+import NVActivityIndicatorView
 
 class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
     @IBOutlet weak var mapView: MapView!
     @IBOutlet weak var carousel: iCarousel!
+    @IBOutlet weak var activityIndicatorView: NVActivityIndicatorView!
     
     let maxNearbyMovies = 45
     let currentUsersLocationKey =  "kUserCurrentPreferencesKey"
@@ -29,8 +31,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
     var locations: [FilmLocation]!
     var sortedLocations:[FilmLocation]!
-    
-    let activityIndicator = ActivityIndicator()
+
     let searchBar = UISearchBar()
     
     var delegate: MenuButtonPressDelegate?
@@ -39,6 +40,9 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityIndicatorView.type = NVActivityIndicatorType.ballScaleMultiple
+        activityIndicatorView.color = UIColor.fl_secondary!
         
         presentIndicator()
         
@@ -81,12 +85,12 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         navigationItem.titleView = searchBar
     }
     
-    func presentIndicator()  {
-        activityIndicator.showActivityIndicator(uiView: (navigationController?.view)!)
+    func presentIndicator() {
+        activityIndicatorView.startAnimating()
     }
     
-    func hideIndicator()  {
-        activityIndicator.hideActivityIndicator(view: (navigationController?.view)!)
+    func hideIndicator() {
+        activityIndicatorView.stopAnimating()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xFL-i5-lTK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xFL-i5-lTK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,6 +25,14 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNK-kj-t5i" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="157.5" y="335.5" width="60" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="exX-jm-OLg"/>
+                                    <constraint firstAttribute="height" constant="60" id="fT9-M4-ewJ"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XWR-Eq-CKy" customClass="iCarousel">
                                 <rect key="frame" x="0.0" y="667" width="375" height="253"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -37,9 +45,11 @@
                         <constraints>
                             <constraint firstItem="Lb5-Lr-KyW" firstAttribute="top" secondItem="8Vl-AW-vb4" secondAttribute="bottom" id="IfS-CE-zUA"/>
                             <constraint firstItem="Lb5-Lr-KyW" firstAttribute="leading" secondItem="e9M-Sm-SnY" secondAttribute="leading" id="NxE-jR-nLw"/>
+                            <constraint firstItem="GNK-kj-t5i" firstAttribute="centerX" secondItem="Lb5-Lr-KyW" secondAttribute="centerX" id="OfF-z9-XBT"/>
                             <constraint firstItem="Pxu-XN-Blk" firstAttribute="top" secondItem="Lb5-Lr-KyW" secondAttribute="bottom" id="QHX-4Y-grq"/>
                             <constraint firstAttribute="trailing" secondItem="XWR-Eq-CKy" secondAttribute="trailing" id="RwT-Vz-AIF"/>
                             <constraint firstAttribute="trailing" secondItem="Lb5-Lr-KyW" secondAttribute="trailing" id="aFk-gv-z2s"/>
+                            <constraint firstItem="GNK-kj-t5i" firstAttribute="centerY" secondItem="Lb5-Lr-KyW" secondAttribute="centerY" id="jRa-jj-k7P"/>
                             <constraint firstItem="XWR-Eq-CKy" firstAttribute="leading" secondItem="e9M-Sm-SnY" secondAttribute="leading" id="ztU-g3-Lig"/>
                         </constraints>
                     </view>
@@ -52,6 +62,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="GNK-kj-t5i" id="85P-fq-8bV"/>
                         <outlet property="carousel" destination="XWR-Eq-CKy" id="n00-L3-WwZ"/>
                         <outlet property="mapView" destination="Lb5-Lr-KyW" id="4Wb-Fe-wis"/>
                     </connections>
@@ -66,7 +77,7 @@
                 <navigationController storyboardIdentifier="MapNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="xFL-i5-lTK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="q6k-A5-cZA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
