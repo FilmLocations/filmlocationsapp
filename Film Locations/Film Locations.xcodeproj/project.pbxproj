@@ -33,6 +33,7 @@
 		88790C0C1EB6FA3D0025C5EE /* MoviePosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88790C0B1EB6FA3D0025C5EE /* MoviePosterView.swift */; };
 		8894F1151EB945C500FFDAA1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8894F1141EB945C500FFDAA1 /* MapView.swift */; };
 		8A559882E961A19DE2C6ECF3 /* Pods_Film_Locations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA186C724D76407B1FE1434 /* Pods_Film_Locations.framework */; };
+		C43D288F20186E3200655351 /* FilmListViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43D288E20186E3200655351 /* FilmListViewItem.swift */; };
 		C4409ED91FBB99BD007F7E3F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4409ED81FBB99BD007F7E3F /* Keys.plist */; };
 		D3009ABE1EB5848500E075ED /* FilmLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009ABB1EB5848500E075ED /* FilmLocation.swift */; };
 		D3009AC31EB584C200E075ED /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009AC21EB584C200E075ED /* ListViewCell.swift */; };
@@ -87,6 +88,7 @@
 		88790C0B1EB6FA3D0025C5EE /* MoviePosterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviePosterView.swift; sourceTree = "<group>"; };
 		8894F1141EB945C500FFDAA1 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		95F5320A160EB9BDD66EB8A0 /* Pods-Film Locations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Film Locations.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations.debug.xcconfig"; sourceTree = "<group>"; };
+		C43D288E20186E3200655351 /* FilmListViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListViewItem.swift; sourceTree = "<group>"; };
 		C4409ED81FBB99BD007F7E3F /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		C4E5BEB01FCA0FE200569148 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		C4E5BEB31FCA13AB00569148 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				D3009ABB1EB5848500E075ED /* FilmLocation.swift */,
 				3A2D58651EBE30BC00BB7DBF /* User.swift */,
 				3ADABD551EBFA5D100F5F44C /* LocationImage.swift */,
+				C43D288E20186E3200655351 /* FilmListViewItem.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				D35BE4981EB69384003E0C8F /* MapViewController.swift in Sources */,
 				3A2D58661EBE30BC00BB7DBF /* User.swift in Sources */,
 				D3240DB71EC77DEC00E744A1 /* ProfilePhotosCollectionViewCell.swift in Sources */,
+				C43D288F20186E3200655351 /* FilmListViewItem.swift in Sources */,
 				D350F33E1EC2290D00162D90 /* MenuOption.swift in Sources */,
 				8894F1151EB945C500FFDAA1 /* MapView.swift in Sources */,
 				3A2D58641EBDCC2200BB7DBF /* PostViewController.swift in Sources */,
