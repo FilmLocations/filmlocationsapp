@@ -246,6 +246,8 @@ extension MapViewController: CLLocationManagerDelegate {
             print("locations = \(locValue.latitude) \(locValue.longitude)")
             userCurrentLocation = locValue
 
+            saveUsersLastKnownLocation(userCurrentLocation: locValue)
+
             currentLocationUpdated()
             lastUpdatedTimestamp = currentTime
             manager.stopUpdatingLocation()
