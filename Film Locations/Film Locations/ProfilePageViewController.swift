@@ -19,7 +19,6 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var userLocationLabel: UILabel!
     @IBOutlet weak var visitedCounterLabel: UILabel!
     @IBOutlet weak var favoriteCounterLabel: UILabel!
     
@@ -56,7 +55,6 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         collectionView.alpha = 1
         
         userNameLabel.textColor = UIColor.white
-        userLocationLabel.textColor = UIColor.white
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,7 +83,6 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         
         if user != nil && user?.screenname != "anonymous" {
             userNameLabel.text = user?.name
-            userLocationLabel.text = user?.location
             
             if let profileImageURL = user?.profileURL {
                 backgroundImageView.backgroundColor = UIColor.white

@@ -14,7 +14,6 @@ class User: NSObject {
     var formattedScreenName: String?
     var profileImageURL: String?
     var profileURL: URL?
-    var location: String?
     var isAnonymous = false
 
     init(screenName: String, name: String?, formattedScreenName: String?, profileImageURL: String?, profileURL: URL?) {
