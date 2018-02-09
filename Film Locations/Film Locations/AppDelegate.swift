@@ -55,11 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         LyftConfiguration.developer = (token: lyftConfigToken, clientId: lyftClientID)
         
-        
-        Database.sharedInstance.getAllLocations { locations in
-            print("We have \(locations.count) locations")
-        }
-        
         UIApplication.shared.statusBarStyle = .lightContent
 
         Fabric.with([Answers.self, Crashlytics.self])

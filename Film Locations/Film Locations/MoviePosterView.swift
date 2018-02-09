@@ -56,10 +56,10 @@ class MoviePosterView: UIView {
     
     func fetchImageForPoster(placeID: String) {
         
-        Database.sharedInstance.getLocationImageMetadata(placeId: placeID) { locationImages in
+        Database.shared.getLocationImageMetadata(placeId: placeID) { locationImages in
             
             if locationImages.count > 0 {
-                Database.sharedInstance.getLocationImage(filename: locationImages[0].imageName, completion: { locationImage in
+                Database.shared.getLocationImage(filename: locationImages[0].imageName, completion: { locationImage in
                     self.posterImageView.image = locationImage
                 })
             } else {

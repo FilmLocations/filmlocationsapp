@@ -15,14 +15,19 @@ import AWSS3
 
 class Database {
     
-    static let sharedInstance = Database()
+    static let shared: Database = {
+        let instance = Database()
+        return instance
+    }()
     
-    let databaseURL: String!
-    let credentialsProvider: AWSCognitoCredentialsProvider?
-    let formatter = DateFormatter()
-    let isoFormatter = ISO8601DateFormatter()
-    
-    init() {
+    private let databaseURL: String!
+    private let credentialsProvider: AWSCognitoCredentialsProvider?
+    private let formatter = DateFormatter()
+    private let isoFormatter = ISO8601DateFormatter()
+    private var movieLocations: [FilmLocation] = []
+
+    private init() {
+        
         print("Initializing Database")
         
         if let keys = NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Keys", ofType: "plist")!) {
@@ -45,7 +50,9 @@ class Database {
     
     func getAllLocations(completion: @escaping ([FilmLocation]) -> ()) {
         
-        var movieLocations: [FilmLocation] = []
+        if movieLocations.count > 0 {
+            completion(movieLocations)
+        }
         
         Alamofire.request(databaseURL + "locations").responseJSON { response in
         
@@ -54,10 +61,10 @@ class Database {
                 let json = JSON(value)
                 
                 for location in json {
-                    movieLocations.append(FilmLocation(json: location.1))
+                    self.movieLocations.append(FilmLocation(json: location.1))
                 }
                 
-                completion(movieLocations)
+                completion(self.movieLocations)
             }
         }
     }

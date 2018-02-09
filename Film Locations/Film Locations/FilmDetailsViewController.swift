@@ -93,10 +93,10 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         // Do any additional setup after loading the view.
         user = User.currentUser
         
-        Database.sharedInstance.getLocationImageMetadata(placeId: location.placeId) { locationImages in
+        Database.shared.getLocationImageMetadata(placeId: location.placeId) { locationImages in
             
             if locationImages.count > 0 {
-                Database.sharedInstance.getLocationImage(filename: locationImages[0].imageName, completion: { locationImage in
+                Database.shared.getLocationImage(filename: locationImages[0].imageName, completion: { locationImage in
                     self.topBackgroundImageView.image = locationImage
                     self.poweredByGoogleImageView.isHidden = true
                 })
@@ -151,12 +151,12 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidAppear(_ animated: Bool) {
 
-        Database.sharedInstance.getLocationImageMetadata(placeId: location.placeId) { locationImages in
+        Database.shared.getLocationImageMetadata(placeId: location.placeId) { locationImages in
             
             if self.locationImages != nil && locationImages.count != self.locationImages.count {
             
                 if locationImages.count > 0 {
-                    Database.sharedInstance.getLocationImage(filename: locationImages[0].imageName, completion: {(locationImage) in
+                    Database.shared.getLocationImage(filename: locationImages[0].imageName, completion: {(locationImage) in
                         self.topBackgroundImageView.image = locationImage
                     })
 
@@ -213,11 +213,11 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             visitButton.isUserInteractionEnabled = false
             likeButton.isUserInteractionEnabled = false
         } else {
-            Database.sharedInstance.hasVisitedLocation(userId: user.screenname, locationId: location.placeId) { hasVisited in
+            Database.shared.hasVisitedLocation(userId: user.screenname, locationId: location.placeId) { hasVisited in
                     self.visitButton.isSelected = hasVisited
             }
 
-            Database.sharedInstance.hasLikedLocation(userId: user.screenname, locationId: location.placeId) { hasLiked in
+            Database.shared.hasLikedLocation(userId: user.screenname, locationId: location.placeId) { hasLiked in
                     self.likeButton.isSelected = hasLiked
             }
         }
@@ -226,10 +226,10 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     private func updateCounts() {
-        Database.sharedInstance.locationLikesCount(placeId: location.placeId) { count in
+        Database.shared.locationLikesCount(placeId: location.placeId) { count in
             self.likesCount = count
         }
-        Database.sharedInstance.locationVisitsCount(placeId: location.placeId) { count in
+        Database.shared.locationVisitsCount(placeId: location.placeId) { count in
             self.visitsCount = count
         }
     }
@@ -296,11 +296,11 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
     @IBAction func visitLocation(_ sender: UIButton) {
         if visitButton.isSelected {
-            Database.sharedInstance.removeVisitLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
+            Database.shared.removeVisitLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
                 self.visitsCount = self.visitsCount - 1
             })
         } else {
-            Database.sharedInstance.visitLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
+            Database.shared.visitLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
                 self.visitsCount = self.visitsCount + 1
             })
         }
@@ -308,11 +308,11 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
 
     @IBAction func LikeLocation(_ sender: UIButton) {
         if likeButton.isSelected {
-            Database.sharedInstance.removeLikeLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
+            Database.shared.removeLikeLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
                 self.likesCount = self.likesCount - 1
             })
         } else {
-            Database.sharedInstance.likeLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
+            Database.shared.likeLocation(userId: user.screenname, locationId: location.placeId, completion: { completion in
                 self.likesCount = self.likesCount + 1
             })
         }
@@ -358,7 +358,7 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
         if (locationImages != nil && locationImages.count > 0) {
             poweredByGoogleImageView.isHidden = true
             
-            Database.sharedInstance.getLocationImage(filename: locationImages[indexPath.row].imageName, completion: { image in
+            Database.shared.getLocationImage(filename: locationImages[indexPath.row].imageName, completion: { image in
                 cell.locationPhotoImageView.image = image
             })
         } else {

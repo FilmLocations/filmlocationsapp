@@ -45,8 +45,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         activityIndicatorView.color = UIColor.fl_secondary!
         
         presentIndicator()
-        
-        Database.sharedInstance.getAllLocations { locations in
+        Database.shared.getAllLocations { locations in
             self.locations = locations
             
             // Request location when in use only

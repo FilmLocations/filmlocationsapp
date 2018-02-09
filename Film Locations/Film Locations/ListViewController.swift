@@ -79,7 +79,7 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
   
-        Database.sharedInstance.getAllLocations { locations in
+        Database.shared.getAllLocations { locations in
             self.locations = locations
             self.activeFilter = self.getPersistantActiveFilter()
             self.groupByLocation(locations: locations)
