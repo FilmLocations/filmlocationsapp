@@ -39,7 +39,8 @@ class HamburgerMenuController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.rowHeight = 60
+        tableView.isScrollEnabled = false
+        tableView.rowHeight = 50
         
         let mapStoryBoard = UIStoryboard(name: "Map", bundle: nil)
         let mapNavigationController = mapStoryBoard.instantiateViewController(withIdentifier: "MapNavigationController")
@@ -76,6 +77,10 @@ class HamburgerMenuController: UIViewController {
         
         user = User.currentUser
         updateUI()
+    }
+    
+    @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
+        hamburgerViewController.toggleMenu()
     }
     
     private func updateUI() {
