@@ -48,7 +48,7 @@ class MapView: UIView {
         } catch {
             print("One or more of the map styles failed to load. \(error)")
         }
-        
+
         googleMapView = mapView
         googleMapView.isMyLocationEnabled = true
         googleMapView.settings.myLocationButton = true
@@ -62,6 +62,10 @@ class MapView: UIView {
     
     func viewDidDisappear() {
         googleMapView.selectedMarker = nil
+    }
+    
+    func updatePhysicalLocation(location: CLLocationCoordinate2D) {
+        googleMapView.animate(toLocation: location)
     }
     
     func updateMapsMarkers(sortedLocations: [FilmLocation]) {

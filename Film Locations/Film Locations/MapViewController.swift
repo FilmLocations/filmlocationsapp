@@ -128,6 +128,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
     func updateViewWithNewData() {
         mapView.updateMapsMarkers(sortedLocations: sortedLocations)
+        
         carousel.reloadData()
     }
     
@@ -244,6 +245,7 @@ extension MapViewController: CLLocationManagerDelegate {
             let locValue:CLLocationCoordinate2D = manager.location!.coordinate
             print("locations = \(locValue.latitude) \(locValue.longitude)")
             userCurrentLocation = locValue
+            mapView.updatePhysicalLocation(location: locValue)
 
             saveUsersLastKnownLocation(userCurrentLocation: locValue)
 
