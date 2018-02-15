@@ -14,11 +14,12 @@ class FullscreenViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
-
+    @IBOutlet weak var poweredByGoogleImage: UIImageView!
+    @IBOutlet weak var imageInfoView: UIView!
+    
     var locationImageMetadata: LocationImage!
     var locationImage: UIImage!
     
-   // @IBOutlet weak var navigationBar: UINavigationBar!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,18 +32,20 @@ class FullscreenViewController: UIViewController {
             descriptionLabel.text = locationImageMetadata.description
             timeLabel.text = locationImageMetadata.timestamp
         } else {
-            descriptionLabel.text = "Image via Google"
+            descriptionLabel.text = ""
             timeLabel.text = ""
             userNameLabel.text = ""
+            poweredByGoogleImage.isHidden = false
+            imageInfoView.isHidden = true
         }
         
         userNameLabel.textColor = UIColor.white
         timeLabel.textColor = UIColor.white
         descriptionLabel.textColor = UIColor.white
         
-        let button1 = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(onBackButton))
+        let button1 = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(onBackButton))
         button1.tintColor = UIColor.white
-        navigationItem.leftBarButtonItem  = button1
+        navigationItem.leftBarButtonItem = button1
     }
 
     override func didReceiveMemoryWarning() {
