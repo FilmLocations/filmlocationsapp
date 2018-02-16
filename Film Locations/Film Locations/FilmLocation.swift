@@ -42,7 +42,10 @@ class FilmLocation {
         backdropImageURL = URL(string: baseStringURL + backdropImage)
         
         let posterImage = json["images"]["poster"].stringValue
-        posterImageURL = URL(string: baseStringURL + posterImage)
+        
+        if posterImage.count > 0 {
+            posterImageURL = URL(string: baseStringURL + posterImage)
+        }
 
         company = json["production"]["company"].stringValue
         director = json["production"]["director"].stringValue
