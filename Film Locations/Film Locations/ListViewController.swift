@@ -82,17 +82,19 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
     }
     
     func groupByLocation(locations: [FilmLocation]) {
+    
+        locationsGroupedByAddress.removeAll()
         
         for location in locations {
-         
-            if let item = filteredLocationsGroupedByAddress.index(where: {$0.id == location.id}) {
-                filteredLocationsGroupedByAddress[item].addresses.append(location.address)
+
+            if let item = locationsGroupedByAddress.index(where: {$0.id == location.id}) {
+                locationsGroupedByAddress[item].addresses.append(location.address)
             } else {
-                filteredLocationsGroupedByAddress.append(FilmListViewItem(location: location))
+                locationsGroupedByAddress.append(FilmListViewItem(location: location))
             }
         }
-        
-        locationsGroupedByAddress = filteredLocationsGroupedByAddress
+
+        filteredLocationsGroupedByAddress = locationsGroupedByAddress
     }
     
     @IBAction func onMenuPress(_ sender: UIBarButtonItem) {
