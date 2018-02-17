@@ -15,6 +15,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var continueWithoutLoginButton: UIButton!
     @IBOutlet weak var filmLocationsLabel: UILabel!
     @IBOutlet weak var sanFranciscoLabel: UILabel!
+    @IBOutlet weak var twitterLoginButton: TWTRLogInButton!
+    
+    // Used for enforcing the initial center of the twitterLoginButton
+    @IBOutlet weak var dummyTwitterLoginButton: UIButton!
     
     var pastelView = PastelView()
     
@@ -32,37 +36,28 @@ class LoginViewController: UIViewController {
                 store.logOutUserID(userID)
             }
         }
+        
+        twitterLoginButton.center = dummyTwitterLoginButton.center
 
-        let logInButton = TWTRLogInButton(logInCompletion: { session, error in
+        twitterLoginButton.logInCompletion = { session, error in
+            
             if (session != nil) {
                 print("signed in as \(session!.userName)");
-                self.goToMain()
                 
                 let client = TWTRAPIClient()
                 client.loadUser(withID: session!.userID, completion: { (user, error) in
                     User.currentUser = User(screenName: (user?.screenName)!, name: user?.name, formattedScreenName: (user?.formattedScreenName)!, profileImageURL: user?.profileImageLargeURL, profileURL: user?.profileURL)
+                    self.goToMain()
                 })
-                                
+                
             } else {
                 // TODO handle login failure
                 print("error: \(error!.localizedDescription)");
             }
-        })
-        
-        view.addSubview(logInButton)
-        logInButton.translatesAutoresizingMaskIntoConstraints = false
-        continueWithoutLoginButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        logInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logInButton.bottomAnchor.constraint(equalTo: continueWithoutLoginButton.topAnchor, constant: -16).isActive = true
-        
-        continueWithoutLoginButton.heightAnchor.constraint(equalTo: logInButton.heightAnchor).isActive = true
-        continueWithoutLoginButton.widthAnchor.constraint(equalTo: logInButton.widthAnchor).isActive = true
-        continueWithoutLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        continueWithoutLoginButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -16).isActive = true
-        
-        continueWithoutLoginButton.layer.cornerRadius = 4
+            
+        }
 
+        continueWithoutLoginButton.layer.cornerRadius = 4
         continueWithoutLoginButton.backgroundColor = UIColor.fl_primary_dark
         continueWithoutLoginButton.titleLabel?.textColor = UIColor.fl_primary_text
      
@@ -73,7 +68,7 @@ class LoginViewController: UIViewController {
         pastelView.endPastelPoint = .topRight
         
         // Custom Duration
-        pastelView.animationDuration = 3.0
+        pastelView.animationDuration = 2.0
         
         // Custom Color
         pastelView.setColors([UIColor(red: 0/255, green: 188/255, blue: 212/255, alpha: 1.0),
@@ -103,6 +98,7 @@ class LoginViewController: UIViewController {
     func goToMain() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let hvc = storyboard.instantiateViewController(withIdentifier: "HamburgerView") as! HamburgerViewController
+    
         present(hvc, animated: true, completion: nil)
     }
     

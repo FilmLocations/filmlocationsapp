@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5ZA-le-HpF">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -23,16 +23,19 @@
                         <viewControllerLayoutGuide type="bottom" id="kpb-5G-dSg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8m3-ut-hiV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapscreenshot" translatesAutoresizingMaskIntoConstraints="NO" id="8hP-mp-6bG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4g-0R-Njb">
-                                <rect key="frame" x="16" y="607" width="343" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4g-0R-Njb">
+                                <rect key="frame" x="52.666666666666657" y="718" width="270" height="40"/>
                                 <color key="backgroundColor" red="0.049296596389875484" green="0.045433462768754672" blue="0.074654980964466988" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="AJM-he-pBP"/>
+                                    <constraint firstAttribute="width" constant="270" id="zUb-rK-f4o"/>
+                                </constraints>
                                 <state key="normal" title="Continue without login">
                                     <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -41,36 +44,62 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Film Locations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0F-Ym-R88">
-                                <rect key="frame" x="47" y="226" width="281.5" height="84"/>
+                                <rect key="frame" x="47" y="250" width="281.33333333333331" height="84"/>
                                 <fontDescription key="fontDescription" name="Angelface" family="Angelface" pointSize="70"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Francisco" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQy-fB-VWN">
-                                <rect key="frame" x="53" y="111" width="270" height="84"/>
+                                <rect key="frame" x="53.333333333333343" y="135" width="270" height="84"/>
                                 <fontDescription key="fontDescription" name="Angelface" family="Angelface" pointSize="70"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fj9-Q9-PAJ" customClass="TWTRLogInButton">
+                                <rect key="frame" x="52.666666666666657" y="658" width="270" height="40"/>
+                                <state key="normal" title="Twitter Button"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wat-o8-42l">
+                                <rect key="frame" x="164.66666666666666" y="658" width="46" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ifz-uS-ECE"/>
+                                    <constraint firstAttribute="width" constant="46" id="r3A-Ax-83c"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="F4g-0R-Njb" secondAttribute="bottom" constant="20" id="0UH-ey-iFT"/>
                             <constraint firstItem="8hP-mp-6bG" firstAttribute="leading" secondItem="8m3-ut-hiV" secondAttribute="leading" id="Erc-eq-CP9"/>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="F29-yk-LcK"/>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="GM6-ZN-g8i"/>
                             <constraint firstAttribute="trailing" secondItem="8hP-mp-6bG" secondAttribute="trailing" id="Gu7-pK-Ip2"/>
                             <constraint firstItem="O0F-Ym-R88" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="Qxr-4d-88S"/>
+                            <constraint firstItem="Wat-o8-42l" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="T4R-Z7-aGX"/>
+                            <constraint firstItem="F4g-0R-Njb" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="TWh-xa-DL6"/>
                             <constraint firstItem="bQy-fB-VWN" firstAttribute="centerX" secondItem="8hP-mp-6bG" secondAttribute="centerX" id="URa-mo-X3r"/>
                             <constraint firstItem="8hP-mp-6bG" firstAttribute="top" secondItem="8m3-ut-hiV" secondAttribute="top" id="ZOp-oN-zLe"/>
-                            <constraint firstItem="O0F-Ym-R88" firstAttribute="top" secondItem="bQy-fB-VWN" secondAttribute="bottom" constant="31" id="Zqh-Gx-OMJ"/>
+                            <constraint firstItem="O0F-Ym-R88" firstAttribute="top" secondItem="bQy-fB-VWN" secondAttribute="bottom" constant="31" id="Zqh-Gx-OMJ">
+                                <variation key="heightClass=compact" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="fj9-Q9-PAJ" firstAttribute="centerX" secondItem="F4g-0R-Njb" secondAttribute="centerX" id="aQh-mi-R1z"/>
                             <constraint firstAttribute="trailing" secondItem="8hP-mp-6bG" secondAttribute="trailing" id="chD-cc-ZIt"/>
-                            <constraint firstItem="bQy-fB-VWN" firstAttribute="top" secondItem="dcz-DO-5qu" secondAttribute="bottom" constant="91" id="gZg-rS-NOo"/>
+                            <constraint firstItem="bQy-fB-VWN" firstAttribute="top" secondItem="dcz-DO-5qu" secondAttribute="bottom" constant="91" id="gZg-rS-NOo">
+                                <variation key="heightClass=compact" constant="20"/>
+                            </constraint>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="i7G-ha-NDZ"/>
+                            <constraint firstItem="fj9-Q9-PAJ" firstAttribute="width" secondItem="F4g-0R-Njb" secondAttribute="width" id="jdW-uQ-wqZ"/>
+                            <constraint firstItem="F4g-0R-Njb" firstAttribute="top" secondItem="Wat-o8-42l" secondAttribute="bottom" constant="20" id="mUG-VR-MNY"/>
+                            <constraint firstItem="F4g-0R-Njb" firstAttribute="top" secondItem="fj9-Q9-PAJ" secondAttribute="bottom" constant="20" id="sBn-xR-Ok7"/>
+                            <constraint firstItem="fj9-Q9-PAJ" firstAttribute="height" secondItem="F4g-0R-Njb" secondAttribute="height" id="sJl-Gf-qxJ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="continueWithoutLoginButton" destination="F4g-0R-Njb" id="Wek-mp-Kbh"/>
+                        <outlet property="dummyTwitterLoginButton" destination="Wat-o8-42l" id="uId-9v-v31"/>
                         <outlet property="filmLocationsLabel" destination="O0F-Ym-R88" id="FDo-GY-dDi"/>
                         <outlet property="sanFranciscoLabel" destination="bQy-fB-VWN" id="Pa1-kI-DN1"/>
+                        <outlet property="twitterLoginButton" destination="fj9-Q9-PAJ" id="hmh-0P-nTx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZl-bz-dGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
