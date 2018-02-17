@@ -52,6 +52,7 @@ class Database {
         
         if movieLocations.count > 0 {
             completion(movieLocations)
+            return
         }
         
         Alamofire.request(databaseURL + "locations").responseJSON { response in
