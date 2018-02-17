@@ -16,11 +16,6 @@ protocol MenuButtonPressDelegate {
 class ListViewController: UIViewController, MenuContentViewControllerProtocol {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var filtersView: UIView!
-    @IBOutlet weak var newMoviesFilterLabel: UILabel!
-    @IBOutlet weak var popularFilterLabel: UILabel!
-    @IBOutlet weak var mostVisitedFilterLabel: UILabel!
-    @IBOutlet weak var favoritesFilterLabel: UILabel!
     
     var locations: [FilmLocation] = []
     var filteredLocationsGroupedByAddress: [FilmListViewItem] = []
@@ -44,20 +39,15 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
             if viewIfLoaded == nil {
                 return
             }
-            deactivateAllFilters()
             
             switch newValue {
             case .NewMovies:
-                newMoviesFilterLabel.isHidden = false
                 filteredLocationsGroupedByAddress = sortMoviesByReleaseDates()
             case .Popular:
-                popularFilterLabel.isHidden = false
                 filteredLocationsGroupedByAddress = sortMoviesByPopularity()
             case .MostVisited:
-                mostVisitedFilterLabel.isHidden = false
                 filteredLocationsGroupedByAddress = filteredLocationsGroupedByAddress.sorted{$0.addresses.count > $1.addresses.count}
             case .Favorites:
-                favoritesFilterLabel.isHidden = false
                 filteredLocationsGroupedByAddress = filteredLocationsGroupedByAddress.sorted{$0.releaseYear > $1.releaseYear}
             }
             
@@ -87,16 +77,6 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
         }
         
         setupSearchBar()
-        
-        filtersView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onFilterTapGesture(_:))))
-
-        filtersView.backgroundColor = UIColor.fl_secondary
-        filtersView.tintColor = UIColor.black
-
-        newMoviesFilterLabel.backgroundColor = UIColor.black
-        popularFilterLabel.backgroundColor = UIColor.black
-        mostVisitedFilterLabel.backgroundColor = UIColor.black
-        favoritesFilterLabel.backgroundColor = UIColor.black
         
         dateFormatter.dateFormat = "YYYY-MM-DD"
     }
@@ -134,34 +114,6 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
     private func setPersistantActiveFilter(to value: Int) {
         UserDefaults.standard.set(value, forKey: "ActiveFilter")
         UserDefaults.standard.synchronize()
-    }
-    
-    private func deactivateAllFilters() {
-        newMoviesFilterLabel.isHidden = true
-        popularFilterLabel.isHidden = true
-        mostVisitedFilterLabel.isHidden = true
-        favoritesFilterLabel.isHidden = true
-    }
-    
-    @objc private func onFilterTapGesture(_ sender: UITapGestureRecognizer) {
-        sender.numberOfTapsRequired = 1
-        if sender.state == .ended
-        {
-            let tappedPosition = sender.location(in: filtersView)
-            
-            switch tappedPosition.x {
-            case 8...43:
-                activeFilter = .NewMovies
-            case 76...135:
-                activeFilter = .Popular
-            case 168...263:
-                activeFilter = .MostVisited
-            case 297...367:
-                activeFilter = .Favorites
-            default:
-                break
-            }
-        }
     }
     
     private func sortMoviesByReleaseDates() -> [FilmListViewItem] {
