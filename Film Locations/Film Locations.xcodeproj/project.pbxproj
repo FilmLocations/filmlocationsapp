@@ -27,7 +27,6 @@
 		3ADABD5A1EBFBEF600F5F44C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADABD591EBFBEF600F5F44C /* LoginViewController.swift */; };
 		881502811EC53AD700342769 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881502801EC53AD700342769 /* iCarousel.m */; };
 		881502861EC8F37400342769 /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = 881502851EC8F37400342769 /* style.json */; };
-		884098741EC2E13800F2B605 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884098731EC2E13800F2B605 /* ActivityIndicator.swift */; };
 		884098761EC2E18500F2B605 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884098751EC2E18500F2B605 /* Utility.swift */; };
 		88790C081EB6F9BE0025C5EE /* MoviePosterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */; };
 		88790C0C1EB6FA3D0025C5EE /* MoviePosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88790C0B1EB6FA3D0025C5EE /* MoviePosterView.swift */; };
@@ -82,7 +81,6 @@
 		8815027F1EC53AD700342769 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		881502801EC53AD700342769 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		881502851EC8F37400342769 /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
-		884098731EC2E13800F2B605 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		884098751EC2E18500F2B605 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviePosterView.xib; sourceTree = "<group>"; };
 		88790C0B1EB6FA3D0025C5EE /* MoviePosterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviePosterView.swift; sourceTree = "<group>"; };
@@ -256,7 +254,6 @@
 			children = (
 				D3240DB61EC77DEC00E744A1 /* ProfilePhotosCollectionViewCell.swift */,
 				D350F3391EC221CA00162D90 /* HamburgerMenuCell.swift */,
-				884098731EC2E13800F2B605 /* ActivityIndicator.swift */,
 				D3009AC21EB584C200E075ED /* ListViewCell.swift */,
 				3A2365DB1EB5495300D60443 /* LocationPhotoCollectionViewCell.swift */,
 				88790C071EB6F9BE0025C5EE /* MoviePosterView.xib */,
@@ -465,7 +462,6 @@
 				D3009ABE1EB5848500E075ED /* FilmLocation.swift in Sources */,
 				3A224F9F1EAD611700091BB3 /* MainViewController.swift in Sources */,
 				D350F33A1EC221CA00162D90 /* HamburgerMenuCell.swift in Sources */,
-				884098741EC2E13800F2B605 /* ActivityIndicator.swift in Sources */,
 				881502811EC53AD700342769 /* iCarousel.m in Sources */,
 				D3009AC31EB584C200E075ED /* ListViewCell.swift in Sources */,
 				D350F3371EC1830E00162D90 /* AboutViewController.swift in Sources */,
