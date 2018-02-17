@@ -32,10 +32,12 @@ class MoviePosterView: UIView {
     
     var moviePosterDataSource: MoviePosterViewDataSource! {
         didSet {
-            yearLabel.attributedText = InternalConfiguration.customizeTextAppearance1(text: "(\(moviePosterDataSource.location.releaseYear))")
-            titleLabel.attributedText  = InternalConfiguration.customizeTextAppearance1(text: moviePosterDataSource.location.title)
+            yearLabel.text = "(\(moviePosterDataSource.location.releaseYear))"
+            titleLabel.text = moviePosterDataSource.location.title
             if !moviePosterDataSource.displaySearchData {
-                posterImageView.setImageWith(moviePosterDataSource.location.posterImageURL!)
+                if let posterImageURL = moviePosterDataSource.location.posterImageURL {
+                    posterImageView.setImageWith(posterImageURL)
+                }
             } else {
                 posterImageView.image = UIImage(named: "Place-Dummy")
                 fetchImageForPoster(placeID: moviePosterDataSource.location.placeId)
@@ -46,7 +48,7 @@ class MoviePosterView: UIView {
             if let currentLocation = moviePosterDataSource.currentUserLocation {
                 let distance = currentLocation.distance(from: movieLocation)
             
-                distanceLabel.attributedText = InternalConfiguration.customizeTextAppearance1(text: "\(String(format: "%.2f", metersToMiles(distance:distance))) miles")
+                distanceLabel.text = "\(String(format: "%.2f", metersToMiles(distance:distance))) miles"
             } else {
                 distanceLabel.isHidden = true
                 bottonLeftVisualView.isHidden = true
@@ -104,35 +106,28 @@ class MoviePosterView: UIView {
         tapGesture.delegate = self
         posterImageView.addGestureRecognizer(tapGesture)
         
-        bottonLeftVisualView.layer.cornerRadius = 15
-        bottonLeftVisualView.clipsToBounds = true
+        contentView.layer.cornerRadius = 3
+        contentView.clipsToBounds = true
         
-        topLeftVisualView.layer.cornerRadius = 15
+        bottonLeftVisualView.layer.cornerRadius = 3
+        bottonLeftVisualView.clipsToBounds = true
+
+        topLeftVisualView.layer.cornerRadius = 3
         topLeftVisualView.clipsToBounds = true
     }
     
     func setUp() {
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 1
+        layer.shadowOpacity = 0.8
         layer.shadowOffset = CGSize.zero
-        layer.shadowRadius = 10
+        layer.shadowRadius = 5
         backgroundColor = UIColor.clear
     }
     
     let borderWidth = 0.8
     let cornerRadius:Double = 10
     var borderColor: UIColor = UIColor.gray
-    
-    override func draw(_ rect: CGRect) {
-        
-        UIBezierPath(roundedRect: bounds, cornerRadius: CGFloat(cornerRadius)).fill()
-        
-        let borderRect = bounds.insetBy(dx: CGFloat(borderWidth/2), dy: CGFloat(borderWidth/2))
-        let borderPath = UIBezierPath(roundedRect: borderRect, cornerRadius: CGFloat(cornerRadius - borderWidth/2))
-        borderColor.setStroke()
-        borderPath.lineWidth = CGFloat(borderWidth)
-        borderPath.stroke()
-    }
+
 }
 
 extension MoviePosterView : UIGestureRecognizerDelegate {
