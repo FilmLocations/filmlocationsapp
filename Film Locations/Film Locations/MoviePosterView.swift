@@ -123,11 +123,6 @@ class MoviePosterView: UIView {
         layer.shadowRadius = 5
         backgroundColor = UIColor.clear
     }
-    
-    let borderWidth = 0.8
-    let cornerRadius:Double = 10
-    var borderColor: UIColor = UIColor.gray
-
 }
 
 extension MoviePosterView : UIGestureRecognizerDelegate {
