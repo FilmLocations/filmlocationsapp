@@ -13,7 +13,7 @@ struct InternalConfiguration {
     static let mapToggleIcon = "mapToggleIcon"
     static let listToggleIcon = "listToggleIcon"
 
-    static let navigationBarColor = UIColor.black //UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
+    static let navigationBarColor = UIColor.black
     static let selectedCellColor = UIColor.fl_secondary_text
     
     static func customizeTextAppearance(text: String) -> NSAttributedString {
@@ -68,16 +68,6 @@ extension UIColor {
     static let fl_secondary = UIColor.init(fromHexString: "#00BCD4FF")
     static let fl_secondary_700 = UIColor.init(fromHexString: "#0097A7FF")
     static let fl_secondary_200 = UIColor.init(fromHexString: "#80DEEAFF")
-    
-//    static let fl_primary = UIColor.init(fromHexString: "#9e9e9eFF")
-//    static let fl_primary_dark = UIColor.init(fromHexString: "#616161FF")
-//    static let fl_primary_light = UIColor.init(fromHexString: "#CFD8DCFF")
-//    static let fl_secondary = UIColor.init(fromHexString: "#E7C877FF")
-//    static let fl_accent = UIColor.init(fromHexString: "#00BCD4FF")
-//    static let fl_primary_text = UIColor.init(fromHexString: "#212121FF")
-//    static let fl_secondary_text = UIColor.init(fromHexString: "#757575FF")
-//    static let fl_icons = UIColor.init(fromHexString: "#FFFFFFFF")
-//    static let fl_divider = UIColor.init(fromHexString: "#BDBDBDFF")
 
     public convenience init?(fromHexString: String) {
         let r, g, b, a: CGFloat
