@@ -73,10 +73,10 @@ extension UIColor {
         let r, g, b, a: CGFloat
         
         if fromHexString.hasPrefix("#") {
-            let start = fromHexString.characters.index(fromHexString.startIndex, offsetBy: 1)
-            let hexColor = fromHexString.substring(from: start)
+            let start = fromHexString.index(fromHexString.startIndex, offsetBy: 1)
+            let hexColor = String(fromHexString[start...])
             
-            if hexColor.characters.count == 8 {
+            if hexColor.count == 8 {
                 let scanner = Scanner(string: hexColor)
                 var hexNumber: UInt64 = 0
                 
