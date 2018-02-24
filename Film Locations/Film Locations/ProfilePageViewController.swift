@@ -12,22 +12,17 @@ import FXBlurView
 
 class ProfilePageViewController: UIViewController, MenuContentViewControllerProtocol {
     
-    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var transparentBackgroundView: UIView!
-    @IBOutlet weak var visitedView: UIView!
-    @IBOutlet weak var favoritesView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var visitedCounterLabel: UILabel!
     @IBOutlet weak var favoriteCounterLabel: UILabel!
-    
+    @IBOutlet weak var twitterHandleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var delegate: MenuButtonPressDelegate?
-    
     var user: User?
-    
     var photos: [LocationImage] = []
     
     override func viewDidLoad() {
@@ -41,35 +36,35 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         collectionView.delegate = self
 
         transparentBackgroundView.backgroundColor = UIColor.fl_secondary
-        transparentBackgroundView.alpha = 0.80
         
-        visitedView.backgroundColor = UIColor.fl_secondary_700
-        visitedView.alpha = 1
-        visitedCounterLabel.textColor = UIColor.white
-        
-        favoritesView.backgroundColor = UIColor.fl_secondary_700
-        favoritesView.alpha = 1
-        favoriteCounterLabel.textColor = UIColor.white
-        
-        collectionView.backgroundColor = UIColor.white
-        collectionView.alpha = 1
-        
-        userNameLabel.textColor = UIColor.white
+        collectionView.backgroundColor = UIColor.fl_primary
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        Database.shared.getUserImageMetadata(userId: (user?.screenname)!) { locationImages in
+        guard let user = user else {
+            return
+        }
+        
+        Database.shared.getUserImageMetadata(userId: user.screenname!) { locationImages in
             self.photos = locationImages
             self.collectionView.reloadData()
         }
-        Database.shared.userVisitsCount(userId: (user?.screenname)!, completion: { visitedCounter in
-            self.visitedCounterLabel.text = "\(visitedCounter)"
+        Database.shared.userVisitsCount(userId: user.screenname!, completion: { visitedCounter in
+            if (visitedCounter == 1) {
+                self.visitedCounterLabel.text = "\(visitedCounter) visit"
+            } else {
+                self.visitedCounterLabel.text = "\(visitedCounter) visits"
+            }
         })
         
-        Database.shared.userLikesCount(userId: (user?.screenname)!) { favoriteCounter in
-            self.favoriteCounterLabel.text = "\(favoriteCounter)"
+        Database.shared.userLikesCount(userId: user.screenname!) { favoriteCounter in
+            if (favoriteCounter == 1) {
+                self.favoriteCounterLabel.text = "\(favoriteCounter) like"
+            } else {
+                self.favoriteCounterLabel.text = "\(favoriteCounter) likes"
+            }
         }
         
         updateUI()
@@ -81,14 +76,14 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
 
     private func updateUI() {
         
-        if user != nil && user?.screenname != "anonymous" {
-            userNameLabel.text = user?.name
-            
-            if let profileImageURL = user?.profileURL {
-                backgroundImageView.backgroundColor = UIColor.white
-                backgroundImageView.setImageWith(profileImageURL)
-                //            backgroundImageView.image = backgroundImageView.image?.blurredImage(withRadius: 5, iterations: 5, tintColor: nil)
-                profileImageView.setImageWith(profileImageURL)
+        if let user = user {
+            if (!user.isAnonymous) {
+                userNameLabel.text = user.name
+                twitterHandleLabel.text = "@\(user.screenname!)"
+                
+                if let profileImageURL = user.profileImageURL {
+                    profileImageView.setImageWith(URL(string: profileImageURL)!)
+                }
             }
         }
         
@@ -100,7 +95,13 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
     }
 }
 
-extension ProfilePageViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension ProfilePageViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionHeaderView", for: indexPath)
+        return headerView
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
@@ -130,5 +131,16 @@ extension ProfilePageViewController: UICollectionViewDataSource, UICollectionVie
         fullscreen.locationImage = cell.photoImageView.image
         
         present(nav, animated: true, completion: nil)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: view.frame.width / 3, height: view.frame.width / 3)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        return CGSize(width: collectionView.bounds.width, height: 20)
     }
 }
