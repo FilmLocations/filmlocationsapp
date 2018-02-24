@@ -34,6 +34,7 @@ class LoginViewController: UIViewController {
             
             if let userID = store.session()?.userID {
                 store.logOutUserID(userID)
+                User.currentUser = nil
             }
         }
         
