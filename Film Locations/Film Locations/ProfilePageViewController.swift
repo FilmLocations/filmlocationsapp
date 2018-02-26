@@ -123,7 +123,6 @@ extension ProfilePageViewController: UICollectionViewDataSource, UICollectionVie
         let fullscreen = storyboard.instantiateViewController(withIdentifier: "Fullscreen") as! FullscreenViewController
         
         let nav = UINavigationController(rootViewController: fullscreen)
-        nav.navigationBar.barTintColor = UIColor.fl_primary_dark
         
         fullscreen.locationImageMetadata = photos[indexPath.row]
         

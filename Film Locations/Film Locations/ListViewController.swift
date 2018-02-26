@@ -174,7 +174,8 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
             // display address
             cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath)
             cell.textLabel?.text = filteredLocationsGroupedByAddress[indexPath.section].addresses[indexPath.row-1]
-            
+            cell.textLabel?.textColor = UIColor.white
+            cell.backgroundColor = UIColor.fl_primary
         }
         return cell!
     }
