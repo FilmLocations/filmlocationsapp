@@ -272,7 +272,7 @@ extension MapViewController: UISearchBarDelegate {
             if query.count > 0 {
                 let filteredMovies = locations.filter { movie -> Bool in
                     
-                    if (movie.title.lowercased().range(of:query.lowercased()) != nil) || (movie.releaseYear.lowercased().range(of: query.lowercased()) != nil) {
+                    if (movie.title.lowercased().range(of:query.lowercased()) != nil) || (String(movie.releaseYear).range(of: query.lowercased()) != nil) {
                         return true
                     }
                     return false

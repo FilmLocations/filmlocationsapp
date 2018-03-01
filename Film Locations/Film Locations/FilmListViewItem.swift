@@ -12,7 +12,7 @@ class FilmListViewItem {
     
     var id: Int
     var date: String?
-    var releaseYear: String
+    var releaseYear: Int
     var title: String
     var popularity: Double?
     var posterImageURL: URL?

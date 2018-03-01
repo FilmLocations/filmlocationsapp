@@ -19,7 +19,7 @@ class FilmLocation {
     var director: String?
     var writer: String?
     var date: String?
-    var releaseYear: String
+    var releaseYear: Int
     var title: String
     var popularity: Double?
     var address: String
@@ -52,7 +52,7 @@ class FilmLocation {
         writer = json["production"]["writer"].stringValue
         
         date = json["date"].stringValue
-        releaseYear = json["year"].stringValue
+        releaseYear = json["year"].intValue
         
         title = json["title"].stringValue
         
