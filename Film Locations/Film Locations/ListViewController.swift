@@ -32,6 +32,7 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        tableView.backgroundColor = UIColor.fl_primary
         tableView.dataSource = self
         tableView.delegate = self
 
@@ -69,6 +70,7 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
     }
     
     @IBAction func onMenuPress(_ sender: UIBarButtonItem) {
+        search.resignFirstResponder()
         delegate?.onMenuButtonPress()
     }
     
@@ -118,6 +120,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        search.resignFirstResponder()
         tableView.deselectRow(at: indexPath, animated: false)
 
         if indexPath.row == 0 {
