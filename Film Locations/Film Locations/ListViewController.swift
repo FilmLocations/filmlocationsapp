@@ -26,37 +26,7 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
     let dateFormatter = DateFormatter()
     
     var delegate: MenuButtonPressDelegate?
-    
-    private enum Filters: Int {
-        case NewMovies = 0
-        case Popular
-        case MostVisited
-        case Favorites
-    }
-    
-    private var activeFilter: Filters = .NewMovies {
-        willSet {
-            if viewIfLoaded == nil {
-                return
-            }
-            
-            switch newValue {
-            case .NewMovies:
-                filteredLocationsGroupedByAddress = sortMoviesByReleaseDates()
-            case .Popular:
-                filteredLocationsGroupedByAddress = sortMoviesByPopularity()
-            case .MostVisited:
-                filteredLocationsGroupedByAddress = filteredLocationsGroupedByAddress.sorted{$0.addresses.count > $1.addresses.count}
-            case .Favorites:
-                filteredLocationsGroupedByAddress = filteredLocationsGroupedByAddress.sorted{$0.releaseYear > $1.releaseYear}
-            }
-            
-            setPersistantActiveFilter(to: newValue.rawValue)
-            
-            // refresh the display
-            tableView.reloadData()
-        }
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +41,6 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
   
         Database.shared.getAllLocations { locations in
             self.locations = locations
-            self.activeFilter = self.getPersistantActiveFilter()
             self.groupByLocation(locations: locations)
             self.tableView.reloadData()
         }
@@ -94,6 +63,8 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
             }
         }
 
+        locationsGroupedByAddress = sortListByReleaseDate(locations: locationsGroupedByAddress)
+        
         filteredLocationsGroupedByAddress = locationsGroupedByAddress
     }
     
@@ -108,46 +79,11 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
         
         search.delegate = self
     }
-    
-    private func getPersistantActiveFilter() -> Filters {
-        return UserDefaults.standard.object(forKey: "ActiveFilter") as? Filters ?? .NewMovies
-    }
-    
-    private func setPersistantActiveFilter(to value: Int) {
-        UserDefaults.standard.set(value, forKey: "ActiveFilter")
-        UserDefaults.standard.synchronize()
-    }
-    
-    private func sortMoviesByReleaseDates() -> [FilmListViewItem] {
-        filteredLocationsGroupedByAddress.sort { (movie1, movie2) -> Bool in
-            guard let stringDate1 = movie1.date else {
-                return false
-            }
-            
-            guard let stringDate2 = movie2.date else {
-                return false
-            }
-            
-            let date1 = dateFormatter.date(from: stringDate1)
-            let date2 = dateFormatter.date(from: stringDate2)
-        
-            return date1!.compare(date2!) == ComparisonResult.orderedDescending
-        }
-        return filteredLocationsGroupedByAddress
-    }
-    
-    private func sortMoviesByPopularity() -> [FilmListViewItem] {
-        filteredLocationsGroupedByAddress.sort { (movie1, movie2) -> Bool in
-            guard let popularity1 = movie1.popularity else {
-                return false
-            }
 
-            guard let popularity2 = movie2.popularity else {
-                return false
-            }
-            return popularity1 > popularity2
-        }
-        return filteredLocationsGroupedByAddress
+    
+    private func sortListByReleaseDate(locations: [FilmListViewItem]) -> [FilmListViewItem] {
+        
+        return locations.sorted(by: { return $0.releaseYear > $1.releaseYear })
     }
 }
 
@@ -162,41 +98,42 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell!
+        
         if indexPath.row == 0 {
             // display movie info
-            let movieCell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? ListViewCell
-            movieCell?.movie = filteredLocationsGroupedByAddress[indexPath.section]
+            let movieCell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! ListViewCell
+            movieCell.movie = filteredLocationsGroupedByAddress[indexPath.section]
             
-            cell = movieCell
+            return movieCell
         }
         else {
             // display address
-            cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath)
-            cell.textLabel?.text = filteredLocationsGroupedByAddress[indexPath.section].addresses[indexPath.row-1]
-            cell.textLabel?.textColor = UIColor.white
-            cell.backgroundColor = UIColor.fl_primary
+            let listCell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath)
+            listCell.textLabel?.text = filteredLocationsGroupedByAddress[indexPath.section].addresses[indexPath.row-1]
+            listCell.textLabel?.textColor = UIColor.white
+            listCell.backgroundColor = UIColor.fl_primary
+            
+            return listCell
         }
-        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         tableView.deselectRow(at: indexPath, animated: false)
-        
+
         if indexPath.row == 0 {
             
             // while expanding, move selected movie on top of the table
-            if filteredLocationsGroupedByAddress[indexPath.section].isExpanded {
+            if !filteredLocationsGroupedByAddress[indexPath.section].isExpanded {
                 tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
             }
 
             filteredLocationsGroupedByAddress[indexPath.section].isExpanded = !filteredLocationsGroupedByAddress[indexPath.section].isExpanded
             
             tableView.reloadData()
-            //tableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
+            //tableView.reloadSections(IndexSet(integer: indexPath.section), with: .bottom)
         }
         else {
+
             // Address tap - open details page
             let filmDetailsStoryBoard = UIStoryboard(name: "FilmDetails", bundle: nil)
 
@@ -241,7 +178,7 @@ extension ListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         isSearchActive = searchText != ""
-        filteredLocationsGroupedByAddress = isSearchActive ? locationsGroupedByAddress.filter{$0.title.localizedCaseInsensitiveContains(searchText) || $0.releaseYear.contains(searchText)} : locationsGroupedByAddress
+        filteredLocationsGroupedByAddress = isSearchActive ? locationsGroupedByAddress.filter{$0.title.localizedCaseInsensitiveContains(searchText) || String($0.releaseYear).contains(searchText)} : locationsGroupedByAddress
         tableView.reloadData()
     }
 }

@@ -16,7 +16,7 @@ class ListViewCell: UITableViewCell {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var numberOfLocationsLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
-    
+    @IBOutlet weak var locationsVisualEffectView: UIVisualEffectView!
     
     var movie: FilmListViewItem? {
         didSet {
@@ -33,19 +33,22 @@ class ListViewCell: UITableViewCell {
         posterImageView.image = nil
         
         if let movie = movie {
+            locationsVisualEffectView.layer.cornerRadius = 3
+            locationsVisualEffectView.clipsToBounds = true
+            locationsVisualEffectView.contentView.backgroundColor = UIColor.fl_secondary
             
-            titleLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: movie.title)
-            yearLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: movie.releaseYear)
+            titleLabel.text = movie.title
+            yearLabel.text = String(movie.releaseYear)
             
             var numberOfLocations = ""
             if movie.addresses.count == 1 {
-                numberOfLocations = "1 LOCATION"
+                numberOfLocations = "1 Location"
             }
             else {
-                numberOfLocations = "\(movie.addresses.count) LOCATIONS"
+                numberOfLocations = "\(movie.addresses.count) Locations"
             }
             
-            numberOfLocationsLabel.attributedText = InternalConfiguration.customizeTextAppearance(text: numberOfLocations)
+            numberOfLocationsLabel.text = numberOfLocations
             
             if let posterImageURL = movie.posterImageURL {
                 posterImageView.setImageWith(posterImageURL)
