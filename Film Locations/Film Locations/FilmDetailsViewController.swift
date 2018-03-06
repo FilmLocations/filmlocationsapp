@@ -28,6 +28,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var addressVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var lyftButton: LyftButton!
     @IBOutlet weak var poweredByGoogleImageView: UIImageView!
+    @IBOutlet weak var noPosterImageLabel: UILabel!
     
     var location: FilmLocation! {
         didSet {
@@ -67,7 +68,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(onBackButtonPress(_:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(onBackButtonPress(_:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPhoto(_:)))
         
         // Set up action buttons
@@ -115,7 +116,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             let userLocation = CLLocationCoordinate2D(latitude: userCurrentLocation["lat"] as! CLLocationDegrees, longitude: userCurrentLocation["long"] as! CLLocationDegrees)
             
             let destination = CLLocationCoordinate2D(latitude: location.lat, longitude: location.long)
-            lyftButton.style = .mulberryLight
+            lyftButton.style = .mulberryDark
             lyftButton.configure(rideKind: LyftSDK.RideKind.Line, pickup: userLocation, destination: destination)
         } else {
             lyftButton.removeFromSuperview()
@@ -144,7 +145,6 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         overviewLabel.textColor = UIColor.fl_primary_light
         numberOfVisitsLabel.textColor = UIColor.fl_primary_dark
         numberOfLikesLabel.textColor = UIColor.fl_primary_dark
-        addressLabel.textColor = UIColor.fl_primary_text
         navigationController?.navigationBar.tintColor = UIColor.fl_primary_text
         navigationController?.navigationBar.barTintColor = UIColor.fl_primary_dark
     }
@@ -202,6 +202,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         if let movie = location {
             if let posterImageURL = movie.posterImageURL {
                 posterImageView.setImageWith(posterImageURL)
+                noPosterImageLabel.isHidden = true
             }
             addressLabel.text = movie.address
             titleLabel.text = "\(movie.title) (\(movie.releaseYear))"
@@ -337,7 +338,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     }
 }
 
-extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let images = locationImages {
@@ -383,5 +384,15 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         openFullscreenView(indexPath: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: (view.frame.width / 3) - 1, height: (view.frame.width / 3) - 1)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        return CGSize(width: collectionView.bounds.width, height: 20)
     }
 }
