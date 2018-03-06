@@ -88,7 +88,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         visitButton.color = UIColor.fl_primary!
         visitButton.image = .custom(#imageLiteral(resourceName: "check"))
         visitButton.addTarget(self, action: #selector(visitLocation(_:)), for: .touchUpInside)
-        likesView.layer.zPosition = 1
+        visitLocationView.layer.zPosition = 1
         visitLocationView.addSubview(visitButton)
         
         // Do any additional setup after loading the view.
