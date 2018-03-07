@@ -35,6 +35,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="240" id="CgP-MC-uBZ"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="jkW-Mi-73m" appends="YES" id="quN-oE-sVA"/>
+                                                </connections>
                                             </imageView>
                                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJN-3Y-XAS">
                                                 <rect key="frame" x="0.0" y="214" width="375" height="26"/>
@@ -208,9 +211,6 @@
                                             <constraint firstItem="kcs-lR-mVz" firstAttribute="leading" secondItem="VbI-DE-541" secondAttribute="leading" id="sok-tW-2m2"/>
                                             <constraint firstItem="yM0-4W-NyZ" firstAttribute="leading" secondItem="VbI-DE-541" secondAttribute="leading" constant="8" id="xAQ-Vi-eQF"/>
                                         </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="C6T-8s-eDa" appends="YES" id="4yK-nV-gc6"/>
-                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -249,10 +249,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEx-Xz-FyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="C6T-8s-eDa" userLabel="Top Image Tap Gesture">
+                <tapGestureRecognizer id="jkW-Mi-73m" userLabel="Top Image Tap Gesture Recognizer">
                     <connections>
-                        <action selector="tapTopImage:" destination="1hP-5W-E5H" id="d1L-zC-Pw1"/>
-                        <outlet property="delegate" destination="bwg-1x-8n6" id="v3n-pJ-CIZ"/>
+                        <action selector="tapTopImage:" destination="1hP-5W-E5H" id="GFs-do-3gI"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
