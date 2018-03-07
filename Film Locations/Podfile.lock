@@ -14,18 +14,16 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
-  - Alamofire (4.6.0)
+  - Alamofire (4.7.0)
   - AWSCognito (2.6.12):
     - AWSCore (= 2.6.12)
   - AWSCore (2.6.12)
   - AWSS3 (2.6.12):
     - AWSCore (= 2.6.12)
-  - BDBOAuth1Manager (2.0.0):
-    - AFNetworking/NSURLSession (~> 3.0.0)
   - BRYXBanner (0.8.0)
-  - Crashlytics (3.10.0):
-    - Fabric (~> 1.7.3)
-  - Fabric (1.7.3)
+  - Crashlytics (3.10.1):
+    - Fabric (~> 1.7.5)
+  - Fabric (1.7.5)
   - FXBlurView (1.6.4)
   - GoogleMaps (2.6.0):
     - GoogleMaps/Maps (= 2.6.0)
@@ -52,7 +50,6 @@ DEPENDENCIES:
   - Alamofire (~> 4.4)
   - AWSCognito
   - AWSS3
-  - BDBOAuth1Manager
   - BRYXBanner
   - Crashlytics
   - Fabric
@@ -68,14 +65,13 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
-  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   AWSCognito: c69d91501b460c8abe22e224a0d5c3277486a21b
   AWSCore: d0d6e4f6831754aaf98058d2306a016ae71510fe
   AWSS3: c35608e0cdd5172f9e1d943221fd5fde01c5f749
-  BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   BRYXBanner: 406c3775789136531da6f3c98058be2f16e08a34
-  Crashlytics: a989ef242b66605577a425733797f810bd2725eb
-  Fabric: bb495bb9a7a7677c6d03a1f8b83d95bc49b47e41
+  Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
+  Fabric: ae7146a5f505ea370a1e44820b4b1dc8890e2890
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
   GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
   GooglePlaces: f6ddf33b75cef69e888907d9947c57198ed845f3
@@ -87,6 +83,6 @@ SPEC CHECKSUMS:
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
   WCLShineButton: d8b979b6f6f9f6709f9e241e6e1a4712a1a9b36b
 
-PODFILE CHECKSUM: ec9af9ecca9ad21319dbbe5f672c4d07290ab194
+PODFILE CHECKSUM: 6fadebca6ce760d9fc2afaa8b42bec6915eec619
 
 COCOAPODS: 1.3.1
