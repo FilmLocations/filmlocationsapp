@@ -52,7 +52,7 @@ class FilmLocation {
         writer = json["production"]["writer"].stringValue
         
         date = json["date"].stringValue
-        releaseYear = json["year"].intValue
+        releaseYear = json["year"]["$numberInt"].intValue
         
         title = json["title"].stringValue
         
