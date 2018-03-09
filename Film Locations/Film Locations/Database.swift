@@ -70,8 +70,8 @@ class Database {
         }
     }
 
-    func addPhoto(userId: String, placeId: String, image: UIImage, description: String, completion: @escaping (Bool) -> ()) {
-        print("Adding photo for \(userId) to \(placeId)")
+    func addPhoto(userId: String, locationId: String, placeId: String, image: UIImage, description: String, completion: @escaping (Bool) -> ()) {
+        print("Adding photo for \(userId) to \(locationId)")
         
         let configuration = AWSServiceConfiguration(region:.USWest2, credentialsProvider:credentialsProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
@@ -120,7 +120,8 @@ class Database {
                     "name": "\(filename).png",
                     "userId": userId,
                     "description": description,
-                    "placeId": placeId
+                    "placeId": placeId,
+                    "locationId": locationId
                     ] as [String : Any]
                 print("send to images API \(parameters)")
 
@@ -194,9 +195,9 @@ class Database {
         }
     }
     
-    func locationLikesCount(placeId: String, completion: @escaping (Int) -> ()) {
+    func locationLikesCount(locationId: String, completion: @escaping (Int) -> ()) {
         
-        Alamofire.request(databaseURL + "locations/\(placeId)/likes").responseJSON { response in
+        Alamofire.request(databaseURL + "locations/\(locationId)/likes").responseJSON { response in
             if let count = response.result.value as? Int {
                 completion(count)
             } else {
@@ -205,9 +206,9 @@ class Database {
         }
     }
     
-    func locationVisitsCount(placeId: String, completion: @escaping (Int) -> ()) {
+    func locationVisitsCount(locationId: String, completion: @escaping (Int) -> ()) {
         
-        Alamofire.request(databaseURL + "locations/\(placeId)/visits").responseJSON { response in
+        Alamofire.request(databaseURL + "locations/\(locationId)/visits").responseJSON { response in
             if let count = response.result.value as? Int {
                 completion(count)
             } else {
@@ -249,8 +250,8 @@ class Database {
         }
     }
     
-    func getLocationImageMetadata(placeId: String, completion: @escaping ([LocationImage]) -> ()) {
-        Alamofire.request(databaseURL + "images?placeId=\(placeId)", encoding: JSONEncoding.default).responseJSON { response in
+    func getLocationImageMetadata(locationId: String, completion: @escaping ([LocationImage]) -> ()) {
+        Alamofire.request(databaseURL + "images?locationId=\(locationId)", encoding: JSONEncoding.default).responseJSON { response in
             var locationImages = [LocationImage]()
             
             if let value = response.result.value {
@@ -272,6 +273,7 @@ class Database {
     
     func convertLocationImageData(location: (String, JSON)) -> LocationImage {
         
+        let locationId = location.1["_id"]["$oid"].stringValue
         let fileName = location.1["name"].stringValue
         let description = location.1["description"].stringValue
         let userId = location.1["userId"].stringValue
@@ -286,7 +288,7 @@ class Database {
             formattedTimestamp = formatter.string(from: date)
         }
         
-        let location = LocationImage(imageName: fileName, description: description, userId: userId, timestamp: formattedTimestamp, placeId: placeId)
+        let location = LocationImage(locationId: locationId, imageName: fileName, description: description, userId: userId, timestamp: formattedTimestamp, placeId: placeId)
         
         return location
     }

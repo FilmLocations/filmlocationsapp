@@ -57,7 +57,7 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
         
         for location in locations {
 
-            if let item = locationsGroupedByAddress.index(where: {$0.id == location.id}) {
+            if let item = locationsGroupedByAddress.index(where: {$0.tmdbId == location.tmdbId}) {
                 locationsGroupedByAddress[item].addresses.append(location.address)
             } else {
                 locationsGroupedByAddress.append(FilmListViewItem(location: location))
@@ -143,8 +143,8 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
             let selectedLocationCell = tableView.cellForRow(at: indexPath)
             
             if let detailsViewController = filmDetailsStoryBoard.instantiateViewController(withIdentifier: "FilmDetailsViewController") as? FilmDetailsViewController {
-            
-                if let selectedLocation = locations.first(where: { $0.id == filteredLocationsGroupedByAddress[indexPath.section].id
+                
+                if let selectedLocation = locations.first(where: { $0.tmdbId == filteredLocationsGroupedByAddress[indexPath.section].tmdbId
                     && $0.address == selectedLocationCell?.textLabel?.text
                 }) {
                     detailsViewController.location = selectedLocation

@@ -10,7 +10,7 @@ import Foundation
 
 class FilmListViewItem {
     
-    var id: Int
+    var tmdbId: Int
     var date: String?
     var releaseYear: Int
     var title: String
@@ -20,7 +20,7 @@ class FilmListViewItem {
     var isExpanded = false
     
     init(location: FilmLocation) {
-        self.id = location.id
+        self.tmdbId = location.tmdbId
         self.date = location.date
         self.releaseYear = location.releaseYear
         self.title = location.title

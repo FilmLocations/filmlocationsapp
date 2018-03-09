@@ -17,6 +17,7 @@ class PostViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     var postImage: UIImage!
     var postPlaceId: String!
+    var locationId: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,7 @@ class PostViewController: UIViewController {
         let screenName = User.currentUser!.screenname!
         let description = descriptionTextField.text ?? ""
         
-        Database.shared.addPhoto(userId: screenName, placeId: postPlaceId, image: postImage, description: description) { completed in
+        Database.shared.addPhoto(userId: screenName, locationId: locationId, placeId: postPlaceId, image: postImage, description: description) { completed in
             self.dismiss(animated: true, completion: nil)
         }
     }

@@ -9,10 +9,11 @@ import Foundation
 import SwiftyJSON
 
 class FilmLocation {
+    var id: String
     var actors: [String]?
     var description: String?
     var genreIds: [Int]?
-    var id: Int
+    var tmdbId: Int
     var backdropImageURL: URL?
     var posterImageURL: URL?
     var company: String?
@@ -30,13 +31,15 @@ class FilmLocation {
     private let baseStringURL = "http://image.tmdb.org/t/p/w500"
     
     init(json: JSON) {
+        id = json["_id"]["$oid"].stringValue
+        
         actors = json["actors"].arrayValue.map{$0.stringValue}
         
         description = json["description"].stringValue
         
         genreIds = json["genres"].arrayValue.map{$0["$numberInt"].intValue}
         
-        id = json["tmdbid"]["$numberInt"].intValue
+        tmdbId = json["tmdbid"]["$numberInt"].intValue
         
         let backdropImage = json["images"]["backdrop"].stringValue
         backdropImageURL = URL(string: baseStringURL + backdropImage)

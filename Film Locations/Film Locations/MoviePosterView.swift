@@ -40,7 +40,7 @@ class MoviePosterView: UIView {
                 }
             } else {
                 posterImageView.image = UIImage(named: "Place-Dummy")
-                fetchImageForPoster(placeID: moviePosterDataSource.location.placeId)
+                fetchImageForPoster(location: moviePosterDataSource.location)
             }
             
             let movieLocation = CLLocation(latitude: moviePosterDataSource.location.lat, longitude: moviePosterDataSource.location.long)
@@ -56,16 +56,16 @@ class MoviePosterView: UIView {
         }
     }
     
-    func fetchImageForPoster(placeID: String) {
+    func fetchImageForPoster(location: FilmLocation) {
         
-        Database.shared.getLocationImageMetadata(placeId: placeID) { locationImages in
+        Database.shared.getLocationImageMetadata(locationId: location.id) { locationImages in
             
             if locationImages.count > 0 {
                 Database.shared.getLocationImage(filename: locationImages[0].imageName, completion: { locationImage in
                     self.posterImageView.image = locationImage
                 })
             } else {
-                Utility.loadFirstPhotoForPlace(placeID: placeID, callback: { (image:UIImage?) in
+                Utility.loadFirstPhotoForPlace(placeID: location.placeId, callback: { (image:UIImage?) in
                     if let image = image {
                         self.posterImageView.image = image
                     } else {

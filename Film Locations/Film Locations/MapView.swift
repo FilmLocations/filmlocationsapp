@@ -116,7 +116,7 @@ class MapView: UIView {
         
         if let markerMovie = marker.userData as? FilmLocation {
             
-            if let index = displayData.index(where: {$0.placeId == markerMovie.placeId && $0.id ==  markerMovie.id}) {
+            if let index = displayData.index(where: {$0.placeId == markerMovie.placeId && $0.tmdbId ==  markerMovie.tmdbId}) {
                 delegate?.didTap(markerIndex: index)
                 currentSelectedMarker = marker
             }
