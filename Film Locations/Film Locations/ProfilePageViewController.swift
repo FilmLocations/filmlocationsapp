@@ -30,13 +30,12 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
 
         // Do any additional setup after loading the view.
         
-        user = User.currentUser
+        user = User.currentUser!
         
         collectionView.dataSource = self
         collectionView.delegate = self
 
         transparentBackgroundView.backgroundColor = UIColor.fl_secondary
-        
         collectionView.backgroundColor = UIColor.fl_primary
     }
     
@@ -47,23 +46,30 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
             return
         }
         
-        Database.shared.getUserImageMetadata(userId: user.screenname!) { locationImages in
-            self.photos = locationImages
-            self.collectionView.reloadData()
-        }
-        Database.shared.userVisitsCount(userId: user.screenname!, completion: { visitedCounter in
-            if (visitedCounter == 1) {
-                self.visitedCounterLabel.text = "\(visitedCounter) visit"
-            } else {
-                self.visitedCounterLabel.text = "\(visitedCounter) visits"
+        if (user.isAnonymous) {
+            twitterHandleLabel.isHidden = true
+        } else {
+            Database.shared.getUserImageMetadata(userId: user.screenname) { locationImages in
+                if (locationImages.count != self.photos.count) {
+                    self.photos = locationImages
+                    self.collectionView.reloadData()
+                }
             }
-        })
-        
-        Database.shared.userLikesCount(userId: user.screenname!) { favoriteCounter in
-            if (favoriteCounter == 1) {
-                self.favoriteCounterLabel.text = "\(favoriteCounter) like"
-            } else {
-                self.favoriteCounterLabel.text = "\(favoriteCounter) likes"
+            
+            Database.shared.userVisitsCount(userId: user.screenname) { visitedCounter in
+                if (visitedCounter == 1) {
+                    self.visitedCounterLabel.text = "\(visitedCounter) visit"
+                } else {
+                    self.visitedCounterLabel.text = "\(visitedCounter) visits"
+                }
+            }
+            
+            Database.shared.userLikesCount(userId: user.screenname) { favoriteCounter in
+                if (favoriteCounter == 1) {
+                    self.favoriteCounterLabel.text = "\(favoriteCounter) like"
+                } else {
+                    self.favoriteCounterLabel.text = "\(favoriteCounter) likes"
+                }
             }
         }
         
