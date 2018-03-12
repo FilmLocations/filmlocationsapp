@@ -329,14 +329,18 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         
         // Go to post edit view
         dismiss(animated: true) {
+            
             let storyboard = UIStoryboard(name: "Post", bundle: nil)
-    
             let pvc = storyboard.instantiateViewController(withIdentifier: "Post") as! PostViewController
             pvc.postImage = editedImage
             pvc.postPlaceId = self.location.placeId
             pvc.locationId = self.location.id
-
-            self.present(pvc, animated: true, completion: nil)
+            
+            
+            let navigationController = UINavigationController(rootViewController: pvc)
+            navigationController.setViewControllers([pvc], animated: false)
+            
+            self.present(navigationController, animated: true, completion: nil)
         }
     }
 }
