@@ -65,7 +65,7 @@ class MoviePosterView: UIView {
                     self.posterImageView.image = locationImage
                 })
             } else {
-                Utility.loadFirstPhotoForPlace(placeID: location.placeId, callback: { (image:UIImage?) in
+                Utility.loadFirstPhotoForPlace(placeID: location.placeId, callback: { (image, attribution) in
                     if let image = image {
                         self.posterImageView.image = image
                     } else {

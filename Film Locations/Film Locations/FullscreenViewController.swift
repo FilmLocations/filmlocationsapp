@@ -16,13 +16,17 @@ class FullscreenViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var poweredByGoogleImage: UIImageView!
     @IBOutlet weak var imageInfoView: UIView!
+    @IBOutlet weak var closeButton: UIImageView!
     
     var locationImageMetadata: LocationImage!
     var locationImage: UIImage!
+    var googleAttribution: NSAttributedString?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.navigationBar.barTintColor = UIColor.fl_primary_dark
+        
         // Do any additional setup after loading the view.
         
         locationImageView.image = locationImage
@@ -32,20 +36,17 @@ class FullscreenViewController: UIViewController {
             descriptionLabel.text = locationImageMetadata.description
             timeLabel.text = locationImageMetadata.timestamp
         } else {
-            descriptionLabel.text = ""
-            timeLabel.text = ""
-            userNameLabel.text = ""
+            
+            if let googleAttribution = googleAttribution {
+                let attribution = NSMutableAttributedString(string: "By ")
+                attribution.append(googleAttribution)
+                descriptionLabel.attributedText = attribution
+            }
+            
+            timeLabel.isHidden = true
+            userNameLabel.isHidden = true
             poweredByGoogleImage.isHidden = false
-            imageInfoView.isHidden = true
         }
-        
-        userNameLabel.textColor = UIColor.white
-        timeLabel.textColor = UIColor.white
-        descriptionLabel.textColor = UIColor.white
-        
-        let button1 = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(onBackButton))
-        button1.tintColor = UIColor.white
-        navigationItem.leftBarButtonItem = button1
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,14 +58,17 @@ class FullscreenViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func tapView(_ sender: UITapGestureRecognizer) {
+        if imageInfoView.alpha > 0 {
+            UIView.animate(withDuration: 0.3) {
+                self.imageInfoView.alpha = 0
+                self.closeButton.alpha = 0
+            }
+        } else {
+            UIView.animate(withDuration: 0.3) {
+                self.imageInfoView.alpha = 0.7
+                self.closeButton.alpha = 1
+            }
+        }
     }
-    */
-
 }

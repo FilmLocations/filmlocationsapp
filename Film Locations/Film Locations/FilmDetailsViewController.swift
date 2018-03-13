@@ -42,6 +42,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             photosCollectionView.reloadData()
         }
     }
+    var googleAttribution: NSAttributedString?
     
     var visitButton: WCLShineButton!
     var likeButton: WCLShineButton!
@@ -251,9 +252,6 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         
         let fullscreen = storyboard.instantiateViewController(withIdentifier: "Fullscreen") as! FullscreenViewController
         
-        let nav = UINavigationController(rootViewController: fullscreen)
-        nav.navigationBar.barTintColor = UIColor.fl_primary_dark
-        
         if let indexPath = indexPath {
             if (locationImages.count > 0) {
                 fullscreen.locationImageMetadata = locationImages[indexPath.row]
@@ -267,9 +265,10 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
                 fullscreen.locationImageMetadata = locationImages[0]
             }
             fullscreen.locationImage = topBackgroundImageView.image
+            fullscreen.googleAttribution = googleAttribution
         }
         
-        present(nav, animated: true, completion: nil)
+        present(fullscreen, animated: true, completion: nil)
     }
     
     @IBAction func addPhoto(_ sender: UIButton) {
@@ -371,11 +370,12 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
             })
         } else {
             if (hasTriedLoadingUserImages) {
-                Utility.loadFirstPhotoForPlace(placeID: location.placeId, callback: { image in
+                Utility.loadFirstPhotoForPlace(placeID: location.placeId, callback: { (image, attribution)  in
                     
                     if image != nil {
                         cell.locationPhotoImageView.image = image
                         self.topBackgroundImageView.image = image
+                        self.googleAttribution = attribution
                     } else {
                         Utility.loadRandomPhotoForPlace(placeID: "ChIJIQBpAG2ahYAR_6128GcTUEo", callback: { (image:UIImage?) in
                             cell.locationPhotoImageView.image = image

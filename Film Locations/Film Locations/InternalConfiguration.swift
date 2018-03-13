@@ -13,7 +13,7 @@ struct InternalConfiguration {
     static let mapToggleIcon = "mapToggleIcon"
     static let listToggleIcon = "listToggleIcon"
 
-    static let navigationBarColor = UIColor.black
+    static let navigationBarColor = UIColor.fl_primary_dark
     static let selectedCellColor = UIColor.fl_secondary_text
     
     static func customizeTextAppearance(text: String) -> NSAttributedString {
@@ -25,16 +25,6 @@ struct InternalConfiguration {
     static func customizeNavigationBar(navigationController: UINavigationController?) {
         navigationController?.navigationBar.barTintColor = navigationBarColor
         navigationController?.navigationBar.tintColor = .white
-    }
-    
-    static func customizeTextAppearance1(text: String) -> NSAttributedString {
-        let shadow = NSShadow()
-        shadow.shadowColor = UIColor.black
-        shadow.shadowOffset = CGSize(width: 2, height: 2)
-        shadow.shadowBlurRadius = 4
-        let attributeColor = UIColor.white
-        
-        return NSAttributedString(string: text, attributes: [NSAttributedStringKey.foregroundColor: attributeColor,NSAttributedStringKey.shadow: shadow])
     }
     
     static func setStatusBarBackgroundColor() {

@@ -46,26 +46,27 @@ class Utility {
         }
     }
     
-    class func loadFirstPhotoForPlace(placeID: String, callback: @escaping (UIImage?)->()) {
+    class func loadFirstPhotoForPlace(placeID: String, callback: @escaping (UIImage?, NSAttributedString?)->()) {
         GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
             if let error = error {
                 // TODO: handle the error.
                 print("Error: \(error.localizedDescription)")
-                callback(nil)
+                callback(nil, nil)
             } else {
                 
                 guard let firstPhoto = photos?.results.first else {
-                    callback(nil)
+                    callback(nil, nil)
                     return
                 }
+
                 GMSPlacesClient.shared().loadPlacePhoto(firstPhoto, callback: {
                     (photo, error) -> Void in
                     if let error = error {
                         // TODO: handle the error.
                         print("Error: \(error.localizedDescription)")
-                        callback(nil)
+                        callback(nil, nil)
                     } else {
-                        callback(photo)
+                        callback(photo, firstPhoto.attributions)
                     }
                 })
             }
