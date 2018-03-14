@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1eq-mJ-y2M">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,56 +22,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pTz-AK-Tua">
-                                <rect key="frame" x="0.0" y="28" width="375" height="380"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="380"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="380" id="RCY-Zp-hMk"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D40-Y4-kJJ">
-                                <rect key="frame" x="0.0" y="416" width="375" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D40-Y4-kJJ">
+                                <rect key="frame" x="0.0" y="452" width="375" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6f-0U-e9T">
-                                <rect key="frame" x="0.0" y="454" width="48" height="30"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="onCancelButton:" destination="2NX-et-Fof" eventType="touchUpInside" id="DEa-dW-ViU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ol-5R-syD">
-                                <rect key="frame" x="344" y="454" width="31" height="30"/>
-                                <state key="normal" title="Post"/>
-                                <connections>
-                                    <action selector="onPostButton:" destination="2NX-et-Fof" eventType="touchUpInside" id="PaI-E4-YpE"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pTz-AK-Tua" firstAttribute="leading" secondItem="1So-Zd-FUM" secondAttribute="leading" id="9CX-mq-IFK"/>
-                            <constraint firstItem="k6f-0U-e9T" firstAttribute="top" secondItem="D40-Y4-kJJ" secondAttribute="bottom" constant="8" id="NOs-mO-za8"/>
                             <constraint firstAttribute="trailing" secondItem="D40-Y4-kJJ" secondAttribute="trailing" id="XEj-hu-GOM"/>
-                            <constraint firstItem="k6f-0U-e9T" firstAttribute="leading" secondItem="1So-Zd-FUM" secondAttribute="leading" id="aoV-W3-3wI"/>
-                            <constraint firstItem="1ol-5R-syD" firstAttribute="top" secondItem="D40-Y4-kJJ" secondAttribute="bottom" constant="8" id="cuU-on-V7Y"/>
                             <constraint firstAttribute="trailing" secondItem="pTz-AK-Tua" secondAttribute="trailing" id="hvu-4h-kff"/>
                             <constraint firstItem="D40-Y4-kJJ" firstAttribute="top" secondItem="pTz-AK-Tua" secondAttribute="bottom" constant="8" id="s9c-HG-IKj"/>
                             <constraint firstItem="D40-Y4-kJJ" firstAttribute="leading" secondItem="1So-Zd-FUM" secondAttribute="leading" id="uBd-3S-XCQ"/>
-                            <constraint firstAttribute="trailing" secondItem="1ol-5R-syD" secondAttribute="trailing" id="vWW-L9-PTM"/>
-                            <constraint firstItem="pTz-AK-Tua" firstAttribute="top" secondItem="w02-KJ-YRW" secondAttribute="bottom" constant="8" id="wn2-w7-wzA"/>
+                            <constraint firstItem="pTz-AK-Tua" firstAttribute="top" secondItem="w02-KJ-YRW" secondAttribute="bottom" id="wn2-w7-wzA"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="aoM-Pb-5xe"/>
                     <connections>
-                        <outlet property="cancelButton" destination="k6f-0U-e9T" id="OGQ-8g-Sig"/>
                         <outlet property="descriptionTextField" destination="D40-Y4-kJJ" id="OeK-UD-IIf"/>
-                        <outlet property="postButton" destination="1ol-5R-syD" id="W5T-Ef-etb"/>
                         <outlet property="postImageView" destination="pTz-AK-Tua" id="oTT-rZ-t6F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hwR-9B-PaB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-590" y="82"/>
+            <point key="canvasLocation" x="-252" y="81.409295352323838"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cJN-1i-ewR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1eq-mJ-y2M" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cVB-yz-k1n">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2NX-et-Fof" kind="relationship" relationship="rootViewController" id="ls4-A8-Lgo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UEE-Kk-tY4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-978" y="81"/>
         </scene>
     </scenes>
 </document>

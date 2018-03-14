@@ -13,8 +13,6 @@ class PostViewController: UIViewController {
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var descriptionTextField: UITextField!
     
-    @IBOutlet weak var postButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
     var postImage: UIImage!
     var postPlaceId: String!
     var locationId: String!
@@ -24,9 +22,15 @@ class PostViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         postImageView.image = postImage
-
-        postButton.tintColor = UIColor.fl_primary
-        cancelButton.tintColor = UIColor.fl_primary
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(onCancelButton(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Post", style: .plain, target: self, action: #selector(onPostButton(_:)))
+        
+        navigationController?.navigationBar.barTintColor = UIColor.fl_primary
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.isTranslucent = false
+        
+        view.backgroundColor = UIColor.fl_primary
     }
 
     override func didReceiveMemoryWarning() {

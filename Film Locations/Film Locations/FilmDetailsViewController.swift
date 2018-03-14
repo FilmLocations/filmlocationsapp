@@ -282,6 +282,13 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         let vc = UIImagePickerController()
+        vc.navigationBar.barTintColor = UIColor.fl_primary
+        vc.navigationBar.tintColor = UIColor.white
+        vc.navigationBar.isTranslucent = false
+        vc.navigationBar.titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor : UIColor.white
+        ]
+        
         vc.delegate = self
         vc.allowsEditing = true
 
