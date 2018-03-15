@@ -34,6 +34,7 @@
 		8A559882E961A19DE2C6ECF3 /* Pods_Film_Locations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA186C724D76407B1FE1434 /* Pods_Film_Locations.framework */; };
 		C43D288F20186E3200655351 /* FilmListViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43D288E20186E3200655351 /* FilmListViewItem.swift */; };
 		C4409ED91FBB99BD007F7E3F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4409ED81FBB99BD007F7E3F /* Keys.plist */; };
+		C4CA2D282057251A00ABB38D /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA2D272057251A00ABB38D /* GradientView.swift */; };
 		D3009ABE1EB5848500E075ED /* FilmLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009ABB1EB5848500E075ED /* FilmLocation.swift */; };
 		D3009AC31EB584C200E075ED /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009AC21EB584C200E075ED /* ListViewCell.swift */; };
 		D3009AC51EB584CD00E075ED /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3009AC41EB584CD00E075ED /* ListViewController.swift */; };
@@ -88,6 +89,7 @@
 		95F5320A160EB9BDD66EB8A0 /* Pods-Film Locations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Film Locations.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations.debug.xcconfig"; sourceTree = "<group>"; };
 		C43D288E20186E3200655351 /* FilmListViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListViewItem.swift; sourceTree = "<group>"; };
 		C4409ED81FBB99BD007F7E3F /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		C4CA2D272057251A00ABB38D /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		C4E5BEB01FCA0FE200569148 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		C4E5BEB31FCA13AB00569148 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		D251F5A791118332ED48C6CD /* Pods-Film Locations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Film Locations.release.xcconfig"; path = "Pods/Target Support Files/Pods-Film Locations/Pods-Film Locations.release.xcconfig"; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				88790C0B1EB6FA3D0025C5EE /* MoviePosterView.swift */,
 				8894F1141EB945C500FFDAA1 /* MapView.swift */,
 				884098751EC2E18500F2B605 /* Utility.swift */,
+				C4CA2D272057251A00ABB38D /* GradientView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				D31F4FEA1EB4552F003CC557 /* MenuViewController.swift in Sources */,
 				3A224F9D1EAD611700091BB3 /* AppDelegate.swift in Sources */,
 				88790C0C1EB6FA3D0025C5EE /* MoviePosterView.swift in Sources */,
+				C4CA2D282057251A00ABB38D /* GradientView.swift in Sources */,
 				D3283AF71EBE6B95008B2237 /* HamburgerMenuController.swift in Sources */,
 				D31F4FED1EB45633003CC557 /* InternalConfiguration.swift in Sources */,
 			);
