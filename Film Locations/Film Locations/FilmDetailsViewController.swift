@@ -19,7 +19,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var topBackgroundImageView: UIImageView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var overviewTextView: UITextView!
     @IBOutlet weak var numberOfVisitsLabel: UILabel!
     @IBOutlet weak var numberOfLikesLabel: UILabel!
     @IBOutlet weak var visitLocationView: UIView!
@@ -85,7 +85,6 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         likeButton.color = UIColor.fl_primary!
         likeButton.image = .custom(#imageLiteral(resourceName: "heart"))
         likeButton.addTarget(self, action: #selector(LikeLocation(_:)), for: .touchUpInside)
-        likesView.layer.zPosition = 1
         likesView.addSubview(likeButton)
         
         visitButton = WCLShineButton(frame: .init(x: 5, y: 0, width: 25, height: 25), params: shineParams)
@@ -93,7 +92,6 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         visitButton.color = UIColor.fl_primary!
         visitButton.image = .custom(#imageLiteral(resourceName: "check"))
         visitButton.addTarget(self, action: #selector(visitLocation(_:)), for: .touchUpInside)
-        visitLocationView.layer.zPosition = 1
         visitLocationView.addSubview(visitButton)
         
         // Do any additional setup after loading the view.
@@ -147,7 +145,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         visitLocationView.backgroundColor = UIColor.white
         photosCollectionView.backgroundColor = UIColor.white
         titleLabel.textColor = UIColor.fl_primary_light
-        overviewLabel.textColor = UIColor.fl_primary_light
+        overviewTextView.textColor = UIColor.fl_primary_light
         numberOfVisitsLabel.textColor = UIColor.fl_primary_dark
         numberOfLikesLabel.textColor = UIColor.fl_primary_dark
         navigationController?.navigationBar.tintColor = UIColor.fl_primary_text
@@ -169,6 +167,11 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
                 self.updateCounts()
             }
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        overviewTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
     
     @objc func onBackButtonPress(_ sender: UIButton) {
@@ -209,7 +212,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             }
             addressLabel.text = movie.address
             titleLabel.text = "\(movie.title) (\(movie.releaseYear))"
-            overviewLabel.text = movie.description
+            overviewTextView.text = movie.description
         }
         
         // Anonymous users can't mark as visited or like
@@ -227,6 +230,9 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         }
 
         updateCounts()
+        
+        likesView.layer.zPosition = 1
+        visitLocationView.layer.zPosition = 1
     }
 
     private func updateCounts() {
@@ -259,15 +265,15 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             
             let cell = photosCollectionView.cellForItem(at: indexPath as IndexPath) as! LocationPhotoCollectionViewCell
             fullscreen.locationImage = cell.locationPhotoImageView.image
-        
         } else {
             if (locationImages.count > 0) {
                 fullscreen.locationImageMetadata = locationImages[0]
             }
             fullscreen.locationImage = topBackgroundImageView.image
-            fullscreen.googleAttribution = googleAttribution
         }
         
+        fullscreen.googleAttribution = googleAttribution
+
         present(fullscreen, animated: true, completion: nil)
     }
     
