@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +14,6 @@
         <scene sceneID="aFn-5U-BUd">
             <objects>
                 <viewController id="Z9O-pV-rlX" customClass="ProfilePageViewController" customModule="Film_Locations" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nA8-ri-dhd"/>
-                        <viewControllerLayoutGuide type="bottom" id="qJj-lb-Yob"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="r9q-B9-fdi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,13 +172,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="brP-lO-d8s" firstAttribute="top" secondItem="Ab8-fS-Hcx" secondAttribute="bottom" id="3La-QV-OMM"/>
-                            <constraint firstItem="qJj-lb-Yob" firstAttribute="top" secondItem="brP-lO-d8s" secondAttribute="bottom" id="4eB-EI-Shr"/>
-                            <constraint firstItem="Ab8-fS-Hcx" firstAttribute="top" secondItem="nA8-ri-dhd" secondAttribute="bottom" id="OKj-hb-3Tj"/>
-                            <constraint firstAttribute="trailing" secondItem="brP-lO-d8s" secondAttribute="trailing" id="V2r-Vc-Pom"/>
-                            <constraint firstAttribute="trailing" secondItem="Ab8-fS-Hcx" secondAttribute="trailing" id="VBx-Nr-3H3"/>
-                            <constraint firstItem="Ab8-fS-Hcx" firstAttribute="leading" secondItem="r9q-B9-fdi" secondAttribute="leading" id="VdH-Rq-rAP"/>
-                            <constraint firstItem="brP-lO-d8s" firstAttribute="leading" secondItem="r9q-B9-fdi" secondAttribute="leading" id="j8A-Vt-FId"/>
+                            <constraint firstAttribute="bottom" secondItem="brP-lO-d8s" secondAttribute="bottom" id="4eB-EI-Shr"/>
+                            <constraint firstItem="Ab8-fS-Hcx" firstAttribute="top" secondItem="WrY-CG-uqL" secondAttribute="top" id="OKj-hb-3Tj"/>
+                            <constraint firstItem="WrY-CG-uqL" firstAttribute="trailing" secondItem="brP-lO-d8s" secondAttribute="trailing" id="V2r-Vc-Pom"/>
+                            <constraint firstItem="WrY-CG-uqL" firstAttribute="trailing" secondItem="Ab8-fS-Hcx" secondAttribute="trailing" id="VBx-Nr-3H3"/>
+                            <constraint firstItem="Ab8-fS-Hcx" firstAttribute="leading" secondItem="WrY-CG-uqL" secondAttribute="leading" id="VdH-Rq-rAP"/>
+                            <constraint firstItem="brP-lO-d8s" firstAttribute="leading" secondItem="WrY-CG-uqL" secondAttribute="leading" id="j8A-Vt-FId"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="WrY-CG-uqL"/>
                     </view>
                     <navigationItem key="navigationItem" id="BZl-K1-Fge">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="qJ7-rV-qJg">

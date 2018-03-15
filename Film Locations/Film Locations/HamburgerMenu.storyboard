@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -19,10 +20,6 @@
         <scene sceneID="6EK-P0-oen">
             <objects>
                 <viewController storyboardIdentifier="HamburgerMenuView" id="e4S-ym-yAx" customClass="HamburgerMenuController" customModule="Film_Locations" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xDy-QN-ePX"/>
-                        <viewControllerLayoutGuide type="bottom" id="z6g-76-OhD"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Nye-C8-t1x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -66,6 +63,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="q4w-gt-mmI">
                                 <rect key="frame" x="0.0" y="180" width="375" height="487"/>
                                 <color key="backgroundColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                                <viewLayoutGuide key="safeArea" id="U0N-MW-uzF"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCell" rowHeight="50" id="wv8-v5-NSj" customClass="HamburgerMenuCell" customModule="Film_Locations" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
@@ -108,14 +106,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="V77-2A-LQg" secondAttribute="trailing" id="6PR-qh-YgT"/>
+                            <constraint firstItem="bha-FF-eZW" firstAttribute="trailing" secondItem="V77-2A-LQg" secondAttribute="trailing" id="6PR-qh-YgT"/>
                             <constraint firstItem="V77-2A-LQg" firstAttribute="top" secondItem="Nye-C8-t1x" secondAttribute="top" id="C0s-Nj-s9N"/>
-                            <constraint firstItem="z6g-76-OhD" firstAttribute="top" secondItem="q4w-gt-mmI" secondAttribute="bottom" id="gyh-1m-hgy"/>
-                            <constraint firstItem="V77-2A-LQg" firstAttribute="leading" secondItem="Nye-C8-t1x" secondAttribute="leading" id="nGz-n1-V3P"/>
-                            <constraint firstAttribute="trailing" secondItem="q4w-gt-mmI" secondAttribute="trailing" id="ndS-4J-VLV"/>
-                            <constraint firstItem="q4w-gt-mmI" firstAttribute="leading" secondItem="Nye-C8-t1x" secondAttribute="leading" id="qrw-T6-9Qz"/>
+                            <constraint firstAttribute="bottom" secondItem="q4w-gt-mmI" secondAttribute="bottom" id="ezz-9f-lbj"/>
+                            <constraint firstItem="V77-2A-LQg" firstAttribute="leading" secondItem="bha-FF-eZW" secondAttribute="leading" id="nGz-n1-V3P"/>
+                            <constraint firstItem="bha-FF-eZW" firstAttribute="trailing" secondItem="q4w-gt-mmI" secondAttribute="trailing" id="ndS-4J-VLV"/>
+                            <constraint firstItem="q4w-gt-mmI" firstAttribute="leading" secondItem="bha-FF-eZW" secondAttribute="leading" id="qrw-T6-9Qz"/>
                             <constraint firstItem="q4w-gt-mmI" firstAttribute="top" secondItem="V77-2A-LQg" secondAttribute="bottom" id="ra9-oQ-jRe"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="bha-FF-eZW"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="n8s-Uv-2lY" appends="YES" id="h9V-b3-jZJ"/>
                         </connections>

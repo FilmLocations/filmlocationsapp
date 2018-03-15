@@ -34,10 +34,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="a3J-8Q-3Eo" firstAttribute="top" secondItem="tna-hE-GgB" secondAttribute="top" id="6WU-0O-sCA"/>
-                            <constraint firstItem="va8-CX-KCL" firstAttribute="top" secondItem="a3J-8Q-3Eo" secondAttribute="bottom" id="7Dm-cx-Ov9"/>
+                            <constraint firstAttribute="bottom" secondItem="a3J-8Q-3Eo" secondAttribute="bottom" id="7Dm-cx-Ov9"/>
                             <constraint firstItem="e1G-rA-ymW" firstAttribute="width" secondItem="tna-hE-GgB" secondAttribute="width" id="Ad4-3I-6Qq"/>
                             <constraint firstItem="e1G-rA-ymW" firstAttribute="top" secondItem="tna-hE-GgB" secondAttribute="top" id="Gau-nA-iyj"/>
-                            <constraint firstItem="va8-CX-KCL" firstAttribute="top" secondItem="e1G-rA-ymW" secondAttribute="bottom" id="HVy-dD-PKi"/>
+                            <constraint firstAttribute="bottom" secondItem="e1G-rA-ymW" secondAttribute="bottom" id="HVy-dD-PKi"/>
                             <constraint firstItem="a3J-8Q-3Eo" firstAttribute="leading" secondItem="tna-hE-GgB" secondAttribute="leading" id="Xma-Jx-FMv"/>
                             <constraint firstAttribute="trailing" secondItem="a3J-8Q-3Eo" secondAttribute="trailing" id="a4W-cY-cAX"/>
                             <constraint firstItem="e1G-rA-ymW" firstAttribute="leading" secondItem="tna-hE-GgB" secondAttribute="leading" id="bdo-17-CfV"/>

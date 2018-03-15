@@ -15,6 +15,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     @IBOutlet weak var mapView: MapView!
     @IBOutlet weak var carousel: iCarousel!
     @IBOutlet weak var activityIndicatorView: NVActivityIndicatorView!
+    @IBOutlet weak var carouselBottomConstraint: NSLayoutConstraint!
     
     let maxNearbyMovies = 45
     let currentUsersLocationKey =  "kUserCurrentPreferencesKey"
@@ -23,9 +24,6 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     var lastUpdatedTimestamp: TimeInterval = 0
     var userCurrentLocation: CLLocationCoordinate2D?
     let locationManager = CLLocationManager()
-    
-    var posterImageViewBottomConstraint: NSLayoutConstraint!
-    var posterImageViewBottomConstraintConstantPadding: CGFloat = 20.0
     
     var isSearchResultsDisplayed = false
     
@@ -37,6 +35,14 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     var delegate: MenuButtonPressDelegate?
     
     var viewingMapLocation: CLLocationCoordinate2D!
+    
+    var safeAreaOffset: CGFloat {
+        if #available(iOS 11.0, *) {
+            return view.safeAreaInsets.bottom
+        } else {
+            return 0
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +57,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
             // Request location when in use only
             self.locationManager.requestWhenInUseAuthorization()
             
-            if let currentLocation =  self.retrieveCurrentLocation() {
+            if let currentLocation = self.retrieveCurrentLocation() {
                 self.userCurrentLocation = currentLocation
                 self.viewingMapLocation = currentLocation
             } else {
@@ -70,9 +76,6 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
             self.carousel.delegate = self
             self.carousel.dataSource = self
             self.carousel.setNeedsLayout()
-            
-            self.posterImageViewBottomConstraint = self.carousel.topAnchor.constraint(equalTo: self.bottomLayoutGuide.bottomAnchor, constant: self.posterImageViewBottomConstraintConstantPadding)
-            self.view.addConstraint(self.posterImageViewBottomConstraint)
             
             self.hideIndicator()
         }
@@ -176,7 +179,7 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
     }
     
     func carouselDidEndScrollingAnimation(_ carousel: iCarousel) {
-        if posterImageViewBottomConstraint.constant != posterImageViewBottomConstraintConstantPadding {
+        if (carouselBottomConstraint.constant == 0) {
             mapView.selectMarker(index: carousel.currentItemIndex)
         }
     }
@@ -202,31 +205,28 @@ extension MapViewController: MapViewDelegate {
             return
         }
         
-        if self.posterImageViewBottomConstraint.constant != posterImageViewBottomConstraintConstantPadding {
+        if carouselBottomConstraint.constant > 0 {
             hidePosterImageView()
         }
     }
     
     func didTap(markerIndex: Int) {
-        if posterImageViewBottomConstraint.constant == posterImageViewBottomConstraintConstantPadding {
-            showPosterImageView(markerIndex: markerIndex)
-        } else {
-            carousel.scrollToItem(at: markerIndex, animated: false)
-        }
+        showPosterImageView(markerIndex: markerIndex)
     }
     
     func hidePosterImageView() {
-        posterImageViewBottomConstraint.constant = posterImageViewBottomConstraintConstantPadding
         
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseIn, animations: {
+            self.carouselBottomConstraint.constant = -1 * (self.carousel.bounds.height + self.safeAreaOffset)
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
     
     func showPosterImageView(markerIndex: Int) {
-        posterImageViewBottomConstraint.constant = -1 * carousel.bounds.height
         
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
+            
+            self.carouselBottomConstraint.constant = 0 + self.safeAreaOffset
             self.view.layoutIfNeeded()
         }, completion: { success in
             if success {

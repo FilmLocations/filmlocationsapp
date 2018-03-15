@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +14,6 @@
         <scene sceneID="rNa-Wm-08P">
             <objects>
                 <viewController storyboardIdentifier="AboutView" id="lyl-Bb-1nH" customClass="AboutViewController" customModule="Film_Locations" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Wor-yR-QFN"/>
-                        <viewControllerLayoutGuide type="bottom" id="And-e0-JNU"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DQp-vu-ngb" customClass="GradientView" customModule="Film_Locations" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,6 +46,7 @@
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTA-ic-Sge">
                                                 <rect key="frame" x="16" y="82" width="382" height="213"/>
+                                                <viewLayoutGuide key="safeArea" id="cqL-p3-A5E"/>
                                                 <string key="text">Use the San Francisco Film Locations app to discover filming locations from your favorite SF made films. See how locations look today from films made as early as 1924. We use data compiled by the SF Film Comission, wonderfully made open and available by DataSF. We connect with The Movie DB database to display film details and Google Places to search for an image of the location. Help us add more accurate photos by signing in with Twitter and uploading your own. Enjoy your trip through San Francisco film history.</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
@@ -56,6 +54,7 @@
                                             </textView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Thank you for using the San Francisco Film Locations app!" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGj-aB-g7k">
                                                 <rect key="frame" x="16" y="303" width="382" height="52"/>
+                                                <viewLayoutGuide key="safeArea" id="irH-Zf-bni"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -126,11 +125,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bue-NJ-t0d" firstAttribute="leading" secondItem="DQp-vu-ngb" secondAttribute="leading" id="7Ls-GW-FZl"/>
-                            <constraint firstItem="bue-NJ-t0d" firstAttribute="top" secondItem="Wor-yR-QFN" secondAttribute="bottom" id="A3P-ca-V2F"/>
-                            <constraint firstItem="And-e0-JNU" firstAttribute="top" secondItem="bue-NJ-t0d" secondAttribute="bottom" id="J5f-4p-04K"/>
-                            <constraint firstAttribute="trailing" secondItem="bue-NJ-t0d" secondAttribute="trailing" id="V7e-Xu-1F0"/>
+                            <constraint firstItem="bue-NJ-t0d" firstAttribute="leading" secondItem="pGw-gX-Ga0" secondAttribute="leading" id="7Ls-GW-FZl"/>
+                            <constraint firstItem="bue-NJ-t0d" firstAttribute="top" secondItem="pGw-gX-Ga0" secondAttribute="top" id="A3P-ca-V2F"/>
+                            <constraint firstItem="pGw-gX-Ga0" firstAttribute="bottom" secondItem="bue-NJ-t0d" secondAttribute="bottom" id="J5f-4p-04K"/>
+                            <constraint firstItem="pGw-gX-Ga0" firstAttribute="trailing" secondItem="bue-NJ-t0d" secondAttribute="trailing" id="V7e-Xu-1F0"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="pGw-gX-Ga0"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="endColor">
                                 <color key="value" red="0.25558605733429851" green="0.56654912998708828" blue="0.63878093274111669" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
