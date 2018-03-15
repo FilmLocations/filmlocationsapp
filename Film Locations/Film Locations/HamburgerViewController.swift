@@ -77,8 +77,11 @@ class HamburgerViewController: UIViewController {
     
     func openMenu()  {
         isMenuOpen = true
+        
+        let menuWidth: CGFloat = 200
+        
         UIView.animate(withDuration: 0.3, animations: {
-            self.leftMarginConstraint.constant = self.view.frame.size.width - 100
+            self.leftMarginConstraint.constant = menuWidth
             self.view.layoutIfNeeded()
         })
     }
@@ -96,7 +99,6 @@ class HamburgerViewController: UIViewController {
 
 extension HamburgerViewController: MenuButtonPressDelegate {
     func onMenuButtonPress() {
-        print("Menu pressed")
         toggleMenu()
     }
     
