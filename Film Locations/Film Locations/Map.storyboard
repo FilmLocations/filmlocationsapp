@@ -43,11 +43,11 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="XWR-Eq-CKy" secondAttribute="bottom" constant="-160" id="CMj-fD-yIH"/>
                             <constraint firstItem="Lb5-Lr-KyW" firstAttribute="top" secondItem="g7D-El-xQj" secondAttribute="top" id="IfS-CE-zUA"/>
-                            <constraint firstItem="Lb5-Lr-KyW" firstAttribute="leading" secondItem="g7D-El-xQj" secondAttribute="leading" id="NxE-jR-nLw"/>
+                            <constraint firstItem="Lb5-Lr-KyW" firstAttribute="leading" secondItem="e9M-Sm-SnY" secondAttribute="leading" id="NxE-jR-nLw"/>
                             <constraint firstItem="GNK-kj-t5i" firstAttribute="centerX" secondItem="Lb5-Lr-KyW" secondAttribute="centerX" id="OfF-z9-XBT"/>
                             <constraint firstAttribute="bottom" secondItem="Lb5-Lr-KyW" secondAttribute="bottom" id="QHX-4Y-grq"/>
                             <constraint firstItem="g7D-El-xQj" firstAttribute="trailing" secondItem="XWR-Eq-CKy" secondAttribute="trailing" id="RwT-Vz-AIF"/>
-                            <constraint firstItem="g7D-El-xQj" firstAttribute="trailing" secondItem="Lb5-Lr-KyW" secondAttribute="trailing" id="aFk-gv-z2s"/>
+                            <constraint firstAttribute="trailing" secondItem="Lb5-Lr-KyW" secondAttribute="trailing" id="aFk-gv-z2s"/>
                             <constraint firstItem="GNK-kj-t5i" firstAttribute="centerY" secondItem="Lb5-Lr-KyW" secondAttribute="centerY" id="jRa-jj-k7P"/>
                             <constraint firstItem="XWR-Eq-CKy" firstAttribute="leading" secondItem="g7D-El-xQj" secondAttribute="leading" id="ztU-g3-Lig"/>
                         </constraints>

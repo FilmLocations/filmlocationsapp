@@ -77,6 +77,8 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
             self.carousel.dataSource = self
             self.carousel.setNeedsLayout()
             
+            self.currentLocationUpdated()
+            
             self.hideIndicator()
         }
         
@@ -167,7 +169,11 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         
-        let userLocation: CLLocation? = CLLocation(latitude: userCurrentLocation!.latitude, longitude: userCurrentLocation!.longitude)
+        var userLocation: CLLocation? = nil
+        
+        if userCurrentLocation != nil {
+            userLocation = CLLocation(latitude: userCurrentLocation!.latitude, longitude: userCurrentLocation!.longitude)
+        }
         
         let moviePosterViewDataSource = MoviePosterViewDataSource(location: sortedLocations[index], displaySearchData: isSearchResultsDisplayed, currentUserLocation: userLocation)
         
@@ -205,7 +211,7 @@ extension MapViewController: MapViewDelegate {
             return
         }
         
-        if carouselBottomConstraint.constant > 0 {
+        if carouselBottomConstraint.constant >= 0 {
             hidePosterImageView()
         }
     }
@@ -219,7 +225,7 @@ extension MapViewController: MapViewDelegate {
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseIn, animations: {
             self.carouselBottomConstraint.constant = -1 * (self.carousel.bounds.height + self.safeAreaOffset)
             self.view.layoutIfNeeded()
-        }, completion: nil)
+        })
     }
     
     func showPosterImageView(markerIndex: Int) {
