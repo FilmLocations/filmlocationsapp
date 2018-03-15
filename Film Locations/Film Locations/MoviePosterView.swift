@@ -27,6 +27,7 @@ class MoviePosterView: UIView {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var topLeftVisualView: UIVisualEffectView!
     @IBOutlet weak var bottonLeftVisualView: UIVisualEffectView!
+    @IBOutlet weak var posterImageNotAvailableLabel: UILabel!
     
     weak var delegate: MoviePosterViewDelegate?
     
@@ -42,6 +43,9 @@ class MoviePosterView: UIView {
             if !moviePosterDataSource.displaySearchData {
                 if let posterImageURL = moviePosterDataSource.location.posterImageURL {
                     posterImageView.setImageWith(posterImageURL)
+                } else {
+                    posterImageNotAvailableLabel.isHidden = false
+                    posterImageView.backgroundColor = UIColor.lightGray
                 }
             } else {
                 posterImageView.image = UIImage(named: "Place-Dummy")

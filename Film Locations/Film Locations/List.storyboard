@@ -31,6 +31,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JCS-5u-WNl">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="188" id="kF0-oC-IiS"/>
                                                     </constraints>
@@ -105,8 +106,15 @@
                                                     </constraints>
                                                     <blurEffect style="light"/>
                                                 </visualEffectView>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Poster Image Not Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANi-Ve-59q">
+                                                    <rect key="frame" x="96" y="100.5" width="183.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="ANi-Ve-59q" firstAttribute="centerX" secondItem="i9G-om-84M" secondAttribute="centerX" id="0XJ-gl-Kyt"/>
                                                 <constraint firstItem="UQt-ic-KYI" firstAttribute="leading" secondItem="i9G-om-84M" secondAttribute="leading" id="15X-C6-6QG"/>
                                                 <constraint firstItem="JCS-5u-WNl" firstAttribute="leading" secondItem="i9G-om-84M" secondAttribute="leading" id="3F4-0D-kF5"/>
                                                 <constraint firstAttribute="trailing" secondItem="JCS-5u-WNl" secondAttribute="trailing" id="CSH-PK-Ocw"/>
@@ -114,6 +122,7 @@
                                                 <constraint firstItem="JCS-5u-WNl" firstAttribute="top" secondItem="i9G-om-84M" secondAttribute="top" id="PU3-jA-bwY"/>
                                                 <constraint firstItem="JCS-5u-WNl" firstAttribute="centerY" secondItem="i9G-om-84M" secondAttribute="centerY" id="SQk-2r-50r"/>
                                                 <constraint firstAttribute="trailing" secondItem="80i-ZK-mpO" secondAttribute="trailing" id="V6E-jD-w57"/>
+                                                <constraint firstItem="ANi-Ve-59q" firstAttribute="centerY" secondItem="i9G-om-84M" secondAttribute="centerY" constant="15" id="fro-Ib-fQE"/>
                                                 <constraint firstItem="80i-ZK-mpO" firstAttribute="leading" secondItem="i9G-om-84M" secondAttribute="leading" id="hwB-aJ-eUR"/>
                                                 <constraint firstAttribute="bottom" secondItem="UQt-ic-KYI" secondAttribute="bottom" id="jpW-gG-ySi"/>
                                             </constraints>
@@ -122,6 +131,7 @@
                                         <connections>
                                             <outlet property="locationsVisualEffectView" destination="UQt-ic-KYI" id="5us-5x-P3p"/>
                                             <outlet property="numberOfLocationsLabel" destination="S2T-wV-2cg" id="LIn-Ci-ows"/>
+                                            <outlet property="posterImageNotAvailableLabel" destination="ANi-Ve-59q" id="VtD-aT-nNI"/>
                                             <outlet property="posterImageView" destination="JCS-5u-WNl" id="siJ-Aw-WVP"/>
                                             <outlet property="titleLabel" destination="PdK-bU-CjM" id="a5w-E1-wfY"/>
                                             <outlet property="yearLabel" destination="Ar9-QC-yyt" id="XkL-bE-4Z8"/>

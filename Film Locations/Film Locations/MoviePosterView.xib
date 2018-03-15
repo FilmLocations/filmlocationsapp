@@ -14,6 +14,7 @@
                 <outlet property="bottonLeftVisualView" destination="IzV-tK-RhM" id="pVN-bK-KZw"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="Og9-tT-xWw"/>
                 <outlet property="distanceLabel" destination="hPs-hn-BVb" id="ZPi-GP-VR8"/>
+                <outlet property="posterImageNotAvailableLabel" destination="GMI-Q1-Y8c" id="x8e-XP-P4U"/>
                 <outlet property="posterImageView" destination="jP4-Mu-NUt" id="2KY-OV-8Qq"/>
                 <outlet property="titleLabel" destination="OAZ-in-fNa" id="Gwx-AK-KyT"/>
                 <outlet property="topLeftVisualView" destination="FHt-zd-SMX" id="lki-pa-LFX"/>
@@ -86,17 +87,25 @@
                     </view>
                     <blurEffect style="light"/>
                 </visualEffectView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Poster Image Not Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMI-Q1-Y8c">
+                    <rect key="frame" x="97.5" y="132" width="205" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="jP4-Mu-NUt" secondAttribute="trailing" id="F94-zg-fNN"/>
                 <constraint firstItem="jP4-Mu-NUt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GMU-Ha-KIH"/>
+                <constraint firstItem="GMI-Q1-Y8c" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="NJi-RQ-e2n"/>
                 <constraint firstItem="IzV-tK-RhM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="O85-Fo-bRa"/>
                 <constraint firstItem="FHt-zd-SMX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ohy-Us-00i"/>
                 <constraint firstItem="FHt-zd-SMX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Y1F-tL-hGh"/>
                 <constraint firstItem="jP4-Mu-NUt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="c2B-sp-c3r"/>
                 <constraint firstAttribute="bottom" secondItem="jP4-Mu-NUt" secondAttribute="bottom" id="jZF-k7-eCA"/>
                 <constraint firstAttribute="bottom" secondItem="IzV-tK-RhM" secondAttribute="bottom" id="rIX-tP-Vtl"/>
+                <constraint firstItem="GMI-Q1-Y8c" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rXN-0j-3Bk"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-167" y="-90"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NLF-4G-hAi">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -141,7 +141,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="LmQ-B6-fyw">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="NTl-Kw-HVQ">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="NTl-Kw-HVQ">
                             <connections>
                                 <action selector="onMenuPress:" destination="lyl-Bb-1nH" id="q3J-1j-t1m"/>
                             </connections>
@@ -165,7 +165,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2266.666666666667" y="149.18478260869566"/>
+            <point key="canvasLocation" x="2225" y="150"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gpn-CY-sG1">
@@ -183,7 +183,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1541" y="150"/>
+            <point key="canvasLocation" x="1420" y="150"/>
         </scene>
     </scenes>
     <resources>

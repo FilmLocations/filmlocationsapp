@@ -17,6 +17,7 @@ class ListViewCell: UITableViewCell {
     @IBOutlet weak var numberOfLocationsLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var locationsVisualEffectView: UIVisualEffectView!
+    @IBOutlet weak var posterImageNotAvailableLabel: UILabel!
     
     var movie: FilmListViewItem? {
         didSet {
@@ -52,6 +53,8 @@ class ListViewCell: UITableViewCell {
             
             if let posterImageURL = movie.posterImageURL {
                 posterImageView.setImageWith(posterImageURL)
+            } else {
+                posterImageNotAvailableLabel.isHidden = false
             }
         }
     }
