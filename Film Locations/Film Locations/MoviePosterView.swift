@@ -32,8 +32,13 @@ class MoviePosterView: UIView {
     
     var moviePosterDataSource: MoviePosterViewDataSource! {
         didSet {
-            yearLabel.text = "(\(moviePosterDataSource.location.releaseYear))"
+            
+            if moviePosterDataSource.location.releaseYear > 0 {
+                yearLabel.text = "(\(moviePosterDataSource.location.releaseYear))"
+            }
+            
             titleLabel.text = moviePosterDataSource.location.title
+            
             if !moviePosterDataSource.displaySearchData {
                 if let posterImageURL = moviePosterDataSource.location.posterImageURL {
                     posterImageView.setImageWith(posterImageURL)
