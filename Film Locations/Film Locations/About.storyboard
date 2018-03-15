@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,51 +10,186 @@
     </dependencies>
     <scenes>
         <!--About View Controller-->
-        <scene sceneID="G8C-uq-V2J">
+        <scene sceneID="rNa-Wm-08P">
             <objects>
-                <viewController storyboardIdentifier="AboutView" id="IyK-VO-VoV" customClass="AboutViewController" customModule="Film_Locations" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutView" id="lyl-Bb-1nH" customClass="AboutViewController" customModule="Film_Locations" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hA0-37-fkV"/>
-                        <viewControllerLayoutGuide type="bottom" id="8Yd-6J-tNb"/>
+                        <viewControllerLayoutGuide type="top" id="Wor-yR-QFN"/>
+                        <viewControllerLayoutGuide type="bottom" id="And-e0-JNU"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="IIH-k7-M3U">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="view" contentMode="scaleToFill" id="DQp-vu-ngb" customClass="GradientView" customModule="Film_Locations" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bue-NJ-t0d">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCo-cP-Bjf">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="565"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Tu-Zf-fYc">
+                                                <rect key="frame" x="178.66666666666666" y="8" width="58" height="58"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-Small-50x50" translatesAutoresizingMaskIntoConstraints="NO" id="V4n-aU-Deg">
+                                                        <rect key="frame" x="4" y="4" width="50" height="50"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="7nP-9N-ttf"/>
+                                                            <constraint firstAttribute="width" constant="50" id="uJK-EM-GgD"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="58" id="4zI-kN-wP7"/>
+                                                    <constraint firstItem="V4n-aU-Deg" firstAttribute="centerY" secondItem="6Tu-Zf-fYc" secondAttribute="centerY" id="DjZ-3c-Umg"/>
+                                                    <constraint firstAttribute="height" constant="58" id="KGJ-m8-pE4"/>
+                                                    <constraint firstItem="V4n-aU-Deg" firstAttribute="centerX" secondItem="6Tu-Zf-fYc" secondAttribute="centerX" id="MBI-rj-7GR"/>
+                                                </constraints>
+                                            </view>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTA-ic-Sge">
+                                                <rect key="frame" x="16" y="82" width="382" height="213"/>
+                                                <string key="text">Use the San Francisco Film Locations app to discover filming locations from your favorite SF made films. See how locations look today from films made as early as 1924. We use data compiled by the SF Film Comission, wonderfully made open and available by DataSF. We connect with The Movie DB database to display film details and Google Places to search for an image of the location. Help us add more accurate photos by signing in with Twitter and uploading your own. Enjoy your trip through San Francisco film history.</string>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Thank you for using the San Francisco Film Locations app!" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGj-aB-g7k">
+                                                <rect key="frame" x="16" y="303" width="382" height="52"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QeT-1k-034">
+                                                <rect key="frame" x="107" y="363" width="200" height="153"/>
+                                                <subviews>
+                                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="datasf" translatesAutoresizingMaskIntoConstraints="NO" id="7EF-vG-DPT">
+                                                        <rect key="frame" x="27.666666666666657" y="0.0" width="145" height="54"/>
+                                                        <gestureRecognizers/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="145" id="TLV-9v-uin"/>
+                                                            <constraint firstAttribute="height" constant="54" id="e5M-cf-FxS"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="C5I-xt-i6d" appends="YES" id="Fuj-SW-Cpv"/>
+                                                        </connections>
+                                                    </imageView>
+                                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tmdb" translatesAutoresizingMaskIntoConstraints="NO" id="hs4-ID-BUc">
+                                                        <rect key="frame" x="0.0" y="74" width="200" height="79"/>
+                                                        <gestureRecognizers/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="79" id="0SF-v9-Ge7"/>
+                                                            <constraint firstAttribute="width" constant="200" id="AiS-uN-aCQ"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="eNQ-BQ-pkt" appends="YES" id="hq6-Cd-AUn"/>
+                                                        </connections>
+                                                    </imageView>
+                                                </subviews>
+                                                <variation key="heightClass=compact" axis="horizontal"/>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made in San Francisco 💞" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdo-P6-3Gl">
+                                                <rect key="frame" x="123.99999999999999" y="540" width="167.66666666666663" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="VTA-ic-Sge" firstAttribute="leading" secondItem="XCo-cP-Bjf" secondAttribute="leading" constant="16" id="3rY-gI-DLb"/>
+                                            <constraint firstAttribute="trailing" secondItem="VTA-ic-Sge" secondAttribute="trailing" constant="16" id="6fL-9C-uPy"/>
+                                            <constraint firstItem="6Tu-Zf-fYc" firstAttribute="centerX" secondItem="XCo-cP-Bjf" secondAttribute="centerX" id="7GY-Jq-1Md"/>
+                                            <constraint firstItem="VTA-ic-Sge" firstAttribute="top" secondItem="6Tu-Zf-fYc" secondAttribute="bottom" constant="16" id="Atf-6O-A9f"/>
+                                            <constraint firstItem="LGj-aB-g7k" firstAttribute="leading" secondItem="XCo-cP-Bjf" secondAttribute="leading" constant="16" id="CXx-G5-esh"/>
+                                            <constraint firstAttribute="trailing" secondItem="LGj-aB-g7k" secondAttribute="trailing" constant="16" id="Gtk-re-7za"/>
+                                            <constraint firstAttribute="bottom" secondItem="Sdo-P6-3Gl" secondAttribute="bottom" constant="8" id="ZWH-OA-JD1"/>
+                                            <constraint firstItem="QeT-1k-034" firstAttribute="centerX" secondItem="XCo-cP-Bjf" secondAttribute="centerX" id="bew-75-XqN"/>
+                                            <constraint firstItem="Sdo-P6-3Gl" firstAttribute="top" secondItem="QeT-1k-034" secondAttribute="bottom" constant="24" id="c6V-AI-1k9"/>
+                                            <constraint firstItem="QeT-1k-034" firstAttribute="top" secondItem="LGj-aB-g7k" secondAttribute="bottom" constant="8" id="crT-Ek-cuF"/>
+                                            <constraint firstItem="6Tu-Zf-fYc" firstAttribute="top" secondItem="XCo-cP-Bjf" secondAttribute="top" constant="8" id="j9m-SG-IWr"/>
+                                            <constraint firstItem="Sdo-P6-3Gl" firstAttribute="centerX" secondItem="XCo-cP-Bjf" secondAttribute="centerX" id="uOc-jD-9Zo"/>
+                                            <constraint firstItem="LGj-aB-g7k" firstAttribute="centerX" secondItem="XCo-cP-Bjf" secondAttribute="centerX" id="yIB-9T-IWE"/>
+                                            <constraint firstItem="LGj-aB-g7k" firstAttribute="top" secondItem="VTA-ic-Sge" secondAttribute="bottom" constant="8" id="yuv-da-7G1"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="XCo-cP-Bjf" firstAttribute="leading" secondItem="bue-NJ-t0d" secondAttribute="leading" id="C7e-vg-6G3"/>
+                                    <constraint firstAttribute="trailing" secondItem="XCo-cP-Bjf" secondAttribute="trailing" id="QD0-8X-OQL"/>
+                                    <constraint firstItem="XCo-cP-Bjf" firstAttribute="top" secondItem="bue-NJ-t0d" secondAttribute="top" id="aFh-LS-uvs"/>
+                                    <constraint firstItem="XCo-cP-Bjf" firstAttribute="width" secondItem="bue-NJ-t0d" secondAttribute="width" id="ajS-vO-RZO"/>
+                                    <constraint firstAttribute="bottom" secondItem="XCo-cP-Bjf" secondAttribute="bottom" id="x6c-eB-6y3"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bue-NJ-t0d" firstAttribute="leading" secondItem="DQp-vu-ngb" secondAttribute="leading" id="7Ls-GW-FZl"/>
+                            <constraint firstItem="bue-NJ-t0d" firstAttribute="top" secondItem="Wor-yR-QFN" secondAttribute="bottom" id="A3P-ca-V2F"/>
+                            <constraint firstItem="And-e0-JNU" firstAttribute="top" secondItem="bue-NJ-t0d" secondAttribute="bottom" id="J5f-4p-04K"/>
+                            <constraint firstAttribute="trailing" secondItem="bue-NJ-t0d" secondAttribute="trailing" id="V7e-Xu-1F0"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="0.25558605733429851" green="0.56654912998708828" blue="0.63878093274111669" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" red="0.3315723538" green="0.72792667150000001" blue="0.8196279407" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" id="G3w-57-aLQ">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="TFg-c5-vKS">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <navigationItem key="navigationItem" id="LmQ-B6-fyw">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="NTl-Kw-HVQ">
                             <connections>
-                                <action selector="onMenuPress:" destination="IyK-VO-VoV" id="TEZ-zU-Lk2"/>
+                                <action selector="onMenuPress:" destination="lyl-Bb-1nH" id="q3J-1j-t1m"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="appIconBorderView" destination="6Tu-Zf-fYc" id="D3L-ly-G8m"/>
+                        <outlet property="appIconImage" destination="V4n-aU-Deg" id="qax-Jq-fh9"/>
+                        <outlet property="descriptionTextView" destination="VTA-ic-Sge" id="dRm-GT-pBh"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bse-Tx-tgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aBS-Fk-fzy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="eNQ-BQ-pkt" userLabel="TMDB Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="openTMDBSite:" destination="lyl-Bb-1nH" id="3eB-IR-1gt"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="C5I-xt-i6d" userLabel="DataSF Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="openDataSFSite:" destination="lyl-Bb-1nH" id="MKk-se-zJs"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="838" y="151"/>
+            <point key="canvasLocation" x="2266.666666666667" y="149.18478260869566"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="8gg-9K-Kfj">
+        <scene sceneID="gpn-CY-sG1">
             <objects>
-                <navigationController storyboardIdentifier="AboutNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Xbt-bv-YPD" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NRv-eE-uf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="AboutNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="NLF-4G-hAi" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FnC-U8-Ssp">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yRx-zZ-6Ew">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="IyK-VO-VoV" kind="relationship" relationship="rootViewController" id="9hy-Wh-UH8"/>
+                        <segue destination="lyl-Bb-1nH" kind="relationship" relationship="rootViewController" id="mtz-yO-Buz"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BXf-34-atd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="77.599999999999994" y="150.67466266866569"/>
+            <point key="canvasLocation" x="1541" y="150"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Icon-Small-50x50" width="50" height="50"/>
+        <image name="datasf" width="290" height="109"/>
         <image name="menu" width="32" height="32"/>
+        <image name="tmdb" width="200" height="79"/>
     </resources>
 </document>
