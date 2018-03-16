@@ -15,9 +15,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        // TODO: If user was last on Map View, display map view otherwise display listview
-        
+                
         let mapStoryBoard = UIStoryboard(name: "Map", bundle: nil)
         let mapViewController = mapStoryBoard.instantiateViewController(withIdentifier: "MapsView") as? MapViewController
         
