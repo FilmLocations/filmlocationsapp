@@ -133,9 +133,11 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     }
     
     func updateViewWithNewData() {
-        mapView.updateMapsMarkers(sortedLocations: sortedLocations)
-        
-        carousel.reloadData()
+        // When searching - do not update the view
+        if (!isSearchResultsDisplayed) {
+            mapView.updateMapsMarkers(sortedLocations: sortedLocations)
+            carousel.reloadData()
+        }
     }
     
     func sortMoviesFromUserLocation(moviesToSort: [FilmLocation], at location: CLLocationCoordinate2D) -> [FilmLocation] {
@@ -200,8 +202,12 @@ extension MapViewController: MapViewDelegate {
     
     func didMoveInMap(newLocation: CLLocationCoordinate2D) {
         viewingMapLocation = newLocation
-        sortedLocations = sortMoviesFromUserLocation(moviesToSort: locations, at: newLocation)
-        updateViewWithNewData()
+        
+        // When searching - do not update the view
+        if (!isSearchResultsDisplayed) {
+            sortedLocations = sortMoviesFromUserLocation(moviesToSort: locations, at: newLocation)
+            updateViewWithNewData()
+        }
     }
     
     func didTapOnMap() {

@@ -40,17 +40,20 @@ class MoviePosterView: UIView {
             
             titleLabel.text = moviePosterDataSource.location.title
             
-            if !moviePosterDataSource.displaySearchData {
+            //TODO - For now, do not show location photos - always
+            // show movie posters. May revert when better filtering added
+            
+      //      if !moviePosterDataSource.displaySearchData {
                 if let posterImageURL = moviePosterDataSource.location.posterImageURL {
                     posterImageView.setImageWith(posterImageURL)
                 } else {
                     posterImageNotAvailableLabel.isHidden = false
                     posterImageView.backgroundColor = UIColor.lightGray
                 }
-            } else {
-                posterImageView.image = UIImage(named: "Place-Dummy")
-                fetchImageForPoster(location: moviePosterDataSource.location)
-            }
+//            } else {
+//                posterImageView.image = UIImage(named: "Place-Dummy")
+//                fetchImageForPoster(location: moviePosterDataSource.location)
+//            }
             
             let movieLocation = CLLocation(latitude: moviePosterDataSource.location.lat, longitude: moviePosterDataSource.location.long)
             
