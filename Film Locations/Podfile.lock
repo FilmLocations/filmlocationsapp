@@ -15,11 +15,11 @@ PODS:
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
   - Alamofire (4.7.0)
-  - AWSCognito (2.6.12):
-    - AWSCore (= 2.6.12)
-  - AWSCore (2.6.12)
-  - AWSS3 (2.6.12):
-    - AWSCore (= 2.6.12)
+  - AWSCognito (2.6.13):
+    - AWSCore (= 2.6.13)
+  - AWSCore (2.6.13)
+  - AWSS3 (2.6.13):
+    - AWSCore (= 2.6.13)
   - BRYXBanner (0.8.0)
   - Crashlytics (3.10.1):
     - Fabric (~> 1.7.5)
@@ -38,7 +38,7 @@ PODS:
   - NVActivityIndicatorView (4.1.1):
     - NVActivityIndicatorView/Presenter (= 4.1.1)
   - NVActivityIndicatorView/Presenter (4.1.1)
-  - Pastel (0.3.0)
+  - Pastel (0.4.0)
   - SwiftyJSON (3.1.4)
   - TwitterCore (3.1.0)
   - TwitterKit (3.3.0):
@@ -46,7 +46,7 @@ PODS:
   - WCLShineButton (1.0.7)
 
 DEPENDENCIES:
-  - AFNetworking
+  - AFNetworking (= 3.0.4)
   - Alamofire (~> 4.4)
   - AWSCognito
   - AWSS3
@@ -66,9 +66,9 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
-  AWSCognito: c69d91501b460c8abe22e224a0d5c3277486a21b
-  AWSCore: d0d6e4f6831754aaf98058d2306a016ae71510fe
-  AWSS3: c35608e0cdd5172f9e1d943221fd5fde01c5f749
+  AWSCognito: 26f1263726ddc4c16b2a9876402b4bc5c25199b7
+  AWSCore: 5da797bc476188fdaf00dec134fa18d84708eca9
+  AWSS3: 7c178c82c2e648559b7075a663335055327dd4f5
   BRYXBanner: 406c3775789136531da6f3c98058be2f16e08a34
   Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
   Fabric: ae7146a5f505ea370a1e44820b4b1dc8890e2890
@@ -77,12 +77,12 @@ SPEC CHECKSUMS:
   GooglePlaces: f6ddf33b75cef69e888907d9947c57198ed845f3
   LyftSDK: 17eb5abdb12f72203b68a1eac982823bfadda743
   NVActivityIndicatorView: 60109b9bf46efc2e71ab81453196ccdfdfeea870
-  Pastel: 738740c84f2b15bbcd96ebe99c4e6c2f5dd42262
+  Pastel: 7fa5e26123b3dbe11f7ed255654bf37100b199a5
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
   WCLShineButton: d8b979b6f6f9f6709f9e241e6e1a4712a1a9b36b
 
-PODFILE CHECKSUM: 6fadebca6ce760d9fc2afaa8b42bec6915eec619
+PODFILE CHECKSUM: d41538bb6a03c3f0e4cf0c2fe2ec4ea4afeac06a
 
 COCOAPODS: 1.3.1
