@@ -31,10 +31,11 @@
                                 <rect key="frame" x="0.0" y="452" width="375" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="pTz-AK-Tua" firstAttribute="leading" secondItem="1So-Zd-FUM" secondAttribute="leading" id="9CX-mq-IFK"/>
                             <constraint firstAttribute="trailing" secondItem="D40-Y4-kJJ" secondAttribute="trailing" id="XEj-hu-GOM"/>
@@ -43,6 +44,9 @@
                             <constraint firstItem="D40-Y4-kJJ" firstAttribute="leading" secondItem="1So-Zd-FUM" secondAttribute="leading" id="uBd-3S-XCQ"/>
                             <constraint firstItem="pTz-AK-Tua" firstAttribute="top" secondItem="w02-KJ-YRW" secondAttribute="bottom" id="wn2-w7-wzA"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="0Tp-r9-Ly6" appends="YES" id="Ak2-4j-fUg"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="aoM-Pb-5xe"/>
                     <connections>
@@ -51,6 +55,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hwR-9B-PaB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="0Tp-r9-Ly6">
+                    <connections>
+                        <action selector="tapScreen:" destination="2NX-et-Fof" id="cTp-Rg-gAI"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-252" y="81.409295352323838"/>
         </scene>

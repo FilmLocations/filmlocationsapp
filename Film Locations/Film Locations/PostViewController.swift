@@ -51,6 +51,10 @@ class PostViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func tapScreen(_ sender: UITapGestureRecognizer) {
+        view.endEditing(false)
+    }
+    
     /*
     // MARK: - Navigation
 

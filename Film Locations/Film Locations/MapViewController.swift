@@ -86,6 +86,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         searchBar.placeholder = "Search Films"
         searchBar.sizeToFit()
         searchBar.delegate = self
+        searchBar.keyboardAppearance = .dark
         navigationItem.titleView = searchBar
     }
     

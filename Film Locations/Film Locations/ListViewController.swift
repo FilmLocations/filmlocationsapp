@@ -78,7 +78,7 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
         navigationItem.titleView = search
         search.placeholder = "Search"
         search.sizeToFit()
-        
+        search.keyboardAppearance = .dark
         search.delegate = self
     }
 
