@@ -32,6 +32,7 @@ class ListViewCell: UITableViewCell {
         yearLabel.text = nil
         numberOfLocationsLabel.text = nil
         posterImageView.image = nil
+        posterImageNotAvailableLabel.isHidden = true
         
         if let movie = movie {
             locationsVisualEffectView.layer.cornerRadius = 3
