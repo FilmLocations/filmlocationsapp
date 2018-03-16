@@ -287,6 +287,25 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
             return
         }
         
+        let photoChooserAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        photoChooserAlert.view.tintColor = UIColor.fl_secondary
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            photoChooserAlert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
+                self.choosePhoto(sourceType: .camera)
+            }))
+        }
+        
+        photoChooserAlert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { action in
+            self.choosePhoto(sourceType: .photoLibrary)
+        }))
+        
+        photoChooserAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(photoChooserAlert, animated: true)
+    }
+    
+    func choosePhoto(sourceType: UIImagePickerControllerSourceType) {
         let vc = UIImagePickerController()
         vc.navigationBar.barTintColor = UIColor.fl_primary
         vc.navigationBar.tintColor = UIColor.white
@@ -297,14 +316,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         
         vc.delegate = self
         vc.allowsEditing = true
-
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            print("Camera is available 📸")
-            vc.sourceType = .camera
-        } else {
-            print("Camera 🚫 available so we will use photo library instead")
-            vc.sourceType = .photoLibrary
-        }
+        vc.sourceType = sourceType
         
         present(vc, animated: true, completion: nil)
     }
