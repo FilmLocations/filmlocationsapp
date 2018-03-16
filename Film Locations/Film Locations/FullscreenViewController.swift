@@ -41,6 +41,8 @@ class FullscreenViewController: UIViewController {
                 let attribution = NSMutableAttributedString(string: "By ")
                 attribution.append(googleAttribution)
                 descriptionLabel.attributedText = attribution
+            } else {
+                descriptionLabel.text = ""
             }
             
             timeLabel.isHidden = true
