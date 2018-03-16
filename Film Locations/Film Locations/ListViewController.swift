@@ -76,7 +76,7 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
     
     private func setupSearchBar() {
         navigationItem.titleView = search
-        search.placeholder = "Search"
+        search.placeholder = "Search Films"
         search.sizeToFit()
         search.keyboardAppearance = .dark
         search.delegate = self
