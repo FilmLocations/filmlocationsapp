@@ -30,7 +30,7 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
 
         // Do any additional setup after loading the view.
         
-        user = User.currentUser!
+        user = User.currentUser
         
         collectionView.dataSource = self
         collectionView.delegate = self

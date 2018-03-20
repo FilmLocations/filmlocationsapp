@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+import TwitterKit
 
 class HamburgerMenuController: UIViewController {
 
@@ -116,7 +117,7 @@ class HamburgerMenuController: UIViewController {
 extension HamburgerMenuController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Not all the elements from menuOptions are being displayed, we display eighter login or logout
+        // Not all the elements from menuOptions are being displayed, we display either login or logout
         return menuOptions.count - 1
     }
 
@@ -126,7 +127,7 @@ extension HamburgerMenuController: UITableViewDataSource, UITableViewDelegate {
         cell.option = menuOptions[indexPath.row]
         
         if (indexPath.row == 4) {
-            let isUserLoggedIn = (User._currentUser == nil || (User._currentUser?.isAnonymous)!) ? false : true
+            let isUserLoggedIn = !User.currentUser.isAnonymous
             cell.option = isUserLoggedIn ? menuOptions[indexPath.row] : menuOptions[indexPath.row + 1]
         }
         
@@ -134,12 +135,24 @@ extension HamburgerMenuController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+                
+        let cell = tableView.cellForRow(at: indexPath) as! HamburgerMenuCell
+
+        if cell.option?.text == "Logout" {
+            let store = TWTRTwitter.sharedInstance().sessionStore
+
+            if let userID = store.session()?.userID {
+                store.logOutUserID(userID)
+            }
+        }
         
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.fl_secondary
         tableView.cellForRow(at: indexPath)?.selectedBackgroundView = backgroundView
         
-        tableView.deselectRow(at: indexPath, animated: true)    
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        
         hamburgerViewController.contentViewController = viewControllers[indexPath.row]
     }
 

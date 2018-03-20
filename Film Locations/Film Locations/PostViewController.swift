@@ -39,7 +39,7 @@ class PostViewController: UIViewController {
     }
     
     @IBAction func onPostButton(_ sender: Any) {
-        let screenName = User.currentUser!.screenname!
+        let screenName = User.currentUser.screenname!
         let description = descriptionTextField.text ?? ""
         
         Database.shared.addPhoto(userId: screenName, locationId: locationId, placeId: postPlaceId, image: postImage, description: description) { completed in

@@ -25,21 +25,25 @@ class User: NSObject {
         self.profileURL = profileURL
     }
     
-    static var _currentUser: User?
+    private static var _currentUser: User?
     
-    class var currentUser: User? {
+    class var currentUser: User {
         get {
             if _currentUser == nil {
                 let user = User(screenName: "anonymous", name: "anonymous", formattedScreenName: "anonymous", profileImageURL: nil, profileURL: nil)
                 user.isAnonymous = true
                 return user
             } else {
-                return _currentUser
+                return _currentUser!
             }
         }
         set (user) {
-            user?.isAnonymous = false
+            user.isAnonymous = false
             _currentUser = user
         }
+    }
+    
+    override var description: String {
+        return "Username is \(screenname)"
     }
 }
