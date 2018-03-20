@@ -271,11 +271,16 @@ extension MapViewController: CLLocationManagerDelegate {
 
 extension MapViewController: UISearchBarDelegate {
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        isSearchResultsDisplayed = false
-        currentLocationUpdated()
-        searchBar.resignFirstResponder()        
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let text = searchBar.text else {
+            return
+        }
+        
+        if text.isEmpty {
+            isSearchResultsDisplayed = false
+            currentLocationUpdated()
+            searchBar.resignFirstResponder()
+        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
