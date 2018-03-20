@@ -16,21 +16,22 @@ class User: NSObject {
     var profileURL: URL?
     var isAnonymous = false
 
-    init(screenName: String, name: String?, formattedScreenName: String?, profileImageURL: String?, profileURL: URL?) {
+    init(screenName: String, name: String?, formattedScreenName: String?, profileImageURL: String?, profileURL: URL?, isAnonymous: Bool) {
         
         self.screenname = screenName
         self.name = name
         self.formattedScreenName = formattedScreenName
         self.profileImageURL = profileImageURL
         self.profileURL = profileURL
+        self.isAnonymous = isAnonymous
     }
     
     private static var _currentUser: User?
     
-    class var currentUser: User {
+    class var currentUser: User? {
         get {
             if _currentUser == nil {
-                let user = User(screenName: "anonymous", name: "anonymous", formattedScreenName: "anonymous", profileImageURL: nil, profileURL: nil)
+                let user = User(screenName: "anonymous", name: "anonymous", formattedScreenName: "anonymous", profileImageURL: nil, profileURL: nil, isAnonymous: true)
                 user.isAnonymous = true
                 return user
             } else {
@@ -38,7 +39,6 @@ class User: NSObject {
             }
         }
         set (user) {
-            user.isAnonymous = false
             _currentUser = user
         }
     }

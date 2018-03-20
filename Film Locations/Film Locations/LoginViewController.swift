@@ -9,6 +9,7 @@
 import UIKit
 import Pastel
 import TwitterKit
+import NVActivityIndicatorView
 
 class LoginViewController: UIViewController {
 
@@ -16,6 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var filmLocationsLabel: UILabel!
     @IBOutlet weak var sanFranciscoLabel: UILabel!
     @IBOutlet weak var twitterLoginButton: TWTRLogInButton!
+    @IBOutlet weak var activityIndicatorView: NVActivityIndicatorView!
     
     // Used for enforcing the initial center of the twitterLoginButton
     @IBOutlet weak var dummyTwitterLoginButton: UIButton!
@@ -25,42 +27,40 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-        // If we go to login screen but there's already a user, log them out
-        if (User.currentUser != nil) {
-            let store = TWTRTwitter.sharedInstance().sessionStore
+        activityIndicatorView.type = NVActivityIndicatorType.ballScaleMultiple
+        activityIndicatorView.color = UIColor.fl_primary!
+
+        let store = TWTRTwitter.sharedInstance().sessionStore
+
+        if store.hasLoggedInUsers() {
+            loadUser(userId: (store.session()?.userID)!)
+            print("userId is \((store.session()?.userID)!)")
+        } else {
             
-            if let userID = store.session()?.userID {
-                store.logOutUserID(userID)
-                User.currentUser = nil
+            UIView.animate(withDuration: 0.3) {
+                self.continueWithoutLoginButton.alpha = 1
+                self.twitterLoginButton.alpha = 1
             }
-        }
         
-        twitterLoginButton.center = dummyTwitterLoginButton.center
+            twitterLoginButton.center = dummyTwitterLoginButton.center
 
-        twitterLoginButton.logInCompletion = { session, error in
-            
-            if (session != nil) {
-                print("signed in as \(session!.userName)");
-                
-                let client = TWTRAPIClient()
-                client.loadUser(withID: session!.userID, completion: { (user, error) in
-                    User.currentUser = User(screenName: (user?.screenName)!, name: user?.name, formattedScreenName: (user?.formattedScreenName)!, profileImageURL: user?.profileImageLargeURL, profileURL: user?.profileURL)
-                    self.goToMain()
-                })
-                
-            } else {
-                // TODO handle login failure
-                print("error: \(error!.localizedDescription)");
+            twitterLoginButton.logInCompletion = { session, error in
+                if (session != nil) {
+                    print("signed in as \(session!.userName)");
+                    
+                    self.loadUser(userId: session!.userID)
+                    
+                } else {
+                    // TODO handle login failure
+                    print("error: \(error!.localizedDescription)");
+                }
             }
-            
-        }
 
-        continueWithoutLoginButton.layer.cornerRadius = 4
-        continueWithoutLoginButton.backgroundColor = UIColor.fl_primary_dark
-        continueWithoutLoginButton.titleLabel?.textColor = UIColor.fl_primary_text
+            continueWithoutLoginButton.layer.cornerRadius = 4
+            continueWithoutLoginButton.backgroundColor = UIColor.fl_primary_dark
+            continueWithoutLoginButton.titleLabel?.textColor = UIColor.fl_primary_text
+        }
      
         pastelView = PastelView(frame: view.bounds)
         
@@ -94,6 +94,17 @@ class LoginViewController: UIViewController {
 
     @IBAction func onContinueWithoutLogin(_ sender: Any) {
         goToMain()
+    }
+    
+    func loadUser(userId: String) {
+        activityIndicatorView.startAnimating()
+        
+        let client = TWTRAPIClient()
+        client.loadUser(withID: userId, completion: { (user, error) in
+            User.currentUser = User(screenName: (user?.screenName)!, name: user?.name, formattedScreenName: (user?.formattedScreenName)!, profileImageURL: user?.profileImageLargeURL, profileURL: user?.profileURL, isAnonymous: false)
+            self.goToMain()
+            self.activityIndicatorView.stopAnimating()
+        })
     }
     
     func goToMain() {

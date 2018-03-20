@@ -29,7 +29,7 @@
                             <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapscreenshot" translatesAutoresizingMaskIntoConstraints="NO" id="8hP-mp-6bG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4g-0R-Njb">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4g-0R-Njb">
                                 <rect key="frame" x="52.666666666666657" y="718" width="270" height="40"/>
                                 <color key="backgroundColor" red="0.049296596389875484" green="0.045433462768754672" blue="0.074654980964466988" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -55,7 +55,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fj9-Q9-PAJ" customClass="TWTRLogInButton">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fj9-Q9-PAJ" customClass="TWTRLogInButton">
                                 <rect key="frame" x="52.666666666666657" y="658" width="270" height="40"/>
                                 <state key="normal" title="Twitter Button"/>
                             </button>
@@ -67,6 +67,14 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUP-dH-rRj" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="157.66666666666666" y="376" width="60" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="VOk-Vg-7mD"/>
+                                    <constraint firstAttribute="height" constant="60" id="WLb-at-iul"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="F4g-0R-Njb" secondAttribute="bottom" constant="20" id="0UH-ey-iFT"/>
@@ -74,6 +82,7 @@
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="F29-yk-LcK"/>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="GM6-ZN-g8i"/>
                             <constraint firstAttribute="trailing" secondItem="8hP-mp-6bG" secondAttribute="trailing" id="Gu7-pK-Ip2"/>
+                            <constraint firstItem="VUP-dH-rRj" firstAttribute="centerY" secondItem="8m3-ut-hiV" secondAttribute="centerY" id="KY3-8u-18z"/>
                             <constraint firstItem="O0F-Ym-R88" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="Qxr-4d-88S"/>
                             <constraint firstItem="Wat-o8-42l" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="T4R-Z7-aGX"/>
                             <constraint firstItem="F4g-0R-Njb" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="TWh-xa-DL6"/>
@@ -89,12 +98,14 @@
                             </constraint>
                             <constraint firstItem="kpb-5G-dSg" firstAttribute="top" secondItem="8hP-mp-6bG" secondAttribute="bottom" id="i7G-ha-NDZ"/>
                             <constraint firstItem="fj9-Q9-PAJ" firstAttribute="width" secondItem="F4g-0R-Njb" secondAttribute="width" id="jdW-uQ-wqZ"/>
+                            <constraint firstItem="VUP-dH-rRj" firstAttribute="centerX" secondItem="8m3-ut-hiV" secondAttribute="centerX" id="m3T-7t-XHQ"/>
                             <constraint firstItem="F4g-0R-Njb" firstAttribute="top" secondItem="Wat-o8-42l" secondAttribute="bottom" constant="20" id="mUG-VR-MNY"/>
                             <constraint firstItem="F4g-0R-Njb" firstAttribute="top" secondItem="fj9-Q9-PAJ" secondAttribute="bottom" constant="20" id="sBn-xR-Ok7"/>
                             <constraint firstItem="fj9-Q9-PAJ" firstAttribute="height" secondItem="F4g-0R-Njb" secondAttribute="height" id="sJl-Gf-qxJ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="VUP-dH-rRj" id="QKw-QL-7fx"/>
                         <outlet property="continueWithoutLoginButton" destination="F4g-0R-Njb" id="Wek-mp-Kbh"/>
                         <outlet property="dummyTwitterLoginButton" destination="Wat-o8-42l" id="uId-9v-v31"/>
                         <outlet property="filmLocationsLabel" destination="O0F-Ym-R88" id="FDo-GY-dDi"/>

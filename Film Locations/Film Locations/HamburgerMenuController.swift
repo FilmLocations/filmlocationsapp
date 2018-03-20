@@ -127,7 +127,7 @@ extension HamburgerMenuController: UITableViewDataSource, UITableViewDelegate {
         cell.option = menuOptions[indexPath.row]
         
         if (indexPath.row == 4) {
-            let isUserLoggedIn = !User.currentUser.isAnonymous
+            let isUserLoggedIn = !User.currentUser!.isAnonymous
             cell.option = isUserLoggedIn ? menuOptions[indexPath.row] : menuOptions[indexPath.row + 1]
         }
         
@@ -140,9 +140,10 @@ extension HamburgerMenuController: UITableViewDataSource, UITableViewDelegate {
 
         if cell.option?.text == "Logout" {
             let store = TWTRTwitter.sharedInstance().sessionStore
-
+            
             if let userID = store.session()?.userID {
                 store.logOutUserID(userID)
+                User.currentUser = nil
             }
         }
         
