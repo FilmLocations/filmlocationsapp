@@ -161,20 +161,6 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension ListViewController: UISearchBarDelegate {
     
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.showsCancelButton = true
-        return true
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.text = nil
-        searchBar.resignFirstResponder()
-        isSearchActive = false
-        filteredLocationsGroupedByAddress = locationsGroupedByAddress
-        tableView.reloadData()
-    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
