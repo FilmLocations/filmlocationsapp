@@ -50,7 +50,7 @@ Film Locations/Pods/
 # For more information about the recommended setup visit:
 # https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
 
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots
-fastlane/test_output
+Film Locations/fastlane/report.xml
+Film Locations/fastlane/Preview.html
+Film Locations/fastlane/screenshots
+Film Locations/fastlane/test_output
