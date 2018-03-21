@@ -16,14 +16,9 @@ class AboutViewController: UIViewController, MenuContentViewControllerProtocol {
     @IBOutlet weak var appIconBorderView: UIView!
     
     var delegate: MenuButtonPressDelegate?
-
-    override var shouldAutorotate: Bool {
-        return false
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         appIconImage.layer.cornerRadius = 4
         appIconImage.layer.masksToBounds = true

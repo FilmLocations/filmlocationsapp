@@ -243,7 +243,6 @@ class Database {
                     
                     locationImages.append(location)
                 }
-                print("Images list is \(locationImages)")
                 
                 completion(locationImages)
             }
@@ -264,7 +263,6 @@ class Database {
                     
                     locationImages.append(location)
                 }
-                print("Images list is \(locationImages)")
                 
                 completion(locationImages)
             }

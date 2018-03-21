@@ -271,6 +271,14 @@ extension MapViewController: CLLocationManagerDelegate {
 
 extension MapViewController: UISearchBarDelegate {
     
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        guard delegate?.isSideMenuOpen() == false else {
+            delegate?.onMenuButtonPress()
+            return true
+        }
+        return true
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let text = searchBar.text else {
             return
@@ -284,6 +292,8 @@ extension MapViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
         
         if let query = searchBar.text {
             

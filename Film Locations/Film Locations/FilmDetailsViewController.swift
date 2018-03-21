@@ -80,6 +80,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         var shineParams = WCLShineParams()
         shineParams.bigShineColor = UIColor.fl_accent!
         shineParams.smallShineColor = UIColor.fl_primary!
+        
         likeButton = WCLShineButton(frame: .init(x: 5, y: 0, width: 25, height: 25), params: shineParams)
         likeButton.fillColor = UIColor(rgb: (196,23,1))
         likeButton.color = UIColor.fl_primary!
@@ -171,6 +172,8 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        // scrolls textview to the top always
         overviewTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
     

@@ -121,6 +121,11 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         search.resignFirstResponder()
+        
+        if delegate?.isSideMenuOpen() ?? false {
+            delegate?.onMenuButtonPress()
+        }
+        
         tableView.deselectRow(at: indexPath, animated: false)
 
         if indexPath.row == 0 {
@@ -160,6 +165,14 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension ListViewController: UISearchBarDelegate {
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        guard delegate?.isSideMenuOpen() == false else {
+            delegate?.onMenuButtonPress()
+            return true
+        }
+        return true
+    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
