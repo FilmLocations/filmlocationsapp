@@ -47,28 +47,30 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Request location when in use only
+        locationManager.requestWhenInUseAuthorization()
+        
+        if let currentLocation = retrieveCurrentLocation() {
+            userCurrentLocation = currentLocation
+            viewingMapLocation = currentLocation
+        } else {
+            viewingMapLocation = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
+        }
+        
+        mapView.updatePhysicalLocation(location: viewingMapLocation)
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+            locationManager.startUpdatingLocation()
+        }
+        
         activityIndicatorView.type = NVActivityIndicatorType.ballScaleMultiple
         activityIndicatorView.color = UIColor.fl_secondary!
         
         presentIndicator()
         Database.shared.getAllLocations { locations in
             self.locations = locations
-            
-            // Request location when in use only
-            self.locationManager.requestWhenInUseAuthorization()
-            
-            if let currentLocation = self.retrieveCurrentLocation() {
-                self.userCurrentLocation = currentLocation
-                self.viewingMapLocation = currentLocation
-            } else {
-                self.viewingMapLocation = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
-            }
-            
-            if CLLocationManager.locationServicesEnabled() {
-                self.locationManager.delegate = self
-                self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-                self.locationManager.startUpdatingLocation()
-            }
             
             self.mapView.delegate = self
             
