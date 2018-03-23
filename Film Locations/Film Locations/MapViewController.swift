@@ -17,7 +17,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     @IBOutlet weak var activityIndicatorView: NVActivityIndicatorView!
     @IBOutlet weak var carouselBottomConstraint: NSLayoutConstraint!
     
-    let maxNearbyMovies = 45
+    let maxNearbyMovies = 35
     let currentUsersLocationKey =  "kUserCurrentPreferencesKey"
     
     var scrollingImages:[UIImage]! = []
@@ -27,8 +27,8 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
     var isSearchResultsDisplayed = false
     
-    var locations: [FilmLocation]!
-    var sortedLocations:[FilmLocation]!
+    var locations = [FilmLocation]()
+    var sortedLocations = [FilmLocation]()
 
     let searchBar = UISearchBar()
     
@@ -163,11 +163,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
 
 extension MapViewController: iCarouselDelegate, iCarouselDataSource {
     func numberOfItems(in carousel: iCarousel) -> Int {
-        if sortedLocations != nil {
-            return sortedLocations.count
-        } else {
-            return 0
-        }
+        return sortedLocations.count
     }
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
@@ -223,7 +219,7 @@ extension MapViewController: MapViewDelegate {
         }
     }
     
-    func didTap(markerIndex: Int) {
+    func didTapMarker(markerIndex: Int) {
         showPosterImageView(markerIndex: markerIndex)
     }
     

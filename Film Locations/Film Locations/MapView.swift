@@ -11,7 +11,7 @@ import GoogleMaps
 import GooglePlaces
 
 protocol MapViewDelegate: class {
-    func didTap(markerIndex: Int)
+    func didTapMarker(markerIndex: Int)
     func didTapOnMap()
     func didMoveInMap(newLocation: CLLocationCoordinate2D)
 }
@@ -73,6 +73,7 @@ class MapView: UIView {
         displayData = sortedLocations
 
         currentSelectedMarker = nil
+        markers = []
         googleMapView.clear()
         
         var bounds = GMSCoordinateBounds()
@@ -117,14 +118,24 @@ class MapView: UIView {
         if let markerMovie = marker.userData as? FilmLocation {
             
             if let index = displayData.index(where: {$0.placeId == markerMovie.placeId && $0.tmdbId ==  markerMovie.tmdbId}) {
-                delegate?.didTap(markerIndex: index)
+                delegate?.didTapMarker(markerIndex: index)
                 currentSelectedMarker = marker
             }
+        }
+
+        if !isMarkerWithinScreen(marker: marker) {
+            googleMapView.animate(toLocation: marker.position)
         }
         
         googleMapView.selectedMarker = marker
         
         marker.icon = UIImage(named: "Selected-Marker")
+    }
+    
+    func isMarkerWithinScreen(marker: GMSMarker) -> Bool {
+        let region = googleMapView.projection.visibleRegion()
+        let bounds = GMSCoordinateBounds(region: region)
+        return bounds.contains(marker.position)
     }
 }
 
@@ -150,3 +161,4 @@ extension MapView: GMSMapViewDelegate {
         return true
     }
 }
+
