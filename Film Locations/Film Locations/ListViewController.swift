@@ -79,6 +79,7 @@ class ListViewController: UIViewController, MenuContentViewControllerProtocol {
         search.placeholder = "Search Films"
         search.sizeToFit()
         search.keyboardAppearance = .dark
+        search.tintColor = UIColor.fl_secondary
         search.delegate = self
     }
 
@@ -167,11 +168,17 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
 extension ListViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.placeholder = ""
+
         guard delegate?.isSideMenuOpen() == false else {
             delegate?.onMenuButtonPress()
             return true
         }
         return true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.placeholder = "Search Films"
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

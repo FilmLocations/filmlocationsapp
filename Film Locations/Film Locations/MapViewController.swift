@@ -89,6 +89,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         searchBar.sizeToFit()
         searchBar.delegate = self
         searchBar.keyboardAppearance = .dark
+        searchBar.tintColor = UIColor.fl_secondary
         navigationItem.titleView = searchBar
     }
     
@@ -270,11 +271,17 @@ extension MapViewController: CLLocationManagerDelegate {
 extension MapViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.placeholder = ""
+        
         guard delegate?.isSideMenuOpen() == false else {
             delegate?.onMenuButtonPress()
             return true
         }
         return true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.placeholder = "Search Films"
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
