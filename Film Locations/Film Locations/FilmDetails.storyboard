@@ -168,9 +168,6 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="gJa-ml-F2h"/>
-                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <gestureRecognizers/>
