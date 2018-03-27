@@ -34,14 +34,20 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     
     var delegate: MenuButtonPressDelegate?
     
-    var viewingMapLocation: CLLocationCoordinate2D!
-    
+    var viewingMapLocation = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
+    let sfCenter = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
+
     var safeAreaOffset: CGFloat {
         if #available(iOS 11.0, *) {
             return view.safeAreaInsets.bottom
         } else {
             return 0
         }
+    }
+    
+    var sfRegion: CLCircularRegion {
+        let approximate7MileRadius = CLLocationDistance(exactly: 11300)
+        return CLCircularRegion(center: sfCenter, radius: approximate7MileRadius!, identifier: "SF")
     }
     
     override func viewDidLoad() {
@@ -51,13 +57,15 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         locationManager.requestWhenInUseAuthorization()
         
         if let currentLocation = retrieveCurrentLocation() {
-            userCurrentLocation = currentLocation
-            viewingMapLocation = currentLocation
+            if sfRegion.contains(currentLocation) {
+                userCurrentLocation = currentLocation
+                mapView.updatePhysicalLocation(location: currentLocation)
+            } else {
+                mapView.updatePhysicalLocation(location: sfCenter)
+            }
         } else {
-            viewingMapLocation = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
+            viewingMapLocation = sfCenter
         }
-        
-        mapView.updatePhysicalLocation(location: viewingMapLocation)
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -131,7 +139,11 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     }
 
     func currentLocationUpdated() {
-        sortedLocations = sortMoviesFromUserLocation(moviesToSort: locations, at: userCurrentLocation ?? viewingMapLocation)
+        guard locations.count > 0 else {
+            return
+        }
+        
+        sortedLocations = sortMoviesFromUserLocation(moviesToSort: locations, at: viewingMapLocation)
         updateViewWithNewData()
     }
     
@@ -187,7 +199,7 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
     }
     
     func carouselDidEndScrollingAnimation(_ carousel: iCarousel) {
-        if (carouselBottomConstraint.constant == 0) {
+        if (carouselBottomConstraint.constant == 0 + safeAreaOffset) {
             mapView.selectMarker(index: carousel.currentItemIndex)
         }
     }
@@ -257,7 +269,12 @@ extension MapViewController: CLLocationManagerDelegate {
             let locValue:CLLocationCoordinate2D = manager.location!.coordinate
             print("locations = \(locValue.latitude) \(locValue.longitude)")
             userCurrentLocation = locValue
-            mapView.updatePhysicalLocation(location: locValue)
+            
+            if sfRegion.contains(userCurrentLocation!) {
+                mapView.updatePhysicalLocation(location: locValue)
+            } else {
+                mapView.updatePhysicalLocation(location: sfCenter)
+            }
 
             saveUsersLastKnownLocation(userCurrentLocation: locValue)
 
@@ -297,7 +314,7 @@ extension MapViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+        isSearchResultsDisplayed = false
         searchBar.resignFirstResponder()
         
         if let query = searchBar.text {
@@ -314,6 +331,8 @@ extension MapViewController: UISearchBarDelegate {
                 sortedLocations = sortMoviesFromUserLocation(moviesToSort: filteredMovies, at: viewingMapLocation)
                 
                 updateViewWithNewData()
+                mapView.selectMarker(index: 0)
+
                 isSearchResultsDisplayed = true
             }
         } else {
