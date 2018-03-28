@@ -37,6 +37,7 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
 
         transparentBackgroundView.backgroundColor = UIColor.fl_secondary
         collectionView.backgroundColor = UIColor.fl_primary
+        view.backgroundColor = UIColor.fl_primary
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,12 +50,12 @@ class ProfilePageViewController: UIViewController, MenuContentViewControllerProt
         if (user.isAnonymous) {
             twitterHandleLabel.isHidden = true
         } else {
-            Database.shared.getUserImageMetadata(userId: user.screenname) { locationImages in
-                if (locationImages.count != self.photos.count) {
-                    self.photos = locationImages
-                    self.collectionView.reloadData()
-                }
-            }
+//            Database.shared.getUserImageMetadata(userId: user.screenname) { locationImages in
+//                if (locationImages.count != self.photos.count) {
+//                    self.photos = locationImages
+//                    self.collectionView.reloadData()
+//                }
+//            }
             
             Database.shared.userVisitsCount(userId: user.screenname) { visitedCounter in
                 if (visitedCounter == 1) {

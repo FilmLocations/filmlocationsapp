@@ -117,7 +117,7 @@
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5SM-0B-LY2" secondAttribute="trailing" constant="8" id="zlj-DL-tjg"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="brP-lO-d8s">
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="brP-lO-d8s">
                                 <rect key="frame" x="0.0" y="179" width="375" height="488"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="e8F-Cf-43w">
                                     <size key="itemSize" width="50" height="50"/>

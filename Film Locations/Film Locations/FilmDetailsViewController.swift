@@ -74,7 +74,7 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(onBackButtonPress(_:)))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPhoto(_:)))
+        //navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPhoto(_:)))
         
         // Set up action buttons
         var shineParams = WCLShineParams()

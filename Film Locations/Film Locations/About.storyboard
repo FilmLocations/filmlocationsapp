@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCo-cP-Bjf">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="565"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="545.33333333333337"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Tu-Zf-fYc">
                                                 <rect key="frame" x="178.66666666666666" y="8" width="58" height="58"/>
@@ -44,23 +44,23 @@
                                                     <constraint firstItem="V4n-aU-Deg" firstAttribute="centerX" secondItem="6Tu-Zf-fYc" secondAttribute="centerX" id="MBI-rj-7GR"/>
                                                 </constraints>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTA-ic-Sge">
-                                                <rect key="frame" x="16" y="82" width="382" height="213"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTA-ic-Sge">
+                                                <rect key="frame" x="16" y="82.000000000000014" width="382" height="177.33333333333337"/>
                                                 <viewLayoutGuide key="safeArea" id="cqL-p3-A5E"/>
-                                                <string key="text">Use the San Francisco Film Locations app to discover filming locations from your favorite SF made films. See how locations look today from films made as early as 1924. We use data compiled by the SF Film Comission, wonderfully made open and available by DataSF. We connect with The Movie DB database to display film details and Google Places to search for an image of the location. Help us add more accurate photos by signing in with Twitter and uploading your own. Enjoy your trip through San Francisco film history.</string>
+                                                <string key="text">Use the San Francisco Film Locations app to discover filming locations from your favorite SF made films. See how locations look today from films made as early as 1924. We use data compiled by the SF Film Comission, wonderfully made open and available by DataSF. We connect with The Movie DB database to display film details and Google Places to search for an image of the location. Enjoy your trip through San Francisco film history.</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Thank you for using the San Francisco Film Locations app!" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGj-aB-g7k">
-                                                <rect key="frame" x="16" y="303" width="382" height="52"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Thank you for using the San Francisco Film Locations app!" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGj-aB-g7k">
+                                                <rect key="frame" x="16" y="267.33333333333331" width="382" height="52"/>
                                                 <viewLayoutGuide key="safeArea" id="irH-Zf-bni"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QeT-1k-034">
-                                                <rect key="frame" x="107" y="363" width="200" height="153"/>
+                                                <rect key="frame" x="107" y="343.33333333333331" width="200" height="153"/>
                                                 <subviews>
                                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="datasf" translatesAutoresizingMaskIntoConstraints="NO" id="7EF-vG-DPT">
                                                         <rect key="frame" x="27.666666666666657" y="0.0" width="145" height="54"/>
@@ -88,7 +88,7 @@
                                                 <variation key="heightClass=compact" axis="horizontal"/>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made in San Francisco 💞" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdo-P6-3Gl">
-                                                <rect key="frame" x="123.99999999999999" y="540" width="167.66666666666663" height="17"/>
+                                                <rect key="frame" x="123.99999999999999" y="520.33333333333337" width="167.66666666666663" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -105,7 +105,7 @@
                                             <constraint firstAttribute="bottom" secondItem="Sdo-P6-3Gl" secondAttribute="bottom" constant="8" id="ZWH-OA-JD1"/>
                                             <constraint firstItem="QeT-1k-034" firstAttribute="centerX" secondItem="XCo-cP-Bjf" secondAttribute="centerX" id="bew-75-XqN"/>
                                             <constraint firstItem="Sdo-P6-3Gl" firstAttribute="top" secondItem="QeT-1k-034" secondAttribute="bottom" constant="24" id="c6V-AI-1k9"/>
-                                            <constraint firstItem="QeT-1k-034" firstAttribute="top" secondItem="LGj-aB-g7k" secondAttribute="bottom" constant="8" id="crT-Ek-cuF"/>
+                                            <constraint firstItem="QeT-1k-034" firstAttribute="top" secondItem="LGj-aB-g7k" secondAttribute="bottom" constant="24" id="crT-Ek-cuF"/>
                                             <constraint firstItem="6Tu-Zf-fYc" firstAttribute="top" secondItem="XCo-cP-Bjf" secondAttribute="top" constant="8" id="j9m-SG-IWr"/>
                                             <constraint firstItem="Sdo-P6-3Gl" firstAttribute="centerX" secondItem="XCo-cP-Bjf" secondAttribute="centerX" id="uOc-jD-9Zo"/>
                                             <constraint firstItem="LGj-aB-g7k" firstAttribute="centerX" secondItem="XCo-cP-Bjf" secondAttribute="centerX" id="yIB-9T-IWE"/>
@@ -170,7 +170,6 @@
         <!--Navigation Controller-->
         <scene sceneID="gpn-CY-sG1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NRv-eE-uf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="AboutNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="NLF-4G-hAi" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yRx-zZ-6Ew">
@@ -182,6 +181,7 @@
                         <segue destination="lyl-Bb-1nH" kind="relationship" relationship="rootViewController" id="mtz-yO-Buz"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NRv-eE-uf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1420" y="150"/>
         </scene>
