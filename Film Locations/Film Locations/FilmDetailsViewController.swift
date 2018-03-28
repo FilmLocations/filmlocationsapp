@@ -111,7 +111,23 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
                 self.updateCounts()
                 self.hasTriedLoadingUserImages = true
             } else {
-                self.photosCollectionView.reloadData()
+                
+                Utility.loadFirstPhotoForPlace(placeID: self.location.placeId, callback: { (image, attribution)  in
+                    
+                    if image != nil {
+                        self.topBackgroundImageView.image = image
+                        self.googleAttribution = attribution
+                        self.photosCollectionView.reloadData()
+                    } else {
+                        Utility.loadDefaultPhoto(callback: { image in
+                            if let image = image {
+                                self.topBackgroundImageView.image = image
+                                self.photosCollectionView.reloadData()
+                            }
+                        })
+                    }
+                })
+                
                 self.hasTriedLoadingUserImages = true
             }
         }
@@ -239,11 +255,13 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     private func updateCounts() {
-        Database.shared.locationLikesCount(locationId: location.id) { count in
-            self.likesCount = count
-        }
-        Database.shared.locationVisitsCount(locationId: location.id) { count in
-            self.visitsCount = count
+        DispatchQueue.global(qos: .userInitiated).async { [unowned self] in
+            Database.shared.locationLikesCount(locationId: self.location.id) { count in
+                self.likesCount = count
+            }
+            Database.shared.locationVisitsCount(locationId: self.location.id) { count in
+                self.visitsCount = count
+            }
         }
     }
     
@@ -397,20 +415,8 @@ extension FilmDetailsViewController: UICollectionViewDataSource, UICollectionVie
                 cell.locationPhotoImageView.image = image
             })
         } else {
-            if (hasTriedLoadingUserImages) {
-                Utility.loadFirstPhotoForPlace(placeID: location.placeId, callback: { (image, attribution)  in
-                    
-                    if image != nil {
-                        cell.locationPhotoImageView.image = image
-                        self.topBackgroundImageView.image = image
-                        self.googleAttribution = attribution
-                    } else {
-                        Utility.loadRandomPhotoForPlace(placeID: "ChIJIQBpAG2ahYAR_6128GcTUEo", callback: { (image:UIImage?) in
-                            cell.locationPhotoImageView.image = image
-                            self.topBackgroundImageView.image = image
-                        })
-                    }
-                })
+            if let image = topBackgroundImageView.image {
+                cell.locationPhotoImageView.image = image
             }
         }
       

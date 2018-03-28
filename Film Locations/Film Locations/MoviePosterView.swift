@@ -81,7 +81,7 @@ class MoviePosterView: UIView {
                     if let image = image {
                         self.posterImageView.image = image
                     } else {
-                        Utility.loadRandomPhotoForPlace(placeID: "ChIJIQBpAG2ahYAR_6128GcTUEo", callback: { (image:UIImage?) in
+                        Utility.loadDefaultPhoto(callback: { image in
                             if let image = image {
                                 self.posterImageView.image = image
                             }

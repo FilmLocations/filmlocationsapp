@@ -11,8 +11,17 @@ import GooglePlaces
 
 class Utility {
     
-    class func loadRandomPhotoForPlace(placeID: String, callback: @escaping (UIImage?)->()) {
-        GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
+    static var defaultImage: UIImage? = nil
+    
+    class func loadDefaultPhoto(callback: @escaping (UIImage?)->()) {
+        
+//        if defaultImage != nil {
+//            callback(defaultImage)
+//            return
+//        }        
+
+        GMSPlacesClient.shared().lookUpPhotos(forPlaceID: "ChIJw____96GhYARCVVwg5cT7c0") { (photos, error) -> Void in
+            
             if let error = error {
                 // TODO: handle the error.
                 print("Error: \(error.localizedDescription)")
@@ -34,6 +43,7 @@ class Utility {
                             print("Error: \(error.localizedDescription)")
                             callback(nil)
                         } else {
+                            defaultImage = photo
                             callback(photo)
                         }
                     })
@@ -47,6 +57,7 @@ class Utility {
     }
     
     class func loadFirstPhotoForPlace(placeID: String, callback: @escaping (UIImage?, NSAttributedString?)->()) {
+        
         GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
             if let error = error {
                 // TODO: handle the error.
