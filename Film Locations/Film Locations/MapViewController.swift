@@ -17,7 +17,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     @IBOutlet weak var activityIndicatorView: NVActivityIndicatorView!
     @IBOutlet weak var carouselBottomConstraint: NSLayoutConstraint!
     
-    let maxNearbyMovies = 35
+    let maxNearbyMovies = 30
     let currentUsersLocationKey =  "kUserCurrentPreferencesKey"
     
     var scrollingImages:[UIImage]! = []
