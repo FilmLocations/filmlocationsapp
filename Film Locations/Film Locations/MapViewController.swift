@@ -33,6 +33,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
     let searchBar = UISearchBar()
     
     var delegate: MenuButtonPressDelegate?
+    var currentMarkerIndex = 0
     
     var viewingMapLocation = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
     let sfCenter = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
@@ -198,9 +199,13 @@ extension MapViewController: iCarouselDelegate, iCarouselDataSource {
         return moviePosterView
     }
     
+    func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
+        currentMarkerIndex = carousel.currentItemIndex
+    }
+    
     func carouselDidEndScrollingAnimation(_ carousel: iCarousel) {
         if (carouselBottomConstraint.constant == 0 + safeAreaOffset) {
-            mapView.selectMarker(index: carousel.currentItemIndex)
+            mapView.selectMarker(index: currentMarkerIndex)
         }
     }
     
@@ -234,7 +239,9 @@ extension MapViewController: MapViewDelegate {
         }
     }
     
+    
     func didTapMarker(markerIndex: Int) {
+        currentMarkerIndex = markerIndex
         showPosterImageView(markerIndex: markerIndex)
     }
     
@@ -254,6 +261,7 @@ extension MapViewController: MapViewDelegate {
             self.view.layoutIfNeeded()
         }, completion: { success in
             if success {
+                self.currentMarkerIndex = markerIndex
                 self.carousel.scrollToItem(at: markerIndex, animated: false)
             }
         })
