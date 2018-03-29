@@ -60,6 +60,7 @@ class MapViewController: UIViewController, MenuContentViewControllerProtocol {
         if let currentLocation = retrieveCurrentLocation() {
             if sfRegion.contains(currentLocation) {
                 userCurrentLocation = currentLocation
+                viewingMapLocation = currentLocation
                 mapView.updatePhysicalLocation(location: currentLocation)
             } else {
                 mapView.updatePhysicalLocation(location: sfCenter)
