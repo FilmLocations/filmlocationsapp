@@ -156,6 +156,11 @@ class MapView: UIView {
 extension MapView: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        if (currentSelectedMarker != nil && !isMarkerWithinScreen(marker: currentSelectedMarker!)) {
+            unSelectMarker()
+            delegate?.didTapOnMap()
+        }
+
         delegate?.didMoveInMap(newLocation: position.target)
     }
     
