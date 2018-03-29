@@ -72,13 +72,14 @@ class MapView: UIView {
         
         displayData = sortedLocations
 
-        currentSelectedMarker = nil
         markers = []
         googleMapView.clear()
         
         var bounds = GMSCoordinateBounds()
         
-        for movie in sortedLocations {
+        var newCurrentMarkerIndex = -1
+        
+        for (index, movie) in sortedLocations.enumerated() {
             // Creates a marker in the center of the map.
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: movie.lat, longitude: movie.long)
@@ -90,7 +91,20 @@ class MapView: UIView {
             bounds = bounds.includingCoordinate(marker.position)
             marker.map = googleMapView
             
+            if let currentMarkerData = currentSelectedMarker?.userData as? FilmLocation {
+                if currentMarkerData.id == movie.id {
+                    currentSelectedMarker = marker
+                    newCurrentMarkerIndex = index
+                }
+            }
+            
             markers.append(marker)
+        }
+        
+        if (newCurrentMarkerIndex > -1) {
+            selectMarker(index: newCurrentMarkerIndex)
+        } else {
+            currentSelectedMarker = nil
         }
     }
     
