@@ -98,39 +98,59 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
         // Do any additional setup after loading the view.
         user = User.currentUser
         
-        Database.shared.getLocationImageMetadata(locationId: location.id) { locationImages in
+        Utility.loadFirstPhotoForPlace(placeID: self.location.placeId, callback: { (image, attribution)  in
             
-            if locationImages.count > 0 {
-                Database.shared.getLocationImage(filename: locationImages[0].imageName, completion: { locationImage in
-                    self.topBackgroundImageView.image = locationImage
-                    self.poweredByGoogleImageView.isHidden = true
-                })
-                
-                self.locationImages = locationImages
+            if image != nil {
+                self.topBackgroundImageView.image = image
+                self.googleAttribution = attribution
                 self.photosCollectionView.reloadData()
-                self.updateCounts()
-                self.hasTriedLoadingUserImages = true
             } else {
-                
-                Utility.loadFirstPhotoForPlace(placeID: self.location.placeId, callback: { (image, attribution)  in
-                    
-                    if image != nil {
+                Utility.loadDefaultPhoto(callback: { image in
+                    if let image = image {
                         self.topBackgroundImageView.image = image
-                        self.googleAttribution = attribution
                         self.photosCollectionView.reloadData()
-                    } else {
-                        Utility.loadDefaultPhoto(callback: { image in
-                            if let image = image {
-                                self.topBackgroundImageView.image = image
-                                self.photosCollectionView.reloadData()
-                            }
-                        })
                     }
                 })
-                
-                self.hasTriedLoadingUserImages = true
             }
-        }
+            
+            self.hasTriedLoadingUserImages = true
+
+        })
+        
+        
+//        Database.shared.getLocationImageMetadata(locationId: location.id) { locationImages in
+//
+//            if locationImages.count > 0 {
+//                Database.shared.getLocationImage(filename: locationImages[0].imageName, completion: { locationImage in
+//                    self.topBackgroundImageView.image = locationImage
+//                    self.poweredByGoogleImageView.isHidden = true
+//                })
+//
+//                self.locationImages = locationImages
+//                self.photosCollectionView.reloadData()
+//                self.updateCounts()
+//                self.hasTriedLoadingUserImages = true
+//            } else {
+//
+//                Utility.loadFirstPhotoForPlace(placeID: self.location.placeId, callback: { (image, attribution)  in
+//
+//                    if image != nil {
+//                        self.topBackgroundImageView.image = image
+//                        self.googleAttribution = attribution
+//                        self.photosCollectionView.reloadData()
+//                    } else {
+//                        Utility.loadDefaultPhoto(callback: { image in
+//                            if let image = image {
+//                                self.topBackgroundImageView.image = image
+//                                self.photosCollectionView.reloadData()
+//                            }
+//                        })
+//                    }
+//                })
+//
+//                self.hasTriedLoadingUserImages = true
+//            }
+//        }
         
         if let userCurrentLocation = UserDefaults.standard.dictionary(forKey: "kUserCurrentPreferencesKey") {
             let userLocation = CLLocationCoordinate2D(latitude: userCurrentLocation["lat"] as! CLLocationDegrees, longitude: userCurrentLocation["long"] as! CLLocationDegrees)
@@ -171,19 +191,20 @@ class FilmDetailsViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidAppear(_ animated: Bool) {
 
-        Database.shared.getLocationImageMetadata(locationId: location.id) { locationImages in
-            
-            if locationImages.count > 0 && locationImages.count != self.locationImages.count {
-            
-                Database.shared.getLocationImage(filename: locationImages[0].imageName, completion: { locationImage in
-                    self.topBackgroundImageView.image = locationImage
-                })
-
-                self.locationImages = locationImages
-                self.photosCollectionView.reloadData()
-                self.updateCounts()
-            }
-        }
+//        Database.shared.getLocationImageMetadata(locationId: location.id) { locationImages in
+//
+//            if locationImages.count > 0 && locationImages.count != self.locationImages.count {
+//
+//                Database.shared.getLocationImage(filename: locationImages[0].imageName, completion: { locationImage in
+//                    self.topBackgroundImageView.image = locationImage
+//                })
+//
+//                self.locationImages = locationImages
+//                self.photosCollectionView.reloadData()
+//                self.updateCounts()
+//            }
+//        }
+        updateCounts()
     }
     
     override func viewDidLayoutSubviews() {
