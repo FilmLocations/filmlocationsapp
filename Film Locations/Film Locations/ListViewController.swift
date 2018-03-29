@@ -121,7 +121,10 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        search.resignFirstResponder()
+        if (search.isFirstResponder) {
+            search.resignFirstResponder()
+            return
+        }
         
         if delegate?.isSideMenuOpen() ?? false {
             delegate?.onMenuButtonPress()
@@ -177,8 +180,10 @@ extension ListViewController: UISearchBarDelegate {
         return true
     }
     
+    
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.placeholder = "Search Films"
+        searchBar.resignFirstResponder()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
