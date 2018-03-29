@@ -254,16 +254,12 @@ extension MapViewController: MapViewDelegate {
     }
     
     func showPosterImageView(markerIndex: Int) {
+        currentMarkerIndex = markerIndex
+        carousel.currentItemIndex = markerIndex
         
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
-            
             self.carouselBottomConstraint.constant = 0 + self.safeAreaOffset
             self.view.layoutIfNeeded()
-        }, completion: { success in
-            if success {
-                self.currentMarkerIndex = markerIndex
-                self.carousel.scrollToItem(at: markerIndex, animated: false)
-            }
         })
     }
 }
